@@ -1,4 +1,4 @@
-package TryFlix.Flix;
+package trailFlix.flix;
 
 import junit.framework.TestCase
 import junit.framework.Test

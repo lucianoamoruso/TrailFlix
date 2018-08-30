@@ -1,4 +1,4 @@
-package TryFlix.Flix;
+package trailFlix.flix;
 
 import java.util.List
 
