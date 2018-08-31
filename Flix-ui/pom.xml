@@ -1,20 +1,42 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+    <repositories>
+    <repository>
+      <id>uqbar</id>
+      <name>Uqbar</name>
+      <url>http://maven.uqbar.org/releases/</url>
+    </repository>
+  </repositories>
+  
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>TraiFlix</groupId>
-  <artifactId>Flix-ui</artifactId>
+  <groupId>trailFlix</groupId>
+  <artifactId>flix-ui</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Flix-ui</name>
+  <name>flix-ui</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
+  
+  <parent>
+    <groupId>org.uqbar-project</groupId>
+    <artifactId>arena-xtend-parent</artifactId>
+    <version>3.6.3</version>
+  </parent>
+  
   <dependencies>
+  
+    <dependency>
+      <groupId>TryFlix</groupId>
+      <artifactId>Flix</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
