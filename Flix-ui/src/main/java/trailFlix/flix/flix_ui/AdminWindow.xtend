@@ -1,14 +1,15 @@
-package trailFlix.flix_ui
+package trailFlix.flix.flix_ui
+
+import trailFlix.flix.appModel.AdminMainWindow
 
 import org.uqbar.arena.windows.MainWindow
-import trailFlix.appModel.AdminMainWindow
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.widgets.Button
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.widgets.Button
 
 class AdminWindow extends MainWindow<AdminMainWindow> {
 	

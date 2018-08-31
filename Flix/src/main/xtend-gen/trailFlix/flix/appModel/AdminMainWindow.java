@@ -1,4 +1,6 @@
-package trailFlix.appModel;
+package trailFlix.flix.appModel;
+
+import java.util.List;
 
 @SuppressWarnings("all")
 public class AdminMainWindow {

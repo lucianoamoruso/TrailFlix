@@ -32,8 +32,8 @@
   <dependencies>
   
     <dependency>
-      <groupId>TryFlix</groupId>
-      <artifactId>Flix</artifactId>
+      <groupId>trailFlix</groupId>
+      <artifactId>flix</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
   

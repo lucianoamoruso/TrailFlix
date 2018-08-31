@@ -1,4 +1,4 @@
-package trailFlix.flix;
+package trailFlix.flix.model;
 
 @SuppressWarnings("all")
 public enum Categoria {

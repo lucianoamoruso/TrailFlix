@@ -1,4 +1,4 @@
-package trailFlix.flix
+package trailFlix.flix.model
 
 enum Clasificacion {
 	
