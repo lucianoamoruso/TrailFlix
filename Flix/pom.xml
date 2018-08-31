@@ -13,7 +13,13 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
+  
+  <parent>
+    <groupId>org.uqbar-project</groupId>
+    <artifactId>arena-xtend-parent</artifactId>
+    <version>3.6.3</version>
+  </parent>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
