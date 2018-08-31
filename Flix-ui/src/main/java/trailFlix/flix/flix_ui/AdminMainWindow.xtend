@@ -1,6 +1,6 @@
 package trailFlix.flix.flix_ui
 
-import trailFlix.flix.appModel.AdminMainWindow
+import trailFlix.flix.appModel.AdminMain
 
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel
@@ -8,15 +8,15 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.Button
-
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.ColumnLayout
 
-class AdminWindow extends MainWindow<AdminMainWindow> {
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+
+class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
-		super(new AdminMainWindow)
+		super(new AdminMain)
 	}
 	
 	override createContents(Panel mainPanel) {
@@ -75,7 +75,7 @@ class AdminWindow extends MainWindow<AdminMainWindow> {
 		]
 		new Button(panelSerieFind) => [
 			caption = "Buscar"
-			onClick [ | this.modelObject.buscarSeries]
+			onClick [ | modelObject.buscarSeries]
 		]
 		//-----Base de datos-----------------------------
 		val panelSerieDB = new Panel(mainPanel) => [
@@ -96,8 +96,8 @@ class AdminWindow extends MainWindow<AdminMainWindow> {
 		]
 	}
 	
-	def static main(String[] args) {
-		new AdminWindow() => [
+	def static void main(String[] args) {
+		new AdminMainWindow() => [
 			modelObject.rellenarDatos
 			startApplication
 		]

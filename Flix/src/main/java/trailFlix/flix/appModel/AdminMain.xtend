@@ -6,7 +6,7 @@ import org.uqbar.commons.model.annotations.Observable
 
 @Accessors
 @Observable
-class AdminMainWindow {
+class AdminMain {
 	List<Pelicula> peliculas
 	List<Serie> series
 	String peli_find
@@ -31,7 +31,7 @@ class AdminMainWindow {
 	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
 	 */
 	def rellenarDatos() {
-		trailFlix.rellenarDatos
+//		trailFlix.rellenarDatos
 	}
 	
 }
