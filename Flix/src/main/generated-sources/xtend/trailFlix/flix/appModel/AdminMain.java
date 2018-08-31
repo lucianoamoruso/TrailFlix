@@ -4,20 +4,23 @@ import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.annotations.Observable;
+import trailFlix.flix.model.Pelicula;
+import trailFlix.flix.model.Serie;
+import trailFlix.flix.model.TrailFlix;
 
 @Accessors
 @Observable
 @SuppressWarnings("all")
 public class AdminMain {
-  private /* List<Pelicula> */Object peliculas;
+  private List<Pelicula> peliculas;
   
-  private /* List<Serie> */Object series;
+  private List<Serie> series;
   
   private String peli_find;
   
   private String serie_find;
   
-  private /* TrailFlix */Object trailFlix;
+  private TrailFlix trailFlix;
   
   /**
    * Prop: Busca peliculas procesando el texto guardado en this.peli_find.
@@ -37,26 +40,24 @@ public class AdminMain {
    * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
    */
   public Object rellenarDatos() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AdminMain.trailFlix refers to the missing type TrailFlix"
-      + "\nrellenarDatos cannot be resolved");
+    return this.trailFlix.rellenarDatos();
   }
   
   @Pure
-  public /* List<Pelicula> */Object getPeliculas() {
+  public List<Pelicula> getPeliculas() {
     return this.peliculas;
   }
   
-  public void setPeliculas(final /* List<Pelicula> */Object peliculas) {
+  public void setPeliculas(final List<Pelicula> peliculas) {
     this.peliculas = peliculas;
   }
   
   @Pure
-  public /* List<Serie> */Object getSeries() {
+  public List<Serie> getSeries() {
     return this.series;
   }
   
-  public void setSeries(final /* List<Serie> */Object series) {
+  public void setSeries(final List<Serie> series) {
     this.series = series;
   }
   

@@ -1,4 +1,4 @@
-package trailFlix.flix.flix_ui
+package trailFlix.flix_ui
 
 import trailFlix.flix.appModel.AdminMovie
 
@@ -75,29 +75,31 @@ class AdminMovieWindow extends MainWindow<AdminMovie> {
 		]
 		new Button(panelRelatedLabel) => [
 			caption = "Agregar"
-			onClick [ | modelObject.agregarContenido]
+			onClick [ | open]
 		]
 		new Selector(panelRelated)
 
 		//-----Confirmacion-------------------------
 		new Button(mainPanel) => [
 			caption = "Cancelar"
-			onClick [ | ]	//Cierra la ventana
-			alignRight
+			onClick [ | close]
 		]
 		new Button(mainPanel) => [		//Agregar pelicula
 			caption = "Aceptar"
 			onClick [ | modelObject.nuevaPeli]
-			alignRight
 		]
 
 	}
 	
+//	def static main(String[] args) {
+//		new AdminMovieWindow() => [
+//			startApplication
+//			modelObject.rellenarDatos
+//		]
+//	}
+
 	def static main(String[] args) {
-		new AdminMovieWindow() => [
-			modelObject.rellenarDatos
-			startApplication
-		]
+		new AdminMovieWindow().startApplication
 	}
 	
 }

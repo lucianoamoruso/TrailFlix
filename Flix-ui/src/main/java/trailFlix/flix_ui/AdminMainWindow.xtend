@@ -1,4 +1,4 @@
-package trailFlix.flix.flix_ui
+package trailFlix.flix_ui
 
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
@@ -95,14 +95,15 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 	}
 	
-	def static main(String[] args) {
-		new AdminMainWindow() => [
-			modelObject.rellenarDatos
-			startApplication
-		]
-	}
-//	def static main(String[] args) {
-//		new AdminMainWindow().startApplication
+//	def static void main(String[] args) {
+//		new AdminMainWindow() => [
+//			startApplication
+//			modelObject.rellenarDatos
+//		]
 //	}
+
+	def static main(String[] args) {
+		new AdminMainWindow().startApplication
+	}
 	
 }

@@ -1,4 +1,4 @@
-package trailFlix.flix.flix_ui;
+package trailFlix.flix_ui;
 
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;

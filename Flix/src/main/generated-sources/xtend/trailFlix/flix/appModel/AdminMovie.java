@@ -1,14 +1,14 @@
 package trailFlix.flix.appModel;
 
-import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.annotations.Observable;
 import trailFlix.flix.model.Categoria;
 import trailFlix.flix.model.Clasificacion;
 import trailFlix.flix.model.Contenido;
+import trailFlix.flix.model.TrailFlix;
 
 @Accessors
 @Observable
@@ -16,26 +16,29 @@ import trailFlix.flix.model.Contenido;
 public class AdminMovie {
   private String titulo;
   
-  private final Categoria[] categorias = new Categoria[4];
+  private int duracion;
   
-  private final Clasificacion[] clasificaciones = new Clasificacion[4];
+  private Date fecha_estreno;
+  
+  private List<String> directores;
+  
+  private List<String> actores_principales;
+  
+  private String link;
+  
+  private final Categoria[] categorias = { Categoria.ACCION, Categoria.COMEDIA, Categoria.DRAMA, Categoria.TERROR };
+  
+  private final Clasificacion[] clasificaciones = { Clasificacion.APT, Clasificacion.MAYORES13, Clasificacion.MAYORES16, Clasificacion.MAYORES18 };
   
   private List<Contenido> relacionado;
   
-  private /* TrailFlix */Object trailFlix;
-  
-  public AdminMovie() {
-    ((List<Categoria>)Conversions.doWrapArray(this.categorias)).addAll(((Collection<? extends Categoria>)Conversions.doWrapArray(Categoria.values())));
-    ((List<Clasificacion>)Conversions.doWrapArray(this.clasificaciones)).addAll(((Collection<? extends Clasificacion>)Conversions.doWrapArray(Clasificacion.values())));
-  }
+  private TrailFlix trailFlix;
   
   /**
    * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
    */
   public Object rellenarDatos() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AdminMovie.trailFlix refers to the missing type TrailFlix"
-      + "\nrellenarDatos cannot be resolved");
+    return this.trailFlix.rellenarDatos();
   }
   
   /**
@@ -54,8 +57,10 @@ public class AdminMovie {
   
   /**
    * Prop: Añade contenido relacionado a una pelicula.
+   * Idea: va a recibir el codigo (y nombre?) del relacionado desde el input de una ventana simple que se abre
+   * al presionar "Agregar"
    */
-  public Object agregarContenido() {
+  public Object agregarContenido(final int codigo) {
     return null;
   }
   
@@ -66,6 +71,51 @@ public class AdminMovie {
   
   public void setTitulo(final String titulo) {
     this.titulo = titulo;
+  }
+  
+  @Pure
+  public int getDuracion() {
+    return this.duracion;
+  }
+  
+  public void setDuracion(final int duracion) {
+    this.duracion = duracion;
+  }
+  
+  @Pure
+  public Date getFecha_estreno() {
+    return this.fecha_estreno;
+  }
+  
+  public void setFecha_estreno(final Date fecha_estreno) {
+    this.fecha_estreno = fecha_estreno;
+  }
+  
+  @Pure
+  public List<String> getDirectores() {
+    return this.directores;
+  }
+  
+  public void setDirectores(final List<String> directores) {
+    this.directores = directores;
+  }
+  
+  @Pure
+  public List<String> getActores_principales() {
+    return this.actores_principales;
+  }
+  
+  public void setActores_principales(final List<String> actores_principales) {
+    this.actores_principales = actores_principales;
+  }
+  
+  @Pure
+  public String getLink() {
+    return this.link;
+  }
+  
+  public void setLink(final String link) {
+    this.link = link;
   }
   
   @Pure

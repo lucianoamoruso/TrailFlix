@@ -11,12 +11,12 @@
   
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>trailFlix.flix</groupId>
-  <artifactId>Flix-ui</artifactId>
+  <groupId>trailFlix</groupId>
+  <artifactId>flix_ui</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Flix-ui</name>
+  <name>flix-ui</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -32,8 +32,8 @@
   <dependencies>
   
     <dependency>
-      <groupId>trailFlix.flix</groupId>
-      <artifactId>Flix</artifactId>
+      <groupId>trailFlix</groupId>
+      <artifactId>flix</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
   

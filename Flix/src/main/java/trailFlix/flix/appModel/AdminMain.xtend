@@ -3,6 +3,9 @@ package trailFlix.flix.appModel
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
+import trailFlix.flix.model.TrailFlix
+import trailFlix.flix.model.Pelicula
+import trailFlix.flix.model.Serie
 
 @Accessors
 @Observable
