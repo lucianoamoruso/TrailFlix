@@ -2,8 +2,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>trailFlix</groupId>
-  <artifactId>flix</artifactId>
+  <groupId>trailFlix.flix</groupId>
+  <artifactId>Flix</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -21,11 +21,19 @@
   </parent>
   
   <dependencies>
+  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>runtime</artifactId>
+      <version>3.10.0-v20140318-2214</version>
+    </dependency>
+
   </dependencies>
 </project>

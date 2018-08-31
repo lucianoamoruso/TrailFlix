@@ -11,6 +11,7 @@ class AdminMainWindow {
 	List<Serie> series
 	String peli_find
 	String serie_find
+	TrailFlix trailFlix
 	
 	/*
 	 * Prop: Busca peliculas procesando el texto guardado en this.peli_find.
@@ -25,4 +26,12 @@ class AdminMainWindow {
 	def buscarSeries() {
 		//TODO
 	}
+	
+	/*
+	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
+	 */
+	def rellenarDatos() {
+		trailFlix.rellenarDatos
+	}
+	
 }
