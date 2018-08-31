@@ -13,6 +13,7 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.VerticalLayout
+import trailFlix.flix.appModel.AdminContent
 
 class AdminMovieWindow extends MainWindow<AdminMovie> {
 	
@@ -75,7 +76,7 @@ class AdminMovieWindow extends MainWindow<AdminMovie> {
 		]
 		new Button(panelRelatedLabel) => [
 			caption = "Agregar"
-			onClick [ | open]
+			onClick [ | new AdminContentWindow(this, new AdminContent).open]
 		]
 		new Selector(panelRelated)
 

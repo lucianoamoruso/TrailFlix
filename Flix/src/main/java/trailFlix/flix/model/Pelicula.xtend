@@ -1,5 +1,13 @@
 package trailFlix.flix.model
 
-class Pelicula {
+class Pelicula extends Contenido {
+	
+	override returnPeliculaVista() {
+		//TODO
+	}
+	
+	override returnSerieVista() {
+		//TODO
+	}
 	
 }

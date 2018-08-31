@@ -16,7 +16,9 @@ import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.xtend.ArenaXtendExtensions;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
+import trailFlix.flix.appModel.AdminContent;
 import trailFlix.flix.appModel.AdminMovie;
+import trailFlix.flix_ui.AdminContentWindow;
 
 @SuppressWarnings("all")
 public class AdminMovieWindow extends MainWindow<AdminMovie> {
@@ -145,7 +147,8 @@ public class AdminMovieWindow extends MainWindow<AdminMovie> {
         it.setCaption("Agregar");
         final Action _function = new Action() {
           public void execute() {
-            AdminMovieWindow.this.open();
+            AdminContent _adminContent = new AdminContent();
+            new AdminContentWindow(AdminMovieWindow.this, _adminContent).open();
           }
         };
         it.onClick(_function);
