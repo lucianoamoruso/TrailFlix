@@ -1,15 +1,14 @@
 package trailFlix.flix.flix_ui
 
-import trailFlix.flix.appModel.AdminMain
-
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.windows.MainWindow
+import trailFlix.flix.appModel.AdminMain
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
@@ -96,11 +95,14 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 	}
 	
-	def static void main(String[] args) {
+	def static main(String[] args) {
 		new AdminMainWindow() => [
 			modelObject.rellenarDatos
 			startApplication
 		]
 	}
+//	def static main(String[] args) {
+//		new AdminMainWindow().startApplication
+//	}
 	
 }

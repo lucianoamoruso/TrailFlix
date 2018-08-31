@@ -5,6 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.Categoria
 import trailFlix.flix.model.Clasificacion
+import trailFlix.flix.model.Contenido
 
 @Accessors
 @Observable
@@ -25,7 +26,7 @@ class AdminMovie {
 	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
 	 */
 	def rellenarDatos() {
-//		trailFlix.rellenarDatos
+		trailFlix.rellenarDatos
 	}
 	
 	/*

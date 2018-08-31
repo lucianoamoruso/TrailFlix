@@ -31,7 +31,7 @@ class AdminMain {
 	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
 	 */
 	def rellenarDatos() {
-//		trailFlix.rellenarDatos
+		trailFlix.rellenarDatos
 	}
 	
 }
