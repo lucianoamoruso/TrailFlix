@@ -16,6 +16,8 @@ import org.uqbar.arena.xtend.ArenaXtendExtensions;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import trailFlix.flix.appModel.AdminMain;
+import trailFlix.flix.appModel.AdminMovie;
+import trailFlix.flix_ui.AdminMovieWindow;
 
 @SuppressWarnings("all")
 public class AdminMainWindow extends MainWindow<AdminMain> {
@@ -77,6 +79,13 @@ public class AdminMainWindow extends MainWindow<AdminMain> {
     final Procedure1<Button> _function_5 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Nuevo");
+        final Action _function = new Action() {
+          public void execute() {
+            AdminMovie _adminMovie = new AdminMovie();
+            new AdminMovieWindow(AdminMainWindow.this, _adminMovie).open();
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_5);

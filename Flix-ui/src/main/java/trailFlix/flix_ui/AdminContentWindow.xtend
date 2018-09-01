@@ -28,7 +28,7 @@ class AdminContentWindow extends SimpleWindow<AdminContent> {
 	override createMainTemplate(Panel mainPanel) {
 		this.title = "Añadir relacionado"
 		mainPanel.layout = new VerticalLayout
-				
+
 		//Panel de contenidos
 		val Panel contentPanel = new Panel(mainPanel)
 		contentPanel.layout = new ColumnLayout(2)
@@ -45,6 +45,7 @@ class AdminContentWindow extends SimpleWindow<AdminContent> {
 			caption = "Cancelar"
 			onClick [ | close]
 		]
+				
 	}
 	
 	def nameAdapter() {

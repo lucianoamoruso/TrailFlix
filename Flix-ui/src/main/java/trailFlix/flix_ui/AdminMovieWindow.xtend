@@ -1,28 +1,29 @@
 package trailFlix.flix_ui
 
+import org.uqbar.arena.aop.windows.TransactionalDialog
+import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.widgets.TextBox
+import trailFlix.flix.appModel.AdminContent
 import trailFlix.flix.appModel.AdminMovie
 
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.TextBox
-
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.widgets.Selector
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.layout.VerticalLayout
-import trailFlix.flix.appModel.AdminContent
+import org.uqbar.arena.windows.WindowOwner
 
-class AdminMovieWindow extends MainWindow<AdminMovie> {
+class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	
-	new() {
-		super(new AdminMovie)
+	new(WindowOwner owner, AdminMovie model) {
+		super(owner, model)
+		title = "Cree una nueva película"
 	}
 	
-	override createContents(Panel mainPanel) {
-		this.title = "Administración de peliculas"
+	override protected createFormPanel(Panel mainPanel) {
+				this.title = "Administración de peliculas"
 		
 		//-----Titulo-------------------------------
 		val panelTitulo = new Panel(mainPanel) => [
@@ -89,18 +90,7 @@ class AdminMovieWindow extends MainWindow<AdminMovie> {
 			caption = "Aceptar"
 			onClick [ | modelObject.nuevaPeli]
 		]
-
-	}
-	
-//	def static main(String[] args) {
-//		new AdminMovieWindow() => [
-//			startApplication
-//			modelObject.rellenarDatos
-//		]
-//	}
-
-	def static main(String[] args) {
-		new AdminMovieWindow().startApplication
+		
 	}
 	
 }

@@ -26,14 +26,12 @@ public class AdminContent {
   public List<Contenido> rellenar() {
     final Procedure1<List<Contenido>> _function = new Procedure1<List<Contenido>>() {
       public void apply(final List<Contenido> it) {
-        Pelicula _pelicula = new Pelicula();
+        Pelicula _pelicula = new Pelicula("Terminator");
         it.add(_pelicula);
-        Serie _serie = new Serie();
+        Serie _serie = new Serie("Casados con Hijos");
         it.add(_serie);
-        Pelicula _pelicula_1 = new Pelicula();
+        Pelicula _pelicula_1 = new Pelicula("Despacito 3");
         it.add(_pelicula_1);
-        Serie _serie_1 = new Serie();
-        it.add(_serie_1);
       }
     };
     return ObjectExtensions.<List<Contenido>>operator_doubleArrow(

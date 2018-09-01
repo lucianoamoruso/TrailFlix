@@ -18,10 +18,10 @@ class AdminContent {
 	
 	def rellenar() {
 		disponibles => [
-			add(new Pelicula)
-			add(new Serie)
-			add(new Pelicula)
-			add(new Serie)
+			add(new Pelicula("Terminator"))
+			add(new Serie("Casados con Hijos"))
+			add(new Pelicula("Despacito 3"))
+//			add(new Serie("The Grim Adventures of Billy and Mandy"))
 		]
 	}
 }

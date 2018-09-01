@@ -5,6 +5,10 @@ import trailFlix.flix.model.Serie;
 
 @SuppressWarnings("all")
 public class Pelicula extends Contenido {
+  public Pelicula(final String titulo) {
+    this.setTitulo(titulo);
+  }
+  
   public Pelicula returnPeliculaVista() {
     return null;
   }

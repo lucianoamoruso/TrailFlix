@@ -11,6 +11,7 @@ import org.uqbar.arena.windows.MainWindow
 import trailFlix.flix.appModel.AdminMain
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix.appModel.AdminMovie
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -47,6 +48,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Selector(panelPeliDB)
 		new Button(panelPeliDB) => [
 			caption = "Nuevo"
+			onClick [ | new AdminMovieWindow(this, new AdminMovie).open]
 		]
 		new Button(panelPeliDB) => [
 			caption = "Ver"

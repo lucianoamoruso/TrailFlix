@@ -2,6 +2,7 @@ package trailFlix.flix_ui;
 
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.uqbar.arena.aop.windows.TransactionalDialog;
 import org.uqbar.arena.bindings.ObservableValue;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
@@ -12,7 +13,7 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.arena.xtend.ArenaXtendExtensions;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
@@ -21,12 +22,13 @@ import trailFlix.flix.appModel.AdminMovie;
 import trailFlix.flix_ui.AdminContentWindow;
 
 @SuppressWarnings("all")
-public class AdminMovieWindow extends MainWindow<AdminMovie> {
-  public AdminMovieWindow() {
-    super(new AdminMovie());
+public class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
+  public AdminMovieWindow(final WindowOwner owner, final AdminMovie model) {
+    super(owner, model);
+    this.setTitle("Cree una nueva película");
   }
   
-  public void createContents(final Panel mainPanel) {
+  protected void createFormPanel(final Panel mainPanel) {
     this.setTitle("Administración de peliculas");
     Panel _panel = new Panel(mainPanel);
     final Procedure1<Panel> _function = new Procedure1<Panel>() {
@@ -182,9 +184,5 @@ public class AdminMovieWindow extends MainWindow<AdminMovie> {
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_3, _function_13);
-  }
-  
-  public static void main(final String[] args) {
-    new AdminMovieWindow().startApplication();
   }
 }
