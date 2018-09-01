@@ -17,6 +17,7 @@ import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import trailFlix.flix.appModel.AdminMain;
 import trailFlix.flix.appModel.AdminMovie;
+import trailFlix.flix.model.TrailFlix;
 import trailFlix.flix_ui.AdminMovieWindow;
 
 @SuppressWarnings("all")
@@ -81,7 +82,8 @@ public class AdminMainWindow extends MainWindow<AdminMain> {
         it.setCaption("Nuevo");
         final Action _function = new Action() {
           public void execute() {
-            AdminMovie _adminMovie = new AdminMovie();
+            TrailFlix _trailFlix = AdminMainWindow.this.getModelObject().getTrailFlix();
+            AdminMovie _adminMovie = new AdminMovie(_trailFlix);
             new AdminMovieWindow(AdminMainWindow.this, _adminMovie).open();
           }
         };

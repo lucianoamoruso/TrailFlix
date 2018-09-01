@@ -77,7 +77,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new Button(panelRelatedLabel) => [
 			caption = "Agregar"
-			onClick [ | new AdminContentWindow(this, new AdminContent).open]
+			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix)).open]
 		]
 		new Selector(panelRelated)
 

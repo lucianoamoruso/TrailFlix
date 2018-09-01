@@ -10,11 +10,15 @@ import trailFlix.flix.model.Serie
 @Accessors
 @Observable
 class AdminMain {
+	TrailFlix trailFlix
 	List<Pelicula> peliculas
 	List<Serie> series
 	String peli_find
 	String serie_find
-	TrailFlix trailFlix
+	
+	new() {
+		trailFlix = new TrailFlix => [rellenarDatos]
+	}
 	
 	/*
 	 * Prop: Busca peliculas procesando el texto guardado en this.peli_find.

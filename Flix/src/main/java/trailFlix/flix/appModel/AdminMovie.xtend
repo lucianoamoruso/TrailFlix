@@ -12,6 +12,7 @@ import java.util.Date
 @Accessors
 @Observable
 class AdminMovie {
+	TrailFlix trailFlix
 	String titulo
 	int duracion
 	Date fecha_estreno
@@ -21,13 +22,9 @@ class AdminMovie {
 	val Categoria[] categorias = #[Categoria.ACCION,Categoria.COMEDIA,Categoria.DRAMA,Categoria.TERROR]
 	val Clasificacion[] clasificaciones = #[Clasificacion.APT,Clasificacion.MAYORES13,Clasificacion.MAYORES16,Clasificacion.MAYORES18]
 	List<Contenido> relacionado
-	TrailFlix trailFlix
 	
-	/*
-	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
-	 */
-	def rellenarDatos() {
-		trailFlix.rellenarDatos
+	new(TrailFlix trailFlix) {
+		this.trailFlix = trailFlix
 	}
 	
 	/*

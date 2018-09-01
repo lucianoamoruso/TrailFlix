@@ -8,34 +8,37 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.annotations.Observable;
 import trailFlix.flix.model.Contenido;
-import trailFlix.flix.model.Pelicula;
-import trailFlix.flix.model.Serie;
+import trailFlix.flix.model.TrailFlix;
 
 @Accessors
 @Observable
 @SuppressWarnings("all")
 public class AdminContent {
+  private TrailFlix trailFlix;
+  
   private List<Contenido> disponibles = new ArrayList<Contenido>();
   
   private Contenido elegido;
   
-  public AdminContent() {
-    this.rellenar();
-  }
-  
-  public List<Contenido> rellenar() {
+  public AdminContent(final TrailFlix trailFlix) {
+    this.trailFlix = trailFlix;
     final Procedure1<List<Contenido>> _function = new Procedure1<List<Contenido>>() {
       public void apply(final List<Contenido> it) {
-        Pelicula _pelicula = new Pelicula("Terminator");
-        it.add(_pelicula);
-        Serie _serie = new Serie("Casados con Hijos");
-        it.add(_serie);
-        Pelicula _pelicula_1 = new Pelicula("Despacito 3");
-        it.add(_pelicula_1);
+        it.addAll(trailFlix.getPeliculas());
+        it.addAll(trailFlix.getSeries());
       }
     };
-    return ObjectExtensions.<List<Contenido>>operator_doubleArrow(
+    ObjectExtensions.<List<Contenido>>operator_doubleArrow(
       this.disponibles, _function);
+  }
+  
+  @Pure
+  public TrailFlix getTrailFlix() {
+    return this.trailFlix;
+  }
+  
+  public void setTrailFlix(final TrailFlix trailFlix) {
+    this.trailFlix = trailFlix;
   }
   
   @Pure

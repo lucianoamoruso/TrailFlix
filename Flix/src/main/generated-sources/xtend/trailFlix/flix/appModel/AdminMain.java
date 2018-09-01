@@ -2,16 +2,21 @@ package trailFlix.flix.appModel;
 
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.annotations.Observable;
 import trailFlix.flix.model.Pelicula;
 import trailFlix.flix.model.Serie;
 import trailFlix.flix.model.TrailFlix;
+import trailFlix.flix.model.Usuario;
 
 @Accessors
 @Observable
 @SuppressWarnings("all")
 public class AdminMain {
+  private TrailFlix trailFlix;
+  
   private List<Pelicula> peliculas;
   
   private List<Serie> series;
@@ -20,7 +25,16 @@ public class AdminMain {
   
   private String serie_find;
   
-  private TrailFlix trailFlix;
+  public AdminMain() {
+    TrailFlix _trailFlix = new TrailFlix();
+    final Procedure1<TrailFlix> _function = new Procedure1<TrailFlix>() {
+      public void apply(final TrailFlix it) {
+        it.rellenarDatos();
+      }
+    };
+    TrailFlix _doubleArrow = ObjectExtensions.<TrailFlix>operator_doubleArrow(_trailFlix, _function);
+    this.trailFlix = _doubleArrow;
+  }
   
   /**
    * Prop: Busca peliculas procesando el texto guardado en this.peli_find.
@@ -39,8 +53,17 @@ public class AdminMain {
   /**
    * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
    */
-  public Object rellenarDatos() {
+  public List<Usuario> rellenarDatos() {
     return this.trailFlix.rellenarDatos();
+  }
+  
+  @Pure
+  public TrailFlix getTrailFlix() {
+    return this.trailFlix;
+  }
+  
+  public void setTrailFlix(final TrailFlix trailFlix) {
+    this.trailFlix = trailFlix;
   }
   
   @Pure
@@ -77,14 +100,5 @@ public class AdminMain {
   
   public void setSerie_find(final String serie_find) {
     this.serie_find = serie_find;
-  }
-  
-  @Pure
-  public TrailFlix getTrailFlix() {
-    return this.trailFlix;
-  }
-  
-  public void setTrailFlix(final TrailFlix trailFlix) {
-    this.trailFlix = trailFlix;
   }
 }

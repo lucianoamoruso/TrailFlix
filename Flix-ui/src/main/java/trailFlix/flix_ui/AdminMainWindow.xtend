@@ -48,7 +48,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Selector(panelPeliDB)
 		new Button(panelPeliDB) => [
 			caption = "Nuevo"
-			onClick [ | new AdminMovieWindow(this, new AdminMovie).open]
+			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix)).open]
 		]
 		new Button(panelPeliDB) => [
 			caption = "Ver"

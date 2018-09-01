@@ -19,6 +19,7 @@ import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import trailFlix.flix.appModel.AdminContent;
 import trailFlix.flix.appModel.AdminMovie;
+import trailFlix.flix.model.TrailFlix;
 import trailFlix.flix_ui.AdminContentWindow;
 
 @SuppressWarnings("all")
@@ -149,7 +150,8 @@ public class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
         it.setCaption("Agregar");
         final Action _function = new Action() {
           public void execute() {
-            AdminContent _adminContent = new AdminContent();
+            TrailFlix _trailFlix = AdminMovieWindow.this.getModelObject().getTrailFlix();
+            AdminContent _adminContent = new AdminContent(_trailFlix);
             new AdminContentWindow(AdminMovieWindow.this, _adminContent).open();
           }
         };

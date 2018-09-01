@@ -14,6 +14,8 @@ import trailFlix.flix.model.TrailFlix;
 @Observable
 @SuppressWarnings("all")
 public class AdminMovie {
+  private TrailFlix trailFlix;
+  
   private String titulo;
   
   private int duracion;
@@ -32,13 +34,8 @@ public class AdminMovie {
   
   private List<Contenido> relacionado;
   
-  private TrailFlix trailFlix;
-  
-  /**
-   * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
-   */
-  public Object rellenarDatos() {
-    return this.trailFlix.rellenarDatos();
+  public AdminMovie(final TrailFlix trailFlix) {
+    this.trailFlix = trailFlix;
   }
   
   /**
@@ -62,6 +59,15 @@ public class AdminMovie {
    */
   public Object agregarContenido(final int codigo) {
     return null;
+  }
+  
+  @Pure
+  public TrailFlix getTrailFlix() {
+    return this.trailFlix;
+  }
+  
+  public void setTrailFlix(final TrailFlix trailFlix) {
+    this.trailFlix = trailFlix;
   }
   
   @Pure
@@ -135,14 +141,5 @@ public class AdminMovie {
   
   public void setRelacionado(final List<Contenido> relacionado) {
     this.relacionado = relacionado;
-  }
-  
-  @Pure
-  public TrailFlix getTrailFlix() {
-    return this.trailFlix;
-  }
-  
-  public void setTrailFlix(final TrailFlix trailFlix) {
-    this.trailFlix = trailFlix;
   }
 }
