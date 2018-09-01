@@ -39,7 +39,7 @@ class AdminContentWindow extends SimpleWindow<AdminContent> {
 		]
 		new Button(contentPanel) => [
 			caption = "Agregar"
-			onClick [ | ]
+			onClick [ | this.accept]
 		]
 		new Button(contentPanel) => [
 			caption = "Cancelar"

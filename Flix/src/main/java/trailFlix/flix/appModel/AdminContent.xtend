@@ -16,10 +16,10 @@ class AdminContent {
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
-		disponibles => [
+		disponibles => [		//Rellenado
 			addAll(trailFlix.peliculas)
 			addAll(trailFlix.series)
 			]
 	}
-	
+		
 }

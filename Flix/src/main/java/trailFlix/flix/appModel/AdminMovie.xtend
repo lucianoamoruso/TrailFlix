@@ -8,6 +8,7 @@ import trailFlix.flix.model.Clasificacion
 import trailFlix.flix.model.Contenido
 import trailFlix.flix.model.TrailFlix
 import java.util.Date
+import java.util.ArrayList
 
 @Accessors
 @Observable
@@ -19,12 +20,19 @@ class AdminMovie {
 	List<String> directores
 	List<String> actores_principales
 	String link
-	val Categoria[] categorias = #[Categoria.ACCION,Categoria.COMEDIA,Categoria.DRAMA,Categoria.TERROR]
-	val Clasificacion[] clasificaciones = #[Clasificacion.APT,Clasificacion.MAYORES13,Clasificacion.MAYORES16,Clasificacion.MAYORES18]
-	List<Contenido> relacionado
+	List<Categoria> categorias = Categoria.values
+	List<Clasificacion> clasificaciones = Clasificacion.values
+	List<Contenido> relacionado = new ArrayList
+	Categoria sel_categorias
+	Clasificacion sel_clasificacion
+	Contenido sel_relacionado
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
+		relacionado => [
+			add(trailFlix.peliculas.head)
+			add(trailFlix.series.head)
+		]
 	}
 	
 	/*
@@ -38,16 +46,14 @@ class AdminMovie {
 	 * Prop: Quita contenido relacionado a una pelicula.
 	 */
 	def quitarContenido() {
-		//TODO
+		relacionado.remove(sel_relacionado)
 	}
 	
 	/*
 	 * Prop: Añade contenido relacionado a una pelicula.
-	 * Idea: va a recibir el codigo (y nombre?) del relacionado desde el input de una ventana simple que se abre
-	 * al presionar "Agregar"
 	 */
-	def agregarContenido(int codigo) {
-		//TODO
+	def agregarContenido(Contenido contenido) {
+		relacionado.add(contenido)
 	}
 	
 }

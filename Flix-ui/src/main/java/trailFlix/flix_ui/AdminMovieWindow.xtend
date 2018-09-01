@@ -6,14 +6,15 @@ import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContent
 import trailFlix.flix.appModel.AdminMovie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.windows.WindowOwner
 
 class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	
@@ -39,13 +40,22 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			layout = new ColumnLayout(2)
 		]
 		new Label(panelDatos).text = "Categorias"
-		new Selector(panelDatos)
+		new List(panelDatos) => [
+			allowNull(false)
+			items <=> "categorias"
+			value <=> "sel_categorias"
+		]
 		new Label(panelDatos).text = "Duración"
 		new TextBox(panelDatos) => [
 			value <=> "duracion"
 		]
 		new Label(panelDatos).text = "Clasificación"
-		new Selector(panelDatos)
+		new List(panelDatos) => [
+			allowNull(false)
+			items <=> "clasificaciones"
+			value <=> "sel_clasificacion"
+		]
+		new Label(panelDatos).text = "Duración"
 		new Label(panelDatos).text = "Fecha estreno"
 		new TextBox(panelDatos) => [
 			value <=> "fecha_estreno"
@@ -77,9 +87,13 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new Button(panelRelatedLabel) => [
 			caption = "Agregar"
-			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix)).open]
+			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix,this)).open]
 		]
-		new Selector(panelRelated)
+		new List(panelRelated) => [
+			allowNull(false)
+			items <=> "relacionado"
+			value <=> "sel_relacionado"
+		]
 
 		//-----Confirmacion-------------------------
 		new Button(mainPanel) => [
@@ -92,5 +106,5 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		
 	}
-	
+			
 }

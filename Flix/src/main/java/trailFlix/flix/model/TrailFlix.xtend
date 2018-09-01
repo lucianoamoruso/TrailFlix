@@ -36,6 +36,14 @@ class TrailFlix {
 		]
 	}
 	
+	/*
+	 * Prop: devuelve en texto (pelicula o serie) que tipo de contenido representa el codigo.
+	 */
+	def String tipoPorCodigo() {
+		//TODO
+		"pelicula"
+	}
+	
 //-----------------GETTERS Y SETTERS----------------------------
 	
 	def getPeliculas() {

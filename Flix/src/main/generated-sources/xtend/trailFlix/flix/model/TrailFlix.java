@@ -72,6 +72,13 @@ public class TrailFlix {
     return _xblockexpression;
   }
   
+  /**
+   * Prop: devuelve en texto (pelicula o serie) que tipo de contenido representa el codigo.
+   */
+  public String tipoPorCodigo() {
+    return "pelicula";
+  }
+  
   public List<Pelicula> getPeliculas() {
     return this.peliculas;
   }
