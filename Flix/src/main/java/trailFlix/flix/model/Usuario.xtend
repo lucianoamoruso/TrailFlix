@@ -10,19 +10,34 @@ class Usuario {
 	String nombre
 	DateTime fechaRegistro
 	DateTime fechaNacimiento
-	ArrayList <Usuario> amigos
-	ArrayList <Contenido> contVisto
-	ArrayList <Contenido> contFavorito
-	ArrayList <Contenido> contRecomendado
+	public ArrayList <Usuario> amigos
+	public ArrayList <Contenido> contVisto
+	public ArrayList <Contenido> contFavorito
+	public ArrayList <Contenido> contRecomendado
 	
 	new(int codigo, String nombreDeUsuario, String nombre) {
 		this.codigo = codigo
 		this.nombreDeUsuario = nombreDeUsuario
 		this.nombre = nombre
+		amigos = newArrayList()
+		contVisto = newArrayList()
+		contFavorito = newArrayList()
+		contRecomendado = newArrayList()
 	}
 	
+	def getCodigo(){
+		return codigo
+	}
+	def getNombre(){
+		return nombre
+	}
+	def getNombreUsuario(){
+		return nombreDeUsuario
+	}
+	
+	
 	def getPeliculasVistas(){
-		//TO DO
+			//TO DO
 	}
 	
 	def getSeriesVistas(){
