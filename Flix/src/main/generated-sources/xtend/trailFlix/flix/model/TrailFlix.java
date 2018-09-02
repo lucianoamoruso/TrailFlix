@@ -4,44 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import trailFlix.flix.model.Categoria;
+import trailFlix.flix.model.Clasificacion;
+import trailFlix.flix.model.Contenido;
 import trailFlix.flix.model.Pelicula;
 import trailFlix.flix.model.Serie;
 import trailFlix.flix.model.Usuario;
 
 @SuppressWarnings("all")
 public class TrailFlix {
-  private List<Pelicula> peliculas;
-  
-  private List<Serie> series;
-  
   private List<Usuario> usuarios;
   
+  private ArrayList<Contenido> contenido;
+  
   public TrailFlix() {
-    ArrayList<Pelicula> _arrayList = new ArrayList<Pelicula>();
-    this.peliculas = _arrayList;
-    ArrayList<Serie> _arrayList_1 = new ArrayList<Serie>();
-    this.series = _arrayList_1;
-    ArrayList<Usuario> _arrayList_2 = new ArrayList<Usuario>();
-    this.usuarios = _arrayList_2;
+    ArrayList<Contenido> _arrayList = new ArrayList<Contenido>();
+    this.contenido = _arrayList;
+    ArrayList<Usuario> _arrayList_1 = new ArrayList<Usuario>();
+    this.usuarios = _arrayList_1;
   }
   
   public List<Usuario> rellenarDatos() {
     List<Usuario> _xblockexpression = null;
     {
-      final Procedure1<List<Pelicula>> _function = new Procedure1<List<Pelicula>>() {
-        public void apply(final List<Pelicula> it) {
+      final Procedure1<ArrayList<Contenido>> _function = new Procedure1<ArrayList<Contenido>>() {
+        public void apply(final ArrayList<Contenido> it) {
           Pelicula _pelicula = new Pelicula("Terminator");
           it.add(_pelicula);
           Pelicula _pelicula_1 = new Pelicula("The Spacito 3");
           it.add(_pelicula_1);
           Pelicula _pelicula_2 = new Pelicula("Wall-E");
           it.add(_pelicula_2);
-        }
-      };
-      ObjectExtensions.<List<Pelicula>>operator_doubleArrow(
-        this.peliculas, _function);
-      final Procedure1<List<Serie>> _function_1 = new Procedure1<List<Serie>>() {
-        public void apply(final List<Serie> it) {
           Serie _serie = new Serie("Casados con Hijos");
           it.add(_serie);
           Serie _serie_1 = new Serie("Attack on Titan");
@@ -52,9 +45,9 @@ public class TrailFlix {
           it.add(_serie_3);
         }
       };
-      ObjectExtensions.<List<Serie>>operator_doubleArrow(
-        this.series, _function_1);
-      final Procedure1<List<Usuario>> _function_2 = new Procedure1<List<Usuario>>() {
+      ObjectExtensions.<ArrayList<Contenido>>operator_doubleArrow(
+        this.contenido, _function);
+      final Procedure1<List<Usuario>> _function_1 = new Procedure1<List<Usuario>>() {
         public void apply(final List<Usuario> it) {
           Usuario _usuario = new Usuario(1, "carlos3", "Carlos");
           it.add(_usuario);
@@ -67,32 +60,45 @@ public class TrailFlix {
         }
       };
       _xblockexpression = ObjectExtensions.<List<Usuario>>operator_doubleArrow(
-        this.usuarios, _function_2);
+        this.usuarios, _function_1);
     }
     return _xblockexpression;
   }
   
-  /**
-   * Prop: devuelve en texto (pelicula o serie) que tipo de contenido representa el codigo.
-   */
-  public String tipoPorCodigo() {
-    return "pelicula";
+  public Object buscarPelicula(final String nombre) {
+    return null;
   }
   
-  public List<Pelicula> getPeliculas() {
-    return this.peliculas;
+  public Object buscarSerie(final String nombre) {
+    return null;
   }
   
-  public void setPeliculas(final List<Pelicula> peliculas) {
-    this.peliculas = peliculas;
+  public Object buscarUsuario(final String nombre) {
+    return null;
   }
   
-  public List<Serie> getSeries() {
-    return this.series;
+  public Object buscarPorCategoria(final Categoria categoria) {
+    return null;
   }
   
-  public void setSeries(final List<Serie> series) {
-    this.series = series;
+  public Object buscarPorClasificacion(final Clasificacion clasificacion) {
+    return null;
+  }
+  
+  public boolean agregarPelicula(final Pelicula pelicula) {
+    return this.contenido.add(pelicula);
+  }
+  
+  public boolean agregarSerie(final Serie serie) {
+    return this.contenido.add(serie);
+  }
+  
+  public Object getPeliculas() {
+    return null;
+  }
+  
+  public Object getSeries() {
+    return null;
   }
   
   public List<Usuario> getUsuarios() {

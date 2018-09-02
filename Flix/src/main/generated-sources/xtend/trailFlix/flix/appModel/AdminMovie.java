@@ -5,16 +5,11 @@ import java.util.Date;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.annotations.Observable;
 import trailFlix.flix.model.Categoria;
 import trailFlix.flix.model.Clasificacion;
 import trailFlix.flix.model.Contenido;
-import trailFlix.flix.model.Pelicula;
-import trailFlix.flix.model.Serie;
 import trailFlix.flix.model.TrailFlix;
 
 @Accessors
@@ -48,15 +43,9 @@ public class AdminMovie {
   private Contenido sel_relacionado;
   
   public AdminMovie(final TrailFlix trailFlix) {
-    this.trailFlix = trailFlix;
-    final Procedure1<List<Contenido>> _function = new Procedure1<List<Contenido>>() {
-      public void apply(final List<Contenido> it) {
-        it.add(IterableExtensions.<Pelicula>head(trailFlix.getPeliculas()));
-        it.add(IterableExtensions.<Serie>head(trailFlix.getSeries()));
-      }
-    };
-    ObjectExtensions.<List<Contenido>>operator_doubleArrow(
-      this.relacionado, _function);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field head is undefined for the type Object"
+      + "\nThe method or field head is undefined for the type Object");
   }
   
   /**

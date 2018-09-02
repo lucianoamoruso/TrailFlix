@@ -4,24 +4,20 @@ import java.util.List
 import java.util.ArrayList
 
 class TrailFlix {
-	List<Pelicula> peliculas
-	List<Serie> series
 	List<Usuario> usuarios
+	ArrayList<Contenido> contenido
+	
 	
 	new() {
-		peliculas = new ArrayList
-		series = new ArrayList
+		contenido = new ArrayList
 		usuarios = new ArrayList
 	}
 	
 	def rellenarDatos() {
-		peliculas => [
+		contenido => [
 			add(new Pelicula("Terminator"))
 			add(new Pelicula("The Spacito 3"))
 			add(new Pelicula("Wall-E"))
-		]
-		
-		series => [
 			add(new Serie("Casados con Hijos"))
 			add(new Serie("Attack on Titan"))
 			add(new Serie("Attack on Pepe"))
@@ -36,30 +32,43 @@ class TrailFlix {
 		]
 	}
 	
-	/*
-	 * Prop: devuelve en texto (pelicula o serie) que tipo de contenido representa el codigo.
-	 */
-	def String tipoPorCodigo() {
-		//TODO
-		"pelicula"
+	def buscarPelicula (String nombre){
+		//TO DO
 	}
+	
+	def buscarSerie (String nombre){
+		//TO DO
+	}
+	
+	def buscarUsuario (String nombre){
+		//TO DO
+	}
+	
+	def buscarPorCategoria (Categoria categoria){
+		//TO DO
+	}
+	
+	def buscarPorClasificacion (Clasificacion clasificacion){
+		//TO DO
+	}
+	
+	def agregarPelicula (Pelicula pelicula){
+		this.contenido.add(pelicula)
+	}
+	
+	def agregarSerie (Serie serie){
+		this.contenido.add(serie)
+	}
+	
 	
 //-----------------GETTERS Y SETTERS----------------------------
 	
 	def getPeliculas() {
-		this.peliculas
-	}
-	
-	def void setPeliculas(List<Pelicula> peliculas) {
-		this.peliculas = peliculas
+		//TO DO
 	}
 	
 	def getSeries() {
-		this.series
-	}
-	
-	def void setSeries(List<Serie> series) {
-		this.series = series
+		//TO DO
 	}
 	
 	def getUsuarios() {

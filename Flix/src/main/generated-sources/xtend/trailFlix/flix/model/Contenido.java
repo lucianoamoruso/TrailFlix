@@ -14,9 +14,11 @@ public abstract class Contenido {
   
   private String titulo = "sin titulo";
   
-  public abstract Pelicula returnPeliculaVista();
+  public abstract Pelicula returnPelicula();
   
-  public abstract Serie returnSerieVista();
+  public abstract Serie returnSerie();
+  
+  public abstract float getRating();
   
   @Pure
   public int getCodigo() {

@@ -9,6 +9,7 @@ abstract class Contenido {
 	int codigo
 	String titulo = "sin titulo"
 	
-	def abstract Pelicula returnPeliculaVista()
-	def abstract Serie returnSerieVista()
+	def abstract Pelicula returnPelicula()
+	def abstract Serie returnSerie()
+	def abstract float getRating()
 }
