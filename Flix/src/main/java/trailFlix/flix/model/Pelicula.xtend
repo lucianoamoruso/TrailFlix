@@ -61,7 +61,7 @@ class Pelicula extends Contenido {
 	}
 	
 	override getRating() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		return valoraciones.reduce[a,b|a+b]/valoraciones.size()
 	}
 	
 }

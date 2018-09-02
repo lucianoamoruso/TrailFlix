@@ -6,8 +6,8 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 @Observable
 abstract class Contenido {
-	int codigo
-	String titulo = "sin titulo"
+	protected int codigo
+	protected String titulo = "sin titulo"
 	
 	def abstract Pelicula returnPelicula()
 	def abstract Serie returnSerie()

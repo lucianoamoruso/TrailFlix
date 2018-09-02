@@ -8,9 +8,30 @@ class Serie extends Contenido {
 	ArrayList <Contenido> contRelacionado
 	int temporadas
 	ArrayList <Capitulo> capitulos
-	
-	new(String titulo) {
+	ArrayList<Integer> valoraciones
+		
+	new(String titulo,int codigo){
 		this.titulo = titulo
+		this.codigo = codigo
+		capitulos = newArrayList()
+	}
+	
+	def addCap(Capitulo cap){
+		capitulos.add(cap)
+	}
+	def capitulos() {
+		return capitulos
+	}
+	def getTemporadas() {
+		return capitulos.size()
+	}	
+	
+	def setValoraciones(int valoraciones){
+		this.valoraciones = valoraciones
+		return this
+	}
+	def getValoraciones(){
+		return valoraciones
 	}
 	
 	override returnPelicula() {
@@ -22,7 +43,7 @@ class Serie extends Contenido {
 	}
 	
 	override getRating() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		return valoraciones.reduce[a,b|a+b]/valoraciones.size()
 	}
 	
 }
