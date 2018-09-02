@@ -97,13 +97,6 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 	}
 	
-//	def static void main(String[] args) {
-//		new AdminMainWindow() => [
-//			startApplication
-//			modelObject.rellenarDatos
-//		]
-//	}
-
 	def static main(String[] args) {
 		new AdminMainWindow().startApplication
 	}

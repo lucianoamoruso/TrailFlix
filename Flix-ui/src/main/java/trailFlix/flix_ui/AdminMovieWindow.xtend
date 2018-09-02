@@ -8,7 +8,6 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContent
@@ -24,7 +23,8 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-				this.title = "Administración de peliculas"
+		
+		this.title = "Administración de peliculas"
 		
 		//-----Titulo-------------------------------
 		val panelTitulo = new Panel(mainPanel) => [
@@ -87,7 +87,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new Button(panelRelatedLabel) => [
 			caption = "Agregar"
-			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix,this)).open]
+			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix)).open]
 		]
 		new List(panelRelated) => [
 			allowNull(false)
