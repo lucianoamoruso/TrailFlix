@@ -15,9 +15,42 @@ class Pelicula extends Contenido {
 	String link
 	
 	
-	new(String titulo) {
+	new(String titulo,int codigo) {
 		this.titulo = titulo
+		this.codigo = codigo
 	}
+	
+	def setDirectores(String direc){
+		directores.add(direc)
+		return this
+	}
+	def getDirectores(){
+		return directores
+	}
+	def setFechaEstreno(String dmy){
+		this.fechaEstreno = dmy
+		return this
+	}
+	def getFechaEstreno() {
+		return fechaEstreno
+	}
+	
+	def setValoraciones(int valoraciones){
+		this.valoraciones = valoraciones
+		return this
+	}
+	def getValoraciones(){
+		return valoraciones
+	}
+	def setActores(String actors){
+		actores.add( actors)
+		return this
+	}
+	def getActores() {
+		return actores
+	}
+
+
 	
 	override returnPelicula() {
 		this
