@@ -1,6 +1,7 @@
 package trailFlix.flix.model;
 
 import java.util.ArrayList;
+import trailFlix.flix.model.Capitulo;
 import trailFlix.flix.model.Contenido;
 import trailFlix.flix.model.Pelicula;
 
@@ -11,6 +12,8 @@ public class Serie extends Contenido {
   private ArrayList<Contenido> contRelacionado;
   
   private int temporadas;
+  
+  private ArrayList<Capitulo> capitulos;
   
   public Serie(final String titulo) {
     this.setTitulo(titulo);

@@ -7,6 +7,7 @@ class Serie extends Contenido {
 	ArrayList <String> creadores
 	ArrayList <Contenido> contRelacionado
 	int temporadas
+	ArrayList <Capitulo> capitulos
 	
 	new(String titulo) {
 		this.titulo = titulo

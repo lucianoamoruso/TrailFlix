@@ -1,7 +1,8 @@
 package trailFlix.flix.model
 
-import org.joda.time.*
 import java.util.ArrayList
+import org.joda.time.DateTime
+import org.joda.time.LocalTime
 
 class Pelicula extends Contenido {
 	
@@ -12,7 +13,6 @@ class Pelicula extends Contenido {
 	ArrayList<Integer> valoraciones
 	ArrayList<Contenido> contRelacionado
 	String link
-	
 	
 	
 	new(String titulo) {
