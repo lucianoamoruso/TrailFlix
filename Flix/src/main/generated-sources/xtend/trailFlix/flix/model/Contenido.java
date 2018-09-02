@@ -10,13 +10,15 @@ import trailFlix.flix.model.Serie;
 @Observable
 @SuppressWarnings("all")
 public abstract class Contenido {
-  private int codigo;
+  protected int codigo;
   
-  private String titulo = "sin titulo";
+  protected String titulo = "sin titulo";
   
-  public abstract Pelicula returnPeliculaVista();
+  public abstract Pelicula returnPelicula();
   
-  public abstract Serie returnSerieVista();
+  public abstract Serie returnSerie();
+  
+  public abstract float getRating();
   
   @Pure
   public int getCodigo() {
