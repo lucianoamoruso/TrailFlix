@@ -2,8 +2,11 @@ package trailFlix.flix.model;
 
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.joda.time.DateTime;
 import trailFlix.flix.model.Contenido;
+import trailFlix.flix.model.Pelicula;
+import trailFlix.flix.model.Serie;
 
 @SuppressWarnings("all")
 public class Usuario {
@@ -47,19 +50,75 @@ public class Usuario {
     return this.nombreDeUsuario;
   }
   
-  public Object getPeliculasVistas() {
-    return null;
+  public ArrayList<Contenido> getPeliculasVistas() {
+    ArrayList<Contenido> _xblockexpression = null;
+    {
+      ArrayList<Contenido> retorno = CollectionLiterals.<Contenido>newArrayList();
+      int _size = this.contVisto.size();
+      IntegerRange _upTo = new IntegerRange(0, _size);
+      for (final Integer i : _upTo) {
+        Pelicula _returnPelicula = this.contVisto.get((i).intValue()).returnPelicula();
+        boolean _tripleNotEquals = (_returnPelicula != null);
+        if (_tripleNotEquals) {
+          retorno.add(this.contVisto.get((i).intValue()));
+        }
+      }
+      _xblockexpression = retorno;
+    }
+    return _xblockexpression;
   }
   
-  public Object getSeriesVistas() {
-    return null;
+  public ArrayList<Contenido> getSeriesVistas() {
+    ArrayList<Contenido> _xblockexpression = null;
+    {
+      ArrayList<Contenido> retorno = CollectionLiterals.<Contenido>newArrayList();
+      int _size = this.contVisto.size();
+      IntegerRange _upTo = new IntegerRange(0, _size);
+      for (final Integer i : _upTo) {
+        Serie _returnSerie = this.contVisto.get((i).intValue()).returnSerie();
+        boolean _tripleNotEquals = (_returnSerie != null);
+        if (_tripleNotEquals) {
+          retorno.add(this.contVisto.get((i).intValue()));
+        }
+      }
+      _xblockexpression = retorno;
+    }
+    return _xblockexpression;
   }
   
-  public Object getPeliculasFavoritas() {
-    return null;
+  public ArrayList<Contenido> getPeliculasFavoritas() {
+    ArrayList<Contenido> _xblockexpression = null;
+    {
+      ArrayList<Contenido> retorno = CollectionLiterals.<Contenido>newArrayList();
+      int _size = this.contFavorito.size();
+      IntegerRange _upTo = new IntegerRange(0, _size);
+      for (final Integer i : _upTo) {
+        Pelicula _returnPelicula = this.contFavorito.get((i).intValue()).returnPelicula();
+        boolean _tripleNotEquals = (_returnPelicula != null);
+        if (_tripleNotEquals) {
+          retorno.add(this.contFavorito.get((i).intValue()));
+        }
+      }
+      _xblockexpression = retorno;
+    }
+    return _xblockexpression;
   }
   
-  public Object getSeriesFavoritas() {
-    return null;
+  public ArrayList<Contenido> getSeriesFavoritas() {
+    ArrayList<Contenido> _xblockexpression = null;
+    {
+      ArrayList<Contenido> retorno = CollectionLiterals.<Contenido>newArrayList();
+      int _size = this.contFavorito.size();
+      IntegerRange _upTo = new IntegerRange(0, _size);
+      for (final Integer i : _upTo) {
+        Serie _returnSerie = this.contFavorito.get((i).intValue()).returnSerie();
+        boolean _tripleNotEquals = (_returnSerie != null);
+        if (_tripleNotEquals) {
+          retorno.add(this.contFavorito.get((i).intValue()));
+        }
+      }
+      _xblockexpression = retorno;
+    }
+    return _xblockexpression;
   }
 }

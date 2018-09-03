@@ -2,9 +2,9 @@ package trailFlix.flix.model;
 
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IntegerRange;
 import trailFlix.flix.model.Capitulo;
+import trailFlix.flix.model.Categoria;
 import trailFlix.flix.model.Contenido;
 import trailFlix.flix.model.Pelicula;
 
@@ -14,11 +14,17 @@ public class Serie extends Contenido {
   
   private ArrayList<Contenido> contRelacionado;
   
+  private ArrayList<Categoria> categorias;
+  
   private int temporadas;
   
   private ArrayList<Capitulo> capitulos;
   
   private ArrayList<Integer> valoraciones;
+  
+  public Serie(final String titulo) {
+    this.titulo = titulo;
+  }
   
   public Serie(final String titulo, final int codigo) {
     this.titulo = titulo;
@@ -47,22 +53,31 @@ public class Serie extends Contenido {
     return this.valoraciones;
   }
   
+  @Override
   public Pelicula returnPelicula() {
     return null;
   }
   
+  @Override
   public Serie returnSerie() {
     return this;
   }
   
-  public float getRating() {
-    final Function2<Integer, Integer, Integer> _function = new Function2<Integer, Integer, Integer>() {
-      public Integer apply(final Integer a, final Integer b) {
-        return Integer.valueOf(((a).intValue() + (b).intValue()));
+  @Override
+  public double getRating() {
+    int _xblockexpression = (int) 0;
+    {
+      int sum = 0;
+      int _size = this.capitulos.size();
+      IntegerRange _upTo = new IntegerRange(0, _size);
+      for (final Integer i : _upTo) {
+        int _rating = this.capitulos.get((i).intValue()).getRating();
+        int _plus = (sum + _rating);
+        sum = _plus;
       }
-    };
-    Integer _reduce = IterableExtensions.<Integer>reduce(this.valoraciones, _function);
-    int _size = this.valoraciones.size();
-    return ((_reduce).intValue() / _size);
+      int _size_1 = this.capitulos.size();
+      _xblockexpression = (sum / _size_1);
+    }
+    return _xblockexpression;
   }
 }

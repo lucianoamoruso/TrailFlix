@@ -37,19 +37,43 @@ class Usuario {
 	
 	
 	def getPeliculasVistas(){
-			//TO DO
+		var retorno = newArrayList
+		for (i:0..this.contVisto.size){
+			if (this.contVisto.get(i).returnPelicula() !== null){
+				retorno.add(this.contVisto.get(i))
+			}
+		}
+		retorno
 	}
 	
 	def getSeriesVistas(){
-		//TO DO
+		var retorno = newArrayList
+		for (i:0..this.contVisto.size){
+			if (this.contVisto.get(i).returnSerie() !== null){
+				retorno.add(this.contVisto.get(i))
+			}
+		}
+		retorno
 	}
 	
 	def getPeliculasFavoritas(){
-		//TO DO
+		var retorno = newArrayList
+		for (i:0..this.contFavorito.size){
+			if (this.contFavorito.get(i).returnPelicula() !== null){
+				retorno.add(this.contFavorito.get(i))
+			}
+		}
+		retorno
 	}
 	
 	def getSeriesFavoritas(){
-		//TO DO
+		var retorno = newArrayList
+		for (i:0..this.contFavorito.size){
+			if (this.contFavorito.get(i).returnSerie() !== null){
+				retorno.add(this.contFavorito.get(i))
+			}
+		}
+		retorno
 	}
 	
 }

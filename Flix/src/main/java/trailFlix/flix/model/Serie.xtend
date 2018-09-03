@@ -6,10 +6,15 @@ class Serie extends Contenido {
 	
 	ArrayList <String> creadores
 	ArrayList <Contenido> contRelacionado
+	ArrayList <Categoria> categorias
 	int temporadas
 	ArrayList <Capitulo> capitulos
 	ArrayList<Integer> valoraciones
 		
+	new (String titulo){
+		this.titulo = titulo
+	}
+	
 	new(String titulo,int codigo){
 		this.titulo = titulo
 		this.codigo = codigo
@@ -43,7 +48,11 @@ class Serie extends Contenido {
 	}
 	
 	override getRating() {
-		return valoraciones.reduce[a,b|a+b]/valoraciones.size()
+		var sum = 0
+		for (i : 0..this.capitulos.size){
+			sum = sum + capitulos.get(i).getRating()
+		}
+		sum / capitulos.size
 	}
 	
 }

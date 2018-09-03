@@ -22,7 +22,11 @@ class Capitulo {
 	}
 	
 	def getRating(){
-		//TO DO
-	}
+		var sum = 0
+		for (i : 0 ..< this.valoraciones.size){
+			sum += i		
+		}
+		sum / valoraciones.size
+		}
 	
 }

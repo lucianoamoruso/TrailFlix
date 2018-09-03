@@ -1,6 +1,7 @@
 package trailFlix.flix.model;
 
 import java.util.ArrayList;
+import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
@@ -30,7 +31,19 @@ public class Capitulo {
     this.titulo = titulo;
   }
   
-  public Object getRating() {
-    return null;
+  public int getRating() {
+    int _xblockexpression = (int) 0;
+    {
+      int sum = 0;
+      int _size = this.valoraciones.size();
+      ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _size, true);
+      for (final Integer i : _doubleDotLessThan) {
+        int _sum = sum;
+        sum = (_sum + (i).intValue());
+      }
+      int _size_1 = this.valoraciones.size();
+      _xblockexpression = (sum / _size_1);
+    }
+    return _xblockexpression;
   }
 }

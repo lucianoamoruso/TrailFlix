@@ -12,7 +12,12 @@ class Pelicula extends Contenido {
 	ArrayList<String> actores
 	ArrayList<Integer> valoraciones
 	ArrayList<Contenido> contRelacionado
+	ArrayList <Categoria> categorias
 	String link
+	
+	new(String titulo){
+		this.titulo = titulo
+	}
 	
 	
 	new(String titulo,int codigo) {
@@ -61,7 +66,10 @@ class Pelicula extends Contenido {
 	}
 	
 	override getRating() {
-		return valoraciones.reduce[a,b|a+b]/valoraciones.size()
-	}
-	
+		var sum = 0
+		for (i : 0 ..< this.valoraciones.size){
+			sum += i		
+		}
+		sum / valoraciones.size
+		}
 }

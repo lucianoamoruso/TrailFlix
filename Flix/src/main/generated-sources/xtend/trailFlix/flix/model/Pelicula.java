@@ -1,10 +1,10 @@
 package trailFlix.flix.model;
 
 import java.util.ArrayList;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.joda.time.DateTime;
 import org.joda.time.LocalTime;
+import trailFlix.flix.model.Categoria;
 import trailFlix.flix.model.Contenido;
 import trailFlix.flix.model.Serie;
 
@@ -22,7 +22,13 @@ public class Pelicula extends Contenido {
   
   private ArrayList<Contenido> contRelacionado;
   
+  private ArrayList<Categoria> categorias;
+  
   private String link;
+  
+  public Pelicula(final String titulo) {
+    this.titulo = titulo;
+  }
   
   public Pelicula(final String titulo, final int codigo) {
     this.titulo = titulo;
@@ -65,22 +71,30 @@ public class Pelicula extends Contenido {
     return this.actores;
   }
   
+  @Override
   public Pelicula returnPelicula() {
     return this;
   }
   
+  @Override
   public Serie returnSerie() {
     return null;
   }
   
-  public float getRating() {
-    final Function2<Integer, Integer, Integer> _function = new Function2<Integer, Integer, Integer>() {
-      public Integer apply(final Integer a, final Integer b) {
-        return Integer.valueOf(((a).intValue() + (b).intValue()));
+  @Override
+  public double getRating() {
+    int _xblockexpression = (int) 0;
+    {
+      int sum = 0;
+      int _size = this.valoraciones.size();
+      ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _size, true);
+      for (final Integer i : _doubleDotLessThan) {
+        int _sum = sum;
+        sum = (_sum + (i).intValue());
       }
-    };
-    Integer _reduce = IterableExtensions.<Integer>reduce(this.valoraciones, _function);
-    int _size = this.valoraciones.size();
-    return ((_reduce).intValue() / _size);
+      int _size_1 = this.valoraciones.size();
+      _xblockexpression = (sum / _size_1);
+    }
+    return _xblockexpression;
   }
 }

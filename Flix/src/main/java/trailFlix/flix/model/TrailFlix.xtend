@@ -33,23 +33,43 @@ class TrailFlix {
 	}
 	
 	def buscarPelicula (String nombre){
-		//TO DO
+		for (i:0..this.contenido.size){
+			if (this.contenido.get(i).returnPelicula() !== null && this.contenido.get(i).titulo == nombre){
+				return this.contenido.get(i)
+			}
+		}
 	}
 	
 	def buscarSerie (String nombre){
-		//TO DO
+		for (i:0..this.contenido.size){
+			if (this.contenido.get(i).returnSerie() !== null && this.contenido.get(i).titulo == nombre){
+				return this.contenido.get(i)
+			}
+		}
 	}
 	
 	def buscarUsuario (String nombre){
-		//TO DO
+		for (i:0..this.usuarios.size){
+			if (this.usuarios.get(i).nombre == nombre){
+				return this.usuarios.get(i)
+			}
+		}
 	}
 	
 	def buscarPorCategoria (Categoria categoria){
-		//TO DO
+		for (i:0..this.contenido.size){
+			if (this.contenido.get(i).categorias.contains(categoria)){
+				return this.contenido.get(i)
+			}
+		}
 	}
 	
 	def buscarPorClasificacion (Clasificacion clasificacion){
-		//TO DO
+		for (i:0..this.contenido.size){
+			if (this.contenido.get(i).clasificacion.equals(clasificacion)){
+				return this.contenido.get(i)
+			}
+		}
 	}
 	
 	def agregarPelicula (Pelicula pelicula){
@@ -64,11 +84,23 @@ class TrailFlix {
 //-----------------GETTERS Y SETTERS----------------------------
 	
 	def getPeliculas() {
-		//TO DO
+		var retorno = newArrayList
+		for (i:0..this.contenido.size){
+			if (this.contenido.get(i).returnPelicula() !== null){
+				retorno.add(this.contenido.get(i))
+			}
+		}
+		retorno
 	}
 	
 	def getSeries() {
-		//TO DO
+		var retorno = newArrayList
+		for (i:0..this.contenido.size){
+			if (this.contenido.get(i).returnSerie() !== null){
+				retorno.add(this.contenido.get(i))
+			}
+		}
+		retorno
 	}
 	
 	def getUsuarios() {
