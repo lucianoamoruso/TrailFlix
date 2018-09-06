@@ -30,33 +30,37 @@ public class TrailFlix {
   public List<Usuario> rellenarDatos() {
     List<Usuario> _xblockexpression = null;
     {
-      final Procedure1<ArrayList<Contenido>> _function = (ArrayList<Contenido> it) -> {
-        Pelicula _pelicula = new Pelicula("Terminator");
-        it.add(_pelicula);
-        Pelicula _pelicula_1 = new Pelicula("The Spacito 3");
-        it.add(_pelicula_1);
-        Pelicula _pelicula_2 = new Pelicula("Wall-E");
-        it.add(_pelicula_2);
-        Serie _serie = new Serie("Casados con Hijos");
-        it.add(_serie);
-        Serie _serie_1 = new Serie("Attack on Titan");
-        it.add(_serie_1);
-        Serie _serie_2 = new Serie("Attack on Pepe");
-        it.add(_serie_2);
-        Serie _serie_3 = new Serie("The Grim Adventures of Billy and Mandy");
-        it.add(_serie_3);
+      final Procedure1<ArrayList<Contenido>> _function = new Procedure1<ArrayList<Contenido>>() {
+        public void apply(final ArrayList<Contenido> it) {
+          Pelicula _pelicula = new Pelicula("Terminator");
+          it.add(_pelicula);
+          Pelicula _pelicula_1 = new Pelicula("The Spacito 3");
+          it.add(_pelicula_1);
+          Pelicula _pelicula_2 = new Pelicula("Wall-E");
+          it.add(_pelicula_2);
+          Serie _serie = new Serie("Casados con Hijos");
+          it.add(_serie);
+          Serie _serie_1 = new Serie("Attack on Titan");
+          it.add(_serie_1);
+          Serie _serie_2 = new Serie("Attack on Pepe");
+          it.add(_serie_2);
+          Serie _serie_3 = new Serie("The Grim Adventures of Billy and Mandy");
+          it.add(_serie_3);
+        }
       };
       ObjectExtensions.<ArrayList<Contenido>>operator_doubleArrow(
         this.contenido, _function);
-      final Procedure1<List<Usuario>> _function_1 = (List<Usuario> it) -> {
-        Usuario _usuario = new Usuario(1, "carlos3", "Carlos");
-        it.add(_usuario);
-        Usuario _usuario_1 = new Usuario(2, "pedro54", "Pedro");
-        it.add(_usuario_1);
-        Usuario _usuario_2 = new Usuario(3, "jose100", "Jose");
-        it.add(_usuario_2);
-        Usuario _usuario_3 = new Usuario(4, "xXxMiguexXx", "Miguel");
-        it.add(_usuario_3);
+      final Procedure1<List<Usuario>> _function_1 = new Procedure1<List<Usuario>>() {
+        public void apply(final List<Usuario> it) {
+          Usuario _usuario = new Usuario(1, "carlos3", "Carlos");
+          it.add(_usuario);
+          Usuario _usuario_1 = new Usuario(2, "pedro54", "Pedro");
+          it.add(_usuario_1);
+          Usuario _usuario_2 = new Usuario(3, "jose100", "Jose");
+          it.add(_usuario_2);
+          Usuario _usuario_3 = new Usuario(4, "xXxMiguexXx", "Miguel");
+          it.add(_usuario_3);
+        }
       };
       _xblockexpression = ObjectExtensions.<List<Usuario>>operator_doubleArrow(
         this.usuarios, _function_1);
@@ -66,7 +70,8 @@ public class TrailFlix {
   
   public Contenido buscarPelicula(final String nombre) {
     int _size = this.contenido.size();
-    IntegerRange _upTo = new IntegerRange(0, _size);
+    int _minus = (_size - 1);
+    IntegerRange _upTo = new IntegerRange(0, _minus);
     for (final Integer i : _upTo) {
       if (((this.contenido.get((i).intValue()).returnPelicula() != null) && Objects.equal(this.contenido.get((i).intValue()).titulo, nombre))) {
         return this.contenido.get((i).intValue());
@@ -77,7 +82,8 @@ public class TrailFlix {
   
   public Contenido buscarSerie(final String nombre) {
     int _size = this.contenido.size();
-    IntegerRange _upTo = new IntegerRange(0, _size);
+    int _minus = (_size - 1);
+    IntegerRange _upTo = new IntegerRange(0, _minus);
     for (final Integer i : _upTo) {
       if (((this.contenido.get((i).intValue()).returnSerie() != null) && Objects.equal(this.contenido.get((i).intValue()).titulo, nombre))) {
         return this.contenido.get((i).intValue());
@@ -88,7 +94,8 @@ public class TrailFlix {
   
   public Usuario buscarUsuario(final String nombre) {
     int _size = this.usuarios.size();
-    IntegerRange _upTo = new IntegerRange(0, _size);
+    int _minus = (_size - 1);
+    IntegerRange _upTo = new IntegerRange(0, _minus);
     for (final Integer i : _upTo) {
       String _nombre = this.usuarios.get((i).intValue()).getNombre();
       boolean _equals = Objects.equal(_nombre, nombre);
@@ -101,7 +108,8 @@ public class TrailFlix {
   
   public Contenido buscarPorCategoria(final Categoria categoria) {
     int _size = this.contenido.size();
-    IntegerRange _upTo = new IntegerRange(0, _size);
+    int _minus = (_size - 1);
+    IntegerRange _upTo = new IntegerRange(0, _minus);
     for (final Integer i : _upTo) {
       boolean _contains = this.contenido.get((i).intValue()).categorias.contains(categoria);
       if (_contains) {
@@ -113,7 +121,8 @@ public class TrailFlix {
   
   public Contenido buscarPorClasificacion(final Clasificacion clasificacion) {
     int _size = this.contenido.size();
-    IntegerRange _upTo = new IntegerRange(0, _size);
+    int _minus = (_size - 1);
+    IntegerRange _upTo = new IntegerRange(0, _minus);
     for (final Integer i : _upTo) {
       boolean _equals = this.contenido.get((i).intValue()).clasificacion.equals(clasificacion);
       if (_equals) {
@@ -136,7 +145,8 @@ public class TrailFlix {
     {
       ArrayList<Contenido> retorno = CollectionLiterals.<Contenido>newArrayList();
       int _size = this.contenido.size();
-      IntegerRange _upTo = new IntegerRange(0, _size);
+      int _minus = (_size - 1);
+      IntegerRange _upTo = new IntegerRange(0, _minus);
       for (final Integer i : _upTo) {
         Pelicula _returnPelicula = this.contenido.get((i).intValue()).returnPelicula();
         boolean _tripleNotEquals = (_returnPelicula != null);
@@ -154,7 +164,8 @@ public class TrailFlix {
     {
       ArrayList<Contenido> retorno = CollectionLiterals.<Contenido>newArrayList();
       int _size = this.contenido.size();
-      IntegerRange _upTo = new IntegerRange(0, _size);
+      int _minus = (_size - 1);
+      IntegerRange _upTo = new IntegerRange(0, _minus);
       for (final Integer i : _upTo) {
         Serie _returnSerie = this.contenido.get((i).intValue()).returnSerie();
         boolean _tripleNotEquals = (_returnSerie != null);

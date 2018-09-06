@@ -26,6 +26,7 @@ class AdminMovie {
 	Categoria sel_categorias
 	Clasificacion sel_clasificacion
 	Contenido sel_relacionado
+	Contenido new_relacionado		//Seteado desde AdminContent
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
@@ -52,8 +53,8 @@ class AdminMovie {
 	/*
 	 * Prop: Añade contenido relacionado a una pelicula.
 	 */
-	def agregarContenido(Contenido contenido) {
-		relacionado.add(contenido)
+	def agregarContenido() {
+		relacionado.add(new_relacionado)
 	}
 	
 }

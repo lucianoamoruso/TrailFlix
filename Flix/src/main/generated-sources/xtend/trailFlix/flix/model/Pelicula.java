@@ -71,17 +71,14 @@ public class Pelicula extends Contenido {
     return this.actores;
   }
   
-  @Override
   public Pelicula returnPelicula() {
     return this;
   }
   
-  @Override
   public Serie returnSerie() {
     return null;
   }
   
-  @Override
   public double getRating() {
     int _xblockexpression = (int) 0;
     {

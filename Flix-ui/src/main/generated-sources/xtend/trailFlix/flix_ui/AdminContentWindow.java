@@ -51,6 +51,7 @@ public class AdminContentWindow extends TransactionalDialog<AdminContent> {
         it.setCaption("Agregar");
         final Action _function = new Action() {
           public void execute() {
+            AdminContentWindow.this.getModelObject().agregar();
             AdminContentWindow.this.accept();
           }
         };

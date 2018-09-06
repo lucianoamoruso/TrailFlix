@@ -11,15 +11,20 @@ import trailFlix.flix.model.TrailFlix
 @Observable
 class AdminContent {
 	TrailFlix trailFlix
+	AdminMovie parent
 	List<Contenido> disponibles = new ArrayList
 	Contenido elegido
 	
-	new(TrailFlix trailFlix) {
+	new(TrailFlix trailFlix, AdminMovie parent) {
 		this.trailFlix = trailFlix
 		disponibles => [		//Rellenado
 			addAll(trailFlix.peliculas)
 			addAll(trailFlix.series)
 			]
+		this.parent = parent
 	}
 		
+	def agregar() {
+		parent.new_relacionado = elegido
+	}
 }

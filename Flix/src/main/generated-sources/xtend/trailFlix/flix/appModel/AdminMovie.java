@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.model.annotations.Observable;
 import trailFlix.flix.model.Categoria;
@@ -42,10 +45,18 @@ public class AdminMovie {
   
   private Contenido sel_relacionado;
   
+  private Contenido new_relacionado;
+  
   public AdminMovie(final TrailFlix trailFlix) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field head is undefined for the type Object"
-      + "\nThe method or field head is undefined for the type Object");
+    this.trailFlix = trailFlix;
+    final Procedure1<List<Contenido>> _function = new Procedure1<List<Contenido>>() {
+      public void apply(final List<Contenido> it) {
+        it.add(IterableExtensions.<Contenido>head(trailFlix.getPeliculas()));
+        it.add(IterableExtensions.<Contenido>head(trailFlix.getSeries()));
+      }
+    };
+    ObjectExtensions.<List<Contenido>>operator_doubleArrow(
+      this.relacionado, _function);
   }
   
   /**
@@ -65,8 +76,8 @@ public class AdminMovie {
   /**
    * Prop: Añade contenido relacionado a una pelicula.
    */
-  public boolean agregarContenido(final Contenido contenido) {
-    return this.relacionado.add(contenido);
+  public boolean agregarContenido() {
+    return this.relacionado.add(this.new_relacionado);
   }
   
   @Pure
@@ -184,5 +195,14 @@ public class AdminMovie {
   
   public void setSel_relacionado(final Contenido sel_relacionado) {
     this.sel_relacionado = sel_relacionado;
+  }
+  
+  @Pure
+  public Contenido getNew_relacionado() {
+    return this.new_relacionado;
+  }
+  
+  public void setNew_relacionado(final Contenido new_relacionado) {
+    this.new_relacionado = new_relacionado;
   }
 }

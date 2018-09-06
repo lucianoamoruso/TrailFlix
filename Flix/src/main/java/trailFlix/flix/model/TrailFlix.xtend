@@ -33,7 +33,7 @@ class TrailFlix {
 	}
 	
 	def buscarPelicula (String nombre){
-		for (i:0..this.contenido.size){
+		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnPelicula() !== null && this.contenido.get(i).titulo == nombre){
 				return this.contenido.get(i)
 			}
@@ -41,7 +41,7 @@ class TrailFlix {
 	}
 	
 	def buscarSerie (String nombre){
-		for (i:0..this.contenido.size){
+		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnSerie() !== null && this.contenido.get(i).titulo == nombre){
 				return this.contenido.get(i)
 			}
@@ -49,7 +49,7 @@ class TrailFlix {
 	}
 	
 	def buscarUsuario (String nombre){
-		for (i:0..this.usuarios.size){
+		for (i:0..this.usuarios.size-1){
 			if (this.usuarios.get(i).nombre == nombre){
 				return this.usuarios.get(i)
 			}
@@ -57,7 +57,7 @@ class TrailFlix {
 	}
 	
 	def buscarPorCategoria (Categoria categoria){
-		for (i:0..this.contenido.size){
+		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).categorias.contains(categoria)){
 				return this.contenido.get(i)
 			}
@@ -65,7 +65,7 @@ class TrailFlix {
 	}
 	
 	def buscarPorClasificacion (Clasificacion clasificacion){
-		for (i:0..this.contenido.size){
+		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).clasificacion.equals(clasificacion)){
 				return this.contenido.get(i)
 			}
@@ -85,7 +85,7 @@ class TrailFlix {
 	
 	def getPeliculas() {
 		var retorno = newArrayList
-		for (i:0..this.contenido.size){
+		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnPelicula() !== null){
 				retorno.add(this.contenido.get(i))
 			}
@@ -95,7 +95,7 @@ class TrailFlix {
 	
 	def getSeries() {
 		var retorno = newArrayList
-		for (i:0..this.contenido.size){
+		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnSerie() !== null){
 				retorno.add(this.contenido.get(i))
 			}

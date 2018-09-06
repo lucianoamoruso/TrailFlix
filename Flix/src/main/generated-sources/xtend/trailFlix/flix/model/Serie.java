@@ -53,17 +53,14 @@ public class Serie extends Contenido {
     return this.valoraciones;
   }
   
-  @Override
   public Pelicula returnPelicula() {
     return null;
   }
   
-  @Override
   public Serie returnSerie() {
     return this;
   }
   
-  @Override
   public double getRating() {
     int _xblockexpression = (int) 0;
     {
