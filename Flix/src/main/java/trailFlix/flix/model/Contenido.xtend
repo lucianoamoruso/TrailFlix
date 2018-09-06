@@ -15,4 +15,9 @@ abstract class Contenido {
 	def abstract Pelicula returnPelicula()
 	def abstract Serie returnSerie()
 	def abstract double getRating()
+
+	override toString() {
+		titulo
+	}
+	
 }

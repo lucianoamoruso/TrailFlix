@@ -72,4 +72,5 @@ class Pelicula extends Contenido {
 		}
 		sum / valoraciones.size
 		}
+		
 }

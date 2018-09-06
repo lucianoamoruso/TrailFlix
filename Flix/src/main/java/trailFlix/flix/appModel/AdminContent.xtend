@@ -25,6 +25,6 @@ class AdminContent {
 	}
 		
 	def agregar() {
-		parent.new_relacionado = elegido
+		parent.agregarContenido(elegido)
 	}
 }

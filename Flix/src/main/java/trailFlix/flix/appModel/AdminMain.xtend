@@ -15,9 +15,13 @@ class AdminMain {
 	List<Serie> series
 	String peli_find
 	String serie_find
+	Pelicula sel_pelicula
+	Serie sel_serie
 	
 	new() {
 		trailFlix = new TrailFlix => [rellenarDatos]
+		peliculas = trailFlix.peliculas
+		series = trailFlix.series
 	}
 	
 	/*

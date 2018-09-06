@@ -4,14 +4,14 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 import trailFlix.flix.appModel.AdminMain
+import trailFlix.flix.appModel.AdminMovie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.appModel.AdminMovie
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -35,6 +35,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new TextBox(panelPeliFind) => [
 			value <=> "peli_find"
+			width = 150
 		]
 		new Button(panelPeliFind) => [
 			caption = "Buscar"
@@ -45,7 +46,12 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelPeliDB = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
-		new Selector(panelPeliDB)
+		new List(panelPeliDB) => [
+			allowNull(false)
+			items <=> "peliculas"
+			value <=> "sel_pelicula"
+			width = 200
+		]
 		new Button(panelPeliDB) => [
 			caption = "Nuevo"
 			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix)).open]
@@ -73,6 +79,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new TextBox(panelSerieFind) => [
 			value <=> "serie_find"
+			width = 150
 		]
 		new Button(panelSerieFind) => [
 			caption = "Buscar"
@@ -82,7 +89,12 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelSerieDB = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
-		new Selector(panelSerieDB)
+		new List(panelSerieDB) => [
+			allowNull(false)
+			items <=> "series"
+			value <=> "sel_serie"
+			width = 200
+		]
 		new Button(panelSerieDB) => [
 			caption = "Nuevo"
 		]

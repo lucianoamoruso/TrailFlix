@@ -53,8 +53,8 @@ class AdminMovie {
 	/*
 	 * Prop: Añade contenido relacionado a una pelicula.
 	 */
-	def agregarContenido() {
-		relacionado.add(new_relacionado)
+	def agregarContenido(Contenido nuevo) {
+		relacionado.add(nuevo)
 	}
 	
 }

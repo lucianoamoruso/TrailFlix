@@ -87,7 +87,7 @@ class TrailFlix {
 		var retorno = newArrayList
 		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnPelicula() !== null){
-				retorno.add(this.contenido.get(i))
+				retorno.add(this.contenido.get(i) as Pelicula)
 			}
 		}
 		retorno
@@ -97,7 +97,7 @@ class TrailFlix {
 		var retorno = newArrayList
 		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnSerie() !== null){
-				retorno.add(this.contenido.get(i))
+				retorno.add(this.contenido.get(i) as Serie)
 			}
 		}
 		retorno
