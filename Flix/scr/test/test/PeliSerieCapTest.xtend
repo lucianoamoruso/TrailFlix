@@ -1,4 +1,4 @@
-package trailFlix.flix.test
+package test
 
 import junit.framework.TestCase
 import trailFlix.flix.model.Pelicula

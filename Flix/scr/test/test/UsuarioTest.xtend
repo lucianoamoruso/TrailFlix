@@ -1,10 +1,11 @@
-package trailFlix.flix.test
+package test
 
 import junit.framework.TestCase
 import org.joda.time.DateTime
 import java.util.ArrayList
 import trailFlix.flix.model.Usuario
 import trailFlix.flix.model.Serie
+import trailFlix.flix.model.Pelicula
 
 class UsuarioTest extends TestCase {
 	override protected void setUp() throws Exception {
@@ -38,7 +39,19 @@ class UsuarioTest extends TestCase {
 
 	
 	def getPeliculasVistastest(){
-		//TO DO
+		var us = new Usuario(0,"usuario","nombre")
+		val amigo = new Usuario(1,"","")
+		val serie = new Serie("Elsecreto",0)
+		val RaM = new Serie("R&M",1)
+		val peli = new Pelicula("a",3)
+		
+		us => [
+			amigos.add(amigo)
+			contVisto.add(serie)
+			contVisto.add(RaM)
+			contVisto.add(peli)			
+		]
+		assertEquals( us.peliculasVistas.exists[pel|pel==peli]  )	
 	}
 	
 	def getSeriesVistastest(){
