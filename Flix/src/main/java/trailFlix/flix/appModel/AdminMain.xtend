@@ -45,4 +45,12 @@ class AdminMain {
 		trailFlix.rellenarDatos
 	}
 	
+	def quitarPelicula() {
+		peliculas.remove(sel_pelicula)
+	}
+	
+	def quitarSerie() {
+		series.remove(sel_serie)
+	}
+	
 }

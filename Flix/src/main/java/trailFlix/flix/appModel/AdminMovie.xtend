@@ -21,6 +21,10 @@ class AdminMovie {
 	List<String> actores_principales
 	String link
 	List<Categoria> categorias = Categoria.values
+	boolean es_drama
+	boolean es_comedia
+	boolean es_terror
+	boolean es_accion
 	List<Clasificacion> clasificaciones = Clasificacion.values
 	List<Contenido> relacionado = new ArrayList
 	Categoria sel_categorias

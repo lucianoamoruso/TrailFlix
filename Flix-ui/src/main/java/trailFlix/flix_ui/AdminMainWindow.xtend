@@ -12,6 +12,10 @@ import trailFlix.flix.appModel.AdminMain
 import trailFlix.flix.appModel.AdminMovie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.tables.Table
+import trailFlix.flix.model.Pelicula
+import org.uqbar.arena.widgets.tables.Column
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -51,19 +55,34 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			items <=> "peliculas"
 			value <=> "sel_pelicula"
 			width = 200
+			height = 100
 		]
-		new Button(panelPeliDB) => [
+		new Table(panelPeliDB,Pelicula) => [
+			items <=> "peliculas"
+			value <=> "sel_pelicula"
+			new Column<Pelicula>(it) => [
+				title = "Titulo"
+				fixedSize = 200
+				bindContentsToProperty("titulo")
+			]
+			
+		]
+		val panelPeliButtons = new Panel(panelPeliDB) => [
+			layout = new VerticalLayout
+		]
+		new Button(panelPeliButtons) => [
 			caption = "Nuevo"
 			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix)).open]
 		]
-		new Button(panelPeliDB) => [
+		new Button(panelPeliButtons) => [
 			caption = "Ver"
 		]
-		new Button(panelPeliDB) => [
+		new Button(panelPeliButtons) => [
 			caption = "Modificar"
 		]
-		new Button(panelPeliDB) => [
+		new Button(panelPeliButtons) => [
 			caption = "Borrar"
+			onClick [ | modelObject.quitarPelicula]
 		]
 		
 		//Administrar series
@@ -94,18 +113,23 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			items <=> "series"
 			value <=> "sel_serie"
 			width = 200
+			height = 100
 		]
-		new Button(panelSerieDB) => [
+		val panelSerieButtons = new Panel(panelSerieDB) => [
+			layout = new VerticalLayout
+		]
+		new Button(panelSerieButtons) => [
 			caption = "Nuevo"
 		]
-		new Button(panelSerieDB) => [
+		new Button(panelSerieButtons) => [
 			caption = "Ver"
 		]
-		new Button(panelSerieDB) => [
+		new Button(panelSerieButtons) => [
 			caption = "Modificar"
 		]
-		new Button(panelSerieDB) => [
+		new Button(panelSerieButtons) => [
 			caption = "Borrar"
+			onClick [ | modelObject.quitarSerie]
 		]
 	}
 	

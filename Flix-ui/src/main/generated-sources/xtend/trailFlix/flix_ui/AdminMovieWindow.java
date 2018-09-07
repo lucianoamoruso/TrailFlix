@@ -188,12 +188,6 @@ public class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
           }
         };
         it.onClick(_function);
-        final Action _function_1 = new Action() {
-          public void execute() {
-            AdminMovieWindow.this.getModelObject().agregarContenido();
-          }
-        };
-        AdminMovieWindow.this.onAccept(_function_1);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_13);

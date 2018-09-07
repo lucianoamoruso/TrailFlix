@@ -16,6 +16,7 @@ import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.CheckBox
 
 class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	
@@ -28,7 +29,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		
 		this.title = "Administración de peliculas"
 		
-		//-----Titulo-------------------------------
+		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
@@ -38,16 +39,30 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			width = 100
 		]
 		
-		//-----Datos--------------------------------
+		//Datos
 		val panelDatos = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
+		
+		//-----Categorias---------------------------
 		new Label(panelDatos).text = "Categorias"
-		new List(panelDatos) => [
-			allowNull(false)
-			items <=> "categorias"
-			value <=> "sel_categorias"
+		val panelCategorias = new Panel(panelDatos) => [
+			layout = new ColumnLayout(2)
 		]
+		new CheckBox(panelCategorias) => [
+			value <=> "es_drama"
+		]
+		new CheckBox(panelCategorias) => [
+			value <=> "es_comedia"
+		]
+		new CheckBox(panelCategorias) => [
+			value <=> "es_terror"
+		]
+		new CheckBox(panelCategorias) => [
+			value <=> "es_accion"
+		]
+				//---------------//
+				
 		new Label(panelDatos).text = "Duración"
 		new TextBox(panelDatos) => [
 			value <=> "duracion"
@@ -80,7 +95,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			width = 100
 		]
 		
-		//-----Contenido Relacionado----------------
+		//Contenido Relacionado
 		val panelRelated = new Panel(mainPanel) => [
 			layout = new VerticalLayout
 		]
@@ -102,7 +117,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			value <=> "sel_relacionado"
 		]
 
-		//-----Confirmacion-------------------------
+		//Confirmacion
 		new Button(mainPanel) => [
 			caption = "Cancelar"
 			onClick [ | close]
