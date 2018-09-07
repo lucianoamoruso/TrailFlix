@@ -57,16 +57,27 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			width = 200
 			height = 100
 		]
-		new Table(panelPeliDB,Pelicula) => [
+		//----------Tabla Peliculas----------------------
+		val tablaPelis = new Table<Pelicula>(mainPanel, typeof(Pelicula)) => [
 			items <=> "peliculas"
 			value <=> "sel_pelicula"
-			new Column<Pelicula>(it) => [
-				title = "Titulo"
-				fixedSize = 200
-				bindContentsToProperty("titulo")
-			]
-			
+			numberVisibleRows = 5
 		]
+		new Column<Pelicula>(tablaPelis) => [
+			title = "Titulo"
+			fixedSize = 200
+			bindContentsToProperty("titulo")
+		]
+		new Column<Pelicula>(tablaPelis) => [
+			title = "Codigo"
+			bindContentsToProperty("codigo")
+		]
+		new Column<Pelicula>(tablaPelis) => [
+			title = "Clasificacion"
+			bindContentsToProperty("clasificacion")
+		]
+				//---------------//
+		
 		val panelPeliButtons = new Panel(panelPeliDB) => [
 			layout = new VerticalLayout
 		]

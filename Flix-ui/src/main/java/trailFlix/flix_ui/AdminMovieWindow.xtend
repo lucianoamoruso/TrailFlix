@@ -22,7 +22,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	
 	new(WindowOwner owner, AdminMovie model) {
 		super(owner, model)
-		title = "Cree una nueva película"
+		taskDescription = "Cree una nueva película"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
