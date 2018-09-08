@@ -4,8 +4,10 @@ import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.DateTime
 import java.util.List
+import org.uqbar.commons.model.annotations.Observable
 
 @Accessors
+@Observable
 class Pelicula extends Contenido {
 	
 	DateTime fechaEstreno
@@ -38,7 +40,7 @@ class Pelicula extends Contenido {
 	override getRating() {
 		var sum = 0
 		for (i : 0 ..< this.valoraciones.size){
-			sum += i		
+			sum += this.valoraciones.get(i)	
 		}
 		sum / valoraciones.size
 		}

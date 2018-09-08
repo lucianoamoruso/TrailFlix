@@ -17,11 +17,13 @@ import trailFlix.flix.model.Pelicula
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.model.Serie
+import trailFlix.flix.appModel.AdminMovieInfo
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
 		super(new AdminMain)
+		title = "Añada contenido relacionado"
 	}
 	
 	override createContents(Panel mainPanel) {
@@ -89,6 +91,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Ver"
+			onClick [ | new AdminMovieInfoWindow(this, new AdminMovieInfo (modelObject.sel_pelicula)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Modificar"
