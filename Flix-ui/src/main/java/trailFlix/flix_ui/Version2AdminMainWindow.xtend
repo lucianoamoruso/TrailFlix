@@ -2,23 +2,22 @@ package trailFlix.flix_ui
 
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.MainWindow
 import trailFlix.flix.appModel.AdminMain
 import trailFlix.flix.appModel.AdminMovie
-import trailFlix.flix.model.Pelicula
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.model.Serie
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.tables.Table
+import trailFlix.flix.model.Pelicula
+import org.uqbar.arena.widgets.tables.Column
 
-class AdminMainWindow extends MainWindow<AdminMain> {
+class Version2AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
 		super(new AdminMain)
@@ -49,36 +48,15 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		
 		//-----Base de datos-----------------------------
 		val panelPeliDB = new Panel(mainPanel) => [
-			layout = new HorizontalLayout
+			layout = new ColumnLayout(2)
 		]
-		//----------Tabla Peliculas----------------------
-		val tablaPelis = new Table<Pelicula>(panelPeliDB, typeof(Pelicula)) => [
+		new List(panelPeliDB) => [
+			allowNull(false)
 			items <=> "peliculas"
 			value <=> "sel_pelicula"
-			numberVisibleRows = 5
+			width = 200
+			height = 100
 		]
-		new Column<Pelicula>(tablaPelis) => [
-			title = "Titulo"
-			fixedSize = 200
-			bindContentsToProperty("titulo")
-		]
-		new Column<Pelicula>(tablaPelis) => [
-			title = "Codigo"
-			bindContentsToProperty("codigo")
-		]
-		new Column<Pelicula>(tablaPelis) => [
-			title = "Clasificacion"
-			bindContentsToProperty("clasificacion")
-		]
-		new Column<Pelicula>(tablaPelis) => [
-			title = "Duracion"
-			bindContentsToProperty("duracion")
-		]
-		new Column<Pelicula>(tablaPelis) => [
-			title = "Directores"
-			bindContentsToProperty("directores")
-		]
-				//---------------//
 		
 		val panelPeliButtons = new Panel(panelPeliDB) => [
 			layout = new VerticalLayout
@@ -119,37 +97,15 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		//-----Base de datos-----------------------------
 		val panelSerieDB = new Panel(mainPanel) => [
-			layout = new HorizontalLayout
+			layout = new ColumnLayout(2)
 		]
-		//----------Tabla Peliculas----------------------
-		val tablaSeries = new Table<Serie>(panelSerieDB, typeof(Serie)) => [
+		new List(panelSerieDB) => [
+			allowNull(false)
 			items <=> "series"
 			value <=> "sel_serie"
-			numberVisibleRows = 5
+			width = 200
+			height = 100
 		]
-		new Column<Serie>(tablaSeries) => [
-			title = "Titulo"
-			fixedSize = 200
-			bindContentsToProperty("titulo")
-		]
-		new Column<Serie>(tablaSeries) => [
-			title = "Codigo"
-			bindContentsToProperty("codigo")
-		]
-		new Column<Serie>(tablaSeries) => [
-			title = "Clasificacion"
-			bindContentsToProperty("clasificacion")
-		]
-		new Column<Serie>(tablaSeries) => [
-			title = "Creadores"
-			bindContentsToProperty("creadores")
-		]
-		new Column<Serie>(tablaSeries) => [
-			title = "Capitulos"
-			bindContentsToProperty("capitulos")
-		]
-				//---------------//
-		
 		val panelSerieButtons = new Panel(panelSerieDB) => [
 			layout = new VerticalLayout
 		]
@@ -169,7 +125,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 	}
 	
 	def static main(String[] args) {
-		new AdminMainWindow().startApplication
+		new Version2AdminMainWindow().startApplication
 	}
 	
 }

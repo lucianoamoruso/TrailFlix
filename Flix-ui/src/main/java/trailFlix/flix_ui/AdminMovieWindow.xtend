@@ -113,8 +113,8 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new List(panelRelated) => [
 			allowNull(false)
-			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
 			value <=> "sel_relacionado"
+			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
 		]
 
 		//Confirmacion

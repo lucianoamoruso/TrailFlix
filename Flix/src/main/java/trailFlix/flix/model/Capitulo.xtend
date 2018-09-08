@@ -1,9 +1,10 @@
 package trailFlix.flix.model
 
-import org.joda.time.DateTime
-import org.joda.time.LocalDate
 import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.joda.time.DateTime
 
+@Accessors
 class Capitulo {
 	
 	int codigo
@@ -11,7 +12,7 @@ class Capitulo {
 	int temporada
 	int capituloNro
 	DateTime fechaEstreno
-	LocalDate duracion
+	int duracion
 	ArrayList <String> directores
 	ArrayList <String> actores
 	ArrayList <Integer> valoraciones
@@ -28,5 +29,33 @@ class Capitulo {
 		}
 		sum / valoraciones.size
 		}
+	
+//-------------------OVERRIDE--------------------------
+	
+	override toString() {
+		titulo
+	}
+	
+//-----------------GETTERS Y SETTERS----------------------------
+	
+	def setFechaEstreno(DateTime fecha) {
+		this.fechaEstreno = fecha
+	}
+	
+	/**
+	 * Nota: Setea mediante el parseo de un string en formato yyyy-mm-dd.
+	 */
+	def setFechaEstreno(String fecha){
+		this.fechaEstreno = DateTime.parse(fecha)
+	}
+	
+	/**
+	 * Nota: Devuelve la fecha en formato dd/mm/yyyy.
+	 * TODO
+	 */
+	def getFechaEstreno() {
+		return fechaEstreno
+	}
+
 	
 }

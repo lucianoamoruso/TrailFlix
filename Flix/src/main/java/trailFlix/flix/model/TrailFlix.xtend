@@ -14,11 +14,75 @@ class TrailFlix {
 	}
 	
 	def rellenarDatos() {
+		
+		val peli1 = new Pelicula("Terminator") => [
+				codigo = 0008
+				categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR)]
+				clasificacion = Clasificacion.MAYORES16
+				fechaEstreno = "2015-5-15"
+				duracion = 120
+				directores = new ArrayList() => [add("Michael Bay"); add("Carlos Gamer")]
+				actores = new ArrayList() => [add("Juan John"); add("Pepe Papa")]
+				valoraciones = new ArrayList() => [add(7); add(8); add(9); add(8)]
+				link = "https://www.youtube.com/watch?v=k64P4l2Wmeg"
+			]
+			
+		val peli2 = new Pelicula("The Spacito 3") => [
+				codigo = 0015
+				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.DRAMA)]
+				clasificacion = Clasificacion.APT
+				fechaEstreno = "2017-7-11"
+				duracion = 420
+				directores = new ArrayList() => [add("Luis Fonsi")]
+				actores = new ArrayList() => [add("Bar Ney"); add("Juan Perez")]
+				valoraciones = new ArrayList() => [add(4); add(8); add(5); add(10)]
+				link = "https://www.youtube.com/watch?v=Vp1R4bb3FMw"
+			]
+			
+		val peli3 = new Pelicula("Transformers") => [
+				codigo = 0065
+				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.TERROR)]
+				clasificacion = Clasificacion.MAYORES13
+				fechaEstreno = "2000-1-10"
+				duracion = 150
+				directores = new ArrayList() => [add("Michael Bay")]
+				actores = new ArrayList() => [add("Vin Diesel"); add("The Rock")]
+				valoraciones = new ArrayList() => [add(1); add(2); add(3); add(4)]
+				link = "https://www.youtube.com/watch?v=UcRtFYAz2Yo"
+			]
+		
+		peli1.contRelacionado = new ArrayList() => [add(peli2);add(peli3)]
+		peli2.contRelacionado = new ArrayList() => [add(peli1);add(peli3)]
+		peli3.contRelacionado = new ArrayList() => [add(peli1);add(peli2)]
+		
+		val cap1 = new Capitulo("Piloto") => [
+			codigo = 1001
+			temporada = 1
+			capituloNro = 1
+			fechaEstreno = "2008-2-05"
+			duracion = 40
+			directores = new ArrayList() => [add("Super Pepe")]
+			actores = new ArrayList() => [add("Vin Diesel"); add("Dardo")]
+			valoraciones = new ArrayList() => [add(9); add(10); add(8); add(8)]
+			link = "https://www.youtube.com/watch?v=YCI1tczEZ6c"
+		]
+		
+		val serie1 = new Serie("Casados con Hijos") => [
+			codigo = 0100
+			categorias = new ArrayList() => [add(Categoria.COMEDIA)]
+			clasificacion = Clasificacion.APT
+			creadores = new ArrayList() => [add("Super Pepe")]
+			capitulos = new ArrayList() => [add(cap1)]
+			temporadas = 8
+			valoraciones = new ArrayList() => [add(10); add(10); add(10); add(10)]
+			contRelacionado = new ArrayList() => [add(peli1);add(peli3)]
+		]
+		
 		contenido => [
-			add(new Pelicula("Terminator"))
-			add(new Pelicula("The Spacito 3"))
-			add(new Pelicula("Wall-E"))
-			add(new Serie("Casados con Hijos"))
+			add(peli1)
+			add(peli2)
+			add(peli3)
+			add(serie1)
 			add(new Serie("Attack on Titan"))
 			add(new Serie("Attack on Pepe"))
 			add(new Serie("The Grim Adventures of Billy and Mandy"))

@@ -1,15 +1,17 @@
 package trailFlix.flix.model
 
 import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.List
 
+@Accessors
 class Serie extends Contenido {
 	
 	ArrayList <String> creadores
-	ArrayList <Contenido> contRelacionado
-	ArrayList <Categoria> categorias
-	int temporadas
 	ArrayList <Capitulo> capitulos
+	int temporadas
 	ArrayList<Integer> valoraciones
+	List<Contenido> contRelacionado
 		
 	new (String titulo){
 		this.titulo = titulo
@@ -24,21 +26,12 @@ class Serie extends Contenido {
 	def addCap(Capitulo cap){
 		capitulos.add(cap)
 	}
-	def capitulos() {
-		return capitulos
-	}
 	def getTemporadas() {
 		return capitulos.size()
-	}	
-	
-	def setValoraciones(int valoraciones){
-		this.valoraciones = valoraciones
-		return this
 	}
-	def getValoraciones(){
-		return valoraciones
-	}
-	
+
+//-------------------OVERRIDE--------------------------
+
 	override returnPelicula() {
 		null
 	}
@@ -54,5 +47,6 @@ class Serie extends Contenido {
 		}
 		sum / capitulos.size
 	}
+	
 	
 }

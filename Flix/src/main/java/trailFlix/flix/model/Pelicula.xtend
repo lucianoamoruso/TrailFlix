@@ -1,62 +1,32 @@
 package trailFlix.flix.model
 
 import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.DateTime
-import org.joda.time.LocalTime
+import java.util.List
 
+@Accessors
 class Pelicula extends Contenido {
 	
 	DateTime fechaEstreno
-	LocalTime duracion
+	int duracion		//En minutos
 	ArrayList<String> directores
 	ArrayList<String> actores
 	ArrayList<Integer> valoraciones
-	ArrayList<Contenido> contRelacionado
-	ArrayList <Categoria> categorias
+	List<Contenido> contRelacionado
 	String link
 	
 	new(String titulo){
 		this.titulo = titulo
 	}
 	
-	
 	new(String titulo,int codigo) {
 		this.titulo = titulo
 		this.codigo = codigo
 	}
-	
-	def setDirectores(String direc){
-		directores.add(direc)
-		return this
-	}
-	def getDirectores(){
-		return directores
-	}
-	def setFechaEstreno(String dmy){
-		this.fechaEstreno = dmy
-		return this
-	}
-	def getFechaEstreno() {
-		return fechaEstreno
-	}
-	
-	def setValoraciones(int valoraciones){
-		this.valoraciones = valoraciones
-		return this
-	}
-	def getValoraciones(){
-		return valoraciones
-	}
-	def setActores(String actors){
-		actores.add( actors)
-		return this
-	}
-	def getActores() {
-		return actores
-	}
 
+//-------------------OVERRIDE--------------------------
 
-	
 	override returnPelicula() {
 		this
 	}
@@ -73,4 +43,25 @@ class Pelicula extends Contenido {
 		sum / valoraciones.size
 		}
 		
+//-----------------GETTERS Y SETTERS----------------------------
+
+	def setFechaEstreno(DateTime fecha) {
+		this.fechaEstreno = fecha
+	}
+	
+	/**
+	 * Nota: Setea mediante el parseo de un string en formato yyyy-mm-dd.
+	 */
+	def setFechaEstreno(String fecha){
+		this.fechaEstreno = DateTime.parse(fecha)
+	}
+	
+	/**
+	 * Nota: Devuelve la fecha en formato dd/mm/yyyy.
+	 * TODO
+	 */
+	def getFechaEstreno() {
+		return fechaEstreno
+	}
+
 }
