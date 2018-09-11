@@ -1,8 +1,9 @@
-package test
+package flix
 
 import junit.framework.TestCase
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
+import java.util.ArrayList
 
 class PeliSerieCapTest extends TestCase {
 	override protected void setUp() throws Exception {
@@ -18,10 +19,15 @@ class PeliSerieCapTest extends TestCase {
 	
 	def void testCrearPeliculaCompleta() {
 		var us = new Pelicula("The Mask",0)
+		val dir = new ArrayList()
+		val act = new ArrayList()
+		
+		dir.add("D")
+		act.add("Jim")
 		us =>[
-			setDirectores("D")
+			setDirectores(dir)
 			setFechaEstreno("Mañana")
-			setActores("Jim")
+			setActores(act)
 		]
 		assertEquals("Mal Director:", "D", us.getDirectores().head() )
 		assertEquals("Mal Fecha:", "Mañana", us.getFechaEstreno() )

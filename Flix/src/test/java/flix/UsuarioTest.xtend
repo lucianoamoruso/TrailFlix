@@ -1,4 +1,4 @@
-package test
+package flix
 
 import junit.framework.TestCase
 import org.joda.time.DateTime

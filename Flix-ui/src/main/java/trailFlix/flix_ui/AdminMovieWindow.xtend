@@ -113,6 +113,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		val panelRelated = new Panel(mainPanel) => [
 			layout = new VerticalLayout
 		]
+		
 		val panelRelatedLabel = new Panel(panelRelated) => [
 			layout = new ColumnLayout(2)
 		]
