@@ -17,6 +17,8 @@ class AdminMain {
 	String serie_find
 	Pelicula sel_pelicula
 	Serie sel_serie
+	boolean hay_peli_sel = false
+	boolean hay_serie_sel = false
 	
 	new() {
 		trailFlix = new TrailFlix => [rellenarDatos]
@@ -47,10 +49,22 @@ class AdminMain {
 	
 	def quitarPelicula() {
 		peliculas.remove(sel_pelicula)
+		hay_peli_sel = false
 	}
 	
 	def quitarSerie() {
 		series.remove(sel_serie)
+		hay_serie_sel = false
+	}
+
+	def void setSel_pelicula(Pelicula sel_pelicula) {
+		this.sel_pelicula = sel_pelicula
+		hay_peli_sel = true
+	}
+	
+	def void setSel_serie(Serie sel_serie) {
+		this.sel_serie = sel_serie
+		hay_serie_sel = true
 	}
 	
 }

@@ -1,11 +1,9 @@
 package trailFlix.flix_ui
 
-import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.tables.Column
@@ -13,11 +11,11 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.MainWindow
 import trailFlix.flix.appModel.AdminMain
 import trailFlix.flix.appModel.AdminMovie
+import trailFlix.flix.appModel.AdminMovieInfo
 import trailFlix.flix.model.Pelicula
+import trailFlix.flix.model.Serie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.model.Serie
-import trailFlix.flix.appModel.AdminMovieInfo
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -91,7 +89,8 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Ver"
-			onClick [ | new AdminMovieInfoWindow(this, new AdminMovieInfo (modelObject.sel_pelicula)).open]
+			bindEnabledToProperty("hay_peli_sel")
+			onClick [ | new AdminMovieInfoWindow(this, new AdminMovieInfo(modelObject.sel_pelicula)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Modificar"
@@ -161,6 +160,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new Button(panelSerieButtons) => [
 			caption = "Ver"
+			bindEnabledToProperty("hay_serie_sel")
 		]
 		new Button(panelSerieButtons) => [
 			caption = "Modificar"

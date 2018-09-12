@@ -36,7 +36,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new Label(panelTitulo).text = "Título"
 		new TextBox(panelTitulo) => [
-			value <=> modelObject.titulo
+			value <=> "titulo"
 			width = 100
 		]
 		
@@ -52,28 +52,19 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new CheckBox(panelCategorias) => [
 			//title = "Drama"
-			onAccept([|modelObject.categorias.add(Categoria.DRAMA)])
-			onCancel([|modelObject.categorias.remove(Categoria.DRAMA)])
-			value <=> modelObject.categorias.exists[it == Categoria.DRAMA].toString()
-			//TODO: comprobar que lo anterior funciona
+			value <=> "es_drama"
 		]
 		new CheckBox(panelCategorias) => [
 			//caption = "Comedia"
-			onAccept([|modelObject.categorias.add(Categoria.COMEDIA)])
-			onCancel([|modelObject.categorias.remove(Categoria.COMEDIA)])
 			value <=> "es_comedia"
 		]
 		new CheckBox(panelCategorias) => [
 			//title = "Terror"
-			onAccept([|modelObject.categorias.add(Categoria.TERROR)])
-			onCancel([|modelObject.categorias.remove(Categoria.TERROR)])
 			value <=> "es_terror"
 		]
 		new CheckBox(panelCategorias) => [
 			//title = "Accion"
-			onAccept([|modelObject.categorias.add(Categoria.ACCION)])
-			onCancel([|modelObject.categorias.remove(Categoria.ACCION)])
-			value <=> "Accion" //
+			value <=> "es_accion"
 		]
 				//---------------//
 				
