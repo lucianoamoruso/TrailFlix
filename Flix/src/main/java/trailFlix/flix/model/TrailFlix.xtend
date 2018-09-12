@@ -30,7 +30,7 @@ class TrailFlix {
 		val peli2 = new Pelicula("The Spacito 3") => [
 				codigo = 0015
 				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.DRAMA)]
-				clasificacion = Clasificacion.APT
+				clasificacion = Clasificacion.ATP
 				fechaEstreno = "2017-7-11"
 				duracion = 420
 				directores = new ArrayList() => [add("Luis Fonsi")]
@@ -55,7 +55,7 @@ class TrailFlix {
 		peli2.contRelacionado = new ArrayList() => [add(peli1);add(peli3)]
 		peli3.contRelacionado = new ArrayList() => [add(peli1);add(peli2)]
 		
-		val cap1 = new Capitulo("Piloto") => [
+		val cap1_1 = new Capitulo("Piloto") => [
 			codigo = 1001
 			temporada = 1
 			capituloNro = 1
@@ -67,15 +67,50 @@ class TrailFlix {
 			link = "https://www.youtube.com/watch?v=YCI1tczEZ6c"
 		]
 		
+		val cap1_2 = new Capitulo("Fatiga") => [
+			codigo = 1002
+			temporada = 1
+			capituloNro = 2
+			fechaEstreno = "2008-2-06"
+			duracion = 40
+			directores = new ArrayList() => [add("Super Pepe")]
+			actores = new ArrayList() => [add("Un Perro"); add("Dardo")]
+			valoraciones = new ArrayList() => [add(4); add(10); add(6); add(9)]
+			link = "https://youtu.be/mQ0hS7l9ckY"
+		]
+		
 		val serie1 = new Serie("Casados con Hijos") => [
 			codigo = 0100
 			categorias = new ArrayList() => [add(Categoria.COMEDIA)]
-			clasificacion = Clasificacion.APT
+			clasificacion = Clasificacion.ATP
 			creadores = new ArrayList() => [add("Super Pepe")]
-			capitulos = new ArrayList() => [add(cap1)]
+			capitulos = new ArrayList() => [add(cap1_1); add(cap1_2)]
 			temporadas = 8
 			valoraciones = new ArrayList() => [add(10); add(10); add(10); add(10)]
 			contRelacionado = new ArrayList() => [add(peli1);add(peli3)]
+		]
+		
+		val cap2_1 = new Capitulo("2000 years") => [
+			codigo = 2001
+			temporada = 1
+			capituloNro = 1
+			fechaEstreno = "2013-4-07"
+			duracion = 20
+			directores = new ArrayList() => [add("Hiroyuki Tanaka")]
+			actores = new ArrayList() => [add("Eren"); add("Mikasa")]
+			valoraciones = new ArrayList() => [add(9); add(9); add(9); add(9)]
+			link = "https://youtu.be/XMXgHfHxKVM"
+		]
+		
+		val serie2 = new Serie("Attack on Titan") => [
+			codigo = 0101
+			categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR); add(Categoria.DRAMA)]
+			clasificacion = Clasificacion.MAYORES13
+			creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
+			capitulos = new ArrayList() => [add(cap2_1)]
+			temporadas = 3
+			valoraciones = new ArrayList() => [add(9); add(9); add(9); add(9)]
+			contRelacionado = new ArrayList() => [add(peli3); add(serie1)]
 		]
 		
 		contenido => [
@@ -83,7 +118,7 @@ class TrailFlix {
 			add(peli2)
 			add(peli3)
 			add(serie1)
-			add(new Serie("Attack on Titan"))
+			add(serie2)
 			add(new Serie("Attack on Pepe"))
 			add(new Serie("The Grim Adventures of Billy and Mandy"))
 		]

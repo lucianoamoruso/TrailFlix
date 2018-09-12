@@ -2,7 +2,7 @@ package trailFlix.flix.model
 
 enum Clasificacion {
 	
-APT,
+ATP,
 MAYORES13,
 MAYORES16,
 MAYORES18

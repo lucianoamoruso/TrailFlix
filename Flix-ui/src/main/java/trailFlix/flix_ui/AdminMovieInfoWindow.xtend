@@ -12,6 +12,7 @@ class AdminMovieInfoWindow extends Dialog <AdminMovieInfo> {
 	new(WindowOwner owner, AdminMovieInfo model) {
 		super(owner, model)
 		title = modelObject.pelicula.titulo
+		taskDescription = "Informacion de " + title
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

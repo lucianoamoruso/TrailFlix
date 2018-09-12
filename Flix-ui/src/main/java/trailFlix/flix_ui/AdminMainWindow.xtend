@@ -27,14 +27,21 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 	override createContents(Panel mainPanel) {
 		this.title = "Administración de TrailFlix"
 		
-		//Administrar peliculas
-		//-----Pelis y ver Usuarios-----------------------
+		generarElementosDePeliculas(mainPanel)
+		generarElementosDeSeries(mainPanel)
+	}
+	
+//	PELICULA
+
+	def void generarElementosDePeliculas(Panel mainPanel) {
+		
+		//Pelis y ver Usuarios----------------------------
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
 		new Label(panelPeliLabel).text = "Películas"
 		
-		//-----Busqueda-----------------------------------
+		//Busqueda----------------------------------------
 		val panelPeliFind = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
@@ -47,11 +54,37 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			onClick [ | this.modelObject.buscarPeliculas]
 		]
 		
-		//-----Base de datos-----------------------------
+		//Base de datos-----------------------------------
 		val panelPeliDB = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		//----------Tabla Peliculas----------------------
+		
+		//-----Tabla Peliculas----------------------------
+		crearTablaPeliculas(panelPeliDB)
+		
+		val panelPeliButtons = new Panel(panelPeliDB) => [
+			layout = new VerticalLayout
+		]
+		new Button(panelPeliButtons) => [
+			caption = "Nuevo"
+			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix)).open]
+		]
+		new Button(panelPeliButtons) => [
+			caption = "Ver"
+			bindEnabledToProperty("hay_peli_sel")
+			onClick [ | new AdminMovieInfoWindow(this, new AdminMovieInfo(modelObject.sel_pelicula)).open]
+		]
+		new Button(panelPeliButtons) => [
+			caption = "Modificar"
+		]
+		new Button(panelPeliButtons) => [
+			caption = "Borrar"
+			onClick [ | modelObject.quitarPelicula]
+		]
+	}
+	
+	def void crearTablaPeliculas(Panel panelPeliDB) {
+		
 		val tablaPelis = new Table<Pelicula>(panelPeliDB, typeof(Pelicula)) => [
 			items <=> "peliculas"
 			value <=> "sel_pelicula"
@@ -78,36 +111,19 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			title = "Directores"
 			bindContentsToProperty("directores")
 		]
-				//---------------//
+	}
+	
+//	SERIE
+
+	def void generarElementosDeSeries(Panel mainPanel) {
 		
-		val panelPeliButtons = new Panel(panelPeliDB) => [
-			layout = new VerticalLayout
-		]
-		new Button(panelPeliButtons) => [
-			caption = "Nuevo"
-			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix)).open]
-		]
-		new Button(panelPeliButtons) => [
-			caption = "Ver"
-			bindEnabledToProperty("hay_peli_sel")
-			onClick [ | new AdminMovieInfoWindow(this, new AdminMovieInfo(modelObject.sel_pelicula)).open]
-		]
-		new Button(panelPeliButtons) => [
-			caption = "Modificar"
-		]
-		new Button(panelPeliButtons) => [
-			caption = "Borrar"
-			onClick [ | modelObject.quitarPelicula]
-		]
-		
-		//Administrar series
-		//-----Series------------------------------------
+		//Series------------------------------------------
 		val panelSerieLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
 		new Label(panelSerieLabel).text = "Series"
 		
-		//-----Busqueda-----------------------------------
+		//Busqueda----------------------------------------
 		val panelSerieFind = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
@@ -119,11 +135,33 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			caption = "Buscar"
 			onClick [ | modelObject.buscarSeries]
 		]
-		//-----Base de datos-----------------------------
+		//Base de datos-----------------------------------
 		val panelSerieDB = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		//----------Tabla Peliculas----------------------
+		//-----Tabla Series-------------------------------
+		crearTablaSeries(panelSerieDB)
+		
+		val panelSerieButtons = new Panel(panelSerieDB) => [
+			layout = new VerticalLayout
+		]
+		new Button(panelSerieButtons) => [
+			caption = "Nuevo"
+		]
+		new Button(panelSerieButtons) => [
+			caption = "Ver"
+			bindEnabledToProperty("hay_serie_sel")
+		]
+		new Button(panelSerieButtons) => [
+			caption = "Modificar"
+		]
+		new Button(panelSerieButtons) => [
+			caption = "Borrar"
+			onClick [ | modelObject.quitarSerie]
+		]
+	}
+	
+	def void crearTablaSeries(Panel panelSerieDB) {
 		val tablaSeries = new Table<Serie>(panelSerieDB, typeof(Serie)) => [
 			items <=> "series"
 			value <=> "sel_serie"
@@ -150,26 +188,8 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			title = "Capitulos"
 			bindContentsToProperty("capitulos")
 		]
-				//---------------//
-		
-		val panelSerieButtons = new Panel(panelSerieDB) => [
-			layout = new VerticalLayout
-		]
-		new Button(panelSerieButtons) => [
-			caption = "Nuevo"
-		]
-		new Button(panelSerieButtons) => [
-			caption = "Ver"
-			bindEnabledToProperty("hay_serie_sel")
-		]
-		new Button(panelSerieButtons) => [
-			caption = "Modificar"
-		]
-		new Button(panelSerieButtons) => [
-			caption = "Borrar"
-			onClick [ | modelObject.quitarSerie]
-		]
 	}
+	
 	
 	def static main(String[] args) {
 		new AdminMainWindow().startApplication

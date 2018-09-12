@@ -3,8 +3,10 @@ package trailFlix.flix_ui
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
@@ -16,8 +18,6 @@ import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.widgets.CheckBox
-import trailFlix.flix.model.Categoria
 
 class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	
@@ -45,28 +45,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			layout = new ColumnLayout(2)
 		]
 		
-		//-----Categorias---------------------------
-		new Label(panelDatos).text = "Categorias"
-		val panelCategorias = new Panel(panelDatos) => [
-			layout = new ColumnLayout(2)
-		]
-		new CheckBox(panelCategorias) => [
-			//title = "Drama"
-			value <=> "es_drama"
-		]
-		new CheckBox(panelCategorias) => [
-			//caption = "Comedia"
-			value <=> "es_comedia"
-		]
-		new CheckBox(panelCategorias) => [
-			//title = "Terror"
-			value <=> "es_terror"
-		]
-		new CheckBox(panelCategorias) => [
-			//title = "Accion"
-			value <=> "es_accion"
-		]
-				//---------------//
+		ofrecerCategorias(panelDatos)
 				
 		new Label(panelDatos).text = "Duración"
 		new TextBox(panelDatos) => [
@@ -101,6 +80,45 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		
 		//Contenido Relacionado
+		administrarContenidoRelacionado(mainPanel)
+		
+	}
+	
+	def void ofrecerCategorias(Panel panelDatos) {
+		
+		new Label(panelDatos).text = "Categorias"
+		val panelCategorias = new Panel(panelDatos) => [
+			layout = new ColumnLayout(2)
+		]
+		
+		val drama = new Panel(panelCategorias)
+		new Label(drama).text = "Drama"
+		new CheckBox(drama) => [
+			value <=> "es_drama"
+		]
+		
+		val comedia = new Panel(panelCategorias)
+		new Label(comedia).text = "Comedia"
+		new CheckBox(comedia) => [
+			value <=> "es_comedia"
+		]
+		
+		val terror = new Panel(panelCategorias)
+		new Label(terror).text = "Terror"
+		new CheckBox(terror) => [
+			value <=> "es_terror"
+		]
+		
+		val accion = new Panel(panelCategorias)
+		new Label(accion).text = "Accion"
+		new CheckBox(accion) => [
+			value <=> "es_accion"
+		]
+		
+	}
+
+	def void administrarContenidoRelacionado(Panel mainPanel) {
+		
 		val panelRelated = new Panel(mainPanel) => [
 			layout = new VerticalLayout
 		]
@@ -109,11 +127,14 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			layout = new ColumnLayout(2)
 		]
 		new Label(panelRelatedLabel).text = "Contenido relacionado"
-		new Button(panelRelatedLabel) => [
+		val panelRelatedButtons = new Panel(panelRelatedLabel) => [
+			layout = new HorizontalLayout
+		]
+		new Button(panelRelatedButtons) => [
 			caption = "Quitar"
 			onClick [ | modelObject.quitarContenido]
 		]
-		new Button(panelRelatedLabel) => [
+		new Button(panelRelatedButtons) => [
 			caption = "Agregar"
 			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix,modelObject)).open]
 		]
@@ -122,7 +143,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			value <=> "sel_relacionado"
 			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
 		]
-
+		
 		//Confirmacion
 		new Button(mainPanel) => [
 			caption = "Cancelar"
@@ -132,7 +153,6 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			caption = "Aceptar"
 			onClick [ | modelObject.nuevaPeli]
 		]
-		
 	}
-			
+
 }
