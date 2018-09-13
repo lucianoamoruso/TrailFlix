@@ -11,11 +11,13 @@ import java.util.List
 class AdminSerieInfo {
 	
 	Serie serie
+	List <Capitulo> capitulos
 	Capitulo sel_capitulo
-	List<Capitulo> capitulos
+	boolean hay_cap_sel = false
 	
 	new(Serie serie) {
 		this.serie = serie
+		this.capitulos = serie.capitulos
 	}
 	
 	def capitulosList() {
@@ -50,5 +52,20 @@ class AdminSerieInfo {
 	
 	def getCapitulos(){
 		serie.capitulos
+	}
+	
+	def void setSel_capitulo (Capitulo sel_capitulo) {
+		this.sel_capitulo = sel_capitulo
+		hay_cap_sel = true
+	}
+	
+	def actualizarContenidos() {
+		capitulos = serie.capitulos	
+	}
+	
+	def quitarCapitulo(){
+		this.serie.quitarCapitulo(sel_capitulo)
+		actualizarContenidos
+		hay_cap_sel = false
 	}
 }

@@ -92,11 +92,17 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 		
 		new Button(panelBotones).caption = "Nuevo"
 		
-		new Button(panelBotones).caption = "Ver"
+		new Button(panelBotones) => [
+			caption = "Ver"
+			bindEnabledToProperty("hay_cap_sel")
+		]
 		
 		new Button(panelBotones).caption = "Modificar"
 		
-		new Button(panelBotones).caption = "Borrar"
+		new Button(panelBotones) => [
+			caption = "Borrar"
+			onClick [ | modelObject.quitarCapitulo]
+		]
 		
 		}
 		
