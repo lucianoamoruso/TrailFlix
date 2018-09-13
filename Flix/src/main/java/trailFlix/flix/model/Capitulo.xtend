@@ -3,8 +3,10 @@ package trailFlix.flix.model
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.DateTime
+import org.uqbar.commons.model.annotations.Observable
 
 @Accessors
+@Observable
 class Capitulo {
 	
 	int codigo
@@ -55,6 +57,10 @@ class Capitulo {
 	 */
 	def getFechaEstreno() {
 		return fechaEstreno
+	}
+	
+	def getTitulo(){
+		titulo
 	}
 
 	

@@ -164,6 +164,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelSerieButtons) => [
 			caption = "Ver"
 			bindEnabledToProperty("hay_serie_sel")
+			onClick [ | new AdminSerieInfoWindow(this, new AdminSerieInfo(modelObject.sel_serie)).open]
 		]
 		new Button(panelSerieButtons) => [
 			bindEnabledToProperty("hay_serie_sel")
