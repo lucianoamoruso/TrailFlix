@@ -27,7 +27,7 @@ class Serie extends Contenido {
 		this.codigo = codigo
 		capitulos = newArrayList()
 		creadores = newArrayList()
-		contRelacionado = newArrayList()
+		contRelacionado = newArrayList() 
 	}
 	
 	def addCap(Capitulo cap){
