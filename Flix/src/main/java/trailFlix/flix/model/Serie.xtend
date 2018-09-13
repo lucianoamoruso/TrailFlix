@@ -35,6 +35,12 @@ class Serie extends Contenido {
 	def getCapitulos() {
 		capitulos
 	}
+	
+	def quitarCapitulo (Capitulo cap){
+		this.capitulos.remove(cap)
+	}
+	
+	
 
 //-------------------OVERRIDE--------------------------
 
