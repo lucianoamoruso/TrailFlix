@@ -8,12 +8,14 @@ class TrailFlix {
 	List<Usuario> usuarios
 	ArrayList<Contenido> contenido
 	AdminMain ventana
+	int id
 	
 	
 	new(AdminMain ventana) {
 		contenido = new ArrayList
 		usuarios = new ArrayList
 		this.ventana = ventana
+		this.id = 0
 	}
 	
 	def rellenarDatos() {
@@ -203,29 +205,30 @@ class TrailFlix {
 	def eliminarSerie(Serie serie) {
 		this.contenido.remove(serie)
 	}
+	
+	def generarId(){
+		this.id ++
+	}
 
 	/**
 	 * Prop: devuelve un nuevo codigo unico que identifique a la pelicula recien creada.
 	 */
 	def nuevoCodigoPeli() {
-		//TODO
-		1000
+		this.generarId()
 	}
 	
 	/**
 	 * Prop: devuelve un nuevo codigo unico que identifique a la serie recien creada.
 	 */
 	def nuevoCodigoSerie() {
-		//TODO
-		0100
+		this.generarId()
 	}
 	
 	/**
 	 * Prop: devuelve un nuevo codigo unico que identifique al capitulo recien creado.
 	 */
 	def nuevoCodigoCapitulo() {
-		//TODO
-		0001
+		this.generarId()
 	}
 	
 //-----------------GETTERS Y SETTERS----------------------------
