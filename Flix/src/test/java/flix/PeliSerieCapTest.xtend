@@ -4,6 +4,7 @@ import junit.framework.TestCase
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
 import java.util.ArrayList
+import org.joda.time.DateTime
 
 class PeliSerieCapTest extends TestCase {
 	override protected void setUp() throws Exception {
@@ -21,16 +22,17 @@ class PeliSerieCapTest extends TestCase {
 		var us = new Pelicula("The Mask",0)
 		val dir = new ArrayList()
 		val act = new ArrayList()
+		val fecha = new DateTime("2004-12-13T21:39:45.618-08:00")
 		
 		dir.add("D")
 		act.add("Jim")
 		us =>[
 			setDirectores(dir)
-			setFechaEstreno("Mañana")
+			setFechaEstreno(fecha)
 			setActores(act)
 		]
 		assertEquals("Mal Director:", "D", us.getDirectores().head() )
-		assertEquals("Mal Fecha:", "Mañana", us.getFechaEstreno() )
+		assertEquals("Mal Fecha:", fecha, us.getFechaEstreno() )
 		assertEquals("Mal Actores:", "Jim", us.getActores().head() )
 		
 	}
@@ -41,10 +43,13 @@ class PeliSerieCapTest extends TestCase {
 		assertEquals("Mal el titulo", "R&M", us.titulo)
 	}
 	
-	def void testCrearSerieCompleta() {
-		var us = new Pelicula("The Mask",0)
+	def testCrearSerieCompleta() {
+		var us = new Serie("R&M",0)
+		val dir = new ArrayList()
+		val act = new ArrayList()
+		val fecha = new DateTime("2004-12-13T21:39:45.618-08:00")
+		
 		us =>[
-			setDirectores("D")
 			setFechaEstreno("Mañana")
 			setActores("Jim")
 		]
