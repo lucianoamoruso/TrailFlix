@@ -91,7 +91,6 @@ class TrailFlix {
 			creadores = new ArrayList() => [add("Super Pepe")]
 			capitulos = new ArrayList() => [add(cap1_1); add(cap1_2)]
 			temporadas = 8
-			valoraciones = new ArrayList() => [add(10); add(10); add(10); add(10)]
 			contRelacionado = new ArrayList() => [add(peli1);add(peli3)]
 		]
 		
@@ -114,8 +113,17 @@ class TrailFlix {
 			creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
 			capitulos = new ArrayList() => [add(cap2_1)]
 			temporadas = 3
-			valoraciones = new ArrayList() => [add(9); add(9); add(9); add(9)]
 			contRelacionado = new ArrayList() => [add(peli3); add(serie1)]
+		]
+		
+		val serie3 = new Serie("The Walking Bad") => [
+		codigo = 0200
+		categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR)]
+		clasificacion = Clasificacion.MAYORES16
+		creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
+		capitulos = new ArrayList() => [add(cap2_1)]
+		temporadas = 3
+		contRelacionado = new ArrayList() => [add(peli3); add(serie1)]
 		]
 		
 		contenido => [
@@ -124,8 +132,7 @@ class TrailFlix {
 			add(peli3)
 			add(serie1)
 			add(serie2)
-			add(new Serie("Attack on Pepe"))
-			add(new Serie("The Grim Adventures of Billy and Mandy"))
+			add(serie3)
 		]
 		
 		usuarios => [

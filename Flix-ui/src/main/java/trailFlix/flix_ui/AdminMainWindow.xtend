@@ -16,6 +16,7 @@ import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix.appModel.AdminSerieInfo
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -153,6 +154,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelSerieButtons) => [
 			caption = "Ver"
 			bindEnabledToProperty("hay_serie_sel")
+			onClick [ | new AdminSerieInfoWindow(this, new AdminSerieInfo(modelObject.sel_serie)).open]
 		]
 		new Button(panelSerieButtons) => [
 			bindEnabledToProperty("hay_serie_sel")
