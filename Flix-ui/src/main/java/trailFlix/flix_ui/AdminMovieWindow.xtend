@@ -18,8 +18,11 @@ import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix.appModel.AdminMovieInfo
 
 class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
+	
+	protected Button botton
 	
 	new(WindowOwner owner, AdminMovie model) {
 		super(owner, model)
@@ -178,7 +181,8 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			caption = "Cancelar"
 			onClick [ | close]
 		]
-		new Button(mainPanel) => [		//Agregar pelicula
+		
+		botton = new Button(mainPanel) => [		//Agregar pelicula
 			caption = "Aceptar"
 			onClick [ | {modelObject.nuevaPeli ; close}]
 		]

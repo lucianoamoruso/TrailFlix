@@ -23,11 +23,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
 		super(new AdminMain)
-		title = "Añada contenido relacionado"
+		title = "Aï¿½ada contenido relacionado"
 	}
 	
 	override createContents(Panel mainPanel) {
-		this.title = "Administración de TrailFlix"
+		this.title = "Administraciï¿½n de TrailFlix"
 		
 		generarElementosDePeliculas(mainPanel)
 		generarElementosDeSeries(mainPanel)
@@ -49,7 +49,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		new Label(panelPeliLabel).text = "Películas"
+		new Label(panelPeliLabel).text = "Pelï¿½culas"
 		
 		//Busqueda----------------------------------------
 		val panelPeliFind = new Panel(mainPanel) => [
@@ -87,6 +87,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelPeliButtons) => [
 			bindEnabledToProperty("hay_peli_sel")
 			caption = "Modificar"
+			onClick [ | new AdminMovieModifyWindow(this, new AdminMovie(modelObject.sel_pelicula)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Borrar"
