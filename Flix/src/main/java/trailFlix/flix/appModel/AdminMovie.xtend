@@ -10,10 +10,13 @@ import trailFlix.flix.model.TrailFlix
 import java.util.ArrayList
 import trailFlix.flix.model.Pelicula
 import org.joda.time.DateTime
+import org.uqbar.commons.model.Entity
+import org.uqbar.commons.model.annotations.Transactional
 
 @Accessors
 @Observable
-class AdminMovie {
+@Transactional
+class AdminMovie extends Entity{
 	TrailFlix			trailFlix
 	String				titulo
 	int					duracion_ingresada

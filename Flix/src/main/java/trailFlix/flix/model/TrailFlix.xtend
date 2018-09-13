@@ -176,6 +176,7 @@ class TrailFlix {
 	}
 	
 	def buscarPorClasificacion (Clasificacion clasificacion){
+		//contenido.filter[it.clasificacion.equals(clasificacion)].head()
 		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).clasificacion.equals(clasificacion)){
 				return this.contenido.get(i)
@@ -241,6 +242,7 @@ class TrailFlix {
 //-----------------GETTERS Y SETTERS----------------------------
 	
 	def getPeliculas() {
+		//contenido.filter[it instanceof Pelicula].toList())
 		var retorno = newArrayList
 		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnPelicula() !== null){

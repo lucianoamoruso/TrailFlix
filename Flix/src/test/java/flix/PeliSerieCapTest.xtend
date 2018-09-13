@@ -45,20 +45,19 @@ class PeliSerieCapTest extends TestCase {
 	}
 	
 	def testCrearSerieCompleta() {
-		var us = new Serie("R&M",0)
-		val dir = new ArrayList()
-		val act = new ArrayList()
+		var serie = new Serie("R&M",0)
+		val se1 = new Serie("BB",1)
 		val cap = new Capitulo("")
 		
-		us =>[
-			creadores = dir
-			capitulos
+		serie =>[
+			creadores.add("A")
+			capitulos.add(cap)
 			temporadas = 1
-			contRelacionado.add(us)
+			contRelacionado.add(se1)
 		]
-		assertEquals("Mal Director:", "D", us.getDirectores().head() )
-		assertEquals("Mal Fecha:", "Mañana", us.getFechaEstreno() )
-		assertEquals("Mal Actores:", "Jim", us.getActores().head() )
+		//assertEquals("", "A", serie.creadores.head() )
+		assertEquals("", 1, serie.temporadas )
+		assertEquals("", cap, serie.capitulos.head() )
 		
 	}
 	

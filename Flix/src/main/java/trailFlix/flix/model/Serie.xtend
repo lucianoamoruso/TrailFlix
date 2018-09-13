@@ -17,12 +17,17 @@ class Serie extends Contenido {
 	new (String titulo){
 		this.titulo = titulo
 		this.clasificacion = null
+		creadores = newArrayList()
+		capitulos = newArrayList()
+		contRelacionado = newArrayList()
 	}
 	
 	new(String titulo,int codigo){
 		this.titulo = titulo
 		this.codigo = codigo
 		capitulos = newArrayList()
+		creadores = newArrayList()
+		contRelacionado = newArrayList()
 	}
 	
 	def addCap(Capitulo cap){

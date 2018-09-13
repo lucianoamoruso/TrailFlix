@@ -36,7 +36,6 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 //	PELICULA
 
 	def void generarElementosDePeliculas(Panel mainPanel) {
-		
 		//Pelis y ver Usuarios----------------------------
 		val verUsuario = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
