@@ -21,9 +21,17 @@ class AdminMain {
 	boolean hay_serie_sel = false
 	
 	new() {
-		trailFlix = new TrailFlix => [rellenarDatos]
+		trailFlix = new TrailFlix(this) => [rellenarDatos]
 		peliculas = trailFlix.peliculas
 		series = trailFlix.series
+	}
+	
+	/*
+	 * Prop: respuesta a una notificacion de cambio de TrailFlix.
+	 */
+	def actualizarContenidos() {
+		peliculas = trailFlix.peliculas
+		series = trailFlix.series		
 	}
 	
 	/*

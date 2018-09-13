@@ -2,15 +2,18 @@ package trailFlix.flix.model
 
 import java.util.List
 import java.util.ArrayList
+import trailFlix.flix.appModel.AdminMain
 
 class TrailFlix {
 	List<Usuario> usuarios
 	ArrayList<Contenido> contenido
+	AdminMain ventana
 	
 	
-	new() {
+	new(AdminMain ventana) {
 		contenido = new ArrayList
 		usuarios = new ArrayList
+		this.ventana = ventana
 	}
 	
 	def rellenarDatos() {
@@ -171,12 +174,20 @@ class TrailFlix {
 		}
 	}
 	
+	/*
+	 * Prop: se añade una pelicula y se notifica a la ventana principal.
+	 */
 	def agregarPelicula (Pelicula pelicula){
 		this.contenido.add(pelicula)
+		ventana.actualizarContenidos
 	}
 	
+	/*
+	 * Prop: se añade una serie y se notifica a la ventana principal.
+	 */
 	def agregarSerie (Serie serie){
 		this.contenido.add(serie)
+		ventana.actualizarContenidos
 	}
 	
 	
@@ -209,4 +220,27 @@ class TrailFlix {
 	def void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios
 	}
+	
+	/**
+	 * Prop: devuelve un nuevo codigo unico que identifique a la pelicula recien creada.
+	 */
+	def nuevoCodigoPeli() {
+		//TODO
+		0001
+	}
+	
+	/**
+	 * Prop: devuelve un nuevo codigo unico que identifique a la serie recien creada.
+	 */
+	def nuevoCodigoSerie() {
+		//TODO
+	}
+	
+	/**
+	 * Prop: devuelve un nuevo codigo unico que identifique al capitulo recien creado.
+	 */
+	def nuevoCodigoCapitulo() {
+		//TODO
+	}
+	
 }

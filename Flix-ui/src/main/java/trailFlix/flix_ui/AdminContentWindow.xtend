@@ -35,7 +35,7 @@ class AdminContentWindow extends TransactionalDialog<AdminContent> {
 			caption = "Agregar"
 			onClick [ | {modelObject.agregar; close}]
 			setAsDefault
-			disableOnError	
+			disableOnError
 		]
 		new Button(contentPanel) => [
 			caption = "Cancelar"

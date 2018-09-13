@@ -49,23 +49,23 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 				
 		new Label(panelDatos).text = "Duración"
 		new TextBox(panelDatos) => [
-			value <=> "duracion"
+			value <=> "duracion_ingresada"
 			width = 50
 		]
 		new Label(panelDatos).text = "Clasificación"
 		new Selector(panelDatos) => [
 			allowNull(false)
-			items <=> "clasificaciones"
+			items <=> "clasificaciones_disp"
 			value <=> "sel_clasificacion"
 		]
 		new Label(panelDatos).text = "Fecha estreno"
 		new TextBox(panelDatos) => [
-			value <=> "fecha_estreno"
+			value <=> "fecha_estreno_ingresada"
 			width = 70
 		]
 		new Label(panelDatos).text = "Directores"
 		new TextBox(panelDatos) => [
-			value <=> "directores"
+			value <=> "directores_elegidos"
 			width = 70
 		]
 		new Label(panelDatos).text = "Actores principales"
@@ -75,7 +75,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new Label(panelDatos).text = "Link Youtube"
 		new TextBox(panelDatos) => [
-			value <=> "link"
+			value <=> "link_ingresado"
 			width = 100
 		]
 		
@@ -151,7 +151,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		new Button(mainPanel) => [		//Agregar pelicula
 			caption = "Aceptar"
-			onClick [ | modelObject.nuevaPeli]
+			onClick [ | {modelObject.nuevaPeli ; close}]
 		]
 	}
 
