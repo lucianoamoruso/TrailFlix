@@ -19,8 +19,8 @@ class AdminMovie {
 	int					duracion_ingresada
 	InterpretadorFecha	interpretador
 	DateTime			fecha_estreno_ingresada
-	ArrayList<String>	directores_elegidos
-	ArrayList<String>	actores_principales
+	String	            directores_elegidos
+	String	            actores_principales
 	List<Categoria>		categorias_disp = Categoria.values
 	Categoria 			sel_categorias
 	boolean				es_drama
@@ -44,6 +44,11 @@ class AdminMovie {
 	 */
 	def void nuevaPeli() {
 		val ArrayList<Categoria> nuevasCategorias = recolectarCategorias
+		val dir = newArrayList()
+		dir.addAll(directores_elegidos.split(",").toList())
+
+		val act = newArrayList()
+		act.addAll(actores_principales.split(",").toList())
 		
 		val pelicula = new Pelicula(titulo) => [
 			codigo = trailFlix.nuevoCodigoPeli
@@ -51,8 +56,8 @@ class AdminMovie {
 			clasificacion = sel_clasificacion
 			fechaEstreno = fecha_estreno_ingresada
 			duracion = duracion_ingresada
-			directores = directores_elegidos
-			actores = actores_principales
+			directores = dir
+			actores = act
 			contRelacionado = relacionado
 			link = link_ingresado
 		]
