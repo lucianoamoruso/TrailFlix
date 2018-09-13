@@ -7,6 +7,16 @@ import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminSerieInfo
 
+import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
+
+
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix.model.Capitulo
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+
 class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 	
 	new(WindowOwner owner, AdminSerieInfo model) {
@@ -25,7 +35,7 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 			fontSize = 12
 		]
 		new Label (panelInfoLabel) => [
-			text = modelObject.capitulos
+			text = modelObject.capitulosList
 			fontSize = 11
 		]
 
@@ -69,6 +79,48 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 		new Label (panelInfoLabel) => [
 			text = modelObject.contenido_relacionado
 			fontSize = 11
+		]
+		
+		val panelCapitulos = new Panel(mainPanel) => [
+			layout = new HorizontalLayout
+		]
+		crearTablaCapitulos(panelCapitulos)
+		
+		val panelBotones = new Panel (panelCapitulos) => [
+			layout = new VerticalLayout
+		]
+		
+		new Button(panelBotones).caption = "Nuevo"
+		
+		new Button(panelBotones).caption = "Ver"
+		
+		new Button(panelBotones).caption = "Modificar"
+		
+		new Button(panelBotones).caption = "Borrar"
+		
+		}
+		
+	
+	def void crearTablaCapitulos(Panel panelCapitulos) {
+		
+		val tablaCapitulos = new Table<Capitulo>(panelCapitulos, typeof(Capitulo)) => [
+			items <=> "capitulos"
+			value <=> "sel_capitulo"
+			numberVisibleRows = 4
+		]
+		new Column<Capitulo>(tablaCapitulos) => [
+			title = "Titulo"
+			bindContentsToProperty("titulo")
+		]
+		
+		new Column<Capitulo>(tablaCapitulos) => [
+			title = "Temporada"
+			bindContentsToProperty("temporada")
+		]
+		
+		new Column<Capitulo>(tablaCapitulos) => [
+			title = "Duracion"
+			bindContentsToProperty("duracion")
 		]
 	}
 	

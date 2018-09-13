@@ -3,18 +3,22 @@ package trailFlix.flix.appModel
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.Serie
+import trailFlix.flix.model.Capitulo
+import java.util.List
 
 @Accessors
 @Observable
 class AdminSerieInfo {
 	
 	Serie serie
+	Capitulo sel_capitulo
+	List<Capitulo> capitulos
 	
 	new(Serie serie) {
 		this.serie = serie
 	}
 	
-	def capitulos() {
+	def capitulosList() {
 		serie.capitulos.size.toString
 	}
 	
@@ -42,5 +46,9 @@ class AdminSerieInfo {
 	
 	def categorias(){
 		serie.categorias.toString
+	}
+	
+	def getCapitulos(){
+		serie.capitulos
 	}
 }

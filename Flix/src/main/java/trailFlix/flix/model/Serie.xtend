@@ -29,7 +29,11 @@ class Serie extends Contenido {
 		capitulos.add(cap)
 	}
 	def getTemporadas() {
-		return capitulos.size()
+		temporadas
+	}
+	
+	def getCapitulos() {
+		capitulos
 	}
 
 //-------------------OVERRIDE--------------------------
