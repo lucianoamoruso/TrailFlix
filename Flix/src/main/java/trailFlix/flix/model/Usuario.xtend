@@ -38,7 +38,7 @@ class Usuario {
 	
 	def getPeliculasVistas(){
 		var retorno = newArrayList
-		for (i:0..this.contVisto.size){
+		for (i:0..this.contVisto.size-1){
 			if (this.contVisto.get(i).returnPelicula() !== null){
 				retorno.add(this.contVisto.get(i))
 			}
@@ -48,7 +48,7 @@ class Usuario {
 	
 	def getSeriesVistas(){
 		var retorno = newArrayList
-		for (i:0..this.contVisto.size){
+		for (i:0..this.contVisto.size-1){
 			if (this.contVisto.get(i).returnSerie() !== null){
 				retorno.add(this.contVisto.get(i))
 			}
@@ -58,7 +58,7 @@ class Usuario {
 	
 	def getPeliculasFavoritas(){
 		var retorno = newArrayList
-		for (i:0..this.contFavorito.size){
+		for (i:0..this.contFavorito.size-1){
 			if (this.contFavorito.get(i).returnPelicula() !== null){
 				retorno.add(this.contFavorito.get(i))
 			}
@@ -68,7 +68,7 @@ class Usuario {
 	
 	def getSeriesFavoritas(){
 		var retorno = newArrayList
-		for (i:0..this.contFavorito.size){
+		for (i:0..this.contFavorito.size-1){
 			if (this.contFavorito.get(i).returnSerie() !== null){
 				retorno.add(this.contFavorito.get(i))
 			}

@@ -58,11 +58,10 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 			items <=> "clasificaciones_disp"
 			value <=> "sel_clasificacion"
 		]
-		new Label(panelDatos).text = "Fecha estreno"
-		new TextBox(panelDatos) => [
-			value <=> "fecha_estreno_ingresada"
-			width = 70
-		]
+		
+		//-----Fecha de estreno
+//		crearInputFechaEstreno(panelDatos)
+		
 		new Label(panelDatos).text = "Directores"
 		new TextBox(panelDatos) => [
 			value <=> "directores_elegidos"
@@ -82,6 +81,36 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		//Contenido Relacionado
 		administrarContenidoRelacionado(mainPanel)
 		
+	}
+	
+	def void crearInputFechaEstreno(Panel panelDatos) {
+		
+		val panelFechas = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(panelFechas).text = "Fecha estreno"
+		new TextBox(panelFechas) => [
+			value <=> "fecha_estreno_ingresada"
+			width = 70
+		]
+		new Label(panelFechas).text = "Día"
+		new Selector(panelFechas) => [
+			allowNull(false)
+			items <=> "dias_del_mes"
+			value <=> "dia"
+		]
+		new Label(panelFechas).text = "Mes"
+		new Selector(panelFechas) => [
+			allowNull(false)
+			items <=> "meses"
+			value <=> "mes"
+		]
+		new Label(panelFechas).text = "Año"
+		new Selector(panelFechas) => [
+			allowNull(false)
+			items <=> "anios"
+			value <=> "anio"
+		]
 	}
 	
 	def void ofrecerCategorias(Panel panelDatos) {

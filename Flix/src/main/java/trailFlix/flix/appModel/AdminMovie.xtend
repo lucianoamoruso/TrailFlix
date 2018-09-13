@@ -14,24 +14,25 @@ import org.joda.time.DateTime
 @Accessors
 @Observable
 class AdminMovie {
-	TrailFlix trailFlix
-	String titulo
-	int duracion_ingresada
-	DateTime fecha_estreno_ingresada
-	ArrayList<String> directores_elegidos
-	ArrayList<String> actores_principales
-	List<Categoria> categorias_disp = Categoria.values
-	List<Clasificacion> clasificaciones_disp = Clasificacion.values
-	boolean es_drama
-	boolean es_comedia
-	boolean es_terror
-	boolean es_accion
-	Categoria sel_categorias
-	Clasificacion sel_clasificacion
-	List<Contenido> relacionado = new ArrayList
-	Contenido sel_relacionado
-	Contenido new_relacionado		//Seteado desde AdminContent
-	String link_ingresado
+	TrailFlix			trailFlix
+	String				titulo
+	int					duracion_ingresada
+	InterpretadorFecha	interpretador
+	DateTime			fecha_estreno_ingresada
+	ArrayList<String>	directores_elegidos
+	ArrayList<String>	actores_principales
+	List<Categoria>		categorias_disp = Categoria.values
+	Categoria 			sel_categorias
+	boolean				es_drama
+	boolean				es_comedia
+	boolean				es_terror
+	boolean				es_accion
+	List<Clasificacion>	clasificaciones_disp = Clasificacion.values
+	Clasificacion		sel_clasificacion
+	List<Contenido>		relacionado = new ArrayList
+	Contenido			sel_relacionado
+	Contenido			new_relacionado		//Seteado desde AdminContent
+	String				link_ingresado
 	
 	
 	new(TrailFlix trailFlix) {
@@ -91,6 +92,45 @@ class AdminMovie {
 	 */
 	def agregarContenido(Contenido nuevo) {
 		relacionado.add(nuevo)
+	}
+	
+//-------------------REDIRIGIDOS--------------------------
+//Estos setters y getters apuntan a otra clase de appModel encargada del ingreso de Fecha
+
+	def List<Integer> getDias_del_mes() {
+		interpretador.dias_del_mes
+	}
+	
+	def Integer getDia() {
+		interpretador.dia
+	}
+	
+	def void setDia(Integer dia) {
+		interpretador.dia = dia
+	}
+	
+	def List<String> getMeses() {
+		interpretador.meses
+	}
+	
+	def String getMes() {
+		interpretador.mes
+	}
+	
+	def void setMes(String mes) {
+		interpretador.mes = mes
+	}
+	
+	def List<Integer> getAnios() {
+		interpretador.anios
+	}
+	
+	def Integer getAnio() {
+		interpretador.anio
+	}
+	
+	def void setAnio(Integer anio) {
+		interpretador.anio = anio
 	}
 	
 }

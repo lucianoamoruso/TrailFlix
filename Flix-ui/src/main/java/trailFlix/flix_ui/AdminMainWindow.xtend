@@ -16,6 +16,7 @@ import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix.appModel.AdminUserList
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -36,6 +37,14 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 	def void generarElementosDePeliculas(Panel mainPanel) {
 		
 		//Pelis y ver Usuarios----------------------------
+		val verUsuario = new Panel(mainPanel) => [
+			layout = new HorizontalLayout
+		]
+		new Button(verUsuario) => [
+			caption = "Usuarios"
+//			iconImage = "undefined"
+			onClick [ | new AdminUserListWindow(this, new AdminUserList(modelObject.trailFlix)).open]
+		]
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
