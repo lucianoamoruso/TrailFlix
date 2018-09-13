@@ -3,6 +3,7 @@ package trailFlix.flix.model
 import java.util.List
 import java.util.ArrayList
 import trailFlix.flix.appModel.AdminMain
+import org.uqbar.commons.model.annotations.Dependencies
 
 class TrailFlix {
 	List<Usuario> usuarios
@@ -121,7 +122,7 @@ class TrailFlix {
 		categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR)]
 		clasificacion = Clasificacion.MAYORES16
 		creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
-		capitulos = new ArrayList() => [add(cap2_1)]
+		capitulos = new ArrayList() => [add(cap2_1); add(cap1_2); add(cap1_1)]
 		temporadas = 3
 		contRelacionado = new ArrayList() => [add(peli3); add(serie1)]
 		]
@@ -239,25 +240,26 @@ class TrailFlix {
 	}
 	
 //-----------------GETTERS Y SETTERS----------------------------
-	
 	def getPeliculas() {
-		var retorno = newArrayList
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).returnPelicula() !== null){
-				retorno.add(this.contenido.get(i) as Pelicula)
-			}
-		}
-		retorno
+//		var retorno = newArrayList
+//		for (i:0..this.contenido.size-1){
+//			if (this.contenido.get(i).returnPelicula() !== null){
+//				retorno.add(this.contenido.get(i) as Pelicula)
+//			}
+//		}
+//		retorno
+		this.contenido.map[returnPelicula].filter[it !== null].toList
 	}
 	
 	def getSeries() {
-		var retorno = newArrayList
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).returnSerie() !== null){
-				retorno.add(this.contenido.get(i) as Serie)
-			}
-		}
-		retorno
+//		var retorno = newArrayList
+//		for (i:0..this.contenido.size-1){
+//			if (this.contenido.get(i).returnSerie() !== null){
+//				retorno.add(this.contenido.get(i) as Serie)
+//			}
+//		}
+//		retorno
+		this.contenido.map[returnSerie].filter[it !== null].toList
 	}
 	
 	def getUsuarios() {

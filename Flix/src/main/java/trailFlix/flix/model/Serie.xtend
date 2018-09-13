@@ -53,11 +53,13 @@ class Serie extends Contenido {
 	}
 	
 	override getRating() {
-		var sum = 0
-		for (i : 0..this.capitulos.size-1){
-			sum = sum + capitulos.get(i).getRating()
-		}
-		sum / capitulos.size
+//		var sum = 0
+//		for (i : 0..this.capitulos.size-1){
+//			sum = sum + capitulos.get(i).getRating()
+//		}
+//		sum / capitulos.size
+		if (this.capitulos.size == 0) return 0
+		this.capitulos.fold(0d, [res, cap | res + cap.rating]) / capitulos.size
 	}
 	
 	
