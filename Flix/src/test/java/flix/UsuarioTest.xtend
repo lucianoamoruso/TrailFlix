@@ -38,7 +38,7 @@ class UsuarioTest extends TestCase {
 	}
 
 	
-	def getPeliculasVistastest(){
+	def testgetPeliculasVistas(){
 		var us = new Usuario(0,"usuario","nombre")
 		val amigo = new Usuario(1,"","")
 		val serie = new Serie("Elsecreto",0)
@@ -51,18 +51,22 @@ class UsuarioTest extends TestCase {
 			contVisto.add(RaM)
 			contVisto.add(peli)			
 		]
-		assertEquals( us.peliculasVistas.exists[pel|pel==peli]  )	
+		assertTrue( us.peliculasVistas.exists[pel|pel==peli]  )
+		assertEquals( us.peliculasVistas.size(),3  )
+		
+		assertEquals(amigo, us.amigos.get(0))
+		
 	}
 	
-	def getSeriesVistastest(){
+	def testgetSeriesVistas(){
 		//TO DO
 	}
 	
-	def getPeliculasFavoritastest(){
+	def testgetPeliculasFavoritas(){
 		//TO DO
 	}
 	
-	def getSeriesFavoritastest(){
+	def testgetSeriesFavoritas(){
 		//TO DO
 	}
 }

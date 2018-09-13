@@ -22,6 +22,9 @@ class Capitulo {
 	
 	new (String titulo){
 		this.titulo = titulo
+		directores = newArrayList()
+		actores = newArrayList()
+		valoraciones = newArrayList()
 	}
 	
 	def getRating(){
