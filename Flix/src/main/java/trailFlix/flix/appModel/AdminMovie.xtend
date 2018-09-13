@@ -33,10 +33,32 @@ class AdminMovie {
 	Contenido			sel_relacionado
 	Contenido			new_relacionado		//Seteado desde AdminContent
 	String				link_ingresado
-	
+	Pelicula			pelicula
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
+	}
+	
+	new(Pelicula peli){
+		this.trailFlix = null
+		pelicula = peli
+		
+		titulo = peli.titulo
+		duracion_ingresada = peli.duracion
+//		interpretador
+		fecha_estreno_ingresada = peli.fechaEstreno
+		directores_elegidos = peli.directores.reduce[p1, p2| p1 + "," + p2]
+		actores_principales = peli.actores.reduce[p1, p2| p1 + "," + p2]
+		//sel_categorias
+		es_drama = peli.categorias.exists[it == Categoria.DRAMA]
+		es_comedia = peli.categorias.exists[it == Categoria.COMEDIA]
+		es_terror = peli.categorias.exists[it == Categoria.TERROR]
+		es_accion = peli.categorias.exists[it == Categoria.ACCION]
+		sel_clasificacion = peli.clasificacion
+		relacionado.addAll( peli.contRelacionado)
+		//ssel_relacionado
+		//new_relacionado
+		link_ingresado = peli.link
 	}
 	
 	/*
@@ -65,6 +87,30 @@ class AdminMovie {
 		trailFlix.agregarPelicula(pelicula)
 	}
 	
+	/*
+	 * Prop: Carga una pelicula a la base de datos.
+	 */	
+	def void modPeli(){
+		val ArrayList<Categoria> nuevasCategorias = recolectarCategorias
+		val dir = newArrayList()
+		dir.addAll(directores_elegidos.split(",").toList())
+
+		val act = newArrayList()
+		act.addAll(actores_principales.split(",").toList())
+		
+		pelicula => [
+			titulo = titulo
+			categorias = nuevasCategorias
+			clasificacion = sel_clasificacion
+			fechaEstreno = fecha_estreno_ingresada
+			duracion = duracion_ingresada
+			directores = dir
+			actores = act
+			contRelacionado = relacionado
+			link = link_ingresado
+		]
+		
+	}
 	/*
 	 * Prop: revisa que categorias fueron tildadas y devuelve una lista conteniendolas.
 	 */
