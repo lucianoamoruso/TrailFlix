@@ -17,16 +17,17 @@ import trailFlix.flix.model.Serie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminUserList
+import trailFlix.flix.appModel.AdminSerieInfo
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
 		super(new AdminMain)
-		title = "AÃ±ada contenido relacionado"
+		title = "Añada contenido relacionado"
 	}
 	
 	override createContents(Panel mainPanel) {
-		this.title = "AdministraciÃ³n de TrailFlix"
+		this.title = "Administración de TrailFlix"
 		
 		generarElementosDePeliculas(mainPanel)
 		generarElementosDeSeries(mainPanel)
@@ -48,7 +49,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		new Label(panelPeliLabel).text = "PelÃ­culas"
+		new Label(panelPeliLabel).text = "Películas"
 		
 		//Busqueda----------------------------------------
 		val panelPeliFind = new Panel(mainPanel) => [
