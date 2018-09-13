@@ -46,7 +46,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		
 		ofrecerCategorias(panelDatos)
-				
+
 		new Label(panelDatos).text = "Duración"
 		new TextBox(panelDatos) => [
 			value <=> "duracion_ingresada"

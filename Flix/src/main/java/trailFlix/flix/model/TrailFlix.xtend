@@ -19,7 +19,7 @@ class TrailFlix {
 	def rellenarDatos() {
 		
 		val peli1 = new Pelicula("Terminator") => [
-				codigo = 0008
+				codigo = 1000
 				categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR)]
 				clasificacion = Clasificacion.MAYORES16
 				fechaEstreno = "2015-5-15"
@@ -31,7 +31,7 @@ class TrailFlix {
 			]
 			
 		val peli2 = new Pelicula("The Spacito 3") => [
-				codigo = 0015
+				codigo = 2000
 				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.DRAMA)]
 				clasificacion = Clasificacion.ATP
 				fechaEstreno = "2017-7-11"
@@ -43,7 +43,7 @@ class TrailFlix {
 			]
 			
 		val peli3 = new Pelicula("Transformers") => [
-				codigo = 0065
+				codigo = 3000
 				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.TERROR)]
 				clasificacion = Clasificacion.MAYORES13
 				fechaEstreno = "2000-1-10"
@@ -59,7 +59,7 @@ class TrailFlix {
 		peli3.contRelacionado = new ArrayList() => [add(peli1);add(peli2)]
 		
 		val cap1_1 = new Capitulo("Piloto") => [
-			codigo = 1001
+			codigo = 0001
 			temporada = 1
 			capituloNro = 1
 			fechaEstreno = "2008-2-05"
@@ -71,7 +71,7 @@ class TrailFlix {
 		]
 		
 		val cap1_2 = new Capitulo("Fatiga") => [
-			codigo = 1002
+			codigo = 0002
 			temporada = 1
 			capituloNro = 2
 			fechaEstreno = "2008-2-06"
@@ -94,7 +94,7 @@ class TrailFlix {
 		]
 		
 		val cap2_1 = new Capitulo("2000 years") => [
-			codigo = 2001
+			codigo = 0003
 			temporada = 1
 			capituloNro = 1
 			fechaEstreno = "2013-4-07"
@@ -106,7 +106,7 @@ class TrailFlix {
 		]
 		
 		val serie2 = new Serie("Attack on Titan") => [
-			codigo = 0101
+			codigo = 0200
 			categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR); add(Categoria.DRAMA)]
 			clasificacion = Clasificacion.MAYORES13
 			creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
@@ -190,6 +190,43 @@ class TrailFlix {
 		ventana.actualizarContenidos
 	}
 	
+	/*
+	 * Prop: elimina una pelicula de la base de datos.
+	 */
+	def eliminarPelicula(Pelicula pelicula) {
+		this.contenido.remove(pelicula)
+	}
+	
+	/*
+	 * Prop: elimina una serie de la base de datos.
+	 */
+	def eliminarSerie(Serie serie) {
+		this.contenido.remove(serie)
+	}
+
+	/**
+	 * Prop: devuelve un nuevo codigo unico que identifique a la pelicula recien creada.
+	 */
+	def nuevoCodigoPeli() {
+		//TODO
+		1000
+	}
+	
+	/**
+	 * Prop: devuelve un nuevo codigo unico que identifique a la serie recien creada.
+	 */
+	def nuevoCodigoSerie() {
+		//TODO
+		0100
+	}
+	
+	/**
+	 * Prop: devuelve un nuevo codigo unico que identifique al capitulo recien creado.
+	 */
+	def nuevoCodigoCapitulo() {
+		//TODO
+		0001
+	}
 	
 //-----------------GETTERS Y SETTERS----------------------------
 	
@@ -221,26 +258,5 @@ class TrailFlix {
 		this.usuarios = usuarios
 	}
 	
-	/**
-	 * Prop: devuelve un nuevo codigo unico que identifique a la pelicula recien creada.
-	 */
-	def nuevoCodigoPeli() {
-		//TODO
-		0001
-	}
-	
-	/**
-	 * Prop: devuelve un nuevo codigo unico que identifique a la serie recien creada.
-	 */
-	def nuevoCodigoSerie() {
-		//TODO
-	}
-	
-	/**
-	 * Prop: devuelve un nuevo codigo unico que identifique al capitulo recien creado.
-	 */
-	def nuevoCodigoCapitulo() {
-		//TODO
-	}
-	
+		
 }

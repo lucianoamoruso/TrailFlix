@@ -15,4 +15,38 @@ class AdminMovieInfo {
 		this.pelicula = pelicula
 	}
 	
+	def duracion() {
+		pelicula.duracion.toString
+	}
+	
+	def fecha_estreno() {
+		pelicula.fechaEstreno.toString
+	}
+	
+	def reparto() {
+		pelicula.actores.toString
+	}
+	
+	def direccion() {
+		pelicula.directores.toString
+	}
+	
+	def valoraciones() {
+		var String ret
+		if (pelicula.valoraciones===null) {
+			ret = "<AUN NO VALORADA>"
+		} else {
+			ret = pelicula.rating.toString
+		}
+		ret
+	}
+	
+	def enlace() {
+		pelicula.link
+	}
+	
+	def contenido_relacionado() {
+		pelicula.contRelacionado.toString
+	}
+	
 }

@@ -56,12 +56,14 @@ class AdminMain {
 	}
 	
 	def quitarPelicula() {
-		peliculas.remove(sel_pelicula)
+		trailFlix.eliminarPelicula(sel_pelicula)
+		actualizarContenidos
 		hay_peli_sel = false
 	}
 	
 	def quitarSerie() {
-		series.remove(sel_serie)
+		trailFlix.eliminarSerie(sel_serie)
+		actualizarContenidos
 		hay_serie_sel = false
 	}
 

@@ -75,10 +75,12 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			onClick [ | new AdminMovieInfoWindow(this, new AdminMovieInfo(modelObject.sel_pelicula)).open]
 		]
 		new Button(panelPeliButtons) => [
+			bindEnabledToProperty("hay_peli_sel")
 			caption = "Modificar"
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Borrar"
+			bindEnabledToProperty("hay_peli_sel")
 			onClick [ | modelObject.quitarPelicula]
 		]
 	}
@@ -153,10 +155,12 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			bindEnabledToProperty("hay_serie_sel")
 		]
 		new Button(panelSerieButtons) => [
+			bindEnabledToProperty("hay_serie_sel")
 			caption = "Modificar"
 		]
 		new Button(panelSerieButtons) => [
 			caption = "Borrar"
+			bindEnabledToProperty("hay_serie_sel")
 			onClick [ | modelObject.quitarSerie]
 		]
 	}
