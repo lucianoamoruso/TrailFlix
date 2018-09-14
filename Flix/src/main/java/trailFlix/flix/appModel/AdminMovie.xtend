@@ -37,8 +37,6 @@ class AdminMovie extends Entity{
 	ArrayList<String>	directores_elegidos
 	ArrayList<String>	actores_principales
 	InterpretadorFecha	interpretador
-	String	            directores_elegidos
-	String	            actores_principales
 	List<Categoria>		categorias_disp = Categoria.values
 	Categoria 			sel_categorias
 	boolean				es_drama
