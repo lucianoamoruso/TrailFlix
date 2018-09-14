@@ -68,6 +68,6 @@ class UsuarioTest extends TestCase {
 	
 	def testgetSeriesFavoritas(){
 		var us = new Usuario(0,"usuario","nombre")
-		assertEquals( 0,  us.getSeriesFavoritas  )
+		assertEquals( 0,  us.getSeriesFavoritas().size()  )
 	}
 }
