@@ -64,10 +64,18 @@ class UsuarioTest extends TestCase {
 	def testgetPeliculasFavoritas(){
 		var us = new Usuario(0,"usuario","nombre")
 		assertEquals( 0,us.getPeliculasFavoritas().size()  ) 
+		val peli = new Pelicula("a",3)
+		us.contFavorito.add(peli)
+		assertEquals( 1,  us.getPeliculasFavoritas().size()  )
+		assertEquals( peli,us.getPeliculasFavoritas().head()  )
 	}
 	
 	def testgetSeriesFavoritas(){
 		var us = new Usuario(0,"usuario","nombre")
 		assertEquals( 0,  us.getSeriesFavoritas().size()  )
+		val RaM = new Serie("R&M",1)
+		us.contFavorito.add(RaM)
+		assertEquals( 1,  us.getSeriesFavoritas().size()  )
+		assertEquals( RaM,us.getSeriesFavoritas().head()  )
 	}
 }
