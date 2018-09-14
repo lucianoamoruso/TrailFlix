@@ -1,6 +1,6 @@
 package trailFlix.flix.model
 
-import java.util.ArrayList
+import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.DateTime
 import org.uqbar.commons.model.annotations.Observable
@@ -15,9 +15,9 @@ class Capitulo {
 	int capituloNro
 	DateTime fechaEstreno
 	int duracion
-	ArrayList <String> directores
-	ArrayList <String> actores
-	ArrayList <Integer> valoraciones
+	List <String> directores
+	List <String> actores
+	List <Integer> valoraciones
 	String link
 	
 	new (String titulo){

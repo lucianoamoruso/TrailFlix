@@ -1,16 +1,16 @@
 package trailFlix.flix.model
 
 import java.util.ArrayList
-import org.eclipse.xtend.lib.annotations.Accessors
-import org.joda.time.DateTime
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.joda.time.LocalDate
 import org.uqbar.commons.model.annotations.Observable
 
 @Accessors
 @Observable
 class Pelicula extends Contenido {
 	
-	DateTime fechaEstreno
+	LocalDate fechaEstreno
 	int duracion		//En minutos
 	ArrayList<String> directores
 	ArrayList<String> actores
@@ -47,7 +47,7 @@ class Pelicula extends Contenido {
 		
 //-----------------GETTERS Y SETTERS----------------------------
 
-	def setFechaEstreno(DateTime fecha) {
+	def setFechaEstreno(LocalDate fecha) {
 		this.fechaEstreno = fecha
 	}
 	
@@ -55,7 +55,7 @@ class Pelicula extends Contenido {
 	 * Nota: Setea mediante el parseo de un string en formato yyyy-mm-dd.
 	 */
 	def setFechaEstreno(String fecha){
-		this.fechaEstreno = DateTime.parse(fecha)
+		this.fechaEstreno = LocalDate.parse(fecha)
 	}
 	
 	/**
