@@ -124,7 +124,7 @@ class AdminMovie extends Entity{
 		act.addAll(actores_principales.split(",").toList())
 		
 		pelicula => [
-			titulo = titulo
+			it.titulo = titulo
 			categorias = nuevasCategorias
 			clasificacion = sel_clasificacion
 			fechaEstreno = fecha_estreno_ingresada

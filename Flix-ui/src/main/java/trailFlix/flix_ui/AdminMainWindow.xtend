@@ -101,6 +101,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			items <=> "peliculas"
 			value <=> "sel_pelicula"
 			numberVisibleRows = 5
+			
 		]
 		new Column<Pelicula>(tablaPelis) => [
 			title = "Titulo"

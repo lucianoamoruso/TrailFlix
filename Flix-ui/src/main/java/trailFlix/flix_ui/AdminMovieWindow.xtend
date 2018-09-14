@@ -19,8 +19,9 @@ import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminMovieInfo
+import org.uqbar.arena.windows.Dialog
 
-class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
+class AdminMovieWindow extends Dialog<AdminMovie> {
 	
 	protected Button botton
 	
