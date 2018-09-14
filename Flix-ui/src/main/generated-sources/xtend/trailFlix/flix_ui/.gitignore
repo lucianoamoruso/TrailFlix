@@ -12,3 +12,8 @@
 /.Version2AdminMainWindow.java._trace
 /.AdminUserWindow.java._trace
 /.AdminUserListWindow.java._trace
+<<<<<<< Updated upstream
+/.AdminMovieModifyWindow.java._trace
+=======
+/.AdminSerieInfoWindow.java._trace
+>>>>>>> Stashed changes

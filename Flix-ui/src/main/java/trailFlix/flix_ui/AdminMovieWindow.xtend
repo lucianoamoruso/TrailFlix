@@ -63,7 +63,7 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 		]
 		
 		//-----Fecha de estreno
-//		crearInputFechaEstreno(panelDatos)
+		crearInputFechaEstreno(panelDatos)
 		
 		new Label(panelDatos).text = "Directores"
 		new TextBox(panelDatos) => [
@@ -88,13 +88,9 @@ class AdminMovieWindow extends TransactionalDialog<AdminMovie> {
 	
 	def void crearInputFechaEstreno(Panel panelDatos) {
 		
+		new Label(panelDatos).text = "Fecha estreno"
 		val panelFechas = new Panel(panelDatos) => [
 			layout = new HorizontalLayout
-		]
-		new Label(panelFechas).text = "Fecha estreno"
-		new TextBox(panelFechas) => [
-			value <=> "fecha_estreno_ingresada"
-			width = 70
 		]
 		new Label(panelFechas).text = "Día"
 		new Selector(panelFechas) => [

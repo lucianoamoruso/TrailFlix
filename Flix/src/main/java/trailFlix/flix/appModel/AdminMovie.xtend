@@ -1,17 +1,23 @@
 package trailFlix.flix.appModel
 
+import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.joda.time.LocalDate
 import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.Categoria
 import trailFlix.flix.model.Clasificacion
 import trailFlix.flix.model.Contenido
+import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.TrailFlix
 import java.util.ArrayList
 import trailFlix.flix.model.Pelicula
 import org.joda.time.DateTime
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.annotations.Transactional
+import java.util.Calendar
+import java.util.Map
+import java.util.HashMap
 
 @Accessors
 @Observable
@@ -20,8 +26,17 @@ class AdminMovie extends Entity{
 	TrailFlix			trailFlix
 	String				titulo
 	int					duracion_ingresada
+	LocalDate			fecha_estreno_ingresada = new LocalDate(1990,1,1)	//Default
+	List<Integer>		dias_del_mes
+	Integer				dia
+	List<String>		meses
+	Map<String,Integer>	map_meses = new HashMap
+	String				mes = "Enero"
+	List<Integer>		anios
+	Integer				anio
+	ArrayList<String>	directores_elegidos
+	ArrayList<String>	actores_principales
 	InterpretadorFecha	interpretador
-	DateTime			fecha_estreno_ingresada
 	String	            directores_elegidos
 	String	            actores_principales
 	List<Categoria>		categorias_disp = Categoria.values
@@ -40,6 +55,13 @@ class AdminMovie extends Entity{
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
+		meses = newArrayList("Enero","Febrero","Marzo","Abril","Mayo",
+		"Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
+		map_meses => [
+			for (var int i=0;i<12;i++) {
+				put(meses.get(i),i+1)		//Asocia el nombre del mes a su numero
+			}
+		]
 	}
 	
 	new(Pelicula peli){
@@ -148,43 +170,47 @@ class AdminMovie extends Entity{
 		relacionado.add(nuevo)
 	}
 	
-//-------------------REDIRIGIDOS--------------------------
-//Estos setters y getters apuntan a otra clase de appModel encargada del ingreso de Fecha
+//-----------------GETTERS Y SETTERS----------------------------
 
 	def List<Integer> getDias_del_mes() {
-		interpretador.dias_del_mes
+		var int min = 1
+		var int max = 31
+		val List<Integer> lista = newArrayList()
+// 		val Calendar calendario = Calendar.getInstance
+// 		min = calendario.getActualMinimum(fecha_estreno_ingresada.getMonthOfYear)
+// 		max = calendario.getActualMaximum(fecha_estreno_ingresada.getMonthOfYear)
+ 		(min..max).iterator.forEach[lista.add(it)]
+ 		return lista
 	}
 	
 	def Integer getDia() {
-		interpretador.dia
+		fecha_estreno_ingresada.getDayOfMonth
 	}
 	
 	def void setDia(Integer dia) {
-		interpretador.dia = dia
+		fecha_estreno_ingresada.withDayOfMonth(dia)
 	}
-	
-	def List<String> getMeses() {
-		interpretador.meses
-	}
-	
-	def String getMes() {
-		interpretador.mes
-	}
-	
-	def void setMes(String mes) {
-		interpretador.mes = mes
-	}
-	
+			
 	def List<Integer> getAnios() {
-		interpretador.anios
+		val List<Integer> lista = newArrayList()
+		(LocalDate.now.getYear..1900).iterator.forEach[lista.add(it)]
+		lista
 	}
 	
-	def Integer getAnio() {
-		interpretador.anio
-	}
 	
-	def void setAnio(Integer anio) {
-		interpretador.anio = anio
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -1,1 +1,5 @@
 /target/
+generated/
+src-gen/
+xtend-gen/
+generated-sources/
