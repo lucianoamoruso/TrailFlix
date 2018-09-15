@@ -24,13 +24,13 @@ import java.util.HashMap
 class AdminMovie {
 	TrailFlix			trailFlix
 	String				titulo
-	int					duracion_ingresada
+	int					duracion_ingresada = 0
 	LocalDate			fecha_estreno_ingresada = new LocalDate(1990,1,1)	//Default
 	List<Integer>		dias_del_mes
 	Integer				dia
 	List<String>		meses
 	Map<String,Integer>	map_meses = new HashMap
-	String				mes = "Enero"
+	String				mes
 	List<Integer>		anios
 	Integer				anio
 	String				directores_elegidos
@@ -49,6 +49,7 @@ class AdminMovie {
 	Contenido			new_relacionado		//Seteado desde AdminContent
 	String				link_ingresado
 	Pelicula			pelicula
+	boolean				datos_completados = false	//Solo es true cuando todos los campos en la UI fueron completados
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
@@ -167,15 +168,32 @@ class AdminMovie {
 		relacionado.add(nuevo)
 	}
 	
+	/*
+	 * Prop: evalua si todos los campos en UI estan completados y en caso de que sea cierto enciende el boton Aceptar.
+	 * Nota: debe ser llamado al final de cada setter.
+	 */
+	def evaluarCompletado() {
+		if (todoCompletado) {
+			datos_completados = true
+		}
+	}
+	
+	def boolean todoCompletado() {
+		titulo !== null && duracion_ingresada !== 0 && sel_clasificacion !== null &&
+		dia !== null && mes !== null && anio !== null && directores_elegidos !== null &&
+		actores_principales !== null && link_ingresado !== null
+	}
+	
 //-----------------GETTERS Y SETTERS----------------------------
 
 	def List<Integer> getDias_del_mes() {
-		var int min = 1
-		var int max = 31
+		var int min
+		var int max
 		val List<Integer> lista = newArrayList()
-// 		val Calendar calendario = Calendar.getInstance
-// 		min = calendario.getActualMinimum(fecha_estreno_ingresada.getMonthOfYear)
-// 		max = calendario.getActualMaximum(fecha_estreno_ingresada.getMonthOfYear)
+ 		val Calendar calendario = Calendar.getInstance
+ 		calendario.set(1900,fecha_estreno_ingresada.getMonthOfYear-1,1)	//Se le resta 1 por ser zero-based
+ 		min = calendario.getActualMinimum(5)	//El campo 5 es el mes
+ 		max = calendario.getActualMaximum(5)
  		(min..max).iterator.forEach[lista.add(it)]
  		return lista
 	}
@@ -185,7 +203,21 @@ class AdminMovie {
 	}
 	
 	def void setDia(Integer dia) {
-		fecha_estreno_ingresada.withDayOfMonth(dia)
+		fecha_estreno_ingresada = fecha_estreno_ingresada.withDayOfMonth(dia)
+		this.dia = dia
+		evaluarCompletado
+	}
+	
+	def void setMes(String mes) {
+		fecha_estreno_ingresada = fecha_estreno_ingresada.withMonthOfYear(map_meses.get(mes))
+		this.mes = mes
+		evaluarCompletado
+	}
+	
+	def void setAnio(Integer anio) {
+		fecha_estreno_ingresada = fecha_estreno_ingresada.withYear(anio)
+		this.anio = anio
+		evaluarCompletado
 	}
 			
 	def List<Integer> getAnios() {
@@ -194,12 +226,35 @@ class AdminMovie {
 		lista
 	}
 	
+	def void setTitulo(String titulo) {
+		this.titulo = titulo
+		evaluarCompletado
+	}
 	
+	def void setDuracion_ingresada(int duracion_ingresada) {
+		this.duracion_ingresada = duracion_ingresada
+		evaluarCompletado
+	}
 	
+	def void setSel_clasificacion(Clasificacion sel_clasificacion) {
+		this.sel_clasificacion = sel_clasificacion
+		evaluarCompletado
+	}
 	
+	def void setDirectores_elegidos(String directores_elegidos) {
+		this.directores_elegidos = directores_elegidos
+		evaluarCompletado
+	}
 	
+	def void setActores_principales(String actores_principales) {
+		this.actores_principales = actores_principales
+		evaluarCompletado
+	}
 	
-	
+	def void setLink_ingresado(String link_ingresado) {
+		this.link_ingresado = link_ingresado
+		evaluarCompletado
+	}
 	
 	
 	

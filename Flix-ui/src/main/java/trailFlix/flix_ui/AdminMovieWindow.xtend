@@ -37,7 +37,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		new Label(panelTitulo).text = "Título"
 		new TextBox(panelTitulo) => [
 			value <=> "titulo"
-			width = 100
+			width = 100  
 		]
 		
 		//Datos
@@ -177,6 +177,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		
 		new Button(mainPanel) => [		//Agregar pelicula
 			caption = "Aceptar"
+			bindEnabledToProperty("datos_completados")
 			onClick [ | {modelObject.nuevaPeli ; close}]
 		]
 	}
