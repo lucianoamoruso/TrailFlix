@@ -3,8 +3,9 @@ package flix
 import static org.junit.Assert.*
 import org.junit.Test
 import trailFlix.flix.model.TrailFlix
+import junit.framework.TestCase
 
-class TrailFlixTest {
+class TrailFlixTest  extends TestCase {
 	def void testCreacion() {
 		val tf = new TrailFlix(null)
 		//assertNull(null,tf.ventana)
