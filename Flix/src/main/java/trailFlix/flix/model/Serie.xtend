@@ -1,16 +1,15 @@
 package trailFlix.flix.model
 
-import java.util.ArrayList
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
 
 @Accessors
 @Observable
 class Serie extends Contenido {
 	
-	ArrayList <String> creadores
-	ArrayList <Capitulo> capitulos
+	List <String> creadores
+	List <Capitulo> capitulos
 	int temporadas
 	List<Contenido> contRelacionado
 		

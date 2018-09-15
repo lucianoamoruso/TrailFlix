@@ -1,6 +1,5 @@
 package trailFlix.flix_ui
 
-import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
@@ -12,18 +11,15 @@ import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContent
 import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.appModel.AdminMovieInfo
-import org.uqbar.arena.windows.Dialog
 
 class AdminMovieWindow extends Dialog<AdminMovie> {
-	
-	protected Button botton
 	
 	new(WindowOwner owner, AdminMovie model) {
 		super(owner, model)
@@ -179,7 +175,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 			onClick [ | close]
 		]
 		
-		botton = new Button(mainPanel) => [		//Agregar pelicula
+		new Button(mainPanel) => [		//Agregar pelicula
 			caption = "Aceptar"
 			onClick [ | {modelObject.nuevaPeli ; close}]
 		]

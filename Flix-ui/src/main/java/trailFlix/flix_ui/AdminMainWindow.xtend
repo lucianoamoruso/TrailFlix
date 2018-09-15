@@ -48,7 +48,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		new Label(panelPeliLabel).text = "Pel�culas"
+		new Label(panelPeliLabel).text = "Peliculas"
 		
 		//Busqueda----------------------------------------
 		val panelPeliFind = new Panel(mainPanel) => [
@@ -86,7 +86,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelPeliButtons) => [
 			bindEnabledToProperty("hay_peli_sel")
 			caption = "Modificar"
-			onClick [ | new AdminMovieModifyWindow(this, new AdminMovie(modelObject.sel_pelicula)).open]
+			onClick [ | new AdminMovieModifyWindow(this, new AdminMovie(modelObject.trailFlix)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Borrar"

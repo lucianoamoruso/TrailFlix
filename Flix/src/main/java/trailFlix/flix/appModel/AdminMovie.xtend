@@ -21,8 +21,7 @@ import java.util.HashMap
 
 @Accessors
 @Observable
-@Transactional
-class AdminMovie extends Entity{
+class AdminMovie {
 	TrailFlix			trailFlix
 	String				titulo
 	int					duracion_ingresada
@@ -34,8 +33,8 @@ class AdminMovie extends Entity{
 	String				mes = "Enero"
 	List<Integer>		anios
 	Integer				anio
-	ArrayList<String>	directores_elegidos
-	ArrayList<String>	actores_principales
+	String				directores_elegidos
+	String				actores_principales
 	InterpretadorFecha	interpretador
 	List<Categoria>		categorias_disp = Categoria.values
 	Categoria 			sel_categorias
@@ -79,7 +78,7 @@ class AdminMovie extends Entity{
 		es_accion = peli.categorias.exists[it == Categoria.ACCION]
 		sel_clasificacion = peli.clasificacion
 		relacionado.addAll( peli.contRelacionado)
-		//ssel_relacionado
+		//sel_relacionado
 		//new_relacionado
 		link_ingresado = peli.link
 	}
