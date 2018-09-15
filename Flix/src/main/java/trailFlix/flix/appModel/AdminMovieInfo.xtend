@@ -23,6 +23,14 @@ class AdminMovieInfo {
 		pelicula.fechaEstreno.toString
 	}
 	
+	def clasificacion() {
+		pelicula.clasificacion.toString
+	}
+	
+	def categorias() {
+		pelicula.categorias.toString
+	}
+	
 	def reparto() {
 		pelicula.actores.toString
 	}
@@ -48,5 +56,6 @@ class AdminMovieInfo {
 	def contenido_relacionado() {
 		pelicula.contRelacionado.toString
 	}
+	
 	
 }

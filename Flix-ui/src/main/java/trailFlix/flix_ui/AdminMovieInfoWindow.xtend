@@ -25,7 +25,7 @@ class AdminMovieInfoWindow extends Dialog <AdminMovieInfo> {
 			fontSize = 12
 		]
 		new Label (panelInfoLabel) => [
-			text = modelObject.duracion
+			text = modelObject.duracion + " mins"
 			fontSize = 11
 		]
 		new Label (panelInfoLabel) => [
@@ -34,6 +34,22 @@ class AdminMovieInfoWindow extends Dialog <AdminMovieInfo> {
 		]
 		new Label (panelInfoLabel) => [
 			text = modelObject.fecha_estreno
+			fontSize = 11
+		]
+		new Label (panelInfoLabel) => [
+			text = "Clasificación"
+			fontSize = 12
+		]
+		new Label (panelInfoLabel) => [
+			text = modelObject.clasificacion
+			fontSize = 11
+		]
+		new Label (panelInfoLabel) => [
+			text = "Categorías"
+			fontSize = 12
+		]
+		new Label (panelInfoLabel) => [
+			text = modelObject.categorias
 			fontSize = 11
 		]
 		new Label (panelInfoLabel) => [

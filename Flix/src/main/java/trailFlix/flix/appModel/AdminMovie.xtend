@@ -1,7 +1,10 @@
 package trailFlix.flix.appModel
 
 import java.util.ArrayList
+import java.util.Calendar
+import java.util.HashMap
 import java.util.List
+import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.LocalDate
 import org.uqbar.commons.model.annotations.Observable
@@ -10,14 +13,6 @@ import trailFlix.flix.model.Clasificacion
 import trailFlix.flix.model.Contenido
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.TrailFlix
-import java.util.ArrayList
-import trailFlix.flix.model.Pelicula
-import org.joda.time.DateTime
-import org.uqbar.commons.model.Entity
-import org.uqbar.commons.model.annotations.Transactional
-import java.util.Calendar
-import java.util.Map
-import java.util.HashMap
 
 @Accessors
 @Observable
@@ -129,6 +124,8 @@ class AdminMovie {
 	def evaluarCompletado() {
 		if (todoCompletado) {
 			datos_completados = true
+		} else {
+			datos_completados = false
 		}
 	}
 	
@@ -164,6 +161,7 @@ class AdminMovie {
 	
 	def void setMes(String mes) {
 		fecha_estreno_ingresada = fecha_estreno_ingresada.withMonthOfYear(map_meses.get(mes))
+		dias_del_mes = dias_del_mes		//Truco para notificar de cambio
 		this.mes = mes
 		evaluarCompletado
 	}

@@ -18,16 +18,16 @@ import trailFlix.flix.model.Serie
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminUserList
 import trailFlix.flix.appModel.AdminSerieInfo
+import trailFlix.flix.appModel.AdminMovieModify
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
 		super(new AdminMain)
-		title = "A�ada contenido relacionado"
 	}
 	
 	override createContents(Panel mainPanel) {
-		this.title = "Administraci�n de TrailFlix"
+		this.title = "Administración de TrailFlix"
 		
 		generarElementosDePeliculas(mainPanel)
 		generarElementosDeSeries(mainPanel)
