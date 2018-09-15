@@ -86,7 +86,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelPeliButtons) => [
 			bindEnabledToProperty("hay_peli_sel")
 			caption = "Modificar"
-			onClick [ | new AdminMovieModifyWindow(this, new AdminMovie(modelObject.trailFlix)).open]
+			onClick [ | new AdminMovieModifyWindow(this, new AdminMovieModify(modelObject.trailFlix,modelObject.sel_pelicula)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Borrar"
