@@ -19,6 +19,7 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminUserList
 import trailFlix.flix.appModel.AdminSerieInfo
 import trailFlix.flix.appModel.AdminMovieModify
+import trailFlix.flix.appModel.AdminSerie
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -160,6 +161,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new Button(panelSerieButtons) => [
 			caption = "Nuevo"
+			onClick [ | new AdminSerieWindow(this, new AdminSerie(modelObject.trailFlix)).open]
 		]
 		new Button(panelSerieButtons) => [
 			caption = "Ver"
