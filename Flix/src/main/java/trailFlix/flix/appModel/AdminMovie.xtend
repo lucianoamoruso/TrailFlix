@@ -142,7 +142,7 @@ class AdminMovie {
 		var int max
 		val List<Integer> lista = newArrayList()
  		val Calendar calendario = Calendar.getInstance
- 		calendario.set(1900,fecha_estreno_ingresada.getMonthOfYear-1,1)	//Se le resta 1 por ser zero-based
+ 		calendario.set(fecha_estreno_ingresada.getYear,fecha_estreno_ingresada.getMonthOfYear-1,1)	//Se le resta 1 por ser zero-based
  		min = calendario.getActualMinimum(5)	//El campo 5 es el mes
  		max = calendario.getActualMaximum(5)
  		(min..max).iterator.forEach[lista.add(it)]
@@ -154,8 +154,13 @@ class AdminMovie {
 	}
 	
 	def void setDia(Integer dia) {
-		fecha_estreno_ingresada = fecha_estreno_ingresada.withDayOfMonth(dia)
-		this.dia = dia
+		try {
+			fecha_estreno_ingresada = fecha_estreno_ingresada.withDayOfMonth(dia)
+			this.dia = dia
+		}
+		catch(NullPointerException ex) {
+			//ignorar
+		}
 		evaluarCompletado
 	}
 	
@@ -168,6 +173,7 @@ class AdminMovie {
 	
 	def void setAnio(Integer anio) {
 		fecha_estreno_ingresada = fecha_estreno_ingresada.withYear(anio)
+		dias_del_mes = dias_del_mes		//Truco para notificar de cambio
 		this.anio = anio
 		evaluarCompletado
 	}
