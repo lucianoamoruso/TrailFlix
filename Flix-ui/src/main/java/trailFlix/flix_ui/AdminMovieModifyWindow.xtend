@@ -13,6 +13,6 @@ class AdminMovieModifyWindow extends AdminMovieWindow{
 	
 	override void administrarContenidoRelacionado(Panel mainPanel) {
 		super.administrarContenidoRelacionado(mainPanel)
-		botton.onClick [ | {modelObject.modPeli ;close }]
+		boton.onClick [ | {modelObject.nuevaPeli ;close }]
 	}
 }
