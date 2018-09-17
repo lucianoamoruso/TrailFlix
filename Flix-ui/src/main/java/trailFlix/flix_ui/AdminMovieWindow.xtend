@@ -177,6 +177,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		
 		new Button(mainPanel) => [		//Agregar pelicula
 			caption = "Aceptar"
+			disableOnError
 			bindEnabledToProperty("datos_completados")
 			onClick [ | {modelObject.nuevaPeli ; close}]
 		]

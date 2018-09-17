@@ -12,6 +12,7 @@ class AdminUserList {
 	TrailFlix		trailFlix
 	List<Usuario>	usuarios
 	Usuario			sel_usuario
+	String			user_find
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix

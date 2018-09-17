@@ -2,7 +2,12 @@ package trailFlix.flix.model
 
 import org.joda.time.DateTime
 import java.util.ArrayList
+import org.uqbar.commons.model.annotations.Observable
+import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.List
 
+@Accessors
+@Observable
 class Usuario {
 	
 	int codigo
@@ -10,10 +15,10 @@ class Usuario {
 	String nombre
 	DateTime fechaRegistro
 	DateTime fechaNacimiento
-	public ArrayList <Usuario> amigos
-	public ArrayList <Contenido> contVisto
-	public ArrayList <Contenido> contFavorito
-	public ArrayList <Contenido> contRecomendado
+	public List <Usuario> amigos
+	public List <Contenido> contVisto
+	public List <Contenido> contFavorito
+	public List <Contenido> contRecomendado
 	
 	new(int codigo, String nombreDeUsuario, String nombre) {
 		this.codigo = codigo

@@ -9,15 +9,16 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminUserList
-import trailFlix.flix.model.Pelicula
+import trailFlix.flix.model.Usuario
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.model.Usuario
+import org.uqbar.arena.layout.VerticalLayout
 
 class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	
 	new(WindowOwner parent, AdminUserList model) {
 		super(parent, model)
+		taskDescription = "Elija un usuario para información adicional"
 	}
 	
 	override protected addActions(Panel actionsPanel) {
@@ -35,26 +36,39 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 			value <=> "user_find"
 			width = 250
 		]
-		new Button(panelBusquedaVista) => [
+		
+		val panelTablaUsuarios = new Panel(mainPanel) => [
+			layout = new HorizontalLayout
+		]
+		val int columnVis = 6
+		crearListaUsuarios(panelTablaUsuarios, columnVis)
+		
+		val panelBotonCentrado = new Panel(panelTablaUsuarios) => [
+			layout = new VerticalLayout
+		]
+		centrarVerticalElemento(140,panelBotonCentrado)
+		new Button(panelBotonCentrado) => [
 			caption = "Ver"
+			height = columnVis * 10 + 10
+			width = columnVis * 10 + 10
+			setAsDefault
+			
 			onClick [ | ]	//Se abre AdminUserWindow
 		]
 		
-		crearListaUsuarios(mainPanel)
-		
-		new Button(panelBusquedaVista) => [
+		new Button(mainPanel) => [
 			caption = "Cerrar"
 			onClick [ | close]
 		]
 		
 	}
 	
-	def void crearListaUsuarios(Panel mainPanel) {
+	def void crearListaUsuarios(Panel mainPanel, int visibles) {
 		
 		val tablaUsuarios = new Table<Usuario>(mainPanel, typeof(Usuario)) => [
 			items <=> "usuarios"
 			value <=> "sel_usuario"
-			numberVisibleRows = 3
+			numberVisibleRows = visibles
 		]
 		new Column<Usuario>(tablaUsuarios) => [
 			title = "Username"
@@ -70,6 +84,20 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 			bindContentsToProperty("contFavorito")
 		]
 		
+	}
+	
+	/*
+	 * Prop: este metodo rellena de paneles vacios para lograr centrar un elemento.
+	 * Nota: este metodo en realidad no ubica a cualquier elemento en el centro sino que crea su esquina superior
+	 * 		 izquierda en el centro del panel contenedor. (ahora mismo esto no es cierto ya que acomoda a "ver"
+	 * 		 en el centro.
+	 */
+	def void centrarVerticalElemento(int container_height, Panel panel) {
+		//Se estima que cada panel vacio ocupa 15 pixeles de alto
+		val int paneles = container_height / 30
+		for (var int i=0;i<paneles;i++) {
+			new Panel(panel)
+		}
 	}
 	
 }
