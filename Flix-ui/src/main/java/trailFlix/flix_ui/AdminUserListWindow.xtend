@@ -13,6 +13,7 @@ import trailFlix.flix.model.Usuario
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.layout.VerticalLayout
+import trailFlix.flix.appModel.AdminUser
 
 class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	
@@ -46,14 +47,14 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 		val panelBotonCentrado = new Panel(panelTablaUsuarios) => [
 			layout = new VerticalLayout
 		]
-		centrarVerticalElemento(140,panelBotonCentrado)
+		centrarVerticalElemento(120,70,panelBotonCentrado)
 		new Button(panelBotonCentrado) => [
 			caption = "Ver"
 			height = columnVis * 10 + 10
 			width = columnVis * 10 + 10
 			setAsDefault
 			
-			onClick [ | ]	//Se abre AdminUserWindow
+			onClick [ | new AdminUserWindow(this, new AdminUser(modelObject.sel_usuario)).open]
 		]
 		
 		new Button(mainPanel) => [
@@ -87,17 +88,23 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	}
 	
 	/*
-	 * Prop: este metodo rellena de paneles vacios para lograr centrar un elemento.
-	 * Nota: este metodo en realidad no ubica a cualquier elemento en el centro sino que crea su esquina superior
-	 * 		 izquierda en el centro del panel contenedor. (ahora mismo esto no es cierto ya que acomoda a "ver"
-	 * 		 en el centro.
+	 * Prop: crea un boton invisible para centrar verticalmente el elemento deseado dentro de un contenedor.
 	 */
-	def void centrarVerticalElemento(int container_height, Panel panel) {
-		//Se estima que cada panel vacio ocupa 15 pixeles de alto
-		val int paneles = container_height / 30
-		for (var int i=0;i<paneles;i++) {
-			new Panel(panel)
-		}
+	def void centrarVerticalElemento(int container_height, int element_height, Panel panel) {
+		new Button(panel) => [
+			height = container_height/2 - element_height/2
+			bindVisibleToProperty("visible")
+		]
+	}
+	
+	/*
+	 * Prop: crea un boton invisible para centrar horizontalmente el elemento deseado dentro de un contenedor.
+	 */
+	def void centrarHorizontalElemento(int container_width, int element_width, Panel panel) {
+		new Button(panel) => [
+			width = container_width/2 - element_width/2
+			bindVisibleToProperty("visible")
+		]
 	}
 	
 }

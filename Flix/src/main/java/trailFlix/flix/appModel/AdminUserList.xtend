@@ -13,6 +13,7 @@ class AdminUserList {
 	List<Usuario>	usuarios
 	Usuario			sel_usuario
 	String			user_find
+	boolean 		visible = false		//Se usa para crear elementos invisibles
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
