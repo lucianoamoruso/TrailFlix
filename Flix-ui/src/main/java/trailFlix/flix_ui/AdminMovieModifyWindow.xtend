@@ -10,9 +10,4 @@ class AdminMovieModifyWindow extends AdminMovieWindow{
 		super(owner, modelpelicula)
 		taskDescription = "Modifique una película"
 	}
-	
-	override void administrarContenidoRelacionado(Panel mainPanel) {
-		super.administrarContenidoRelacionado(mainPanel)
-		botton.onClick [ | {modelObject.modPeli ;close }]
-	}
 }
