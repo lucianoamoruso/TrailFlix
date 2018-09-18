@@ -13,8 +13,8 @@ class AdminMain {
 	TrailFlix		trailFlix
 	List<Pelicula>	peliculas
 	List<Serie>		series
-	String			peli_find
-	String			serie_find
+	String			peli_find = ""
+	String			serie_find = ""
 	Pelicula		sel_pelicula
 	Serie			sel_serie
 	boolean 		hay_peli_sel = false
@@ -29,25 +29,28 @@ class AdminMain {
 	}
 	
 	/*
-	 * Prop: respuesta a una notificacion de cambio de TrailFlix.
+	 * Prop: respuesta a una notificacion de cambio de TrailFlix y llamado al buscar en las tablas.
 	 */
 	def actualizarContenidos() {
-		peliculas = trailFlix.peliculas
-		series = trailFlix.series		
+		
+		val List<Pelicula> peliculas = trailFlix.peliculas
+		this.peliculas = peliculas.filter[pelicula|this.match(peli_find, pelicula.titulo)].toList
+		if (sel_pelicula === null) {hay_peli_sel = false}
+		
+		val List<Serie> series = trailFlix.series
+		this.series = series.filter[serie|this.match(serie_find, serie.titulo)].toList
+		if (sel_serie === null) {hay_serie_sel = false}
+		
 	}
 	
-	/*
-	 * Prop: Busca peliculas procesando el texto guardado en this.peli_find.
-	 */
-	def buscarPeliculas() {
-		//TODO
-	}
-	
-	/*
-	 * Prop: Busca series procesando el texto guardado en this.serie_find.
-	 */
-	def buscarSeries() {
-		//TODO
+	def match(Object expectedValue, Object realValue) {
+		if (expectedValue === null) {
+			return true
+		}
+		if (realValue === null) {
+			return false
+		}
+		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
 	}
 	
 	/*
@@ -59,24 +62,38 @@ class AdminMain {
 	
 	def quitarPelicula() {
 		trailFlix.eliminarPelicula(sel_pelicula)
-		actualizarContenidos
-		hay_peli_sel = false
+		actualizarContenidos()
 	}
 	
 	def quitarSerie() {
 		trailFlix.eliminarSerie(sel_serie)
-		actualizarContenidos
-		hay_serie_sel = false
+		actualizarContenidos()
 	}
 
 	def void setSel_pelicula(Pelicula sel_pelicula) {
+		if (sel_pelicula !== null) {
+			hay_peli_sel = true
+		}
 		this.sel_pelicula = sel_pelicula
-		hay_peli_sel = true
 	}
 	
 	def void setSel_serie(Serie sel_serie) {
+		if (sel_serie !== null) {
+			hay_serie_sel = true
+		}
 		this.sel_serie = sel_serie
-		hay_serie_sel = true
 	}
+	
+	def void setPeli_find(String peli_find) {
+		this.peli_find = peli_find
+		actualizarContenidos()
+	}
+	
+	def void setSerie_find(String serie_find) {
+		this.serie_find = serie_find
+		actualizarContenidos()
+	}
+	
+	
 	
 }

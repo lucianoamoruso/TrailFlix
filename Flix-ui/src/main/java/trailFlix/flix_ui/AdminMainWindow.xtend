@@ -60,10 +60,6 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			value <=> "peli_find"
 			width = 150
 		]
-		new Button(panelPeliFind) => [
-			caption = "Buscar"
-			onClick [ | this.modelObject.buscarPeliculas]
-		]
 		
 		//Base de datos-----------------------------------
 		val panelPeliDB = new Panel(mainPanel) => [
@@ -145,10 +141,6 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new TextBox(panelSerieFind) => [
 			value <=> "serie_find"
 			width = 150
-		]
-		new Button(panelSerieFind) => [
-			caption = "Buscar"
-			onClick [ | modelObject.buscarSeries]
 		]
 		//Base de datos-----------------------------------
 		val panelSerieDB = new Panel(mainPanel) => [

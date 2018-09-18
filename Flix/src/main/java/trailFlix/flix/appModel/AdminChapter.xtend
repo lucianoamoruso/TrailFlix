@@ -28,7 +28,6 @@ class AdminChapter {
 	Integer				anio
 	String				directores_elegidos
 	String				actores_principales
-	InterpretadorFecha	interpretador
 	String				link_ingresado
 	int					duracion_ingresada = 0
 	Capitulo 			capituloNuevo

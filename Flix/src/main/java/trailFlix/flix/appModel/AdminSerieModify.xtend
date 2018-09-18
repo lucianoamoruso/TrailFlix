@@ -28,6 +28,7 @@ class AdminSerieModify extends AdminSerie {
 		relacionado.addAll( sel.contRelacionado)
 		//sel_relacionado
 		//new_relacionado
+		evaluarCompletado
 	}
 
 	/*
