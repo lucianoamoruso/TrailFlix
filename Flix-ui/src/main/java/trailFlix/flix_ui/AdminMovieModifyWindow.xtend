@@ -9,5 +9,6 @@ class AdminMovieModifyWindow extends AdminMovieWindow{
 	new(WindowOwner owner, AdminMovie modelpelicula) {
 		super(owner, modelpelicula)
 		taskDescription = "Modifique una película"
+		//owner.delegate
 	}
 }

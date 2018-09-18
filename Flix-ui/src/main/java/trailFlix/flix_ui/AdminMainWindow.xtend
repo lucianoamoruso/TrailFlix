@@ -20,6 +20,7 @@ import trailFlix.flix.appModel.AdminUserList
 import trailFlix.flix.appModel.AdminSerieInfo
 import trailFlix.flix.appModel.AdminMovieModify
 import trailFlix.flix.appModel.AdminSerie
+import trailFlix.flix.appModel.AdminSerieModify
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -171,6 +172,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelSerieButtons) => [
 			bindEnabledToProperty("hay_serie_sel")
 			caption = "Modificar"
+			onClick [ | new AdminSerieModifyWindow(this, new AdminSerieModify(modelObject.trailFlix,modelObject.sel_serie)).open]
 		]
 		new Button(panelSerieButtons) => [
 			caption = "Borrar"
