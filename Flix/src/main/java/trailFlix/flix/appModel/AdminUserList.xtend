@@ -13,11 +13,16 @@ class AdminUserList {
 	List<Usuario>	usuarios
 	Usuario			sel_usuario
 	String			user_find
+	boolean			listo = false
 	boolean 		visible = false		//Se usa para crear elementos invisibles
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
 		usuarios = trailFlix.usuarios
 	}
-	
+
+	def void setSel_usuario(Usuario sel_usuario) {
+		this.sel_usuario = sel_usuario
+		listo = true
+	}	
 }

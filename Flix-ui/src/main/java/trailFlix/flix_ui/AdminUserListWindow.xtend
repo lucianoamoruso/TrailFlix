@@ -53,7 +53,7 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 			height = columnVis * 10 + 10
 			width = columnVis * 10 + 10
 			setAsDefault
-			
+			bindEnabledToProperty("listo")
 			onClick [ | new AdminUserWindow(this, new AdminUser(modelObject.sel_usuario)).open]
 		]
 		
@@ -93,6 +93,7 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	def void centrarVerticalElemento(int container_height, int element_height, Panel panel) {
 		new Button(panel) => [
 			height = container_height/2 - element_height/2
+			width = 0
 			bindVisibleToProperty("visible")
 		]
 	}
@@ -103,6 +104,7 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	def void centrarHorizontalElemento(int container_width, int element_width, Panel panel) {
 		new Button(panel) => [
 			width = container_width/2 - element_width/2
+			height = 0
 			bindVisibleToProperty("visible")
 		]
 	}

@@ -1,9 +1,9 @@
 package trailFlix.flix.model
 
-import java.util.List
 import java.util.ArrayList
+import java.util.List
 import trailFlix.flix.appModel.AdminMain
-import org.uqbar.commons.model.annotations.Dependencies
+import org.joda.time.LocalDate
 
 class TrailFlix {
 	List<Usuario> usuarios
@@ -136,11 +136,48 @@ class TrailFlix {
 			add(serie3)
 		]
 		
+		val user1 = new Usuario(0001,"carlos3","Carlos") => [
+			fechaRegistro = new LocalDate(1980,12,26)
+			fechaNacimiento = new LocalDate(1970,10,22)
+			contVisto = newArrayList(peli1,peli2,serie3)
+			contFavorito = newArrayList(peli2)
+			contRecomendado = newArrayList(peli1,serie3)
+		]
+		
+		val user2 = new Usuario(0002,"pedro54","Pedro") => [
+			fechaRegistro = new LocalDate(2001,9,15)
+			fechaNacimiento = new LocalDate(2000,2,7)
+			contVisto = newArrayList(peli1,peli2,serie3,peli3)
+			contFavorito = newArrayList(peli2,serie3)
+			contRecomendado = newArrayList(peli1,serie3)
+		]
+		
+		val user3 = new Usuario(0003,"jose100","Jose") => [
+			fechaRegistro = new LocalDate(1999,12,31)
+			fechaNacimiento = new LocalDate(1995,5,17)
+			contVisto = newArrayList(peli1,peli3)
+			contFavorito = newArrayList()
+			contRecomendado = newArrayList(peli3)
+		]
+		
+		val user4 = new Usuario(0004,"xXxMiguexXx","Miguel") => [
+			fechaRegistro = new LocalDate(2000,1,1)
+			fechaNacimiento = new LocalDate(1000,12,25)
+			contVisto = newArrayList(peli3,peli2,serie2)
+			contFavorito = newArrayList(serie1)
+			contRecomendado = newArrayList()
+		]
+		
+		user1.amigos.addAll(user2,user3)
+		user2.amigos.addAll(user1,user3)
+		user3.amigos.addAll(user2,user1)
+		//user 4 no tiene amigos :(
+			
 		usuarios => [
-			add(new Usuario(0001,"carlos3","Carlos"))
-			add(new Usuario(0002,"pedro54","Pedro"))
-			add(new Usuario(0003,"jose100","Jose"))
-			add(new Usuario(0004,"xXxMiguexXx","Miguel"))
+			add(user1)
+			add(user2)
+			add(user3)
+			add(user4)
 		]
 	}
 	

@@ -185,7 +185,11 @@ class AdminMovie {
 	}
 	
 	def void setTitulo(String titulo) {
-		this.titulo = titulo
+		if (titulo == "") {
+			this.titulo = null
+		} else {
+			this.titulo = titulo
+		}
 		evaluarCompletado
 	}
 	
@@ -200,17 +204,30 @@ class AdminMovie {
 	}
 	
 	def void setDirectores_elegidos(String directores_elegidos) {
-		this.directores_elegidos = directores_elegidos
+		if (directores_elegidos == "") {
+			this.directores_elegidos = null
+		} else {
+			this.directores_elegidos = directores_elegidos
+		}
 		evaluarCompletado
 	}
 	
 	def void setActores_principales(String actores_principales) {
-		this.actores_principales = actores_principales
+		if (actores_principales == "") {
+			this.actores_principales = null
+		} else {
+			this.actores_principales = actores_principales
+		}
 		evaluarCompletado
 	}
 	
 	def void setLink_ingresado(String link_ingresado) {
-		this.link_ingresado = link_ingresado
+		if (link_ingresado == "") {
+			this.link_ingresado = null
+		} else {
+			this.link_ingresado = link_ingresado
+		}
 		evaluarCompletado
 	}
+	
 }
