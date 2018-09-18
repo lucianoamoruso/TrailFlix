@@ -86,7 +86,7 @@ class AdminMovie {
 	/*
 	 * Prop: revisa que categorias fueron tildadas y devuelve una lista conteniendolas.
 	 */
-	protected def ArrayList<Categoria> recolectarCategorias() {
+	def ArrayList<Categoria> recolectarCategorias() {
 		var ArrayList<Categoria> ret = new ArrayList
 		if (es_accion) {
 			ret.add(Categoria.ACCION)

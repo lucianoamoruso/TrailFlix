@@ -80,14 +80,26 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		
 		//Contenido Relacionado
 		administrarContenidoRelacionado(mainPanel)
+				
+		//Confirmacion
+		new Button(mainPanel) => [
+			caption = "Cancelar"
+			onClick [ | close]
+		]
 		
+		new Button(mainPanel) => [		//Agregar pelicula
+			caption = "Aceptar"
+			disableOnError
+			bindEnabledToProperty("datos_completados")
+			onClick [ | {modelObject.nuevaPeli ; close}]
+		]
 	}
 	
 	def void crearInputFechaEstreno(Panel panelDatos) {
 		
 		new Label(panelDatos).text = "Fecha estreno"
 		val panelFechas = new Panel(panelDatos) => [
-			layout = new HorizontalLayout
+			layout = new VerticalLayout
 		]
 		new Label(panelFechas).text = "Día"
 		new Selector(panelFechas) => [
@@ -167,19 +179,6 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 			allowNull(false)
 			value <=> "sel_relacionado"
 			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
-		]
-		
-		//Confirmacion
-		new Button(mainPanel) => [
-			caption = "Cancelar"
-			onClick [ | close]
-		]
-		
-		new Button(mainPanel) => [		//Agregar pelicula
-			caption = "Aceptar"
-			disableOnError
-			bindEnabledToProperty("datos_completados")
-			onClick [ | {modelObject.nuevaPeli ; close}]
 		]
 	}
 

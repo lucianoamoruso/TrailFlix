@@ -10,15 +10,16 @@ import trailFlix.flix.model.Serie
 @Accessors
 @Observable
 class AdminMain {
-	TrailFlix trailFlix
-	List<Pelicula> peliculas
-	List<Serie> series
-	String peli_find
-	String serie_find
-	Pelicula sel_pelicula
-	Serie sel_serie
-	boolean hay_peli_sel = false
-	boolean hay_serie_sel = false
+	TrailFlix		trailFlix
+	List<Pelicula>	peliculas
+	List<Serie>		series
+	String			peli_find
+	String			serie_find
+	Pelicula		sel_pelicula
+	Serie			sel_serie
+	boolean 		hay_peli_sel = false
+	boolean			hay_serie_sel = false
+	boolean			visible = false
 	
 	new() {
 		trailFlix = new TrailFlix(this) => [rellenarDatos]

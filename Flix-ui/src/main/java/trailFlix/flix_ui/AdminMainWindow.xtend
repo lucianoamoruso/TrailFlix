@@ -38,19 +38,18 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 //	PELICULA
 
 	def void generarElementosDePeliculas(Panel mainPanel) {
+		
 		//Pelis y ver Usuarios----------------------------
-		val verUsuario = new Panel(mainPanel) => [
-			layout = new HorizontalLayout
-		]
-		new Button(verUsuario) => [
-			caption = "Usuarios"
-//			iconImage = "undefined"
-			onClick [ | new AdminUserListWindow(this, new AdminUserList(modelObject.trailFlix)).open]
-		]
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
 		new Label(panelPeliLabel).text = "Peliculas"
+		ocuparEspacio(500,0,panelPeliLabel)
+		new Button(panelPeliLabel) => [
+			caption = "Usuarios"
+//			iconImage = "undefined"
+			onClick [ | new AdminUserListWindow(this, new AdminUserList(modelObject.trailFlix)).open]
+		]
 		
 		//Busqueda----------------------------------------
 		val panelPeliFind = new Panel(mainPanel) => [
@@ -207,6 +206,17 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Column<Serie>(tablaSeries) => [
 			title = "Capitulos"
 			bindContentsToProperty("capitulos")
+		]
+	}
+	
+	/*
+	 * Prop: rellena espacio en un panel para ubicar elementos en el lugar deseado.
+	 */
+	def void ocuparEspacio(int ancho, int alto, Panel panel) {
+		new Button(panel) => [
+			width = ancho
+			height = alto
+			bindVisibleToProperty("visible")
 		]
 	}
 	

@@ -4,17 +4,25 @@ import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.Categoria
 import java.util.ArrayList
+import java.util.Map
+import java.util.HashMap
+import java.util.List
 
 class AdminMovieModify extends AdminMovie {
+	Map<Integer,String>	map_reverso = new HashMap
+	
 	new(TrailFlix trailFlix,Pelicula peli){
 		super(trailFlix)
 		this.trailFlix = null
 		pelicula = peli
-		
+		crearMapeoInversoMeses()
 		titulo = peli.titulo
 		duracion_ingresada = peli.duracion
 //		interpretador
 		fecha_estreno_ingresada = peli.fechaEstreno
+		dia = fecha_estreno_ingresada.getDayOfMonth
+		mes = map_reverso.get(fecha_estreno_ingresada.getMonthOfYear)
+		anio = fecha_estreno_ingresada.getYear
 		directores_elegidos = peli.directores.reduce[p1, p2| p1 + "," + p2]
 		actores_principales = peli.actores.reduce[p1, p2| p1 + "," + p2]
 		//sel_categorias
@@ -27,6 +35,7 @@ class AdminMovieModify extends AdminMovie {
 		//sel_relacionado
 		//new_relacionado
 		link_ingresado = peli.link
+		evaluarCompletado
 	}
 	
 	/*
@@ -53,4 +62,20 @@ class AdminMovieModify extends AdminMovie {
 		]
 		
 	}
+	
+	def void crearMapeoInversoMeses() {
+		val original = map_meses
+		val List<String> claves = original.keySet.toList
+		val List<Integer> valores = original.values.toList
+		
+		for (var int i=0; i<original.size;i++) {
+			map_reverso.put(valores.get(i),claves.get(i))
+		}
+	}
+	
+	
+	
+	
+	
+	
 }
