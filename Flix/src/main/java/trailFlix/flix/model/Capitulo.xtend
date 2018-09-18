@@ -4,16 +4,17 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.DateTime
 import org.uqbar.commons.model.annotations.Observable
+import org.joda.time.LocalDate
 
 @Accessors
 @Observable
 class Capitulo {
 	
-	int codigo
+	int codigo = 0
 	String titulo
 	int temporada
 	int capituloNro
-	DateTime fechaEstreno
+	LocalDate fechaEstreno
 	int duracion
 	List <String> directores
 	List <String> actores
@@ -29,11 +30,18 @@ class Capitulo {
 	
 	def getRating(){
 		var sum = 0
-		for (i : 0 ..< this.valoraciones.size){
-			sum += this.valoraciones.get(i)	
+		if (this.valoraciones.size == 0)
+		{
+			return 0
 		}
-		sum / valoraciones.size
+		else
+		{
+			for (i : 0 ..< this.valoraciones.size){
+				sum += this.valoraciones.get(i)	
+			}
+			sum / valoraciones.size
 		}
+	}
 	
 //-------------------OVERRIDE--------------------------
 	
@@ -43,7 +51,7 @@ class Capitulo {
 	
 //-----------------GETTERS Y SETTERS----------------------------
 	
-	def setFechaEstreno(DateTime fecha) {
+	def setFechaEstreno(LocalDate fecha) {
 		this.fechaEstreno = fecha
 	}
 	
@@ -51,7 +59,7 @@ class Capitulo {
 	 * Nota: Setea mediante el parseo de un string en formato yyyy-mm-dd.
 	 */
 	def setFechaEstreno(String fecha){
-		this.fechaEstreno = DateTime.parse(fecha)
+		this.fechaEstreno = LocalDate.parse(fecha)
 	}
 	
 	/**

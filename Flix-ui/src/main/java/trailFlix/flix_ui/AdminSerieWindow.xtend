@@ -18,6 +18,7 @@ import trailFlix.flix.appModel.AdminSerie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminContentSerie
+import trailFlix.flix.appModel.AdminChapter
 
 class AdminSerieWindow extends Dialog<AdminSerie> {
 	
@@ -60,6 +61,12 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 			width = 70
 		]
 		
+		new Label(panelDatos).text = "Temporadas"
+		new TextBox(panelDatos) => [
+			value <=> "temporadas"
+			width = 70
+		]
+		
 		
 		
 		//Contenido Relacionado
@@ -68,7 +75,7 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		new Label(panelDatos).text = "Capitulos"
 		new Button(panelDatos) => [
 		caption = "Agregar Capitulo"
-		onClick [ | close]
+		onClick [ | new AdminChapterWindow(this, new AdminChapter(this.modelObject, this.modelObject.trailFlix)).open]
 		]
 		
 		//Confirmacion

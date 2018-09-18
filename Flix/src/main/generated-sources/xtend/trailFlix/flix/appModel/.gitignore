@@ -10,3 +10,9 @@
 /.AdminUser.java._trace
 /.AdminContentSerie.java._trace
 /.AdminSerie.java._trace
+<<<<<<< HEAD
+=======
+/.AdminSerieModifyWindow.java._trace
+/.AdminSerieModify.java._trace
+>>>>>>> ec71508403c0c4b545dd89a712c4206f6292716c
+/.AdminChapter.java._trace

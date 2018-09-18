@@ -120,6 +120,11 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 			numberVisibleRows = 4
 		]
 		new Column<Capitulo>(tablaCapitulos) => [
+			title = "Codigo"
+			bindContentsToProperty("codigo")
+		]
+		
+		new Column<Capitulo>(tablaCapitulos) => [
 			title = "Titulo"
 			bindContentsToProperty("titulo")
 		]
