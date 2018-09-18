@@ -60,6 +60,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			value <=> "peli_find"
 			width = 150
 		]
+		new Button(panelPeliFind) => [
+			caption = "Limpiar"
+//			iconImage = "undefined"
+			onClick [ | modelObject.limpiarPeliFind]
+		]
 		
 		//Base de datos-----------------------------------
 		val panelPeliDB = new Panel(mainPanel) => [
@@ -84,7 +89,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelPeliButtons) => [
 			bindEnabledToProperty("hay_peli_sel")
 			caption = "Modificar"
-			onClick [ | new AdminMovieModifyWindow(this, new AdminMovieModify(modelObject.trailFlix,modelObject.sel_pelicula)).open]
+			onClick [ | new AdminMovieModifyWindow(this, new AdminMovieModify(modelObject.trailFlix,modelObject,modelObject.sel_pelicula)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Borrar"
@@ -141,6 +146,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new TextBox(panelSerieFind) => [
 			value <=> "serie_find"
 			width = 150
+		]
+		new Button(panelSerieFind) => [
+			caption = "Limpiar"
+//			iconImage = "undefined"
+			onClick [ | modelObject.limpiarSerieFind]
 		]
 		//Base de datos-----------------------------------
 		val panelSerieDB = new Panel(mainPanel) => [

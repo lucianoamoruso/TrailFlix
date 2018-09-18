@@ -22,9 +22,7 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 		taskDescription = "Elija un usuario para información adicional"
 	}
 	
-	override protected addActions(Panel actionsPanel) {
-		//TODO?
-	}
+	override protected addActions(Panel actionsPanel) {}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		title = "Lista de usuarios"
@@ -37,7 +35,12 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 			value <=> "user_find"
 			width = 250
 		]
-		
+		new Button(panelBusquedaVista) => [
+			caption = "Limpiar"
+//			iconImage = "undefined"
+			onClick [ | modelObject.limpiarUserFind]
+		]
+
 		val panelTablaUsuarios = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]

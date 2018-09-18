@@ -11,8 +11,8 @@ import java.util.List
 class AdminMovieModify extends AdminMovie {
 	Map<Integer,String>	map_reverso = new HashMap
 	
-	new(TrailFlix trailFlix,Pelicula peli){
-		super(trailFlix)
+	new(TrailFlix trailFlix,AdminMain parent,Pelicula peli){
+		super(trailFlix,parent)
 		this.trailFlix = null
 		pelicula = peli
 		crearMapeoInversoMeses()

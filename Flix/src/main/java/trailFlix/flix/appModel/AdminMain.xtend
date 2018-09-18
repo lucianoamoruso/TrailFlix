@@ -70,6 +70,22 @@ class AdminMain {
 		actualizarContenidos()
 	}
 
+	/*
+	 * Prop: limpia el campo de busqueda de peliculas.
+	 */
+	def limpiarPeliFind() {
+		setPeli_find("")
+	}
+	
+	/*
+	 * Prop: limpia el campo de busqueda de series.
+	 */
+	def limpiarSerieFind() {
+		setSerie_find("")
+	}
+
+//-----------------GETTERS Y SETTERS----------------------------
+
 	def void setSel_pelicula(Pelicula sel_pelicula) {
 		if (sel_pelicula !== null) {
 			hay_peli_sel = true
@@ -93,7 +109,5 @@ class AdminMain {
 		this.serie_find = serie_find
 		actualizarContenidos()
 	}
-	
-	
 	
 }
