@@ -48,6 +48,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		new Button(panelPeliLabel) => [
 			caption = "Usuarios"
 //			iconImage = "undefined"
+			bindVisibleToProperty("egg")
 			onClick [ | new AdminUserListWindow(this, new AdminUserList(modelObject.trailFlix)).open]
 		]
 		
@@ -77,7 +78,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Nuevo"
-			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix)).open]
+			onClick [ | new AdminMovieWindow(this, new AdminMovie(modelObject.trailFlix,modelObject)).open]
 		]
 		new Button(panelPeliButtons) => [
 			caption = "Ver"

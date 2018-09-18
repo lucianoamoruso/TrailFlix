@@ -20,6 +20,7 @@ class AdminMain {
 	boolean 		hay_peli_sel = false
 	boolean			hay_serie_sel = false
 	boolean			visible = false
+	boolean			egg = false		//Indica si la condicion del Easter Egg fue satisfecha.
 	
 	new() {
 		trailFlix = new TrailFlix(this) => [rellenarDatos]

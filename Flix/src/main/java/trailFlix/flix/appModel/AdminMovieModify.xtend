@@ -18,7 +18,6 @@ class AdminMovieModify extends AdminMovie {
 		crearMapeoInversoMeses()
 		titulo = peli.titulo
 		duracion_ingresada = peli.duracion
-//		interpretador
 		fecha_estreno_ingresada = peli.fechaEstreno
 		dia = fecha_estreno_ingresada.getDayOfMonth
 		mes = map_reverso.get(fecha_estreno_ingresada.getMonthOfYear)

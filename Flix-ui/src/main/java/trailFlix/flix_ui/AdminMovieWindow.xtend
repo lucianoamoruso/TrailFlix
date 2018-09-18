@@ -29,6 +29,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 	override protected createFormPanel(Panel mainPanel) {
 		
 		this.title = "Administración de peliculas"
+		modelObject.setDelegate(delegate)
 		
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [

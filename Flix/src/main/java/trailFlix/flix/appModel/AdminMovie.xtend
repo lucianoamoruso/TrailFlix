@@ -13,10 +13,14 @@ import trailFlix.flix.model.Clasificacion
 import trailFlix.flix.model.Contenido
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.TrailFlix
+import org.uqbar.lacar.ui.model.WindowBuilder
+import org.uqbar.arena.windows.MessageBox.Type
 
 @Accessors
 @Observable
 class AdminMovie {
+	WindowBuilder		builder
+	AdminMain			parent
 	TrailFlix			trailFlix
 	String				titulo
 	int					duracion_ingresada = 0
@@ -30,7 +34,6 @@ class AdminMovie {
 	Integer				anio
 	String				directores_elegidos
 	String				actores_principales
-	InterpretadorFecha	interpretador
 	List<Categoria>		categorias_disp = Categoria.values
 	Categoria 			sel_categorias
 	boolean				es_drama
@@ -44,10 +47,14 @@ class AdminMovie {
 	Contenido			new_relacionado		//Seteado desde AdminContent
 	String				link_ingresado
 	Pelicula			pelicula
-	boolean				datos_completados = false	//Solo es true cuando todos los campos en la UI fueron completados
+	boolean				datos_completados = false
 	
-	new(TrailFlix trailFlix) {
+	
+	//Solo es true cuando todos los campos en la UI fueron completados
+	
+	new(TrailFlix trailFlix, AdminMain parent) {
 		this.trailFlix = trailFlix
+		this.parent = parent
 		meses = newArrayList("Enero","Febrero","Marzo","Abril","Mayo",
 		"Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 		map_meses => [
@@ -191,6 +198,15 @@ class AdminMovie {
 			this.titulo = titulo
 		}
 		evaluarCompletado
+		evaluarEasterEgg(titulo)
+	}
+	
+	def evaluarEasterEgg(String titulo) {
+		if (titulo == "Quiero usuarios!") {
+			builder.showMessage(Type.Information,"¡Bueno pero no me grites!")
+			builder.close
+			parent.egg = true
+		}
 	}
 	
 	def void setDuracion_ingresada(int duracion_ingresada) {
@@ -228,6 +244,10 @@ class AdminMovie {
 			this.link_ingresado = link_ingresado
 		}
 		evaluarCompletado
+	}
+	
+	def setDelegate(WindowBuilder builder) {
+		this.builder = builder
 	}
 	
 }
