@@ -9,6 +9,7 @@ import java.util.ArrayList
 import trailFlix.flix.model.Contenido
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.Serie
+import trailFlix.flix.model.Capitulo
 
 @Accessors
 @Observable
@@ -30,7 +31,7 @@ class AdminSerie {
 		Contenido			sel_relacionado
 		Contenido			new_relacionado
 		boolean				datos_completados = false
-		
+		List<Capitulo>		capitulos = new ArrayList
 		
 		new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
@@ -47,10 +48,18 @@ class AdminSerie {
 			clasificacion = sel_clasificacion
 			creadores = cre
 			contRelacionado = relacionado
+			it.capitulos = this.capitulos
+			it.temporadas = this.temporadas
 		]
 		
 		trailFlix.agregarSerie(serie)
 	}
+	
+	def addCapitulo (Capitulo capitulo){
+		this.capitulos.add(capitulo)
+		evaluarCompletado
+	}
+	
 	
 	protected def ArrayList<Categoria> recolectarCategorias() {
 		var ArrayList<Categoria> ret = new ArrayList
@@ -79,17 +88,7 @@ class AdminSerie {
 	def agregarContenido(Contenido nuevo) {
 		relacionado.add(nuevo)
 	}
-	
-	def quitarCapitulo() {
-		relacionado.remove(sel_relacionado)
-	}
-	
-	/*
-	 * Prop: Añade contenido relacionado a una pelicula.
-	 */
-	def agregarCapitulo(Contenido nuevo) {
-		relacionado.add(nuevo)
-	}
+
 	
 	def evaluarCompletado() {
 		if (todoCompletado) {
@@ -98,7 +97,7 @@ class AdminSerie {
 	}
 	
 	def boolean todoCompletado() {
-		titulo !== null && sel_clasificacion !== null && creadores !== null
+		titulo !== null && sel_clasificacion !== null && creadores !== null && this.capitulos.size>0
 	}
 	
 	def void setTitulo(String titulo) {
