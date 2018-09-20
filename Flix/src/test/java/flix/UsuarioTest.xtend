@@ -17,7 +17,7 @@ class UsuarioTest extends TestCase {
 		var us = new Usuario(0,titulo,titulo)
 		assertEquals("Mal el codigo", 0,us.getCodigo() )
 		assertEquals("Mal el nombre", titulo, us.getNombre())
-		assertEquals("Mal el nombre Usuario", titulo, us.getNombreUsuario())
+		assertEquals("Mal el nombre Usuario", titulo, us.nombreDeUsuario )
 	}
 	
 	def void testUsuarioPeliculaCompleta() {
