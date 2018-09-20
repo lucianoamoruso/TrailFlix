@@ -17,13 +17,14 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
 import trailFlix.flix.model.Contenido
 import java.awt.Color
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminUserWindow extends SimpleWindow<AdminUser> {
 	
 	new(WindowOwner parent, AdminUser model) {
 		super(parent, model)
 		title = "Datos de usuario"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\usuario.jpg"
+		iconImage = ProveedorIconos.usuario
 	}
 	
 	override protected addActions(Panel actionsPanel) {}

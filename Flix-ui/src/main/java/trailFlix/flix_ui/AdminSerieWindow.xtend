@@ -19,13 +19,14 @@ import trailFlix.flix.appModel.AdminSerie
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminContentSerie
 import trailFlix.flix.appModel.AdminChapter
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminSerieWindow extends Dialog<AdminSerie> {
 	
 	new(WindowOwner owner, AdminSerie model) {
 		super(owner, model)
 		taskDescription = "Cree una nueva serie"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
+		iconImage = ProveedorIconos.serie
 	}
 
 	override protected createFormPanel(Panel mainPanel) {

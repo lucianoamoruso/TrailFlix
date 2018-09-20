@@ -19,13 +19,14 @@ import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContent
 import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 	
 	new(WindowOwner owner, AdminMovie modelpelicula) {
 		super(owner, modelpelicula)
 		this.title = "Administracion de peliculas"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
+		iconImage = ProveedorIconos.pelicula
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

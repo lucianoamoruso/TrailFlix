@@ -11,12 +11,13 @@ import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.layout.HorizontalLayout
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminContentWindow extends Dialog<AdminContent> {
 	
 	new(WindowOwner owner, AdminContent model) {
 		super(owner, model)
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
+		iconImage = ProveedorIconos.pelicula
 		title = "Añada contenido relacionado"
 	}
 		

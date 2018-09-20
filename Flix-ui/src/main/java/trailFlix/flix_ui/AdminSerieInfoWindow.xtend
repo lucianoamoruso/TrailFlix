@@ -3,26 +3,22 @@ package trailFlix.flix_ui
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminSerieInfo
-
-import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.tables.Table
-
+import trailFlix.flix.model.Capitulo
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.model.Capitulo
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.Button
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 	
 	new(WindowOwner owner, AdminSerieInfo model) {
 		super(owner, model)
 		title = modelObject.serie.titulo
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
+		iconImage = ProveedorIconos.serie
 		taskDescription = "Informacion de " + title
 	}
 	
