@@ -11,12 +11,10 @@ class AdminSerieModify extends AdminSerie {
 	
 	new(TrailFlix trailFlix,Serie sel){
 		super(trailFlix)
-		this.trailFlix = null
 		serie = sel
 		
 		titulo = sel.titulo
 		sel_categorias = sel.categorias.head()
-//		interpretador
 		temporadas = sel.temporadas
 		creadores = sel.creadores.reduce[p1, p2| p1 + "," + p2]
 		//sel_categorias
@@ -26,8 +24,6 @@ class AdminSerieModify extends AdminSerie {
 		es_accion = sel.categorias.exists[it == Categoria.ACCION]
 		sel_clasificacion = sel.clasificacion
 		relacionado.addAll( sel.contRelacionado)
-		//sel_relacionado
-		//new_relacionado
 		evaluarCompletado
 	}
 

@@ -82,34 +82,12 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 			fontSize = 11
 		]
 		
-		new Label (panelInfoLabel) => [
+		new Label (mainPanel) => [
 			text = "Capitulos:"
-			fontSize = 11
+			fontSize = 15
 		]
 		
-		val panelCapitulos = new Panel(mainPanel) => [
-			layout = new HorizontalLayout
-		]
-		crearTablaCapitulos(panelCapitulos)
-		
-//		val panelBotones = new Panel (panelCapitulos) => [
-//			layout = new VerticalLayout
-//		]
-//		
-//		new Button(panelBotones).caption = "Nuevo"
-//		
-//		new Button(panelBotones) => [
-//			caption = "Ver"
-//			bindEnabledToProperty("hay_cap_sel")
-//		]
-//		
-//		new Button(panelBotones).caption = "Modificar"
-//		
-//		new Button(panelBotones) => [
-//			caption = "Borrar"
-//			onClick [ | modelObject.quitarCapitulo]
-//		]
-//		
+		crearTablaCapitulos(mainPanel)
 		}
 		
 	

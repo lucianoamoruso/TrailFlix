@@ -57,7 +57,6 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		]
 		
 		//-----Fecha de estreno
-		crearInputFechaEstreno(panelDatos)
 		new Label(panelDatos).text = "Creadores"
 		new TextBox(panelDatos) => [
 			value <=> "creadores"
@@ -93,32 +92,6 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 			onClick [ | {modelObject.nuevaSerie ; close}]
 		]
 		
-	}
-	
-	def void crearInputFechaEstreno(Panel panelDatos) {
-		
-		new Label(panelDatos).text = "Fecha estreno"
-		val panelFechas = new Panel(panelDatos) => [
-			layout = new VerticalLayout
-		]
-		new Label(panelFechas).text = "Día"
-		new Selector(panelFechas) => [
-			allowNull(false)
-			items <=> "dias_del_mes"
-			value <=> "dia"
-		]
-		new Label(panelFechas).text = "Mes"
-		new Selector(panelFechas) => [
-			allowNull(false)
-			items <=> "meses"
-			value <=> "mes"
-		]
-		new Label(panelFechas).text = "Año"
-		new Selector(panelFechas) => [
-			allowNull(false)
-			items <=> "anios"
-			value <=> "anio"
-		]
 	}
 	
 	def void ofrecerCategorias(Panel panelDatos) {
