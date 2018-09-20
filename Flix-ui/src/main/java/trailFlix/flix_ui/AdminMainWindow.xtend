@@ -30,10 +30,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	new() {
 		super(new AdminMain)
+		this.title = "Administración de TrailFlix"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\gear.png"
 	}
 	
 	override createContents(Panel mainPanel) {
-		this.title = "Administración de TrailFlix"
 		
 		generarElementosDePeliculas(mainPanel)
 		generarElementosDeSeries(mainPanel)

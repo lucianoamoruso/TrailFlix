@@ -17,6 +17,7 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 	
 	new(WindowOwner owner, AdminChapter model) {
 		super(owner, model)
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
 		taskDescription = "Cree un nuevo capitulo"
 	}
 	

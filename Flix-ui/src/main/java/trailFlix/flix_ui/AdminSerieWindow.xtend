@@ -25,6 +25,7 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 	new(WindowOwner owner, AdminSerie model) {
 		super(owner, model)
 		taskDescription = "Cree una nueva serie"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
 	}
 
 	override protected createFormPanel(Panel mainPanel) {

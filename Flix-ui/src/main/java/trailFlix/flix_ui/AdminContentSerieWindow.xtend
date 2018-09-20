@@ -17,6 +17,7 @@ class AdminContentSerieWindow extends TransactionalDialog<AdminContentSerie> {
 	new(WindowOwner owner, AdminContentSerie model) {
 		super(owner, model)
 		title = "Añada contenido relacionado"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
 	}
 		
 	override protected createFormPanel(Panel mainPanel) {

@@ -22,15 +22,15 @@ class AdminUserWindow extends SimpleWindow<AdminUser> {
 	
 	new(WindowOwner parent, AdminUser model) {
 		super(parent, model)
-		taskDescription = "Datos de " + modelObject.username
+		title = "Datos de usuario"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\usuario.jpg"
 	}
 	
-	override protected addActions(Panel actionsPanel) {
-		//TODO?
-	}
+	override protected addActions(Panel actionsPanel) {}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		title = "Datos de usuario"
+		
+		taskDescription = "Datos de " + modelObject.username
 		
 		val panelInfoLabel = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)

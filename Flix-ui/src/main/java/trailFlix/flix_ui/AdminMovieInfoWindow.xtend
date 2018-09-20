@@ -12,10 +12,12 @@ class AdminMovieInfoWindow extends Dialog <AdminMovieInfo> {
 	new(WindowOwner owner, AdminMovieInfo model) {
 		super(owner, model)
 		title = modelObject.pelicula.titulo
-		taskDescription = "Informacion de " + title
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\movie.png"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
+		
+		taskDescription = "Informacion de " + title
 		
 		val panelInfoLabel = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
