@@ -22,14 +22,13 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	new(WindowOwner parent, AdminUserList model) {
 		super(parent, model)
 		title = "Lista de usuarios"
+		taskDescription = "Elija un usuario para información adicional"
 		iconImage = ProveedorIconos.usuario
 	}
 	
 	override protected addActions(Panel actionsPanel) {}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		
-		taskDescription = "Elija un usuario para información adicional"
 		
 		//Buscar y Ver------------------------------------
 		val panelBusquedaVista = new Panel(mainPanel) => [

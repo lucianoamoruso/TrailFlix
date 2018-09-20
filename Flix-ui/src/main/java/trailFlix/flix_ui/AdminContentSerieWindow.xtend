@@ -17,13 +17,12 @@ class AdminContentSerieWindow extends TransactionalDialog<AdminContentSerie> {
 	
 	new(WindowOwner owner, AdminContentSerie model) {
 		super(owner, model)
-		title = "Añada contenido relacionado"
+		title = "Contenido relacionado"
+		taskDescription = "Añada contenido relacionado"
 		iconImage = ProveedorIconos.serie
 	}
 		
 	override protected createFormPanel(Panel mainPanel) {
-
-		this.title = "Añadir relacionado"
 
 		//Panel de contenidos
 		val Panel contentPanel = new Panel(mainPanel)

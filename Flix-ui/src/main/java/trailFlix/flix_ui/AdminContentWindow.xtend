@@ -18,12 +18,12 @@ class AdminContentWindow extends Dialog<AdminContent> {
 	new(WindowOwner owner, AdminContent model) {
 		super(owner, model)
 		iconImage = ProveedorIconos.pelicula
-		title = "Añada contenido relacionado"
+		title = "Contenido relacionado"
+		taskDescription = "Añada contenido relacionado"
 	}
 		
 	override protected createFormPanel(Panel mainPanel) {
 
-		this.title = "Añadir relacionado"
 
 		new List(mainPanel) => [
 			allowNull(false)

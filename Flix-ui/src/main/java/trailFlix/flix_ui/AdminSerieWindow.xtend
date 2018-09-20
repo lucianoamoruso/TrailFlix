@@ -25,13 +25,13 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 	
 	new(WindowOwner owner, AdminSerie model) {
 		super(owner, model)
+		this.title = "Administración de series"
 		taskDescription = "Cree una nueva serie"
 		iconImage = ProveedorIconos.serie
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
 		
-		this.title = "Administración de series"
 		
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [

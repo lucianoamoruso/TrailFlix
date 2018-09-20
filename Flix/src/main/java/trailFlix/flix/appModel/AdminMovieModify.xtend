@@ -48,7 +48,7 @@ override void nuevaPeli(){
 		act.addAll(actores_principales.split(",").toList())
 		val tit = titulo
 		pelicula => [
-			setTitulo(titulo)
+			setTitulo(tit)
 			categorias = nuevasCategorias
 			clasificacion = sel_clasificacion
 			fechaEstreno = fecha_estreno_ingresada

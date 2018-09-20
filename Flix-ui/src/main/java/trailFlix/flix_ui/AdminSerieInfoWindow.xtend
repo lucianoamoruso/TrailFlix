@@ -18,8 +18,8 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 	new(WindowOwner owner, AdminSerieInfo model) {
 		super(owner, model)
 		title = modelObject.serie.titulo
-		iconImage = ProveedorIconos.serie
 		taskDescription = "Informacion de " + title
+		iconImage = ProveedorIconos.serie
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

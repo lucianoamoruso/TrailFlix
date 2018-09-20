@@ -24,14 +24,13 @@ class AdminUserWindow extends SimpleWindow<AdminUser> {
 	new(WindowOwner parent, AdminUser model) {
 		super(parent, model)
 		title = "Datos de usuario"
+		taskDescription = "Datos de " + modelObject.username
 		iconImage = ProveedorIconos.usuario
 	}
 	
 	override protected addActions(Panel actionsPanel) {}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		
-		taskDescription = "Datos de " + modelObject.username
 		
 		val panelInfoLabel = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)

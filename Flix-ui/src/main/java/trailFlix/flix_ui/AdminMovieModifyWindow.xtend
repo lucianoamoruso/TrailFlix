@@ -26,12 +26,11 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 	new(WindowOwner owner, AdminMovie modelpelicula) {
 		super(owner, modelpelicula)
 		this.title = "Administracion de peliculas"
+		taskDescription = "Modifique una película"
 		iconImage = ProveedorIconos.pelicula
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		
-		taskDescription = "Modifique una película"
 		
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [

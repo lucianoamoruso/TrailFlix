@@ -25,12 +25,12 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 	new(WindowOwner owner, AdminMovie model) {
 		super(owner, model)
 		this.title = "Administración de peliculas"
+		taskDescription = "Cree una nueva película"
 		iconImage = ProveedorIconos.pelicula
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		
-		taskDescription = "Cree una nueva película"
 		modelObject.setDelegate(delegate)
 		
 		//Titulo

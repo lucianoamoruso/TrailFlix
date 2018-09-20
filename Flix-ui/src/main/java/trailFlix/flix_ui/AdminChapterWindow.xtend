@@ -19,13 +19,12 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 	new(WindowOwner owner, AdminChapter model) {
 		super(owner, model)
 		iconImage = ProveedorIconos.serie
+		this.title = "Administración de capitulos"
 		taskDescription = "Cree un nuevo capitulo"
 	}
 	
 
 	override protected createFormPanel(Panel mainPanel) {
-		
-		this.title = "Administración de capitulos"
 		
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [
