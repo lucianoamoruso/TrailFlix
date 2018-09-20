@@ -58,7 +58,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		ocuparEspacio(500,0,panelPeliLabel)
 		new Button(panelPeliLabel) => [
 			caption = "Usuarios"
-//			bindVisibleToProperty("egg")
+			bindVisibleToProperty("egg")
 			bindImageToProperty("user_icon",transformadorImagen)
 			onClick [ | new AdminUserListWindow(this, new AdminUserList(modelObject.trailFlix)).open]
 		]
