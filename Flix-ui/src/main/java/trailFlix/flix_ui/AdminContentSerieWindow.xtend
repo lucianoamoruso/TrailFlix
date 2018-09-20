@@ -11,13 +11,14 @@ import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminContentSerie
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminContentSerieWindow extends TransactionalDialog<AdminContentSerie> {
 	
 	new(WindowOwner owner, AdminContentSerie model) {
 		super(owner, model)
 		title = "Añada contenido relacionado"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
+		iconImage = ProveedorIconos.serie
 	}
 		
 	override protected createFormPanel(Panel mainPanel) {

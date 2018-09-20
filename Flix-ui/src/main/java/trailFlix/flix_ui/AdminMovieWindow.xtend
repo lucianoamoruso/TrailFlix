@@ -18,13 +18,14 @@ import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminMovieWindow extends Dialog<AdminMovie> {
 	
 	new(WindowOwner owner, AdminMovie model) {
 		super(owner, model)
 		this.title = "Administración de peliculas"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
+		iconImage = ProveedorIconos.pelicula
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

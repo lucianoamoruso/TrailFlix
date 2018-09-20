@@ -23,6 +23,8 @@ import trailFlix.flix.model.Serie
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Link
 import java.awt.Color
+import trailFlix.flix_ui.helpers.TransformadorImagen
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -31,7 +33,7 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 	new() {
 		super(new AdminMain)
 		this.title = "Administración de TrailFlix"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\gear.png"
+		iconImage = ProveedorIconos.admin
 	}
 	
 	override createContents(Panel mainPanel) {

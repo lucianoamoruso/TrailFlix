@@ -1,4 +1,4 @@
-package trailFlix.flix_ui
+package trailFlix.flix_ui.helpers
 
 import org.apache.commons.collections15.Transformer
 import org.uqbar.arena.graphics.Image

@@ -15,13 +15,14 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.layout.VerticalLayout
 import trailFlix.flix.appModel.AdminUser
 import org.uqbar.arena.widgets.Link
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	
 	new(WindowOwner parent, AdminUserList model) {
 		super(parent, model)
 		title = "Lista de usuarios"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\usuario.jpg"
+		iconImage = ProveedorIconos.usuario
 	}
 	
 	override protected addActions(Panel actionsPanel) {}

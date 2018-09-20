@@ -12,12 +12,13 @@ import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminChapter
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminChapterWindow extends Dialog<AdminChapter> {
 	
 	new(WindowOwner owner, AdminChapter model) {
 		super(owner, model)
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
+		iconImage = ProveedorIconos.serie
 		taskDescription = "Cree un nuevo capitulo"
 	}
 	

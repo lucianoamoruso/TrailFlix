@@ -6,13 +6,14 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminMovieInfo
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 class AdminMovieInfoWindow extends Dialog <AdminMovieInfo> {
 	
 	new(WindowOwner owner, AdminMovieInfo model) {
 		super(owner, model)
 		title = modelObject.pelicula.titulo
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
+		iconImage = ProveedorIconos.pelicula
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
