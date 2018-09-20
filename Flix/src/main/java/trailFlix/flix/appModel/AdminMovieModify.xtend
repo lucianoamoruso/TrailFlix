@@ -13,7 +13,6 @@ class AdminMovieModify extends AdminMovie {
 	
 	new(TrailFlix trailFlix,AdminMain parent,Pelicula peli){
 		super(trailFlix,parent)
-		this.trailFlix = null
 		pelicula = peli
 		crearMapeoInversoMeses()
 		titulo = peli.titulo
@@ -40,16 +39,16 @@ class AdminMovieModify extends AdminMovie {
 	/*
 	 * Prop: Carga una pelicula a la base de datos.
 	 */	
-	override void nuevaPeli(){
+override void nuevaPeli(){
 		val ArrayList<Categoria> nuevasCategorias = recolectarCategorias
 		val dir = newArrayList()
 		dir.addAll(directores_elegidos.split(",").toList())
 
 		val act = newArrayList()
 		act.addAll(actores_principales.split(",").toList())
-		
+		val tit = titulo
 		pelicula => [
-			it.titulo = titulo
+			setTitulo(titulo)
 			categorias = nuevasCategorias
 			clasificacion = sel_clasificacion
 			fechaEstreno = fecha_estreno_ingresada
@@ -59,7 +58,6 @@ class AdminMovieModify extends AdminMovie {
 			contRelacionado = relacionado
 			link = link_ingresado
 		]
-		
 	}
 	
 	def void crearMapeoInversoMeses() {
