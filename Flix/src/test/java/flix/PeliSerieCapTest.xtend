@@ -86,7 +86,7 @@ class PeliSerieCapTest extends TestCase {
 			setDuracion(3)
 			setTemporada(1)
 			//setContRelacionado( new ArrayList() => [add(cap2)])
-			setLink( "Youtube" )
+			setLink( "Youtube" ) 
 			setValoraciones(new ArrayList() => [add(8)])
 		]
 		
