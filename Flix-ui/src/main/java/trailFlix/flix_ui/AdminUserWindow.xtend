@@ -16,6 +16,7 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
 import trailFlix.flix.model.Contenido
+import java.awt.Color
 
 class AdminUserWindow extends SimpleWindow<AdminUser> {
 	
@@ -98,18 +99,24 @@ class AdminUserWindow extends SimpleWindow<AdminUser> {
 		new Label(mainPanel) => [
 			text = "Contenido visto:"
 			fontSize = 12
+			background = Color.LIGHT_GRAY
+			foreground = new Color(204,229,255)
 		]
 		crearTablaVisto(mainPanel)
 		
 		new Label(mainPanel) => [
 			text = "Contenido favorito:"
 			fontSize = 12
+			background = Color.LIGHT_GRAY
+			foreground = new Color(255,215,0)
 		]
 		crearTablaFavoritos(mainPanel)
 
 		new Label(mainPanel) => [
 			text = "Contenido recomendado:"
 			fontSize = 12
+			background = Color.LIGHT_GRAY
+			foreground = new Color(255,204,229)
 		]
 		crearTablaRecomendado(mainPanel)
 	}

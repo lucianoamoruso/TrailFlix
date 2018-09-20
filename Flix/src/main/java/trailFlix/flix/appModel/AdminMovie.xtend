@@ -23,7 +23,7 @@ class AdminMovie {
 	AdminMain			parent
 	TrailFlix			trailFlix
 	String				titulo
-	int					duracion_ingresada = 0
+	Integer				duracion_ingresada
 	LocalDate			fecha_estreno_ingresada = new LocalDate(1990,1,1)	//Default
 	List<Integer>		dias_del_mes
 	Integer				dia
@@ -137,7 +137,7 @@ class AdminMovie {
 	}
 	
 	def boolean todoCompletado() {
-		titulo !== null && duracion_ingresada !== 0 && sel_clasificacion !== null &&
+		titulo !== null && duracion_ingresada !== null && sel_clasificacion !== null &&
 		dia !== null && mes !== null && anio !== null && directores_elegidos !== null &&
 		actores_principales !== null && link_ingresado !== null
 	}
@@ -209,7 +209,7 @@ class AdminMovie {
 		}
 	}
 	
-	def void setDuracion_ingresada(int duracion_ingresada) {
+	def void setDuracion_ingresada(Integer duracion_ingresada) {
 		this.duracion_ingresada = duracion_ingresada
 		evaluarCompletado
 	}

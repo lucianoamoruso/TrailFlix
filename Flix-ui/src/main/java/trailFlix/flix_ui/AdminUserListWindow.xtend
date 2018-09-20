@@ -14,6 +14,7 @@ import trailFlix.flix.model.Usuario
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.layout.VerticalLayout
 import trailFlix.flix.appModel.AdminUser
+import org.uqbar.arena.widgets.Link
 
 class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	
@@ -37,9 +38,8 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 			value <=> "user_find"
 			width = 250
 		]
-		new Button(panelBusquedaVista) => [
+		new Link(panelBusquedaVista) => [
 			caption = "Limpiar"
-//			iconImage = "undefined"
 			onClick [ | modelObject.limpiarUserFind]
 		]
 

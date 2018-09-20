@@ -21,6 +21,8 @@ import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.Link
+import java.awt.Color
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
@@ -45,7 +47,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelPeliLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		new Label(panelPeliLabel).text = "Peliculas"
+		new Label(panelPeliLabel) => [
+			text = "Peliculas"
+			fontSize = 15
+			foreground = new Color(39,183,212)
+		]
 		ocuparEspacio(500,0,panelPeliLabel)
 		new Button(panelPeliLabel) => [
 			caption = "Usuarios"
@@ -62,9 +68,8 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			value <=> "peli_find"
 			width = 150
 		]
-		new Button(panelPeliFind) => [
+		new Link(panelPeliFind) => [
 			caption = "Limpiar"
-//			iconImage = "undefined"
 			onClick [ | modelObject.limpiarPeliFind]
 		]
 		
@@ -139,7 +144,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		val panelSerieLabel = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 		]
-		new Label(panelSerieLabel).text = "Series"
+		new Label(panelSerieLabel) => [
+			text = "Series"
+			fontSize = 15
+			foreground = new Color(236,170,113)
+		]
 		
 		//Busqueda----------------------------------------
 		val panelSerieFind = new Panel(mainPanel) => [
@@ -149,11 +158,11 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 			value <=> "serie_find"
 			width = 150
 		]
-		new Button(panelSerieFind) => [
+		new Link(panelSerieFind) => [
 			caption = "Limpiar"
-//			iconImage = "undefined"
 			onClick [ | modelObject.limpiarSerieFind]
 		]
+		
 		//Base de datos-----------------------------------
 		val panelSerieDB = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
