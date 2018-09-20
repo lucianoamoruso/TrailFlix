@@ -40,6 +40,7 @@ class TrailFlixTest  extends TestCase {
 							]
 	}
 		
+	// TODO arreglar test
     def void testquitarRelleno(){
     	val tf = new TrailFlix(null)
 		tf.rellenarDatos()

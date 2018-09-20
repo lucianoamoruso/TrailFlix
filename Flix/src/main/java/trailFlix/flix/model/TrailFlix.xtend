@@ -19,6 +19,7 @@ class TrailFlix {
 		this.id = 0
 	}
 	
+	// todo ESTO NO DEBERIA ESTAR ACA
 	def rellenarDatos() {
 		
 		val peli1 = new Pelicula("Terminator") => [
@@ -182,6 +183,7 @@ class TrailFlix {
 	}
 	
 	def buscarPelicula (String nombre){
+		this.contenido.filter[it == nombre]
 		for (i:0..this.contenido.size-1){
 			if (this.contenido.get(i).returnPelicula() !== null && this.contenido.get(i).titulo == nombre){
 				return this.contenido.get(i)
