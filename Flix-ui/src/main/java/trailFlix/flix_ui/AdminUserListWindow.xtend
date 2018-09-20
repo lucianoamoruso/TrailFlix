@@ -19,13 +19,15 @@ class AdminUserListWindow extends SimpleWindow<AdminUserList>{
 	
 	new(WindowOwner parent, AdminUserList model) {
 		super(parent, model)
-		taskDescription = "Elija un usuario para información adicional"
+		title = "Lista de usuarios"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\usuario.jpg"
 	}
 	
 	override protected addActions(Panel actionsPanel) {}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		title = "Lista de usuarios"
+		
+		taskDescription = "Elija un usuario para información adicional"
 		
 		//Buscar y Ver------------------------------------
 		val panelBusquedaVista = new Panel(mainPanel) => [

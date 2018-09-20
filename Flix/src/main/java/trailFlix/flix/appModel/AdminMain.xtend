@@ -17,6 +17,7 @@ class AdminMain {
 	String			serie_find = ""
 	Pelicula		sel_pelicula
 	Serie			sel_serie
+	String			user_icon = "C:/Users/user/git/grupo-7-Tryhard/Flix-ui/src/main/java/trailFlix/flix_ui/usuario.jpg"
 	boolean 		hay_peli_sel = false
 	boolean			hay_serie_sel = false
 	boolean			visible = false

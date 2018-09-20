@@ -12,17 +12,19 @@ import org.uqbar.arena.windows.MainWindow
 import trailFlix.flix.appModel.AdminMain
 import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.appModel.AdminMovieInfo
+import trailFlix.flix.appModel.AdminMovieModify
+import trailFlix.flix.appModel.AdminSerie
+import trailFlix.flix.appModel.AdminSerieInfo
+import trailFlix.flix.appModel.AdminSerieModify
+import trailFlix.flix.appModel.AdminUserList
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.appModel.AdminUserList
-import trailFlix.flix.appModel.AdminSerieInfo
-import trailFlix.flix.appModel.AdminMovieModify
-import trailFlix.flix.appModel.AdminSerie
-import trailFlix.flix.appModel.AdminSerieModify
 
 class AdminMainWindow extends MainWindow<AdminMain> {
+	
+	TransformadorImagen transformadorImagen = new TransformadorImagen
 	
 	new() {
 		super(new AdminMain)
@@ -47,8 +49,8 @@ class AdminMainWindow extends MainWindow<AdminMain> {
 		ocuparEspacio(500,0,panelPeliLabel)
 		new Button(panelPeliLabel) => [
 			caption = "Usuarios"
-//			iconImage = "undefined"
-			bindVisibleToProperty("egg")
+//			bindVisibleToProperty("egg")
+			bindImageToProperty("user_icon",transformadorImagen)
 			onClick [ | new AdminUserListWindow(this, new AdminUserList(modelObject.trailFlix)).open]
 		]
 		
