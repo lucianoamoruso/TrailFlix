@@ -1,7 +1,7 @@
 package trailFlix.flix_ui
 
 import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
@@ -9,15 +9,15 @@ import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
+import trailFlix.flix.appModel.AdminChapter
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.appModel.AdminChapter
 
 class AdminChapterWindow extends Dialog<AdminChapter> {
 	
 	new(WindowOwner owner, AdminChapter model) {
 		super(owner, model)
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
 		taskDescription = "Cree un nuevo capitulo"
 	}
 	
@@ -78,7 +78,6 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 		
 		new Button(mainPanel) => [		//Agregar capitulo
 			caption = "Aceptar"
-			disableOnError
 			bindEnabledToProperty("datos_completados")
 			onClick [ | {modelObject.nuevoCap ; close}]
 		]
@@ -89,7 +88,7 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 		
 		new Label(panelDatos).text = "Fecha estreno"
 		val panelFechas = new Panel(panelDatos) => [
-			layout = new HorizontalLayout
+			layout = new VerticalLayout
 		]
 		new Label(panelFechas).text = "Día"
 		new Selector(panelFechas) => [

@@ -24,7 +24,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 	new(WindowOwner owner, AdminMovie model) {
 		super(owner, model)
 		this.title = "Administración de peliculas"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\movie.png"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

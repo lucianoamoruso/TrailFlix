@@ -25,7 +25,7 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 	new(WindowOwner owner, AdminSerie model) {
 		super(owner, model)
 		taskDescription = "Cree una nueva serie"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
@@ -56,6 +56,8 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 			value <=> "sel_clasificacion"
 		]
 		
+		//-----Fecha de estreno
+		crearInputFechaEstreno(panelDatos)
 		new Label(panelDatos).text = "Creadores"
 		new TextBox(panelDatos) => [
 			value <=> "creadores"
@@ -87,13 +89,36 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		
 		new Button(mainPanel) => [		//Agregar serie
 			caption = "Aceptar"
-			disableOnError
 			bindEnabledToProperty("datos_completados")
 			onClick [ | {modelObject.nuevaSerie ; close}]
 		]
 		
+	}
 	
+	def void crearInputFechaEstreno(Panel panelDatos) {
 		
+		new Label(panelDatos).text = "Fecha estreno"
+		val panelFechas = new Panel(panelDatos) => [
+			layout = new VerticalLayout
+		]
+		new Label(panelFechas).text = "Día"
+		new Selector(panelFechas) => [
+			allowNull(false)
+			items <=> "dias_del_mes"
+			value <=> "dia"
+		]
+		new Label(panelFechas).text = "Mes"
+		new Selector(panelFechas) => [
+			allowNull(false)
+			items <=> "meses"
+			value <=> "mes"
+		]
+		new Label(panelFechas).text = "Año"
+		new Selector(panelFechas) => [
+			allowNull(false)
+			items <=> "anios"
+			value <=> "anio"
+		]
 	}
 	
 	def void ofrecerCategorias(Panel panelDatos) {
@@ -158,4 +183,5 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		
 		
 	}
+	
 }

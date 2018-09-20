@@ -23,7 +23,7 @@ class AdminUserWindow extends SimpleWindow<AdminUser> {
 	new(WindowOwner parent, AdminUser model) {
 		super(parent, model)
 		title = "Datos de usuario"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\usuario.jpg"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\usuario.jpg"
 	}
 	
 	override protected addActions(Panel actionsPanel) {}

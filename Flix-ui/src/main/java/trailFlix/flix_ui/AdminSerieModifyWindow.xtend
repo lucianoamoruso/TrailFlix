@@ -9,6 +9,6 @@ class AdminSerieModifyWindow extends AdminSerieWindow {
 	new(WindowOwner owner, AdminSerie modelpelicula) {
 		super(owner, modelpelicula)
 		taskDescription = "Modifique una serie"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
 	}
 }

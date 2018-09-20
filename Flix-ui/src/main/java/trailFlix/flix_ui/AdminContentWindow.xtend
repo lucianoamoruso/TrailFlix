@@ -16,7 +16,7 @@ class AdminContentWindow extends Dialog<AdminContent> {
 	
 	new(WindowOwner owner, AdminContent model) {
 		super(owner, model)
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\movie.png"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
 		title = "Añada contenido relacionado"
 	}
 		

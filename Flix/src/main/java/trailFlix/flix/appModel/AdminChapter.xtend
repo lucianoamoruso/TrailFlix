@@ -16,6 +16,7 @@ import trailFlix.flix.model.TrailFlix
 @Observable
 class AdminChapter {
 	
+	TrailFlix			trailflix
 	String				titulo
 	List <Categoria> 	categorias
 	LocalDate			fecha_estreno_ingresada = new LocalDate(1990,1,1)	//Default
@@ -29,12 +30,11 @@ class AdminChapter {
 	String				directores_elegidos
 	String				actores_principales
 	String				link_ingresado
-	int					duracion_ingresada = 0
+	Integer				duracion_ingresada
+	Integer				temporada
 	Capitulo 			capituloNuevo
 	AdminSerie			adminSerie
-	int					temporada = 0
 	boolean				datos_completados = false
-	TrailFlix			trailflix
 	
 	
 	new(AdminSerie admin, TrailFlix trailflix) {
@@ -78,7 +78,7 @@ class AdminChapter {
 	}
 	
 	def boolean todoCompletado() {
-		titulo !== null && duracion_ingresada !== 0 && mes !== null && anio !== null && directores_elegidos !== null &&
+		titulo !== null && duracion_ingresada !== null && temporada !== null && dia !== null && mes !== null && anio !== null && directores_elegidos !== null &&
 		actores_principales !== null && link_ingresado !== null
 	}
 	
@@ -131,27 +131,48 @@ class AdminChapter {
 	}
 	
 	def void setTitulo(String titulo) {
-		this.titulo = titulo
+		if (titulo == "") {
+			this.titulo = null
+		} else {
+			this.titulo = titulo
+		}
 		evaluarCompletado
 	}
 	
-	def void setDuracion_ingresada(int duracion_ingresada) {
+	def void setDuracion_ingresada(Integer duracion_ingresada) {
 		this.duracion_ingresada = duracion_ingresada
 		evaluarCompletado
 	}
 	
+	def void setTemporada(Integer temporada) {
+		this.temporada = temporada
+		evaluarCompletado
+	}
+	
 	def void setDirectores_elegidos(String directores_elegidos) {
-		this.directores_elegidos = directores_elegidos
+		if (directores_elegidos == "") {
+			this.directores_elegidos = null
+		} else {
+			this.directores_elegidos = directores_elegidos
+		}
 		evaluarCompletado
 	}
 	
 	def void setActores_principales(String actores_principales) {
-		this.actores_principales = actores_principales
+		if (actores_principales == "") {
+			this.actores_principales = null
+		} else {
+			this.actores_principales = actores_principales
+		}
 		evaluarCompletado
 	}
 	
 	def void setLink_ingresado(String link_ingresado) {
-		this.link_ingresado = link_ingresado
+		if (link_ingresado == "") {
+			this.link_ingresado = null
+		} else {
+			this.link_ingresado = link_ingresado
+		}
 		evaluarCompletado
 	}
 	

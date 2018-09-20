@@ -22,7 +22,7 @@ class AdminSerieInfoWindow extends Dialog <AdminSerieInfo> {
 	new(WindowOwner owner, AdminSerieInfo model) {
 		super(owner, model)
 		title = modelObject.serie.titulo
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\serie.png"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\serie.png"
 		taskDescription = "Informacion de " + title
 	}
 	

@@ -24,8 +24,8 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 	
 	new(WindowOwner owner, AdminMovie modelpelicula) {
 		super(owner, modelpelicula)
-		this.title = "AdministraciÃ³n de peliculas"
-		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\movie.png"
+		this.title = "Administracion de peliculas"
+		iconImage = "C:\\Users\\user\\git\\grupo-7-Tryhard\\Flix-ui\\src\\main\\java\\trailFlix\\flix_ui\\iconos\\movie.png"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
@@ -36,7 +36,7 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 		val panelTitulo = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
-		new Label(panelTitulo).text = "TÃ­tulo"
+		new Label(panelTitulo).text = "Titulo"
 		new TextBox(panelTitulo) => [
 			value <=> "titulo"
 			width = 100  
@@ -49,12 +49,12 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 		
 		ofrecerCategorias(panelDatos)
 
-		new Label(panelDatos).text = "DuraciÃ³n"
+		new Label(panelDatos).text = "Duracion"
 		new TextBox(panelDatos) => [
 			value <=> "duracion_ingresada"
 			width = 50
 		]
-		new Label(panelDatos).text = "ClasificaciÃ³n"
+		new Label(panelDatos).text = "Clasificacion"
 		new Selector(panelDatos) => [
 			allowNull(false)
 			items <=> "clasificaciones_disp"
@@ -83,15 +83,26 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 		//Contenido Relacionado
 		administrarContenidoRelacionado(mainPanel)
 		
+		//Confirmacion
+		new Button(mainPanel) => [
+			caption = "Cancelar"
+			onClick [ | close]
+		]
+		
+		new Button(mainPanel) => [		//Agregar pelicula
+			caption = "Aceptar"
+			bindEnabledToProperty("datos_completados")
+			onClick [ | {modelObject.nuevaPeli ; close}]
+		]
 	}
 	
 	def void crearInputFechaEstreno(Panel panelDatos) {
 		
 		new Label(panelDatos).text = "Fecha estreno"
 		val panelFechas = new Panel(panelDatos) => [
-			layout = new HorizontalLayout
+			layout = new VerticalLayout
 		]
-		new Label(panelFechas).text = "DÃ­a"
+		new Label(panelFechas).text = "Dia"
 		new Selector(panelFechas) => [
 			allowNull(false)
 			items <=> "dias_del_mes"
@@ -103,7 +114,7 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 			items <=> "meses"
 			value <=> "mes"
 		]
-		new Label(panelFechas).text = "AÃ±o"
+		new Label(panelFechas).text = "Año"
 		new Selector(panelFechas) => [
 			allowNull(false)
 			items <=> "anios"
@@ -169,18 +180,6 @@ class AdminMovieModifyWindow extends Dialog<AdminMovie> {
 			allowNull(false)
 			value <=> "sel_relacionado"
 			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
-		]
-		
-		//Confirmacion
-		new Button(mainPanel) => [
-			caption = "Cancelar"
-			onClick [ | close]
-		]
-		
-		new Button(mainPanel) => [		//Agregar pelicula
-			caption = "Aceptar"
-			bindEnabledToProperty("datos_completados")
-			onClick [ | {modelObject.nuevaPeli ; close}]
 		]
 	}
 }
