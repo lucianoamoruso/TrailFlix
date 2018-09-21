@@ -26,7 +26,7 @@ class TrailFlix {
 		
 		val peli1 = new Pelicula("Terminator") => [
 				codigo = 1000
-				categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR)]
+				categorias = new ArrayList() => [add(categorias.get(4)); add(categorias.get(2))]
 				clasificacion = Clasificacion.MAYORES16
 				fechaEstreno = "2015-5-15"
 				duracion = 120
@@ -38,7 +38,7 @@ class TrailFlix {
 			
 		val peli2 = new Pelicula("The Spacito 3") => [
 				codigo = 2000
-				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.DRAMA)]
+				categorias = new ArrayList() => [add(categorias.get(1)); add(categorias.get(3))]
 				clasificacion = Clasificacion.ATP
 				fechaEstreno = "2017-7-11"
 				duracion = 420
@@ -50,7 +50,7 @@ class TrailFlix {
 			
 		val peli3 = new Pelicula("Transformers") => [
 				codigo = 3000
-				categorias = new ArrayList() => [add(Categoria.COMEDIA); add(Categoria.TERROR)]
+				categorias = new ArrayList() => [add(categorias.get(2)); add(categorias.get(4))]
 				clasificacion = Clasificacion.MAYORES13
 				fechaEstreno = "2000-1-10"
 				duracion = 150
@@ -112,7 +112,7 @@ class TrailFlix {
 		
 		val serie2 = new Serie("Attack on Titan") => [
 			codigo = 0200
-			categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR); add(Categoria.DRAMA)]
+			categorias = new ArrayList() => [add(categorias.get(1)); add(categorias.get(2)); add(categorias.get(3))]
 			clasificacion = Clasificacion.MAYORES13
 			creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
 			capitulos = new ArrayList() => [add(cap2_1)]
@@ -122,7 +122,7 @@ class TrailFlix {
 		
 		val serie3 = new Serie("The Walking Bad") => [
 		codigo = 0200
-		categorias = new ArrayList() => [add(Categoria.ACCION); add(Categoria.TERROR)]
+		categorias = new ArrayList() => [add(categorias.get(4)); add(categorias.get(2))]
 		clasificacion = Clasificacion.MAYORES16
 		creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
 		capitulos = new ArrayList() => [add(cap2_1); add(cap1_2); add(cap1_1)]
