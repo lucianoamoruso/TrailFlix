@@ -183,28 +183,15 @@ class TrailFlix {
 	}
 	
 	def buscarPelicula (String nombre){
-		this.contenido.filter[it == nombre]
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).returnPelicula() !== null && this.contenido.get(i).titulo == nombre){
-				return this.contenido.get(i)
-			}
-		}
+		this.contenido.findFirst[(it instanceof Pelicula && it.titulo == nombre)]
 	}
 	
 	def buscarSerie (String nombre){
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).returnSerie() !== null && this.contenido.get(i).titulo == nombre){
-				return this.contenido.get(i)
-			}
-		}
+		this.contenido.findFirst[(it instanceof Serie && it.titulo == nombre)]
 	}
 	
 	def buscarUsuario (String nombre){
-		for (i:0..this.usuarios.size-1){
-			if (this.usuarios.get(i).nombre == nombre){
-				return this.usuarios.get(i)
-			}
-		}
+		usuarios.findFirst[it.nombre == nombre]
 	}
 	
 	def buscarPorCategoria (Categoria categoria){
