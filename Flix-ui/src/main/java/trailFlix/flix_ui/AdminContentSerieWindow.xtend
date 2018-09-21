@@ -31,18 +31,15 @@ class AdminContentSerieWindow extends TransactionalDialog<AdminContentSerie> {
 			allowNull(false)
 			(items <=> "disponibles").adapter = nameAdapter
 			value <=> "elegido"
+			onSelection [ | modelObject.activar]
 		]
 		new Button(contentPanel) => [
 			caption = "Agregar"
-			onClick [ | {modelObject.agregar; close}]
+			bindEnabledToProperty("listo")
 			setAsDefault
-			disableOnError
+			onClick [ | {modelObject.agregar; close}]
 		]
-		new Button(contentPanel) => [
-			caption = "Cancelar"
-			onClick [ | close]
-		]
-				
+		
 	}
 	
 	def nameAdapter() {
