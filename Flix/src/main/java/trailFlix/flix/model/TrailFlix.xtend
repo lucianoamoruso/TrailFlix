@@ -186,7 +186,7 @@ class TrailFlix {
 
 
 	
-<<<<<<< HEAD
+
 	def buscarPelicula (int id){
 		this.contenido.findFirst[(it.esPelicula && it.codigo == id)]
 	}
@@ -197,18 +197,7 @@ class TrailFlix {
 	
 	def buscarUsuario (int id){
 		this.usuarios.findFirst[it.codigo == id]
-=======
-	def buscarPelicula (String nombre){
-		this.contenido.findFirst[(it instanceof Pelicula && it.titulo == nombre)]
-	}
 	
-	def buscarSerie (String nombre){
-		this.contenido.findFirst[(it instanceof Serie && it.titulo == nombre)]
-	}
-	
-	def buscarUsuario (String nombre){
-		usuarios.findFirst[it.nombre == nombre]
->>>>>>> f5478cc5b97d70e992ec534c8e2959c903a89218
 	}
 	
 	def buscarPorCategoria (String categoria){
