@@ -261,11 +261,11 @@ class TrailFlix {
 
 
 	def getPeliculas() { //IMPLEMENTAR
-		this.contenido.map[returnPelicula].filter[it !== null].toList
+		this.contenido.filter[esPelicula].map[it as Pelicula].toList
 	}
 	
 	def getSeries() { //IMPLEMENTAR
-		this.contenido.map[returnSerie].filter[it !== null].toList
+		this.contenido.filter[esSerie].map[it as Serie].toList
 	}
 	
 	def getUsuarios() {

@@ -10,13 +10,8 @@ class TrailFlixTest  extends TestCase {
 		val tf = new TrailFlix(null)
 		//assertNull(null,tf.ventana)
 		assertEquals(0,tf.generarId())
-		assertEquals(1,tf.generarId())
-		assertEquals(2,tf.nuevoCodigoPeli())
-		assertEquals(3,tf.generarId())
-		assertEquals(4,tf.nuevoCodigoSerie())
-		assertEquals(5,tf.generarId())
-		assertEquals(6,tf.nuevoCodigoCapitulo())		
-		assertEquals(7,tf.generarId())
+		assertEquals(1,tf.generarId())	
+		assertEquals(2,tf.generarId())
 		
 		assertEquals(0,tf.peliculas.size())
 		assertEquals(0,tf.series.size())
@@ -44,11 +39,10 @@ class TrailFlixTest  extends TestCase {
     def void testquitarRelleno(){
     	val tf = new TrailFlix(null)
 		tf.rellenarDatos()
-		tf.peliculas.clear()
-		assertEquals(0,tf.peliculas.size())
-		
-		tf.series.clear()
-		assertEquals(0,tf.series.size())
+		assertTrue( 0 != tf.peliculas.size() )
+		assertTrue( 0 != tf.series.size())
+		//tf.peliculas.clear()
+		tf.peliculas.forEach[tf.eliminarPelicula(it)]
     }
 		
 }
