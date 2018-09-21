@@ -19,6 +19,8 @@ import trailFlix.flix.model.Contenido
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix_ui.helpers.ProveedorIconos
+import org.uqbar.arena.filters.NumericFilter
+import org.uqbar.arena.widgets.NumericField
 
 class AdminMovieWindow extends Dialog<AdminMovie> {
 	
@@ -51,7 +53,7 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		ofrecerCategorias(panelDatos)
 
 		new Label(panelDatos).text = "Duración"
-		new TextBox(panelDatos) => [
+		new NumericField(panelDatos,false) => [
 			value <=> "duracion_ingresada"
 			width = 50
 		]

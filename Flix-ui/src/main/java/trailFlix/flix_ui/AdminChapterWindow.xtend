@@ -13,6 +13,7 @@ import trailFlix.flix.appModel.AdminChapter
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix_ui.helpers.ProveedorIconos
+import org.uqbar.arena.widgets.NumericField
 
 class AdminChapterWindow extends Dialog<AdminChapter> {
 	
@@ -42,13 +43,13 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 		]
 
 		new Label(panelDatos).text = "Duración"
-		new TextBox(panelDatos) => [
+		new NumericField(panelDatos,false) => [
 			value <=> "duracion_ingresada"
 			width = 50
 		]
 		
 		new Label(panelDatos).text = "Temporada"
-		new TextBox(panelDatos) => [
+		new NumericField(panelDatos,false) => [
 			value <=> "temporada"
 			width = 50
 		]

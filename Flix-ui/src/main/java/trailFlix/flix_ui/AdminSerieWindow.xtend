@@ -20,6 +20,7 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix.appModel.AdminContentSerie
 import trailFlix.flix.appModel.AdminChapter
 import trailFlix.flix_ui.helpers.ProveedorIconos
+import org.uqbar.arena.widgets.NumericField
 
 class AdminSerieWindow extends Dialog<AdminSerie> {
 	
@@ -65,7 +66,7 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		]
 		
 		new Label(panelDatos).text = "Temporadas"
-		new TextBox(panelDatos) => [
+		new NumericField(panelDatos,false) => [
 			value <=> "temporadas"
 			width = 70
 		]
