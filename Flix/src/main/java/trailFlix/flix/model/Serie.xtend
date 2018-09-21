@@ -15,7 +15,6 @@ class Serie extends Contenido {
 		
 	new (String titulo){
 		this.titulo = titulo
-		this.clasificacion = null
 		creadores = newArrayList()
 		capitulos = newArrayList()
 		contRelacionado = newArrayList()
@@ -48,12 +47,8 @@ class Serie extends Contenido {
 
 //-------------------OVERRIDE--------------------------
 
-	override returnPelicula() {
-		null
-	}
-	
-	override returnSerie() {
-		this
+	override esSerie (){
+		true
 	}
 	
 	override getRating() {

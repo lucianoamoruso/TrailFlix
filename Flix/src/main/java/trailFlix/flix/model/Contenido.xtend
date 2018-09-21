@@ -9,15 +9,21 @@ import java.util.List
 abstract class Contenido {
 	protected int codigo
 	protected String titulo = "sin titulo"
-	protected List <Categoria> categorias
-	protected Clasificacion clasificacion
+	protected List <String> categorias
+	protected String clasificacion
 	
-	def abstract Pelicula returnPelicula()
-	def abstract Serie returnSerie()
+	
 	def abstract double getRating()
+	
+	
+	def  esSerie(){
+		false
+	}
+	def esPelicula(){
+		false
+	}
 
 	override toString() {
 		titulo
 	}
-	
 }

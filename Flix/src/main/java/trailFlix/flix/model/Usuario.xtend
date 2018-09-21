@@ -30,45 +30,19 @@ class Usuario {
 	}
 	
 	def getPeliculasVistas(){
-		var retorno = newArrayList
-		for (i:0..this.contVisto.size-1){
-			if (this.contVisto.get(i).returnPelicula() !== null){
-				retorno.add(this.contVisto.get(i))
-			}
-		}
-		retorno
+		return this.contVisto.filter[it.esPelicula]
 	}
 	
 	def getSeriesVistas(){
-		var retorno = newArrayList
-		for (i:0..this.contVisto.size-1){
-			if (this.contVisto.get(i).returnSerie() !== null){
-				retorno.add(this.contVisto.get(i))
-			}
-		}
-		retorno
+		return this.contVisto.filter[it.esSerie]
 	}
 	
 	def getPeliculasFavoritas(){
-		return this.contFavorito.filter[it.returnPelicula() !== null]
-		/*var retorno = newArrayList
-		for (i:0..this.contFavorito.size-1){
-			if (this.contFavorito.get(i).returnPelicula() !== null){
-				retorno.add(this.contFavorito.get(i))
-			}
-		}
-		retorno*/
+		return this.contFavorito.filter[it.esPelicula]
 	}
 	
 	def getSeriesFavoritas(){
-		return this.contFavorito.filter[it.returnSerie() !== null]
-		/*var retorno = newArrayList
-		for (i:0..this.contFavorito.size-1){
-			if (this.contFavorito.get(i).returnSerie() !== null){
-				retorno.add(this.contFavorito.get(i))
-			}
-		}
-		retorno*/
+		return this.contFavorito.filter[it.esSerie]
 	}
 	
 }

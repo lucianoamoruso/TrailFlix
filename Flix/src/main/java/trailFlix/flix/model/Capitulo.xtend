@@ -2,7 +2,6 @@ package trailFlix.flix.model
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.joda.time.DateTime
 import org.uqbar.commons.model.annotations.Observable
 import org.joda.time.LocalDate
 
@@ -28,7 +27,7 @@ class Capitulo {
 		valoraciones = newArrayList()
 	}
 	
-	def getRating(){
+	def getRating(){ //VOLVER A IMPLEMENTAR
 		var sum = 0
 		if (this.valoraciones.size == 0)
 		{

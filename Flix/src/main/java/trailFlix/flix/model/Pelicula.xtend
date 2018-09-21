@@ -29,15 +29,12 @@ class Pelicula extends Contenido {
 
 //-------------------OVERRIDE--------------------------
 
-	override returnPelicula() {
-		this
+	override esPelicula (){
+		true
 	}
 	
-	override returnSerie() {
-		null
-	}
 	
-	override getRating() {
+	override getRating() {  //VOLVER A IMPLEMENTAR
 		var sum = 0
 		for (i : 0 ..< this.valoraciones.size){
 			sum += this.valoraciones.get(i)	

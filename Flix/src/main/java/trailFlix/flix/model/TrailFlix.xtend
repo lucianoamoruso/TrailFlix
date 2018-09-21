@@ -9,14 +9,16 @@ class TrailFlix {
 	List<Usuario> usuarios
 	ArrayList<Contenido> contenido
 	AdminMain ventana
-	int id
+	GeneradorDeIds generador
+	ArrayList<String> clasificaciones = newArrayList ("ATP","Mayores13","Mayores16","Mayores21")
+	ArrayList<String> categorias = newArrayList ("DRAMA","TERROR","COMEDIA","ACCION")
 	
 	
 	new(AdminMain ventana) {
 		contenido = new ArrayList
 		usuarios = new ArrayList
 		this.ventana = ventana
-		this.id = 0
+		this.generador = new GeneradorDeIds()
 	}
 	
 	// todo ESTO NO DEBERIA ESTAR ACA
@@ -181,53 +183,34 @@ class TrailFlix {
 			add(user4)
 		]
 	}
+
+
 	
-	def buscarPelicula (String nombre){
-		this.contenido.filter[it == nombre]
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).returnPelicula() !== null && this.contenido.get(i).titulo == nombre){
-				return this.contenido.get(i)
-			}
-		}
+	def buscarPelicula (int id){
+		this.contenido.findFirst[(it.esPelicula && it.codigo == id)]
 	}
 	
-	def buscarSerie (String nombre){
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).returnSerie() !== null && this.contenido.get(i).titulo == nombre){
-				return this.contenido.get(i)
-			}
-		}
+	def buscarSerie (int id){
+		this.contenido.findFirst[(it.esSerie && it.codigo == id)]
 	}
 	
-	def buscarUsuario (String nombre){
-		for (i:0..this.usuarios.size-1){
-			if (this.usuarios.get(i).nombre == nombre){
-				return this.usuarios.get(i)
-			}
-		}
+	def buscarUsuario (int id){
+		this.usuarios.findFirst[it.codigo == id]
 	}
 	
-	def buscarPorCategoria (Categoria categoria){
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).categorias.contains(categoria)){
-				return this.contenido.get(i)
-			}
-		}
+	def buscarPorCategoria (String categoria){
+		this.categorias.filter[it == categoria]
 	}
 	
-	def buscarPorClasificacion (Clasificacion clasificacion){
-		//contenido.filter[it.clasificacion.equals(clasificacion)].head()
-		for (i:0..this.contenido.size-1){
-			if (this.contenido.get(i).clasificacion.equals(clasificacion)){
-				return this.contenido.get(i)
-			}
-		}
+	def buscarPorClasificacion (String clasificacion){
+		this.clasificacion.filter[it == clasificacion]
 	}
 	
 	/*
 	 * Prop: se añade una pelicula y se notifica a la ventana principal.
 	 */
-	def agregarPelicula (Pelicula pelicula){
+	def agregarPelicula (Pelicula pelicula){ //CHECKEAR SI EXISTE SU CLASIFICACION/CATEGORIA DE LA PELICULA PASADA POR PARAMETRO, SINO AGREGARLA
+		pelicula.codigo = this.generador.generarCodigo
 		this.contenido.add(pelicula)
 		ventana.actualizarContenidos
 	}
@@ -235,9 +218,23 @@ class TrailFlix {
 	/*
 	 * Prop: se añade una serie y se notifica a la ventana principal.
 	 */
-	def agregarSerie (Serie serie){
+	def agregarSerie (Serie serie){ //CHECKEAR SI EXISTE SU CLASIFICACION/CATEGORIA DE LOS CAPITULOS DE LA SERIE PASADA POR PARAMETRO, SINO AGREGARLA
+		serie.codigo = this.generador.generarCodigo
 		this.contenido.add(serie)
 		ventana.actualizarContenidos
+	}
+	
+	def agregarUsuario (Usuario usuario){
+		usuario.codigo = this.generador.generarCodigo
+		this.usuarios.add(usuario)
+	}
+	
+	def agregarCategoria (String categoria){
+		this.categorias.add(categoria)
+	}
+	
+	def agregarClasificacion (String clasificacion){
+		this.clasificaciones.add(clasificacion)
 	}
 	
 	/*
@@ -254,42 +251,31 @@ class TrailFlix {
 		this.contenido.remove(serie)
 	}
 	
-	def generarId(){
-		this.id ++
-	}
-
-	/**
-	 * Prop: devuelve un nuevo codigo unico que identifique a la pelicula recien creada.
-	 */
-	def nuevoCodigoPeli() {
-		this.generarId()
-	}
-	
-	/**
-	 * Prop: devuelve un nuevo codigo unico que identifique a la serie recien creada.
-	 */
-	def nuevoCodigoSerie() {
-		this.generarId()
-	}
-	
-	/**
-	 * Prop: devuelve un nuevo codigo unico que identifique al capitulo recien creado.
-	 */
-	def nuevoCodigoCapitulo() {
-		this.generarId()
+	def generarId (){
+		this.generador.generarCodigo
 	}
 	
 //-----------------GETTERS Y SETTERS----------------------------
-	def getPeliculas() {
+
+
+	def getPeliculas() { //IMPLEMENTAR
 		this.contenido.map[returnPelicula].filter[it !== null].toList
 	}
 	
-	def getSeries() {
+	def getSeries() { //IMPLEMENTAR
 		this.contenido.map[returnSerie].filter[it !== null].toList
 	}
 	
 	def getUsuarios() {
 		this.usuarios
+	}
+	
+	def getCategorias(){
+		this.categorias
+	}
+	
+	def getClasificacion(){
+		this.clasificaciones
 	}
 	
 	def void setUsuarios(List<Usuario> usuarios) {
