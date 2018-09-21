@@ -24,12 +24,12 @@ class TrailFlixTest  extends TestCase {
 		val tf = new TrailFlix(null)
 		tf.rellenarDatos()
 		//La informacion que esta es muy random, y sensible a cambios
-		tf.getUsuarios().map[ assertEquals(it,tf.buscarUsuario(it.nombre)); //Cada usuario se puede ubicar buscando
+		tf.getUsuarios().map[ assertEquals(it,tf.buscarUsuario(it.codigo)); //Cada usuario se puede ubicar buscando
 			                  assertTrue(it.amigos.forall[i | i.amigos.contains(it)])  //La amistad es bidireccional
-							  assertTrue(it.peliculasFavoritas.forall[peli|tf.buscarPelicula(peli.titulo)==peli])
-							  assertTrue(it.peliculasVistas.forall[peli|tf.buscarPelicula(peli.titulo)==peli])
-							  assertTrue(it.seriesFavoritas.forall[ser|tf.buscarSerie(ser.titulo)==ser])
-							  assertTrue(it.seriesVistas.forall[ser|tf.buscarSerie(ser.titulo)==ser])
+							  assertTrue(it.peliculasFavoritas.forall[peli|tf.buscarPelicula(peli.codigo)==peli])
+							  assertTrue(it.peliculasVistas.forall[peli|tf.buscarPelicula(peli.codigo)==peli])
+							  assertTrue(it.seriesFavoritas.forall[ser|tf.buscarSerie(ser.codigo)==ser])
+							  assertTrue(it.seriesVistas.forall[ser|tf.buscarSerie(ser.codigo)==ser])
 							  
 							  it
 							]
