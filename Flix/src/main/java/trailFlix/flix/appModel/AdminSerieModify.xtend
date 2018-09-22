@@ -1,10 +1,13 @@
 package trailFlix.flix.appModel
 
-import trailFlix.flix.appModel.AdminSerie
+import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.Serie
 import trailFlix.flix.model.TrailFlix
-import java.util.ArrayList
 
+@Accessors
+@Observable
 class AdminSerieModify extends AdminSerie {
 	Serie serie
 	
@@ -12,6 +15,8 @@ class AdminSerieModify extends AdminSerie {
 		super(trailFlix)
 		serie = sel
 		
+		capitulos = sel.capitulos
+		cont_cap = capitulos.maxBy[it.capituloNro].capituloNro + 1
 		titulo = sel.titulo
 		sel_categorias = sel.categorias.head()
 		temporadas = sel.temporadas
@@ -40,6 +45,7 @@ class AdminSerieModify extends AdminSerie {
 			clasificacion = sel_clasificacion
 			creadores = creadores
 			contRelacionado = relacionado
+			capitulos = this.capitulos
 		]
 		
 	}

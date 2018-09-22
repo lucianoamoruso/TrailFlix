@@ -170,7 +170,7 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 			bindContentsToProperty("capituloNro")
 		]
 		new Column<Capitulo>(tablaUsuarios) => [
-			title = "Temporadas"
+			title = "Temporada"
 			bindContentsToProperty("temporada")
 		]
 		
