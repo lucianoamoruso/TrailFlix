@@ -1,5 +1,6 @@
 package trailFlix.flix_ui
 
+import java.awt.Color
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
@@ -8,20 +9,22 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
+import org.uqbar.arena.widgets.NumericField
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
-import trailFlix.flix.model.Contenido
+import trailFlix.flix.appModel.AdminChapter
+import trailFlix.flix.appModel.AdminContentSerie
 import trailFlix.flix.appModel.AdminSerie
+import trailFlix.flix.model.Capitulo
+import trailFlix.flix.model.Contenido
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix.appModel.AdminContentSerie
-import trailFlix.flix.appModel.AdminChapter
-import trailFlix.flix_ui.helpers.ProveedorIconos
-import org.uqbar.arena.widgets.NumericField
-import java.awt.Color
 
 class AdminSerieWindow extends Dialog<AdminSerie> {
 	
@@ -104,21 +107,11 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 			width = 70
 		]
 		
+		//Capitulos
+		crearAreaCapitulos(mainPanel)
+		
 		//Contenido Relacionado
 		administrarContenidoRelacionado(mainPanel)
-		
-		new Label(panelDatos).text = "Capitulos"
-		val capitulos = new Panel(panelDatos) => [
-			layout = new HorizontalLayout
-		]
-		new Button(capitulos) => [
-		caption = "Agregar Capitulo"
-		onClick [ | new AdminChapterWindow(this, new AdminChapter(this.modelObject, this.modelObject.trailFlix)).open]
-		]
-		new Label(capitulos) => [
-			text = "* al menos 1"
-			foreground = Color.RED
-		]
 		
 		//Confirmacion
 		new Button(mainPanel) => [
@@ -130,6 +123,55 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 			caption = "Aceptar"
 			bindEnabledToProperty("datos_completados")
 			onClick [ | {modelObject.nuevaSerie ; close}]
+		]
+		
+	}
+	
+	protected def crearAreaCapitulos(Panel mainPanel) {
+		
+		new Label(mainPanel) => [
+			text = "Capitulos"
+			fontSize = 13
+		]
+		
+		crearTablaCapitulos(mainPanel)
+		
+		val botonesCapitulo = new Panel(mainPanel) => [
+			layout = new HorizontalLayout
+		]
+		
+		centrarHorizontalElemento(mainPanel.width,45,botonesCapitulo)
+		
+		new Button(botonesCapitulo) => [
+			caption = "Agregar capitulo"
+			onClick [ | new AdminChapterWindow(this, new AdminChapter(this.modelObject, this.modelObject.trailFlix)).open]
+		]
+		
+		new Label(botonesCapitulo) => [
+			text = "* al menos 1"
+			foreground = Color.RED
+		]
+		
+	}
+	
+	def crearTablaCapitulos(Panel panel) {
+		
+		val tablaUsuarios = new Table<Capitulo>(panel, typeof(Capitulo)) => [
+			items <=> "capitulos"
+			numberVisibleRows = 3
+		]
+		new Column<Capitulo>(tablaUsuarios) => [
+			title = "Titulo"
+			fixedSize = 100
+			bindContentsToProperty("titulo")
+		]
+		new Column<Capitulo>(tablaUsuarios) => [
+			title = "Numero"
+			bindContentsToProperty("capituloNro")
+		]
+		new Column<Capitulo>(tablaUsuarios) => [
+			title = "Temporadas"
+			bindContentsToProperty("temporada")
 		]
 		
 	}
@@ -167,34 +209,44 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		
 	}
 	
-	def void administrarContenidoRelacionado(Panel mainPanel) {
+	def void administrarContenidoRelacionado(Panel panel) {
 		
-		val panelRelated = new Panel(mainPanel) => [
-			layout = new VerticalLayout
+		new Label(panel) => [
+			text = "Contenido relacionado"
+			fontSize = 11
+			alignLeft
 		]
-		
-		val panelRelatedLabel = new Panel(panelRelated) => [
-			layout = new ColumnLayout(2)
-		]
-		new Label(panelRelatedLabel).text = "Contenido relacionado"
-		val panelRelatedButtons = new Panel(panelRelatedLabel) => [
+		val panelRelated = new Panel(panel) => [
 			layout = new HorizontalLayout
+		]
+		new List(panelRelated) => [
+			allowNull(false)
+			width = 200
+			height = 60
+			value <=> "sel_relacionado"
+			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
+		]
+		val panelRelatedButtons = new Panel(panelRelated)
+		new Button(panelRelatedButtons) => [
+			caption = "Agregar"
+			onClick [ | new AdminContentSerieWindow(this, new AdminContentSerie(modelObject.trailFlix,modelObject)).open]
 		]
 		new Button(panelRelatedButtons) => [
 			caption = "Quitar"
 			onClick [ | modelObject.quitarContenido]
 		]
-		new Button(panelRelatedButtons) => [
-			caption = "Agregar"
-			onClick [ | new AdminContentSerieWindow(this, new AdminContentSerie(modelObject.trailFlix,modelObject)).open]
-		]
-		new List(panelRelated) => [
-			allowNull(false)
-			value <=> "sel_relacionado"
-			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
-		]
 		
-		
+	}
+	
+	/*
+	 * Prop: crea un boton invisible para centrar horizontalmente el elemento deseado dentro de un contenedor.
+	 */
+	def void centrarHorizontalElemento(int container_width, int element_width, Panel panel) {
+		new Button(panel) => [
+			width = container_width/2 - element_width/2
+			height = 0
+			bindVisibleToProperty("visible")
+		]
 	}
 	
 }

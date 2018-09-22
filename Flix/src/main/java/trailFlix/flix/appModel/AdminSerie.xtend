@@ -17,6 +17,7 @@ class AdminSerie {
 	String 				titulo
 	String 				creadores
 	Integer				temporadas
+	int					cont_cap = 1
 	List<String>		categorias_disp
 	String	 			sel_categorias
 	boolean				es_drama
@@ -30,6 +31,7 @@ class AdminSerie {
 	Contenido			new_relacionado
 	List<Capitulo>		capitulos = new ArrayList
 	boolean				datos_completados = false
+	boolean				visible = false
 		
 		new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix

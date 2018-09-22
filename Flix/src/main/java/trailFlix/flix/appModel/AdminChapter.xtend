@@ -15,6 +15,7 @@ import trailFlix.flix.model.TrailFlix
 class AdminChapter {
 	
 	TrailFlix			trailflix
+	AdminSerie			adminSerie
 	String				titulo
 	List <String> 		categorias
 	LocalDate			fecha_estreno_ingresada = new LocalDate(1990,1,1)	//Default
@@ -31,7 +32,6 @@ class AdminChapter {
 	Integer				duracion_ingresada
 	Integer				temporada
 	Capitulo 			capituloNuevo
-	AdminSerie			adminSerie
 	boolean				datos_completados = false
 	
 	
@@ -63,8 +63,10 @@ class AdminChapter {
 			actores = act
 			link = link_ingresado
 			it.temporada = this.temporada
+			it.capituloNro = adminSerie.cont_cap
 			it.codigo = this.trailflix.nuevoCodigoCapitulo
 		]
+		adminSerie.cont_cap = adminSerie.cont_cap + 1
 		this.adminSerie.addCapitulo(capitulo)
 }
 	
