@@ -26,9 +26,9 @@ class TrailFlix {
 		
 		val peli1 = new Pelicula("Terminator") => [
 				codigo = 1000
-				categorias = new ArrayList() => [add(categorias.get(4)); add(categorias.get(2))]
-				clasificacion = clasificaciones.get(2)
-				fechaEstreno = new LocalDate(2015,5,15)
+				categorias = new ArrayList() => [add(categorias.get(3)); add(categorias.get(1))]
+				clasificacion = clasificaciones.get(1)
+				fechaEstreno = "2015-5-15"
 				duracion = 120
 				directores = new ArrayList() => [add("Michael Bay"); add("Carlos Gamer")]
 				actores = new ArrayList() => [add("Juan John"); add("Pepe Papa")]
@@ -38,7 +38,7 @@ class TrailFlix {
 			
 		val peli2 = new Pelicula("The Spacito 3") => [
 				codigo = 2000
-				categorias = new ArrayList() => [add(categorias.get(1)); add(categorias.get(3))]
+				categorias = new ArrayList() => [add(categorias.get(0)); add(categorias.get(2))]
 				clasificacion = clasificaciones.get(0)
 				fechaEstreno = "2017-7-11"
 				duracion = 420
@@ -50,8 +50,8 @@ class TrailFlix {
 			
 		val peli3 = new Pelicula("Transformers") => [
 				codigo = 3000
-				categorias = new ArrayList() => [add(categorias.get(2)); add(categorias.get(4))]
-				clasificacion = clasificaciones.get(1)
+				categorias = new ArrayList() => [add(categorias.get(1)); add(categorias.get(3))]
+				clasificacion = clasificaciones.get(0)
 				fechaEstreno = "2000-1-10"
 				duracion = 150
 				directores = new ArrayList() => [add("Michael Bay")]
@@ -122,7 +122,7 @@ class TrailFlix {
 		
 		val serie3 = new Serie("The Walking Bad") => [
 		codigo = 0200
-		categorias = new ArrayList() => [add(categorias.get(4)); add(categorias.get(2))]
+		categorias = new ArrayList() => [add(categorias.get(3)); add(categorias.get(2))]
 		clasificacion = clasificaciones.get(2)
 		creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
 		capitulos = new ArrayList() => [add(cap2_1); add(cap1_2); add(cap1_1)]
@@ -205,7 +205,7 @@ class TrailFlix {
 	}
 	
 	def buscarPorClasificacion (String clasificacion){
-		this.clasificacion.filter[it == clasificacion]
+		this.clasificaciones.filter[it == clasificacion]
 	}
 	
 	/*
@@ -276,7 +276,7 @@ class TrailFlix {
 		this.categorias
 	}
 	
-	def getClasificacion(){
+	def getClasificaciones(){
 		this.clasificaciones
 	}
 	

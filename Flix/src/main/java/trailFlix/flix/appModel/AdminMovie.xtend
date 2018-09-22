@@ -34,14 +34,14 @@ class AdminMovie {
 	Integer				anio
 	String				directores_elegidos
 	String				actores_principales
-	List<Categoria>		categorias_disp = Categoria.values
-	Categoria 			sel_categorias
+	List<String>		categorias_disp
+	String	 			sel_categorias
 	boolean				es_drama
 	boolean				es_comedia
 	boolean				es_terror
 	boolean				es_accion
-	List<Clasificacion>	clasificaciones_disp = Clasificacion.values
-	Clasificacion		sel_clasificacion
+	List<String>		clasificaciones_disp
+	String				sel_clasificacion
 	List<Contenido>		relacionado = new ArrayList
 	Contenido			sel_relacionado
 	Contenido			new_relacionado		//Seteado desde AdminContent
@@ -55,6 +55,8 @@ class AdminMovie {
 	new(TrailFlix trailFlix, AdminMain parent) {
 		this.trailFlix = trailFlix
 		this.parent = parent
+		categorias_disp = trailFlix.categorias
+		clasificaciones_disp = trailFlix.clasificaciones
 		meses = newArrayList("Enero","Febrero","Marzo","Abril","Mayo",
 		"Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 		map_meses => [
@@ -68,7 +70,7 @@ class AdminMovie {
 	 * Prop: Carga una nueva pelicula a la base de datos.
 	 */
 	def void nuevaPeli() {
-		val ArrayList<Categoria> nuevasCategorias = recolectarCategorias
+		val ArrayList<String> nuevasCategorias = recolectarCategorias
 		val dir = newArrayList()
 		dir.addAll(directores_elegidos.split(",").toList())
 
@@ -76,7 +78,6 @@ class AdminMovie {
 		act.addAll(actores_principales.split(",").toList())
 		
 		val pelicula = new Pelicula(titulo) => [
-			codigo = trailFlix.nuevoCodigoPeli
 			categorias = nuevasCategorias
 			clasificacion = sel_clasificacion
 			fechaEstreno = fecha_estreno_ingresada
@@ -93,19 +94,19 @@ class AdminMovie {
 	/*
 	 * Prop: revisa que categorias fueron tildadas y devuelve una lista conteniendolas.
 	 */
-	def ArrayList<Categoria> recolectarCategorias() {
-		var ArrayList<Categoria> ret = new ArrayList
+	def ArrayList<String> recolectarCategorias() {
+		var ArrayList<String> ret = new ArrayList
 		if (es_accion) {
-			ret.add(Categoria.ACCION)
+			ret.add("ACCION")
 		}
 		if (es_comedia) {
-			ret.add(Categoria.COMEDIA)
+			ret.add("COMEDIA")
 		}
 		if (es_drama) {
-			ret.add(Categoria.DRAMA)
+			ret.add("DRAMA")
 		}
 		if (es_terror) {
-			ret.add(Categoria.TERROR)
+			ret.add("TERROR")
 		}
 		ret
 	}
@@ -214,7 +215,7 @@ class AdminMovie {
 		evaluarCompletado
 	}
 	
-	def void setSel_clasificacion(Clasificacion sel_clasificacion) {
+	def void setSel_clasificacion(String sel_clasificacion) {
 		this.sel_clasificacion = sel_clasificacion
 		evaluarCompletado
 	}

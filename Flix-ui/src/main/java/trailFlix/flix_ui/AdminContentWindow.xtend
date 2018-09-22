@@ -32,7 +32,7 @@ class AdminContentWindow extends Dialog<AdminContent> {
 			allowNull(false)
 			(items <=> "disponibles").adapter = nameAdapter
 			value <=> "elegido"
-			bindForegroundToProperty()
+			bindForegroundToProperty("color_item")
 			onSelection [ | modelObject.activar]
 		]
 		

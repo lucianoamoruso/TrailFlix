@@ -23,14 +23,14 @@ class AdminSerie {
 	String 				titulo
 	String 				creadores
 	Integer				temporadas
-	List<Categoria>		categorias_disp = Categoria.values
-	Categoria 			sel_categorias
+	List<String>		categorias_disp
+	String	 			sel_categorias
 	boolean				es_drama
 	boolean				es_comedia
 	boolean				es_terror
 	boolean				es_accion
-	List<Clasificacion>	clasificaciones_disp = Clasificacion.values
-	Clasificacion		sel_clasificacion
+	List<String>		clasificaciones_disp
+	String				sel_clasificacion
 	List<Contenido>		relacionado = new ArrayList
 	Contenido			sel_relacionado
 	Contenido			new_relacionado
@@ -39,15 +39,16 @@ class AdminSerie {
 		
 		new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
+		categorias_disp = trailFlix.categorias
+		clasificaciones_disp = trailFlix.clasificaciones
 		}
 		
 		def void nuevaSerie() {
-		val ArrayList<Categoria> nuevasCategorias = recolectarCategorias
+		val ArrayList<String> nuevasCategorias = recolectarCategorias
 		val cre = newArrayList()
 		cre.addAll(creadores.split(",").toList())
 
 		val serie = new Serie(titulo) => [
-			codigo = trailFlix.nuevoCodigoSerie
 			categorias = nuevasCategorias
 			clasificacion = sel_clasificacion
 			creadores = cre
@@ -65,19 +66,19 @@ class AdminSerie {
 	}
 	
 	
-	protected def ArrayList<Categoria> recolectarCategorias() {
-		var ArrayList<Categoria> ret = new ArrayList
+	protected def ArrayList<String> recolectarCategorias() {
+		var ArrayList<String> ret = new ArrayList
 		if (es_accion) {
-			ret.add(Categoria.ACCION)
+			ret.add("ACCION")
 		}
 		if (es_comedia) {
-			ret.add(Categoria.COMEDIA)
+			ret.add("COMEDIA")
 		}
 		if (es_drama) {
-			ret.add(Categoria.DRAMA)
+			ret.add("DRAMA")
 		}
 		if (es_terror) {
-			ret.add(Categoria.TERROR)
+			ret.add("TERROR")
 		}
 		ret
 	}
@@ -121,7 +122,7 @@ class AdminSerie {
 		evaluarCompletado
 	}
 	
-	def void setSel_clasificacion(Clasificacion sel_clasificacion) {
+	def void setSel_clasificacion(String sel_clasificacion) {
 		this.sel_clasificacion = sel_clasificacion
 		evaluarCompletado
 	}
