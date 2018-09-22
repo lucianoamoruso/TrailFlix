@@ -2,7 +2,7 @@ package trailFlix.flix_ui
 
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.bindings.PropertyAdapter
-import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.tables.Column
@@ -11,9 +11,9 @@ import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContentSerie
 import trailFlix.flix.model.Contenido
 import trailFlix.flix_ui.helpers.ProveedorIconos
+import trailFlix.flix_ui.helpers.StringTipoTransformer
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.layout.HorizontalLayout
 
 class AdminContentSerieWindow extends TransactionalDialog<AdminContentSerie> {
 	

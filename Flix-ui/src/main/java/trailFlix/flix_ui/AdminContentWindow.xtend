@@ -13,6 +13,7 @@ import trailFlix.flix.model.Contenido
 import trailFlix.flix_ui.helpers.ProveedorIconos
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import trailFlix.flix_ui.helpers.StringTipoTransformer
 
 class AdminContentWindow extends Dialog<AdminContent> {
 	

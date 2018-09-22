@@ -8,6 +8,7 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
+import org.uqbar.arena.widgets.NumericField
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
@@ -16,11 +17,10 @@ import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContent
 import trailFlix.flix.appModel.AdminMovie
 import trailFlix.flix.model.Contenido
+import trailFlix.flix_ui.helpers.ProveedorIconos
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import trailFlix.flix_ui.helpers.ProveedorIconos
-import org.uqbar.arena.filters.NumericFilter
-import org.uqbar.arena.widgets.NumericField
+import java.awt.Color
 
 class AdminMovieWindow extends Dialog<AdminMovie> {
 	
@@ -35,12 +35,24 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		
 		modelObject.setDelegate(delegate)
 		
+		//Pista
+		new Label(mainPanel) => [
+			text = "* = obligatorio"
+			foreground = Color.RED
+		]
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
 		new Label(panelTitulo).text = "Título"
-		new TextBox(panelTitulo) => [
+		val titulo = new Panel(panelTitulo) => [
+			layout = new HorizontalLayout
+		]
+		new Label(titulo) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(titulo) => [
 			value <=> "titulo"
 			width = 100  
 		]
@@ -53,12 +65,26 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		ofrecerCategorias(panelDatos)
 
 		new Label(panelDatos).text = "Duración"
-		new NumericField(panelDatos,false) => [
+		val duracion = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(duracion) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new NumericField(duracion,false) => [
 			value <=> "duracion_ingresada"
 			width = 50
 		]
 		new Label(panelDatos).text = "Clasificación"
-		new Selector(panelDatos) => [
+		val clasificacion = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(clasificacion) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new Selector(clasificacion) => [
 			allowNull(false)
 			items <=> "clasificaciones_disp"
 			value <=> "sel_clasificacion"
@@ -68,17 +94,38 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		crearInputFechaEstreno(panelDatos)
 		
 		new Label(panelDatos).text = "Directores"
-		new TextBox(panelDatos) => [
+		val directores = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(directores) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(directores) => [
 			value <=> "directores_elegidos"
 			width = 70
 		]
 		new Label(panelDatos).text = "Actores principales"
-		new TextBox(panelDatos) => [
+		val actores = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(actores) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(actores) => [
 			value <=> "actores_principales"
 			width = 70
 		]
 		new Label(panelDatos).text = "Link Youtube"
-		new TextBox(panelDatos) => [
+		val link = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(link) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(link) => [
 			value <=> "link_ingresado"
 			width = 100
 		]
@@ -101,7 +148,14 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 	
 	def void crearInputFechaEstreno(Panel panelDatos) {
 		
-		new Label(panelDatos).text = "Fecha estreno"
+		val fecha = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(fecha).text = "Fecha estreno"
+		new Label(fecha) => [
+			text = "*"
+			foreground = Color.RED
+		]
 		val panelFechas = new Panel(panelDatos) => [
 			layout = new VerticalLayout
 		]
