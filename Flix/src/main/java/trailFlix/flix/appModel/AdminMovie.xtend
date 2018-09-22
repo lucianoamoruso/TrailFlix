@@ -8,8 +8,6 @@ import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.LocalDate
 import org.uqbar.commons.model.annotations.Observable
-import trailFlix.flix.model.Categoria
-import trailFlix.flix.model.Clasificacion
 import trailFlix.flix.model.Contenido
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.TrailFlix

@@ -25,7 +25,7 @@ class TrailFlix {
 	def rellenarDatos() {
 		
 		val peli1 = new Pelicula("Terminator") => [
-				codigo = 1000
+				codigo = 0001
 				categorias = new ArrayList() => [add(categorias.get(3)); add(categorias.get(1))]
 				clasificacion = clasificaciones.get(1)
 				fechaEstreno = "2015-5-15"
@@ -37,7 +37,7 @@ class TrailFlix {
 			]
 			
 		val peli2 = new Pelicula("The Spacito 3") => [
-				codigo = 2000
+				codigo = 0001
 				categorias = new ArrayList() => [add(categorias.get(0)); add(categorias.get(2))]
 				clasificacion = clasificaciones.get(0)
 				fechaEstreno = "2017-7-11"
@@ -49,7 +49,7 @@ class TrailFlix {
 			]
 			
 		val peli3 = new Pelicula("Transformers") => [
-				codigo = 3000
+				codigo = 0003
 				categorias = new ArrayList() => [add(categorias.get(1)); add(categorias.get(3))]
 				clasificacion = clasificaciones.get(0)
 				fechaEstreno = "2000-1-10"
@@ -65,7 +65,7 @@ class TrailFlix {
 		peli3.contRelacionado = new ArrayList() => [add(peli1);add(peli2)]
 		
 		val cap1_1 = new Capitulo("Piloto") => [
-			codigo = 0001
+			codigo = 1000
 			temporada = 1
 			capituloNro = 1
 			fechaEstreno = "2008-2-05"
@@ -77,7 +77,7 @@ class TrailFlix {
 		]
 		
 		val cap1_2 = new Capitulo("Fatiga") => [
-			codigo = 0002
+			codigo = 1001
 			temporada = 1
 			capituloNro = 2
 			fechaEstreno = "2008-2-06"
@@ -89,7 +89,7 @@ class TrailFlix {
 		]
 		
 		val serie1 = new Serie("Casados con Hijos") => [
-			codigo = 0100
+			codigo = 1002
 			categorias = new ArrayList() => [add(categorias.get(2))]
 			clasificacion = clasificaciones.get(0)
 			creadores = new ArrayList() => [add("Super Pepe")]
@@ -99,7 +99,7 @@ class TrailFlix {
 		]
 		
 		val cap2_1 = new Capitulo("2000 years") => [
-			codigo = 0003
+			codigo = 1003
 			temporada = 1
 			capituloNro = 1
 			fechaEstreno = "2013-4-07"
@@ -111,7 +111,7 @@ class TrailFlix {
 		]
 		
 		val serie2 = new Serie("Attack on Titan") => [
-			codigo = 0200
+			codigo = 1004
 			categorias = new ArrayList() => [add(categorias.get(1)); add(categorias.get(2)); add(categorias.get(3))]
 			clasificacion = clasificaciones.get(1)
 			creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
@@ -121,7 +121,7 @@ class TrailFlix {
 		]
 		
 		val serie3 = new Serie("The Walking Bad") => [
-		codigo = 0200
+		codigo = 1005
 		categorias = new ArrayList() => [add(categorias.get(3)); add(categorias.get(2))]
 		clasificacion = clasificaciones.get(2)
 		creadores = new ArrayList() => [add("Hiroyuki Tanaka")]
@@ -139,7 +139,7 @@ class TrailFlix {
 			add(serie3)
 		]
 		
-		val user1 = new Usuario(0001,"carlos3","Carlos") => [
+		val user1 = new Usuario(1006,"carlos3","Carlos") => [
 			fechaRegistro = new LocalDate(1980,12,26)
 			fechaNacimiento = new LocalDate(1970,10,22)
 			contVisto = newArrayList(peli1,peli2,serie3)
@@ -147,7 +147,7 @@ class TrailFlix {
 			contRecomendado = newArrayList(peli1,serie3)
 		]
 		
-		val user2 = new Usuario(0002,"pedro54","Pedro") => [
+		val user2 = new Usuario(1007,"pedro54","Pedro") => [
 			fechaRegistro = new LocalDate(2001,9,15)
 			fechaNacimiento = new LocalDate(2000,2,7)
 			contVisto = newArrayList(peli1,peli2,serie3,peli3)
@@ -155,7 +155,7 @@ class TrailFlix {
 			contRecomendado = newArrayList(peli1,serie3)
 		]
 		
-		val user3 = new Usuario(0003,"jose100","Jose") => [
+		val user3 = new Usuario(1008,"jose100","Jose") => [
 			fechaRegistro = new LocalDate(1999,12,31)
 			fechaNacimiento = new LocalDate(1995,5,17)
 			contVisto = newArrayList(peli1,peli3)
@@ -163,7 +163,7 @@ class TrailFlix {
 			contRecomendado = newArrayList(peli3)
 		]
 		
-		val user4 = new Usuario(0004,"xXxMiguexXx","Miguel") => [
+		val user4 = new Usuario(1009,"xXxMiguexXx","Miguel") => [
 			fechaRegistro = new LocalDate(2000,1,1)
 			fechaNacimiento = new LocalDate(1000,12,25)
 			contVisto = newArrayList(peli3,peli2,serie2)
@@ -212,7 +212,7 @@ class TrailFlix {
 	 * Prop: se añade una pelicula y se notifica a la ventana principal.
 	 */
 	def agregarPelicula (Pelicula pelicula){ //CHECKEAR SI EXISTE SU CLASIFICACION/CATEGORIA DE LA PELICULA PASADA POR PARAMETRO, SINO AGREGARLA
-		pelicula.codigo = this.generador.generarCodigo
+		pelicula.codigo = this.generador.generarCodigoPeli
 		this.contenido.add(pelicula)
 		ventana.actualizarContenidos
 	}
@@ -221,14 +221,18 @@ class TrailFlix {
 	 * Prop: se añade una serie y se notifica a la ventana principal.
 	 */
 	def agregarSerie (Serie serie){ //CHECKEAR SI EXISTE SU CLASIFICACION/CATEGORIA DE LOS CAPITULOS DE LA SERIE PASADA POR PARAMETRO, SINO AGREGARLA
-		serie.codigo = this.generador.generarCodigo
+		serie.codigo = this.generador.generarCodigoResto
 		this.contenido.add(serie)
 		ventana.actualizarContenidos
 	}
 	
 	def agregarUsuario (Usuario usuario){
-		usuario.codigo = this.generador.generarCodigo
+		usuario.codigo = this.generador.generarCodigoResto
 		this.usuarios.add(usuario)
+	}
+	
+	def nuevoCodigoCapitulo() {
+		this.generador.generarCodigoResto
 	}
 	
 	def agregarCategoria (String categoria){
@@ -251,10 +255,6 @@ class TrailFlix {
 	 */
 	def eliminarSerie(Serie serie) {
 		this.contenido.remove(serie)
-	}
-	
-	def generarId (){
-		this.generador.generarCodigo
 	}
 	
 //-----------------GETTERS Y SETTERS----------------------------
@@ -283,6 +283,5 @@ class TrailFlix {
 	def void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios
 	}
-	
 		
 }

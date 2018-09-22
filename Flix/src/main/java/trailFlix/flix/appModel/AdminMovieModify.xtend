@@ -2,7 +2,6 @@ package trailFlix.flix.appModel
 
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.TrailFlix
-import trailFlix.flix.model.Categoria
 import java.util.ArrayList
 import java.util.Map
 import java.util.HashMap
@@ -24,10 +23,10 @@ class AdminMovieModify extends AdminMovie {
 		directores_elegidos = peli.directores.reduce[p1, p2| p1 + "," + p2]
 		actores_principales = peli.actores.reduce[p1, p2| p1 + "," + p2]
 		//sel_categorias
-		es_drama = peli.categorias.exists[it == Categoria.DRAMA]
-		es_comedia = peli.categorias.exists[it == Categoria.COMEDIA]
-		es_terror = peli.categorias.exists[it == Categoria.TERROR]
-		es_accion = peli.categorias.exists[it == Categoria.ACCION]
+		es_drama = peli.categorias.exists[it == "DRAMA"]
+		es_comedia = peli.categorias.exists[it == "COMEDIA"]
+		es_terror = peli.categorias.exists[it == "TERROR"]
+		es_accion = peli.categorias.exists[it == "ACCION"]
 		sel_clasificacion = peli.clasificacion
 		relacionado.addAll( peli.contRelacionado)
 		//sel_relacionado
@@ -40,7 +39,7 @@ class AdminMovieModify extends AdminMovie {
 	 * Prop: Carga una pelicula a la base de datos.
 	 */	
 override void nuevaPeli(){
-		val ArrayList<Categoria> nuevasCategorias = recolectarCategorias
+		val ArrayList<String> nuevasCategorias = recolectarCategorias
 		val dir = newArrayList()
 		dir.addAll(directores_elegidos.split(",").toList())
 

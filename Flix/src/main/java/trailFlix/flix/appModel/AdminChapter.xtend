@@ -1,15 +1,13 @@
 package trailFlix.flix.appModel
 
+import java.util.Calendar
+import java.util.HashMap
+import java.util.List
+import java.util.Map
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.joda.time.LocalDate
 import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.Capitulo
-import java.util.List
-import trailFlix.flix.model.Categoria
-import java.util.Map
-import java.util.HashMap
-import java.util.ArrayList
-import org.joda.time.LocalDate
-import java.util.Calendar
 import trailFlix.flix.model.TrailFlix
 
 @Accessors
@@ -18,7 +16,7 @@ class AdminChapter {
 	
 	TrailFlix			trailflix
 	String				titulo
-	List <Categoria> 	categorias
+	List <String> 		categorias
 	LocalDate			fecha_estreno_ingresada = new LocalDate(1990,1,1)	//Default
 	List<Integer>		dias_del_mes
 	Integer				dia
@@ -40,6 +38,7 @@ class AdminChapter {
 	new(AdminSerie admin, TrailFlix trailflix) {
 		this.adminSerie = admin
 		this.trailflix = trailflix
+		this.categorias = trailflix.categorias
 		meses = newArrayList("Enero","Febrero","Marzo","Abril","Mayo",
 		"Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 		map_meses => [

@@ -1,12 +1,11 @@
 package trailFlix.flix_ui
 
-import java.awt.Color
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import trailFlix.flix.appModel.AdminContent
@@ -26,15 +25,7 @@ class AdminContentWindow extends Dialog<AdminContent> {
 		
 	override protected createFormPanel(Panel mainPanel) {
 
-
-		crearPistas(mainPanel)
-		new List(mainPanel) => [
-			allowNull(false)
-			(items <=> "disponibles").adapter = nameAdapter
-			value <=> "elegido"
-			bindForegroundToProperty("color_item")
-			onSelection [ | modelObject.activar]
-		]
+		crearListaContenido(mainPanel)
 		
 		//Panel de botones
 		val panelBotones = new Panel(mainPanel) => [
@@ -47,28 +38,26 @@ class AdminContentWindow extends Dialog<AdminContent> {
 			bindEnabledToProperty("listo")
 			onClick [ | {modelObject.agregar; close}]
 		]
+		
 	}
-	
-	protected def crearPistas(Panel panel) {
-		val panelPistas = new Panel(panel) => [
-			layout = new HorizontalLayout
+
+	def void crearListaContenido(Panel mainPanel) {
+		
+		val tablaContenido = new Table<Contenido>(mainPanel, typeof(Contenido)) => [
+			items <=> "disponibles"
+			value <=> "elegido"
+			numberVisibleRows = 8
 		]
-		new Label(panelPistas) => [
-			text = "Seleccione"
+		new Column<Contenido>(tablaContenido) => [
+			title = "Titulo"
+			fixedSize = 50
+			bindContentsToProperty("titulo")
 		]
-		new Label(panelPistas) => [
-			text = "peliculas"
-			background = Color.BLACK
-			foreground = new Color(204,255,204)
+		new Column<Contenido>(tablaContenido) => [
+			title = "Tipo"
+			(bindContentsToProperty("codigo")).transformer = new StringTipoTransformer()
 		]
-		new Label(panelPistas) => [
-			text = "y"
-		]
-		new Label(panelPistas) => [
-			text = "series"
-			background = Color.BLACK
-			foreground = new Color(255,204,204)
-		]
+		
 	}
 	
 	def nameAdapter() {

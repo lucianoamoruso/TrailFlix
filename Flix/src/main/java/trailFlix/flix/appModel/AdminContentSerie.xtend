@@ -29,7 +29,8 @@ class AdminContentSerie {
 		parent.agregarContenido(elegido)
 	}
 	
-	def activar() {
+	def void setElegido(Contenido elegido) {
+		this.elegido = elegido
 		listo = true
 	}
 	

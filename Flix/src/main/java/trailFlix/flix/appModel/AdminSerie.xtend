@@ -1,19 +1,13 @@
 package trailFlix.flix.appModel
 
+import java.util.ArrayList
+import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
-import trailFlix.flix.model.Categoria
-import java.util.List
-import trailFlix.flix.model.Clasificacion
-import java.util.ArrayList
-import trailFlix.flix.model.Contenido
-import trailFlix.flix.model.TrailFlix
-import trailFlix.flix.model.Serie
 import trailFlix.flix.model.Capitulo
-import org.joda.time.LocalDate
-import java.util.Map
-import java.util.HashMap
-import java.util.Calendar
+import trailFlix.flix.model.Contenido
+import trailFlix.flix.model.Serie
+import trailFlix.flix.model.TrailFlix
 
 @Accessors
 @Observable

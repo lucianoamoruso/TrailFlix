@@ -2,14 +2,20 @@ package trailFlix.flix.model
 
 class GeneradorDeIds {
 	
-	
-	int id
+	int id_peli
+	int id_resto
 	
 	new (){
-		this.id = 0
+		this.id_peli = 0
+		this.id_resto = 1000
 	}
 	
-	def generarCodigo(){
-		this.id++
+	def generarCodigoPeli() {
+		this.id_peli++
 	}
+
+	def generarCodigoResto(){
+		this.id_resto++
+	}
+	
 }
