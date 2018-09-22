@@ -14,6 +14,8 @@ import trailFlix.flix.appModel.AdminChapter
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import trailFlix.flix_ui.helpers.ProveedorIconos
 import org.uqbar.arena.widgets.NumericField
+import java.awt.Color
+import org.uqbar.arena.layout.HorizontalLayout
 
 class AdminChapterWindow extends Dialog<AdminChapter> {
 	
@@ -27,12 +29,24 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 
 	override protected createFormPanel(Panel mainPanel) {
 		
+		//Pista
+		new Label(mainPanel) => [
+			text = "* = obligatorio"
+			foreground = Color.RED
+		]
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
 		new Label(panelTitulo).text = "Título"
-		new TextBox(panelTitulo) => [
+		val titulo = new Panel(panelTitulo) => [
+			layout = new HorizontalLayout
+		]
+		new Label(titulo) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(titulo) => [
 			value <=> "titulo"
 			width = 100  
 		]
@@ -43,13 +57,27 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 		]
 
 		new Label(panelDatos).text = "Duración"
-		new NumericField(panelDatos,false) => [
+		val duracion = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(duracion) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new NumericField(duracion,false) => [
 			value <=> "duracion_ingresada"
 			width = 50
 		]
 		
 		new Label(panelDatos).text = "Temporada"
-		new NumericField(panelDatos,false) => [
+		val temporada = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(temporada) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new NumericField(temporada,false) => [
 			value <=> "temporada"
 			width = 50
 		]
@@ -57,17 +85,38 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 		crearInputFechaEstreno(panelDatos)
 		
 		new Label(panelDatos).text = "Directores"
-		new TextBox(panelDatos) => [
+		val directores = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(directores) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(directores) => [
 			value <=> "directores_elegidos"
 			width = 70
 		]
 		new Label(panelDatos).text = "Actores principales"
-		new TextBox(panelDatos) => [
+		val actores = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(actores) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(actores) => [
 			value <=> "actores_principales"
 			width = 70
 		]
 		new Label(panelDatos).text = "Link Youtube"
-		new TextBox(panelDatos) => [
+		val link = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(link) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(link) => [
 			value <=> "link_ingresado"
 			width = 100
 		]
@@ -87,7 +136,14 @@ class AdminChapterWindow extends Dialog<AdminChapter> {
 	
 	def void crearInputFechaEstreno(Panel panelDatos) {
 		
-		new Label(panelDatos).text = "Fecha estreno"
+		val fecha = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(fecha).text = "Fecha estreno"
+		new Label(fecha) => [
+			text = "*"
+			foreground = Color.RED
+		]
 		val panelFechas = new Panel(panelDatos) => [
 			layout = new VerticalLayout
 		]

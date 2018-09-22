@@ -21,6 +21,7 @@ import trailFlix.flix.appModel.AdminContentSerie
 import trailFlix.flix.appModel.AdminChapter
 import trailFlix.flix_ui.helpers.ProveedorIconos
 import org.uqbar.arena.widgets.NumericField
+import java.awt.Color
 
 class AdminSerieWindow extends Dialog<AdminSerie> {
 	
@@ -33,13 +34,24 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 
 	override protected createFormPanel(Panel mainPanel) {
 		
-		
+		//Pista
+		new Label(mainPanel) => [
+			text = "* = obligatorio"
+			foreground = Color.RED
+		]
 		//Titulo
 		val panelTitulo = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
 		new Label(panelTitulo).text = "Título"
-		new TextBox(panelTitulo) => [
+		val titulo = new Panel(panelTitulo) => [
+			layout = new HorizontalLayout
+		]
+		new Label(titulo) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(titulo) => [
 			value <=> "titulo"
 			width = 100  
 		]
@@ -52,7 +64,14 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		ofrecerCategorias(panelDatos)
 
 		new Label(panelDatos).text = "Clasificación"
-		new Selector(panelDatos) => [
+		val clasificacion = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(clasificacion) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new Selector(clasificacion) => [
 			allowNull(false)
 			items <=> "clasificaciones_disp"
 			value <=> "sel_clasificacion"
@@ -60,26 +79,45 @@ class AdminSerieWindow extends Dialog<AdminSerie> {
 		
 		//-----Fecha de estreno
 		new Label(panelDatos).text = "Creadores"
-		new TextBox(panelDatos) => [
+		val creadores = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(creadores) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new TextBox(creadores) => [
 			value <=> "creadores"
 			width = 70
 		]
 		
 		new Label(panelDatos).text = "Temporadas"
-		new NumericField(panelDatos,false) => [
+		val temporadas = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Label(temporadas) => [
+			text = "*"
+			foreground = Color.RED
+		]
+		new NumericField(temporadas,false) => [
 			value <=> "temporadas"
 			width = 70
 		]
-		
-		
 		
 		//Contenido Relacionado
 		administrarContenidoRelacionado(mainPanel)
 		
 		new Label(panelDatos).text = "Capitulos"
-		new Button(panelDatos) => [
+		val capitulos = new Panel(panelDatos) => [
+			layout = new HorizontalLayout
+		]
+		new Button(capitulos) => [
 		caption = "Agregar Capitulo"
 		onClick [ | new AdminChapterWindow(this, new AdminChapter(this.modelObject, this.modelObject.trailFlix)).open]
+		]
+		new Label(capitulos) => [
+			text = "* al menos 1"
+			foreground = Color.RED
 		]
 		
 		//Confirmacion
