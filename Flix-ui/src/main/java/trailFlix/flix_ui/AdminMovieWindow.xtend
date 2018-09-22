@@ -212,32 +212,33 @@ class AdminMovieWindow extends Dialog<AdminMovie> {
 		
 	}
 
-	def void administrarContenidoRelacionado(Panel mainPanel) {
+	def void administrarContenidoRelacionado(Panel panel) {
 		
-		val panelRelated = new Panel(mainPanel) => [
-			layout = new VerticalLayout
+		new Label(panel) => [
+			text = "Contenido relacionado"
+			fontSize = 11
+			alignLeft
 		]
-		
-		val panelRelatedLabel = new Panel(panelRelated) => [
-			layout = new ColumnLayout(2)
-		]
-		new Label(panelRelatedLabel).text = "Contenido relacionado"
-		val panelRelatedButtons = new Panel(panelRelatedLabel) => [
+		val panelRelated = new Panel(panel) => [
 			layout = new HorizontalLayout
+		]
+		new List(panelRelated) => [
+			allowNull(false)
+			width = 200
+			height = 60
+			value <=> "sel_relacionado"
+			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
+		]
+		val panelRelatedButtons = new Panel(panelRelated)
+		new Button(panelRelatedButtons) => [
+			caption = "Agregar"
+			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix,modelObject)).open]
 		]
 		new Button(panelRelatedButtons) => [
 			caption = "Quitar"
 			onClick [ | modelObject.quitarContenido]
 		]
-		new Button(panelRelatedButtons) => [
-			caption = "Agregar"
-			onClick [ | new AdminContentWindow(this, new AdminContent(modelObject.trailFlix,modelObject)).open]
-		]
-		new List(panelRelated) => [
-			allowNull(false)
-			value <=> "sel_relacionado"
-			(items <=> "relacionado").adapter = new PropertyAdapter(typeof(Contenido), "titulo")
-		]
+		
 	}
 
 }
