@@ -1,4 +1,4 @@
-package trailFlix.flix.appModel
+package trailFlix.flix.model
 
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.Pelicula
@@ -123,7 +123,6 @@ class DataLoader implements Loader {
 			contVisto = newArrayList(peli1,peli2,serie3)
 			contFavorito = newArrayList(peli2)
 			contRecomendado = newArrayList(peli1,serie3)
-			amigos = newArrayList()
 		]
 		
 		val user2 = new Usuario("pedro54","Pedro") => [
@@ -132,7 +131,6 @@ class DataLoader implements Loader {
 			contVisto = newArrayList(peli1,peli2,serie3,peli3)
 			contFavorito = newArrayList(peli2,serie3)
 			contRecomendado = newArrayList(peli1,serie3)
-			amigos = newArrayList()
 		]
 		
 		val user3 = new Usuario("jose100","Jose") => [
@@ -141,7 +139,6 @@ class DataLoader implements Loader {
 			contVisto = newArrayList(peli1,peli3)
 			contFavorito = newArrayList()
 			contRecomendado = newArrayList(peli3)
-			amigos = newArrayList()
 		]
 		
 		val user4 = new Usuario("xXxMiguexXx","Miguel") => [
@@ -150,7 +147,6 @@ class DataLoader implements Loader {
 			contVisto = newArrayList(peli3,peli2,serie2)
 			contFavorito = newArrayList(serie1)
 			contRecomendado = newArrayList()
-			amigos = newArrayList()
 		]
 		
 		user1.amigos.add(user2)

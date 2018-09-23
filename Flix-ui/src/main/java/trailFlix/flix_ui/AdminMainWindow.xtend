@@ -25,14 +25,18 @@ import org.uqbar.arena.widgets.Link
 import java.awt.Color
 import trailFlix.flix_ui.helpers.TransformadorImagen
 import trailFlix.flix_ui.helpers.ProveedorIconos
+import trailFlix.flix.model.Loader
+import trailFlix.flix.model.DataLoader
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
 	TransformadorImagen transformadorImagen = new TransformadorImagen
+	Loader loader = new DataLoader
 	
 	new() {
 		super(new AdminMain)
 		this.title = "Administración de TrailFlix"
+		modelObject.rellenarDatos(this.loader)
 		iconImage = ProveedorIconos.admin
 	}
 	

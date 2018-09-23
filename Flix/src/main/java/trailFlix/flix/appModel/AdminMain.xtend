@@ -6,11 +6,11 @@ import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
+import trailFlix.flix.model.Loader
 
 @Accessors
 @Observable
 class AdminMain {
-	Loader			loader
 	TrailFlix		trailFlix
 	List<Pelicula>	peliculas
 	List<Serie>		series
@@ -26,8 +26,6 @@ class AdminMain {
 	
 	new() {
 		trailFlix = new TrailFlix(this)
-		loader = new DataLoader
-		loader.rellenarDatos(trailFlix)
 		peliculas = trailFlix.peliculas
 		series = trailFlix.series
 	}
@@ -61,6 +59,9 @@ class AdminMain {
 	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
 	 */
 
+	def rellenarDatos (Loader loader){
+		loader.rellenarDatos(this.trailFlix)
+	}
 	
 	def quitarPelicula() {
 		trailFlix.eliminarPelicula(sel_pelicula)
