@@ -106,12 +106,12 @@ class PeliSerieCapTest extends TestCase {
 	
 	def testSonSeriePelicula(){
 		var serie = new Serie("R&M",0)
-		assertEquals(null,serie.returnPelicula())
-		assertEquals(serie,serie.returnSerie())
+		assertFalse(serie.esPelicula())
+		assertTrue(serie.esSerie())
 		
 		var peli = new Pelicula("R&M",0)
-		assertEquals(null,peli.returnSerie ())
-		assertEquals(peli,peli.returnPelicula())
+		assertFalse(peli.esSerie ())
+		assertTrue(peli.esPelicula())
 	}
 	
 	
