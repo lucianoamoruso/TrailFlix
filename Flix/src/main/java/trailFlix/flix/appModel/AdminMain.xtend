@@ -10,6 +10,7 @@ import trailFlix.flix.model.Serie
 @Accessors
 @Observable
 class AdminMain {
+	Loader			loader
 	TrailFlix		trailFlix
 	List<Pelicula>	peliculas
 	List<Serie>		series
@@ -24,7 +25,9 @@ class AdminMain {
 	boolean			egg = false		//Indica si la condicion del Easter Egg fue satisfecha.
 	
 	new() {
-		trailFlix = new TrailFlix(this) => [rellenarDatos]
+		trailFlix = new TrailFlix(this)
+		loader = new DataLoader
+		loader.rellenarDatos(trailFlix)
 		peliculas = trailFlix.peliculas
 		series = trailFlix.series
 	}
@@ -57,9 +60,7 @@ class AdminMain {
 	/*
 	 * Prop: Carga de datos mock el modelo para poder interactuar en la UI de usuario.
 	 */
-	def rellenarDatos() {
-		trailFlix.rellenarDatos
-	}
+
 	
 	def quitarPelicula() {
 		trailFlix.eliminarPelicula(sel_pelicula)

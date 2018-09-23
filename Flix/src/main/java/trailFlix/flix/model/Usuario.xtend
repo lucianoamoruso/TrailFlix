@@ -19,7 +19,7 @@ class Usuario {
 	public List <Contenido> contFavorito
 	public List <Contenido> contRecomendado
 	
-	new(int codigo, String nombreDeUsuario, String nombre) {
+	new(String nombreDeUsuario, String nombre) {
 		this.codigo = codigo
 		this.nombreDeUsuario = nombreDeUsuario
 		this.nombre = nombre
