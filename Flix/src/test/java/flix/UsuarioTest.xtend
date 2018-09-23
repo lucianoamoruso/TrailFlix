@@ -14,15 +14,15 @@ class UsuarioTest extends TestCase {
 	
 	def testCrearUsuario() {
 		var titulo = "Jorgeee"
-		var us = new Usuario(0,titulo,titulo)
+		var us = new Usuario(titulo,titulo)
 		assertEquals("Mal el codigo", 0,us.getCodigo() )
 		assertEquals("Mal el nombre", titulo, us.getNombre())
 		assertEquals("Mal el nombre Usuario", titulo, us.nombreDeUsuario )
 	}
 	
 	def void testUsuarioPeliculaCompleta() {
-		var us = new Usuario(0,"usuario","nombre")
-		val amigo = new Usuario(1,"","")
+		var us = new Usuario("usuario","nombre")
+		val amigo = new Usuario("","")
 		val serie = new Serie("Elsecreto",0)
 		val RaM = new Serie("R&M",1)
 		us => [
@@ -39,8 +39,8 @@ class UsuarioTest extends TestCase {
 
 	
 	def testgetPeliculasSeriesVistas(){
-		var us = new Usuario(0,"usuario","nombre")
-		val amigo = new Usuario(1,"","")
+		var us = new Usuario("usuario","nombre")
+		val amigo = new Usuario("","")
 		val serie = new Serie("Elsecreto",0)
 		val RaM = new Serie("R&M",1)
 		val peli = new Pelicula("a",3)
@@ -62,7 +62,7 @@ class UsuarioTest extends TestCase {
 	}
 	
 	def testgetPeliculasFavoritas(){
-		var us = new Usuario(0,"usuario","nombre")
+		var us = new Usuario("usuario","nombre")
 		assertEquals( 0,us.getPeliculasFavoritas().size()  ) 
 		val peli = new Pelicula("a",3)
 		us.contFavorito.add(peli)
@@ -71,7 +71,7 @@ class UsuarioTest extends TestCase {
 	}
 	
 	def testgetSeriesFavoritas(){
-		var us = new Usuario(0,"usuario","nombre")
+		var us = new Usuario("usuario","nombre")
 		assertEquals( 0,  us.getSeriesFavoritas().size()  )
 		val RaM = new Serie("R&M",1)
 		us.contFavorito.add(RaM)
