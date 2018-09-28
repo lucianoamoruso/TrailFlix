@@ -6,7 +6,7 @@ import org.uqbar.commons.model.annotations.Observable
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.Pelicula
 import trailFlix.flix.model.Serie
-import trailFlix.flix.model.Loader
+import trailFlix.flix.helpers.Loader
 
 @Accessors
 @Observable

@@ -1,4 +1,4 @@
-package trailFlix.flix.model
+package trailFlix.flix.helpers
 
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.Pelicula

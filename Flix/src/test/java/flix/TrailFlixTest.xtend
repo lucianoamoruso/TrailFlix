@@ -4,8 +4,8 @@ import static org.junit.Assert.*
 import org.junit.Test
 import trailFlix.flix.model.TrailFlix
 import junit.framework.TestCase
-import trailFlix.flix.model.DataLoader
 import trailFlix.flix.appModel.AdminMain
+import trailFlix.flix.helpers.DataLoader
 
 class TrailFlixTest  extends TestCase {
 	def void testCreacion() {

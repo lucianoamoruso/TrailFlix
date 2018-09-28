@@ -3,7 +3,7 @@ package trailFlix.flix.model
 import java.util.ArrayList
 import java.util.List
 import trailFlix.flix.appModel.AdminMain
-import org.joda.time.LocalDate
+import trailFlix.flix.helpers.GeneradorDeIds
 
 class TrailFlix {
 	List<Usuario> usuarios

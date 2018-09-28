@@ -1,4 +1,4 @@
-package trailFlix.flix.model
+package trailFlix.flix.helpers
 
 class GeneradorDeIds {
 	

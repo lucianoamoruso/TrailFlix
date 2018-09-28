@@ -25,8 +25,8 @@ import org.uqbar.arena.widgets.Link
 import java.awt.Color
 import trailFlix.flix_ui.helpers.TransformadorImagen
 import trailFlix.flix_ui.helpers.ProveedorIconos
-import trailFlix.flix.model.Loader
-import trailFlix.flix.model.DataLoader
+import trailFlix.flix.helpers.DataLoader
+import trailFlix.flix.helpers.Loader
 
 class AdminMainWindow extends MainWindow<AdminMain> {
 	
