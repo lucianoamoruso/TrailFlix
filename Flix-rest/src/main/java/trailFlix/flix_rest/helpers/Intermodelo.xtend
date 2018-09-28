@@ -44,7 +44,7 @@ class Intermodelo {
 	def aplanarAtributo(List<Contenido> relacionados) {
 		val plano = newArrayList
 		for (Contenido c : relacionados) {
-			plano.add(c.titulo)
+			plano.add(c.codigo)
 		}
 		plano
 	}
