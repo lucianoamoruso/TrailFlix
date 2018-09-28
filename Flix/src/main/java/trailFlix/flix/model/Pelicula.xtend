@@ -55,10 +55,6 @@ class Pelicula extends Contenido {
 		this.fechaEstreno = LocalDate.parse(fecha)
 	}
 	
-	/**
-	 * Nota: Devuelve la fecha en formato dd/mm/yyyy.
-	 * TODO
-	 */
 	def getFechaEstreno() {
 		return fechaEstreno
 	}
