@@ -6,12 +6,12 @@ import trailFlix.flix.appModel.AdminMain
 import trailFlix.flix.helpers.GeneradorDeIds
 
 class TrailFlix {
-	List<Usuario> usuarios
-	ArrayList<Contenido> contenido
-	AdminMain ventana
-	GeneradorDeIds generador
-	ArrayList<String> clasificaciones = newArrayList ("ATP","Mayores13","Mayores16","Mayores21")
-	ArrayList<String> categorias = newArrayList ("DRAMA","TERROR","COMEDIA","ACCION")
+	List<Usuario>			usuarios
+	ArrayList<Contenido>	contenido
+	AdminMain				ventana
+	GeneradorDeIds			generador
+	ArrayList<String>		clasificaciones = newArrayList ("ATP","Mayores13","Mayores16","Mayores21")
+	ArrayList<String>		categorias = newArrayList ("DRAMA","TERROR","COMEDIA","ACCION")
 	
 	
 	new(AdminMain ventana) {

@@ -5,6 +5,7 @@ import trailFlix.flix_rest.server.RestfulServer
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.appModel.AdminMain
 import trailFlix.flix.helpers.DataLoader
+import trailFlix.flix_rest.helpers.Intermodelo
 
 class App {
 	
@@ -13,6 +14,7 @@ class App {
 		val trailFlix = new TrailFlix(dummyVentana)
 		val loader = new DataLoader
 		loader.rellenarDatos(trailFlix)
-		XTRest.startInstance(9000, new RestfulServer(trailFlix))
+		val intermodelo = new Intermodelo(trailFlix)
+		XTRest.startInstance(9000, new RestfulServer(intermodelo))
 	}
 }

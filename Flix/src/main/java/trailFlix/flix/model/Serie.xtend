@@ -3,6 +3,7 @@ package trailFlix.flix.model
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
+import java.util.ArrayList
 
 @Accessors
 @Observable
@@ -15,9 +16,9 @@ class Serie extends Contenido {
 		
 	new (String titulo){
 		this.titulo = titulo
-		creadores = newArrayList()
-		capitulos = newArrayList()
-		contRelacionado = newArrayList()
+		creadores = new ArrayList
+		capitulos = new ArrayList
+		contRelacionado = new ArrayList
 	}
 	
 	new(String titulo,int codigo){

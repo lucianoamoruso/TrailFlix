@@ -4,6 +4,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
 import org.joda.time.LocalDate
+import java.util.ArrayList
 
 @Accessors
 @Observable
@@ -22,9 +23,9 @@ class Capitulo {
 	
 	new (String titulo){
 		this.titulo = titulo
-		directores = newArrayList()
-		actores = newArrayList()
-		valoraciones = newArrayList()
+		directores = new ArrayList
+		actores = new ArrayList
+		valoraciones = new ArrayList
 	}
 	
 	def getRating(){ //VOLVER A IMPLEMENTAR

@@ -137,7 +137,7 @@ class DataLoader implements Loader {
 			fechaRegistro = new LocalDate(1999,12,31)
 			fechaNacimiento = new LocalDate(1995,5,17)
 			contVisto = newArrayList(peli1,peli3)
-			contFavorito = newArrayList()
+			contFavorito = new ArrayList
 			contRecomendado = newArrayList(peli3)
 		]
 		
@@ -146,7 +146,7 @@ class DataLoader implements Loader {
 			fechaNacimiento = new LocalDate(1000,12,25)
 			contVisto = newArrayList(peli3,peli2,serie2)
 			contFavorito = newArrayList(serie1)
-			contRecomendado = newArrayList()
+			contRecomendado = new ArrayList
 		]
 		
 		user1.amigos.add(user2)

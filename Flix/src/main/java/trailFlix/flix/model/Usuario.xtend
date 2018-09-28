@@ -4,6 +4,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.LocalDate
 import org.uqbar.commons.model.annotations.Observable
+import java.util.ArrayList
 
 @Accessors
 @Observable
@@ -23,10 +24,10 @@ class Usuario {
 		this.codigo = codigo
 		this.nombreDeUsuario = nombreDeUsuario
 		this.nombre = nombre
-		amigos = newArrayList()
-		contVisto = newArrayList()
-		contFavorito = newArrayList()
-		contRecomendado = newArrayList()
+		amigos = new ArrayList
+		contVisto = new ArrayList
+		contFavorito = new ArrayList
+		contRecomendado = new ArrayList
 	}
 	
 	def getPeliculasVistas(){
