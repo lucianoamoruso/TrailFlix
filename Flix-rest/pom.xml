@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Flix-rest</groupId>
+  <groupId>trailFlix</groupId>
   <artifactId>flix-rest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -25,6 +25,11 @@
 		<groupId>org.uqbar</groupId>
 		<artifactId>xtrest</artifactId>
 		<version>1.0.0</version>
+	</dependency>
+	<dependency>
+      <groupId>trailFlix</groupId>
+      <artifactId>flix</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
 	</dependency>
   </dependencies>
 </project>
