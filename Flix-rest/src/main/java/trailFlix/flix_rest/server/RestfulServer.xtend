@@ -39,11 +39,7 @@ class RestfulServer {
 	@Get("/content/:category")
 	def contenidoDeCategoria() {
 		response.contentType = ContentType.APPLICATION_JSON
-		try {
-			return ok(intermodelo.contenidosDeCategoria(category).toJson)
-		} catch (Exception exception) {
-			
-		}
+		return ok(intermodelo.contenidosDeCategoria(category).toJson)
 	}
 	
 //		----------------- POST -----------------
