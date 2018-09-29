@@ -18,6 +18,8 @@ class RestfulServer {
 		this.intermodelo = intermodelo
 	}
 	
+//		----------------- GET -----------------
+	
 	/**
 	 * Prop: ofrece el listado de peliculas disponible en el sistema.
 	 */
@@ -27,6 +29,25 @@ class RestfulServer {
 		return ok(intermodelo.peliculas.toJson)					//Devolvemos el codigo de OK (200) y en el body el listado de las peliculas serializado a json.
 	}
 	
+	
+	@Get("/categories")
+	def getCategorias() {
+		response.contentType = ContentType.APPLICATION_JSON
+		return ok(intermodelo.categorias.toJson)
+	}
+	
+	@Get("/content/:category")
+	def contenidoDeCategoria() {
+		response.contentType = ContentType.APPLICATION_JSON
+		try {
+			return ok(intermodelo.contenidosDeCategoria(category).toJson)
+		} catch (Exception exception) {
+			
+		}
+	}
+	
+//		----------------- POST -----------------
+
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")
 	def agregarContenidoRelacionado() {
 		response.contentType = ContentType.APPLICATION_JSON
@@ -39,7 +60,7 @@ class RestfulServer {
 	}
 	
 	def errorJson(String mensaje) {
-		"{ error: "+ mensaje + " }"
+		"{ error: " + mensaje + " }"
 	}
 	
 }

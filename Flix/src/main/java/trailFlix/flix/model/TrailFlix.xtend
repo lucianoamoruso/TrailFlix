@@ -42,16 +42,14 @@ class TrailFlix {
 	def buscarContenido (int id){
 		this.contenido.findFirst[it.codigo == id]
 	}
-	
-	
-	def buscarPorCategoria (String categoria){
-		this.categorias.filter[it == categoria]
+
+	/*
+	 * Prop: devuelve todos los Contenidos que tengan la categoria recibida.
+	 */
+	def buscarPorCategoria(String categoria) {
+		this.contenido.filter[(it.categorias).contains(categoria)].toList
 	}
-	
-	def buscarPorClasificacion (String clasificacion){
-		this.clasificaciones.filter[it == clasificacion]
-	}
-	
+		
 	/*
 	 * Prop: se añade una pelicula y se notifica a la ventana principal.
 	 */
@@ -127,5 +125,5 @@ class TrailFlix {
 	def void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios
 	}
-		
+	
 }

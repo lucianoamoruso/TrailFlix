@@ -12,6 +12,7 @@ import trailFlix.flix.helpers.ContentManager
 /**
  * Esta clase hace de punto de encuentro entre las clases del modelo y el servidor REST: {@link RestfulServer}, simplificando
  * las clases y llamando metodos de {@link TrailFlix} sin la necesidad de hablarle directamente.
+ * Trae los elementos del modelo de forma amigable para json y html y almacena informacion proveniente de http en el modelo. 
  */
 class Intermodelo {
 	
@@ -61,6 +62,14 @@ class Intermodelo {
 	
 	def void agregarRelacionado(String codigoTarget, String codigoNuevo) {
 		manager.agregarRelacionado(Integer.parseInt(codigoTarget),Integer.parseInt(codigoNuevo))
+	}
+	
+	def categorias() {
+		trailFlix.categorias
+	}
+	
+	def contenidosDeCategoria(String categoria) {
+		trailFlix.buscarPorCategoria(categoria.toUpperCase)
 	}
 	
 }
