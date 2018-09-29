@@ -36,6 +36,14 @@ class TrailFlix {
 	
 	}
 	
+	/*
+	 * Prop: devuelve un contenido a partir de su codigo.
+	 */
+	def buscarContenido (int id){
+		this.contenido.findFirst[it.codigo == id]
+	}
+	
+	
 	def buscarPorCategoria (String categoria){
 		this.categorias.filter[it == categoria]
 	}

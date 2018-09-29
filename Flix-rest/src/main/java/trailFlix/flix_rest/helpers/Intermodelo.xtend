@@ -7,6 +7,7 @@ import trailFlix.flix_rest.simple_model.Pelicula_Simple
 import trailFlix.flix.model.Contenido
 import java.util.List
 import org.joda.time.LocalDate
+import trailFlix.flix.helpers.ContentManager
 
 /**
  * Esta clase hace de punto de encuentro entre las clases del modelo y el servidor REST: {@link RestfulServer}, simplificando
@@ -14,10 +15,12 @@ import org.joda.time.LocalDate
  */
 class Intermodelo {
 	
-	TrailFlix trailFlix
+	TrailFlix		trailFlix
+	ContentManager	manager
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
+		this.manager = new ContentManager(trailFlix)
 	}
 	
 	def getPeliculas() {
@@ -54,6 +57,10 @@ class Intermodelo {
 	 */
 	def aplanarAtributo(LocalDate fecha) {
 		fecha.toString("dd/MM/yyyy")
+	}
+	
+	def void agregarRelacionado(String codigoTarget, String codigoNuevo) {
+		manager.agregarRelacionado(Integer.parseInt(codigoTarget),Integer.parseInt(codigoNuevo))
 	}
 	
 }

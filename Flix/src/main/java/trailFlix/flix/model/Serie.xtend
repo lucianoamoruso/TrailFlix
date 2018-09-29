@@ -12,7 +12,6 @@ class Serie extends Contenido {
 	List <String> creadores
 	List <Capitulo> capitulos
 	int temporadas
-	List<Contenido> contRelacionado
 		
 	new (String titulo){
 		this.titulo = titulo
