@@ -112,6 +112,18 @@ class Intermodelo {
 //		json_peli = gson.toJson(jsonElement)
 //		json_peli
 //	}
+
+	/**
+	 * Prop: devuelve un objeto JSON con los datos de la serie y datos resultado de su relacion con el usuario.
+	 */
+	def serieSegunUsuario(String id_serie, String username) {
+		val cod_serie = Integer.parseInt(id_serie)
+		val serie = trailFlix.buscarSerie(cod_serie).simplificar
+		val vio = manager.vioContenido(cod_serie,username)
+		val recomendadores = manager.recomendadoresDe(cod_serie,username)
+		val json_final = new ResultWrapper(serie,vio,recomendadores).toJson
+		json_final
+	}
 	
 //	---------------- SIMPLIFICADO ----------------
 	

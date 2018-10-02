@@ -62,6 +62,16 @@ class RestfulServer {
 		}
 	}
 	
+	@Get("/:username/serie/:id")
+	def serieSegunUsuario() {
+		try {
+			response.contentType = ContentType.APPLICATION_JSON
+			return ok(intermodelo.serieSegunUsuario(id,username))	//Ya devuelve un JSON
+		} catch (Exception excepcion) {
+			return badRequest(errorJson("No existe el usuario de nombre " + username + " o no existe la serie de codigo " + id))
+		}
+	}
+	
 //		----------------- POST -----------------
 
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")
