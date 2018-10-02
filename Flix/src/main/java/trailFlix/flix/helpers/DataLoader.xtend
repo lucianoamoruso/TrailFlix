@@ -128,7 +128,6 @@ class DataLoader implements Loader {
 			fechaNacimiento = new LocalDate(1970,10,22)
 			contVisto = newArrayList(peli1,peli2,serie3)
 			contFavorito = newArrayList(peli2)
-			contRecomendado = newArrayList(peli1,serie3)
 		]
 		
 		val user2 = new Usuario("pedro54","Pedro") => [
@@ -136,7 +135,6 @@ class DataLoader implements Loader {
 			fechaNacimiento = new LocalDate(2000,2,7)
 			contVisto = newArrayList(peli1,peli2,serie3,peli3)
 			contFavorito = newArrayList(peli2,serie3)
-			contRecomendado = newArrayList(peli1,serie3)
 		]
 		
 		val user3 = new Usuario("jose100","Jose") => [
@@ -144,7 +142,6 @@ class DataLoader implements Loader {
 			fechaNacimiento = new LocalDate(1995,5,17)
 			contVisto = newArrayList(peli1,peli3)
 			contFavorito = new ArrayList
-			contRecomendado = newArrayList(peli3)
 		]
 		
 		val user4 = new Usuario("xXxMiguexXx","Miguel") => [
@@ -152,13 +149,17 @@ class DataLoader implements Loader {
 			fechaNacimiento = new LocalDate(1000,12,25)
 			contVisto = newArrayList(peli3,peli2,serie2)
 			contFavorito = newArrayList(serie1)
-			contRecomendado = new ArrayList
 		]
 		
 		user1.amigos.add(user2)
-		//user2.amigos.addAll(user1,user3)
-		//user3.amigos.addAll(user2,user1)
+		user2.amigos.add(user1); user2.amigos.add(user3)
+		user3.amigos.add(user2); user2.amigos.add(user1)
 		//user 4 no tiene amigos :(
+		
+		user1.recomendar(peli1,user2)
+		user2.recomendar(peli1,user1); user2.recomendar(peli3,user3)
+		user3.recomendar(serie3,user1); user3.recomendar(serie3,user2)
+		
 			
 		modelo.agregarUsuario(user1)
 		modelo.agregarUsuario(user2)

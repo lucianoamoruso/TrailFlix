@@ -52,6 +52,16 @@ class RestfulServer {
 		}
 	}
 	
+	@Get("/:username/movie/:id")
+	def peliculaSegunUsuario() {
+		try {
+			response.contentType = ContentType.APPLICATION_JSON
+			return ok(intermodelo.peliculaSegunUsuario(id,username))	//Ya devuelve un JSON
+		} catch (Exception excepcion) {
+			return badRequest(errorJson("No existe el usuario de nombre " + username + " o no existe la pelicula de codigo " + id))
+		}
+	}
+	
 //		----------------- POST -----------------
 
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")

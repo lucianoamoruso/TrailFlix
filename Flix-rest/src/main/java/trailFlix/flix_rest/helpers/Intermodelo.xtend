@@ -1,18 +1,20 @@
 package trailFlix.flix_rest.helpers
 
-import trailFlix.flix_rest.server.RestfulServer
-import trailFlix.flix.model.TrailFlix
-import trailFlix.flix.model.Pelicula
-import trailFlix.flix_rest.simple_model.Pelicula_Simple
-import trailFlix.flix.model.Contenido
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.joda.time.LocalDate
+import org.uqbar.xtrest.json.JSONUtils
 import trailFlix.flix.helpers.ContentManager
-import trailFlix.flix.model.Serie
-import trailFlix.flix_rest.simple_model.Serie_Simple
 import trailFlix.flix.model.Capitulo
+import trailFlix.flix.model.Contenido
+import trailFlix.flix.model.Pelicula
+import trailFlix.flix.model.Serie
+import trailFlix.flix.model.TrailFlix
+import trailFlix.flix_rest.server.RestfulServer
 import trailFlix.flix_rest.simple_model.Capitulo_Simple
 import trailFlix.flix_rest.simple_model.Contenido_Simple
+import trailFlix.flix_rest.simple_model.Pelicula_Simple
+import trailFlix.flix_rest.simple_model.Serie_Simple
 
 /**
  * Esta clase hace de punto de encuentro entre las clases del modelo y el servidor REST: {@link RestfulServer}, simplificando
@@ -23,6 +25,8 @@ class Intermodelo {
 	
 	TrailFlix		trailFlix
 	ContentManager	manager
+	
+	extension JSONUtils = new JSONUtils
 	
 	new(TrailFlix trailFlix) {
 		this.trailFlix = trailFlix
@@ -76,6 +80,38 @@ class Intermodelo {
 		}
 		simples
 	}
+	
+	/**
+	 * Prop: devuelve un objeto JSON con los datos de la pelicula y datos resultado de su relacion con el usuario.
+	 */
+	def peliculaSegunUsuario(String id_peli, String username) {
+		val cod_peli = Integer.parseInt(id_peli)
+		val peli = trailFlix.buscarPelicula(cod_peli).simplificar
+		val vio = manager.vioContenido(cod_peli,username)
+		val recomendadores = manager.recomendadoresDe(cod_peli,username)
+		val json_final = new ResultWrapper(peli,vio,recomendadores).toJson
+		json_final
+	}
+	
+//	/**
+//	 * Prop: devuelve un objeto JSON con los datos de la pelicula y datos resultado de su relacion con el usuario.
+//	 */
+//	def peliculaSegunUsuario(String id_peli, String username) {
+//		val cod_peli = Integer.parseInt(id_peli)
+//		val peli = trailFlix.buscarPelicula(cod_peli).simplificar
+//		
+//		val gson = new Gson()
+//		var json_peli = gson.toJson(peli, Pelicula_Simple)
+//		val jsonElement = gson.toJsonTree(peli)
+//		val array_recom = gson.toJson(manager.recomendadoresDe(cod_peli,username))
+//		
+//		jsonElement.getAsJsonObject() => [
+//			addProperty("watched", manager.vioContenido(cod_peli,username))
+//			addProperty("recommendations", array_recom.toString)
+//		]
+//		json_peli = gson.toJson(jsonElement)
+//		json_peli
+//	}
 	
 //	---------------- SIMPLIFICADO ----------------
 	
@@ -145,6 +181,32 @@ class Intermodelo {
 			plano.add(simplificar(c))
 		}
 		plano
+	}
+	
+}
+
+@Accessors
+class ResultWrapper {
+	
+	Contenido_Simple	contenido
+	ExtraInfoWrapper	info
+	
+	new(Contenido_Simple contenido, boolean watched, List<String> recommendations) {
+		this.contenido	= contenido
+		this.info		=	new ExtraInfoWrapper(watched,recommendations)
+	}
+	
+}
+
+@Accessors
+class ExtraInfoWrapper {
+	
+	boolean			watched
+	List<String>	recommendations
+	
+	new (boolean watched, List<String> recommendations) {
+		this.watched			= watched
+		this.recommendations	= recommendations
 	}
 	
 }

@@ -24,11 +24,11 @@ class TrailFlix {
 	
 
 	def buscarPelicula (int id){
-		this.contenido.findFirst[(it.esPelicula && it.codigo == id)]
+		this.contenido.findFirst[(it.esPelicula && it.codigo == id)] as Pelicula
 	}
 	
 	def buscarSerie (int id){
-		this.contenido.findFirst[(it.esSerie && it.codigo == id)]
+		this.contenido.findFirst[(it.esSerie && it.codigo == id)] as Serie
 	}
 	
 	def buscarUsuario (int id){

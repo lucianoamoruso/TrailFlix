@@ -1,6 +1,8 @@
 package trailFlix.flix.helpers
 
 import trailFlix.flix.model.TrailFlix
+import trailFlix.flix.model.RelacionRecomendacion
+import java.util.ArrayList
 
 /**
  * Esta clase se encarga de administrar el contenido guardado en trailFlix, o sea que provee metodos para modificar sus atributos.
@@ -25,6 +27,27 @@ class ContentManager {
 	 */
 	def conseguirUsuario(String username) {
 		trailFlix.usuarios.findFirst[it.nombreDeUsuario == username]
+	}
+	
+	/**
+	 * Prop: devuelve si el usuario vio el contenido identificado con <code>cont_cod</code>.
+	 */
+	def vioContenido(int cont_cod, String username) {
+		val usuario = conseguirUsuario(username)
+		usuario.contVisto.exists[it.codigo == cont_cod]
+	}
+	
+	/**
+	 * Prop: devuelve la lista de nombres de usuario de quienes recomendaron el contenido al usuario. 
+	 */
+	def recomendadoresDe(int cont_cod, String username) {
+		val relaciones = conseguirUsuario(username).relaciones_recomendacion
+		val filtradas = relaciones.filter[it.contenido.codigo == cont_cod && it.emisor == conseguirUsuario(username)].toList
+		val recomendadores = new ArrayList
+		for (RelacionRecomendacion relacion : filtradas) {
+			recomendadores.add(relacion.receptor.nombreDeUsuario)
+		}
+		recomendadores
 	}
 	
 }

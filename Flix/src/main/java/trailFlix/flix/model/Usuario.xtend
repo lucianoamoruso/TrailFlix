@@ -18,7 +18,8 @@ class Usuario {
 	public List <Usuario> amigos
 	public List <Contenido> contVisto
 	public List <Contenido> contFavorito
-	public List <Contenido> contRecomendado
+	public List <Contenido> contRecomendado		//Contenido sugerido por sus amigos
+	List <RelacionRecomendacion> relaciones_recomendacion	//Este campo no va a ser mostrado en una UI
 	
 	new(String nombreDeUsuario, String nombre) {
 		this.codigo = codigo
@@ -28,6 +29,7 @@ class Usuario {
 		contVisto = new ArrayList
 		contFavorito = new ArrayList
 		contRecomendado = new ArrayList
+		relaciones_recomendacion = new ArrayList
 	}
 	
 	def getPeliculasVistas(){
@@ -44,6 +46,27 @@ class Usuario {
 	
 	def getSeriesFavoritas(){
 		return this.contFavorito.filter[it.esSerie]
+	}
+	
+	/**
+	 * Prop: recomienda un contenido a un usuario en su lista de amigos.
+	 */
+	def void recomendar(Contenido contenido, Usuario usuario) {
+		val relacion = new RelacionRecomendacion(this,contenido,usuario)
+		relaciones_recomendacion.add(relacion)
+		usuario.recibirRecomendacion(relacion)
+	}
+	
+	/**
+	 * Prop: recibe una recomendacion de contenido de un amigo.
+	 */
+	def void recibirRecomendacion(RelacionRecomendacion relacion) {
+		relaciones_recomendacion.add(relacion)
+		contRecomendado.add(relacion.contenido)
+	}
+	
+	override toString() {
+		nombreDeUsuario
 	}
 	
 }
