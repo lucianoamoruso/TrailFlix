@@ -42,6 +42,16 @@ class RestfulServer {
 		return ok(intermodelo.contenidosDeCategoria(category).toJson)
 	}
 	
+	@Get("/:username/favs")
+	def favoritosDe() {
+		try {
+			response.contentType = ContentType.APPLICATION_JSON
+			return ok(intermodelo.favoritosDe(username).toJson)
+		} catch (Exception excepcion) {
+			return badRequest(errorJson("No existe el usuario de nombre " + username))
+		}
+	}
+	
 //		----------------- POST -----------------
 
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")

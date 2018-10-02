@@ -4,7 +4,7 @@ import trailFlix.flix.model.TrailFlix
 
 /**
  * Esta clase se encarga de administrar el contenido guardado en trailFlix, o sea que provee metodos para modificar sus atributos.
- * No almacena datos, simplemente ofrece logica de administracion.
+ * No almacena datos, simplemente ofrece logica de administracion y recolecta informacion.
  */
 class ContentManager {
 	
@@ -19,4 +19,12 @@ class ContentManager {
 		val relacionado = trailFlix.buscarContenido(nuevo)
 		objetivo.contRelacionado.add(relacionado)
 	}
+	
+	/**
+	 * Prop: recibe un username y devuelve el usuario asociado.
+	 */
+	def conseguirUsuario(String username) {
+		trailFlix.usuarios.findFirst[it.nombreDeUsuario == username]
+	}
+	
 }

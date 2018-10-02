@@ -13,6 +13,8 @@ class DataLoader implements Loader {
 	
 	override rellenarDatos(TrailFlix modelo) {
 		
+//		------------------ PELICULAS ------------------
+		
 		val peli1 = new Pelicula("Terminator") => [
 				categorias = new ArrayList() => [add(modelo.categorias.get(3)); add(modelo.categorias.get(1))]
 				clasificacion = modelo.clasificaciones.get(1)
@@ -50,6 +52,8 @@ class DataLoader implements Loader {
 		peli2.contRelacionado = new ArrayList() => [add(peli1);add(peli3)]
 		peli3.contRelacionado = new ArrayList() => [add(peli1);add(peli2)]
 		
+//		------------------ CAPITULOS Y SERIES------------------
+
 		val cap1_1 = new Capitulo("Piloto") => [
 			temporada = 1
 			capituloNro = 1
@@ -117,6 +121,8 @@ class DataLoader implements Loader {
 		modelo.agregarSerie(serie2)
 		modelo.agregarSerie(serie3)
 		
+//		------------------ USUARIOS ------------------
+
 		val user1 = new Usuario("carlos3","Carlos") => [
 			fechaRegistro = new LocalDate(1980,12,26)
 			fechaNacimiento = new LocalDate(1970,10,22)

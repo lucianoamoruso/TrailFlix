@@ -38,18 +38,40 @@ class Intermodelo {
 		simples
 	}
 	
+	/**
+	 * Prop: agrega el contenido identificado por <code>codigoNuevo</code> a los relacionados del contenido identificado
+	 * por <code>codigoTarget</code>.
+	 */
 	def void agregarRelacionado(String codigoTarget, String codigoNuevo) {
 		manager.agregarRelacionado(Integer.parseInt(codigoTarget),Integer.parseInt(codigoNuevo))
 	}
 	
+	/**
+	 * Prop: devuelve las categorias registradas en el sistema.
+	 */
 	def categorias() {
 		trailFlix.categorias
 	}
 	
+	/**
+	 * Prop: devuelve la lista de contenidos que tengan la categoria indicada.
+	 */
 	def List<Contenido_Simple> contenidosDeCategoria(String categoria) {
 		val contenidos = trailFlix.buscarPorCategoria(categoria.toUpperCase)
 		val simples = newArrayList
 		for (Contenido c : contenidos) {
+			simples.add(simplificar(c))
+		}
+		simples
+	}
+	
+	/**
+	 * Prop: devuelve la lista de contenidos favoritos del usuario registrado como <code>username</code>.
+	 */
+	def List<Contenido_Simple> favoritosDe(String username) {
+		val usuario = manager.conseguirUsuario(username)
+		val simples = newArrayList
+		for (Contenido c : usuario.getContFavorito) {
 			simples.add(simplificar(c))
 		}
 		simples
