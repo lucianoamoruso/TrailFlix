@@ -15,6 +15,7 @@ import trailFlix.flix_rest.simple_model.Capitulo_Simple
 import trailFlix.flix_rest.simple_model.Contenido_Simple
 import trailFlix.flix_rest.simple_model.Pelicula_Simple
 import trailFlix.flix_rest.simple_model.Serie_Simple
+import trailFlix.flix.model.UsuarioInexistente
 
 /**
  * Esta clase hace de punto de encuentro entre las clases del modelo y el servidor REST: {@link RestfulServer}, simplificando
@@ -136,6 +137,19 @@ class Intermodelo {
 		val receptor = manager.conseguirUsuario(to)
 		val contenido = trailFlix.buscarPelicula(Integer.parseInt(id_cont))
 		emisor.recomendar(contenido,receptor)
+	}
+	
+	/**
+	 * Prop: devuelve si existe un usuario con ese <code>username</code> en el sistema.
+	 */
+	def existeUsuario(String username) {
+		var ret = true
+		try {
+			manager.conseguirUsuario(username)
+		} catch (UsuarioInexistente excepcion) {
+			ret = false
+		}
+		ret
 	}
 	
 //	---------------- SIMPLIFICADO ----------------

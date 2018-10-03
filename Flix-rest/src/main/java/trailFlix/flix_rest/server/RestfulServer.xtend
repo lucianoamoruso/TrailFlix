@@ -1,13 +1,15 @@
 package trailFlix.flix_rest.server
 
+import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
-import trailFlix.flix_rest.helpers.Intermodelo
 import trailFlix.flix.model.ContenidoInexistente
 import trailFlix.flix.model.UsuarioInexistente
+import trailFlix.flix_rest.helpers.Intermodelo
+import trailFlix.flix_rest.simple_model.Usuario_Simple
 
 @Controller
 class RestfulServer {
@@ -76,6 +78,30 @@ class RestfulServer {
 	
 //		----------------- POST -----------------
 
+	@Post("/auth")
+	// Body: { "username" : "jose100", "password" : "contrasenia" }
+	def autorizarLogin(@Body String body) {
+		response.contentType = ContentType.APPLICATION_JSON
+		try {
+			val usuario = body.fromJson(Usuario_Simple)
+			if (existeUsuario(usuario.username) && contraseniaCorrecta(usuario.password)) {
+				return ok("El usuario es valido")
+			} else {
+				return badRequest(errorJson("Nombre de usuario o contrasenia incorrecta"))
+			}
+		} catch (Exception excepcion) {
+			return badRequest(errorJson("Error desconocido"))
+		}
+	}
+	
+	def private existeUsuario(String username) {
+		intermodelo.existeUsuario(username)
+	}
+
+	def private contraseniaCorrecta(String string) {	//No nos interesa en esta implementacion
+		true
+	}
+	
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")
 	def agregarContenidoRelacionado() {
 		response.contentType = ContentType.APPLICATION_JSON
@@ -105,7 +131,7 @@ class RestfulServer {
 		return result 
 	}
 	
-	def manejarExcepcionRecomendacion(Exception excepcion) {
+	def private manejarExcepcionRecomendacion(Exception excepcion) {
 		var result = badRequest(errorJson("Error desconocido"))
 		if (excepcion.class == ContenidoInexistente) {
 			result = badRequest(errorJson("Codigo de contenido inexistente"))
@@ -116,7 +142,7 @@ class RestfulServer {
 		result
 	}
 	
-	def errorJson(String mensaje) {
+	def private errorJson(String mensaje) {
 		"{ error: " + mensaje + " }"
 	}
 	
