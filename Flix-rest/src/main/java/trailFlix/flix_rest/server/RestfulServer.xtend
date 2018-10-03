@@ -9,9 +9,9 @@ import org.uqbar.xtrest.json.JSONUtils
 import trailFlix.flix.model.ContenidoInexistente
 import trailFlix.flix.model.UsuarioInexistente
 import trailFlix.flix_rest.helpers.Intermodelo
-import trailFlix.flix_rest.simple_model.SesionUsuario
 import trailFlix.flix_rest.json_holders.SesionUsuario
 import trailFlix.flix_rest.json_holders.EntreUsuarios
+import trailFlix.flix_rest.json_holders.PedidoBusqueda
 
 @Controller
 class RestfulServer {
@@ -72,7 +72,7 @@ class RestfulServer {
 	def serieSegunUsuario() {
 		try {
 			response.contentType = ContentType.APPLICATION_JSON
-			return ok(intermodelo.serieSegunUsuario(id,username))	//Ya devuelve un JSON
+			return ok(intermodelo.serieSegunUsuario(id,username))
 		} catch (Exception excepcion) {
 			return badRequest(errorJson("No existe el usuario de nombre " + username + " o no existe la serie de codigo " + id))
 		}
@@ -118,6 +118,7 @@ class RestfulServer {
 	@Post("/recommend/:type/:id")
 	// Body: { "from": "jose1000", "to": "pedro54" }
 	def recomendar(@Body String body) {
+		response.contentType = ContentType.APPLICATION_JSON
 		val envio = body.fromJson(EntreUsuarios)
 		val user_from = envio.from
 		val user_to = envio.to
@@ -128,7 +129,6 @@ class RestfulServer {
 		}
 		
 		try {
-			response.contentType = ContentType.APPLICATION_JSON		//Creo que esto deberia ir al principio del metodo
 			intermodelo.recomendar(user_from,user_to,id)
 		} catch (Exception excepcion) {
 			result = manejarExcepcionRecomendacion(excepcion)
@@ -146,6 +146,20 @@ class RestfulServer {
 			result = badRequest(errorJson("Nombre de usuario inexistente"))
 		}
 		result
+	}
+	
+	@Post("/search")
+	// Body: { "text": "terminator" }
+	def buscarContenidos(@Body String body) {
+		val pedido = body.fromJson(PedidoBusqueda)
+		val texto = pedido.text
+		response.contentType = ContentType.APPLICATION_JSON
+		
+		try {
+			return ok(intermodelo.buscarContenidos(texto.toLowerCase))
+		} catch (Exception exception) {
+			return badRequest(errorJson("Error desconocido"))
+		}
 	}
 	
 	def private errorJson(String mensaje) {

@@ -156,6 +156,17 @@ class Intermodelo {
 		ret
 	}
 	
+	/**
+	 * Prop: busca en los titulos de todos los contenidos y devuelve los contenidos que coincidan en formato JSON.
+	 */
+	def buscarContenidos(String texto) {
+		val planos = newArrayList
+		for (Contenido contenido : manager.buscarContenidos(texto)) {
+			planos.add(contenido.simplificar)
+		}
+		planos.toJson
+	}
+	
 //	---------------- SIMPLIFICADO ----------------
 	
 	/**

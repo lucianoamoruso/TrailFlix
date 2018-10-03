@@ -109,6 +109,9 @@ class TrailFlix {
 	
 //-----------------GETTERS Y SETTERS----------------------------
 
+	def getContenidos() {
+		contenido
+	}
 
 	def getPeliculas() { //IMPLEMENTAR
 		this.contenido.filter[esPelicula].map[it as Pelicula].toList

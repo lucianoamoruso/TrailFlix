@@ -53,4 +53,11 @@ class ContentManager {
 		recomendadores.filter[it != username].toList	//Esto filtra las apariciones del usuario que recibe recomendaciones
 	}
 	
+	/**
+	 * Prop: busca en los titulos de todos los contenidos y devuelve los contenidos que coincidan.
+	 */
+	def buscarContenidos(String texto) {
+		trailFlix.contenidos.filter[it.titulo.trim.toLowerCase.contains(texto)].toList
+	}
+	
 }
