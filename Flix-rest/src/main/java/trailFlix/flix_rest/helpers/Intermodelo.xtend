@@ -52,10 +52,14 @@ class Intermodelo {
 	}
 	
 	/**
-	 * Prop: devuelve las categorias registradas en el sistema.
+	 * Prop: devuelve las categorias registradas en el sistema en forma slug.
 	 */
 	def categorias() {
-		trailFlix.categorias
+		val cates = newArrayList
+		for (String categoria : trailFlix.categorias) {
+			cates.add(categoria.toLowerCase)
+		}
+		cates
 	}
 	
 	/**

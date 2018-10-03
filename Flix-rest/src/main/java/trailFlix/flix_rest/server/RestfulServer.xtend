@@ -9,7 +9,9 @@ import org.uqbar.xtrest.json.JSONUtils
 import trailFlix.flix.model.ContenidoInexistente
 import trailFlix.flix.model.UsuarioInexistente
 import trailFlix.flix_rest.helpers.Intermodelo
-import trailFlix.flix_rest.simple_model.Usuario_Simple
+import trailFlix.flix_rest.simple_model.SesionUsuario
+import trailFlix.flix_rest.json_holders.SesionUsuario
+import trailFlix.flix_rest.json_holders.EntreUsuarios
 
 @Controller
 class RestfulServer {
@@ -83,7 +85,7 @@ class RestfulServer {
 	def autorizarLogin(@Body String body) {
 		response.contentType = ContentType.APPLICATION_JSON
 		try {
-			val usuario = body.fromJson(Usuario_Simple)
+			val usuario = body.fromJson(SesionUsuario)
 			if (existeUsuario(usuario.username) && contraseniaCorrecta(usuario.password)) {
 				return ok("El usuario es valido")
 			} else {
@@ -113,8 +115,12 @@ class RestfulServer {
 		}
 	}
 	
-	@Post("/:user_from/recommend/:user_to/:type/:id")
-	def recomendar() {
+	@Post("/recommend/:type/:id")
+	// Body: { "from": "jose1000", "to": "pedro54" }
+	def recomendar(@Body String body) {
+		val envio = body.fromJson(EntreUsuarios)
+		val user_from = envio.from
+		val user_to = envio.to
 		var result = ok("Recomendacion enviada exitosamente")
 		
 		if (type != "movie" && type != "serie") {
@@ -122,7 +128,7 @@ class RestfulServer {
 		}
 		
 		try {
-			response.contentType = ContentType.APPLICATION_JSON
+			response.contentType = ContentType.APPLICATION_JSON		//Creo que esto deberia ir al principio del metodo
 			intermodelo.recomendar(user_from,user_to,id)
 		} catch (Exception excepcion) {
 			result = manejarExcepcionRecomendacion(excepcion)

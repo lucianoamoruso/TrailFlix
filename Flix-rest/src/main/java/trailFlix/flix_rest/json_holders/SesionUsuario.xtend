@@ -1,9 +1,9 @@
-package trailFlix.flix_rest.simple_model
+package trailFlix.flix_rest.json_holders
 
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class Usuario_Simple {
+class SesionUsuario {
 	
 	String	username
 	String	password
