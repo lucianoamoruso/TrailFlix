@@ -167,6 +167,18 @@ class Intermodelo {
 		planos.toJson
 	}
 	
+	/**
+	 * Prop: agrega o quita de los favoritos del usuario segun sea indicado en <code>valor</code>.
+	 */
+	def void toggleFavorito(String username,String id, boolean valor) {
+		val codigo = Integer.parseInt(id)
+		if (valor) {
+			manager.agregarFavorito(username,codigo)
+		} else {
+			manager.quitarFavorito(username,codigo)
+		}
+	}
+	
 //	---------------- SIMPLIFICADO ----------------
 	
 	/**

@@ -12,6 +12,8 @@ import trailFlix.flix_rest.helpers.Intermodelo
 import trailFlix.flix_rest.json_holders.SesionUsuario
 import trailFlix.flix_rest.json_holders.EntreUsuarios
 import trailFlix.flix_rest.json_holders.PedidoBusqueda
+import org.uqbar.xtrest.api.annotation.Put
+import trailFlix.flix_rest.json_holders.ToggleFavorito
 
 @Controller
 class RestfulServer {
@@ -160,6 +162,40 @@ class RestfulServer {
 		} catch (Exception exception) {
 			return badRequest(errorJson("Error desconocido"))
 		}
+	}
+	
+//		----------------- PUT -----------------
+	
+	@Put("/:username/fav/:type/:id")
+	// Body { "value": true }
+	def toggleFavorito(@Body String body) {
+		response.contentType = ContentType.APPLICATION_JSON
+		val cuerpo = body.fromJson(ToggleFavorito)
+		val valor = cuerpo.isValue
+		var result = ok("Lista de favoritos actualizada")
+		
+		if (type != "movie" && type != "serie") {
+			result = badRequest(errorJson("No existe el tipo de contenido elegido"))
+		}
+		
+		try {
+			intermodelo.toggleFavorito(username,id,valor)
+		} catch (Exception excepcion) {
+			result = manejarExcepcionFavorito(excepcion)
+		}
+		
+		return result
+	}
+	
+	def private manejarExcepcionFavorito(Exception excepcion) {
+		var result = badRequest(errorJson("Error desconocido"))
+		if (excepcion.class == ContenidoInexistente) {
+			result = badRequest(errorJson("Codigo de contenido inexistente"))
+		}
+		if (excepcion.class == UsuarioInexistente) {
+			result = badRequest(errorJson("Nombre de usuario inexistente"))
+		}
+		result
 	}
 	
 	def private errorJson(String mensaje) {
