@@ -24,15 +24,21 @@ class TrailFlix {
 	
 
 	def buscarPelicula (int id){
-		this.contenido.findFirst[(it.esPelicula && it.codigo == id)] as Pelicula
+		val resultado = this.contenido.findFirst[(it.esPelicula && it.codigo == id)] as Pelicula
+		if (resultado===null) {throw new ContenidoInexistente}
+		resultado
 	}
 	
 	def buscarSerie (int id){
-		this.contenido.findFirst[(it.esSerie && it.codigo == id)] as Serie
+		val resultado = this.contenido.findFirst[(it.esSerie && it.codigo == id)] as Serie
+		if (resultado===null) {throw new ContenidoInexistente}
+		resultado
 	}
 	
 	def buscarUsuario (int id){
-		this.usuarios.findFirst[it.codigo == id]
+		val resultado = this.usuarios.findFirst[it.codigo == id]
+		if (resultado===null) {throw new UsuarioInexistente}
+		resultado
 	
 	}
 	
@@ -40,7 +46,9 @@ class TrailFlix {
 	 * Prop: devuelve un contenido a partir de su codigo.
 	 */
 	def buscarContenido (int id){
-		this.contenido.findFirst[it.codigo == id]
+		val resultado = this.contenido.findFirst[it.codigo == id]
+		if (resultado===null) {throw new ContenidoInexistente}
+		resultado
 	}
 
 	/*

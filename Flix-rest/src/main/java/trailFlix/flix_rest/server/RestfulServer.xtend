@@ -6,6 +6,8 @@ import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 import trailFlix.flix_rest.helpers.Intermodelo
+import trailFlix.flix.model.ContenidoInexistente
+import trailFlix.flix.model.UsuarioInexistente
 
 @Controller
 class RestfulServer {
@@ -85,8 +87,44 @@ class RestfulServer {
 		}
 	}
 	
+	@Post("/:user_from/recommend/:user_to/:type/:id")
+	def recomendar() {
+		var result = ok("Recomendacion enviada exitosamente")
+		
+		if (type != "movie" && type != "serie") {
+			result = badRequest(errorJson("No existe el tipo de contenido elegido"))
+		}
+		
+		try {
+			response.contentType = ContentType.APPLICATION_JSON
+			intermodelo.recomendar(user_from,user_to,id)
+		} catch (Exception excepcion) {
+			result = manejarExcepcionRecomendacion(excepcion)
+		}
+		
+		return result 
+	}
+	
+	def manejarExcepcionRecomendacion(Exception excepcion) {
+		var result = badRequest(errorJson("Error desconocido"))
+		if (excepcion.class == ContenidoInexistente) {
+			result = badRequest(errorJson("Codigo de contenido inexistente"))
+		}
+		if (excepcion.class == UsuarioInexistente) {
+			result = badRequest(errorJson("Nombre de usuario inexistente"))
+		}
+		result
+	}
+	
 	def errorJson(String mensaje) {
 		"{ error: " + mensaje + " }"
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

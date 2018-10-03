@@ -3,6 +3,7 @@ package trailFlix.flix.helpers
 import java.util.ArrayList
 import trailFlix.flix.model.RelacionRecomendacion
 import trailFlix.flix.model.TrailFlix
+import trailFlix.flix.model.UsuarioInexistente
 
 /**
  * Esta clase se encarga de administrar el contenido guardado en trailFlix, o sea que provee metodos para modificar sus atributos.
@@ -26,7 +27,9 @@ class ContentManager {
 	 * Prop: recibe un username y devuelve el usuario asociado.
 	 */
 	def conseguirUsuario(String username) {
-		trailFlix.usuarios.findFirst[it.nombreDeUsuario == username]
+		val resultado = trailFlix.usuarios.findFirst[it.nombreDeUsuario == username]
+		if (resultado===null) {throw new UsuarioInexistente}
+		resultado
 	}
 	
 	/**

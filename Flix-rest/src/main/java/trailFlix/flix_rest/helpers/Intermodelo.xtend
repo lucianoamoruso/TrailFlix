@@ -125,6 +125,19 @@ class Intermodelo {
 		json_final
 	}
 	
+	/**
+	 * Prop: envia una recomendacion de Contenido de un usuario a otro.
+	 * @param	from	usuario emisor de la recomendacion.
+	 * @param	to	usuario al que la recomendacion va dirigida.
+	 * @param	id_cont	codigo del Contenido a ser recomendado.
+	 */
+	def recomendar(String from, String to, String id_cont) {
+		val emisor = manager.conseguirUsuario(from)
+		val receptor = manager.conseguirUsuario(to)
+		val contenido = trailFlix.buscarPelicula(Integer.parseInt(id_cont))
+		emisor.recomendar(contenido,receptor)
+	}
+	
 //	---------------- SIMPLIFICADO ----------------
 	
 	/**
