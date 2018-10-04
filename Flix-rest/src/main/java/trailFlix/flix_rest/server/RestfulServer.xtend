@@ -89,8 +89,9 @@ class RestfulServer {
 	@Post("/auth")
 	// Body: { "username" : "jose100", "password" : "contrasenia" }
 	def autorizarLogin(@Body String body) {
-		var result = ok("El usuario es valido")
 		response.contentType = ContentType.APPLICATION_JSON
+		var result = ok("El usuario es valido")
+		
 		try {
 			val usuario = body.fromJson(SesionUsuario)
 			if (!usuarioEsValido(usuario)) {result = badRequest(errorJson("Nombre de usuario o contrasenia incorrecta"))}
@@ -116,12 +117,15 @@ class RestfulServer {
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")
 	def agregarContenidoRelacionado() {
 		response.contentType = ContentType.APPLICATION_JSON
+		var result = ok("Contenido relacionado agregado correctamente")
+		
 		try {
 			intermodelo.agregarRelacionado(codigoPelicula,codigoContenido)
-			return ok("Contenido relacionado agregado correctamente")
 		} catch (Exception exception) {
-			return badRequest(errorJson("No existe la pelicula con codigo " + codigoPelicula))
+			result = manejarExcepcion(exception)
 		}
+		
+		return result
 	}
 	
 	@Post("/recommend/:type/:id")
@@ -132,15 +136,18 @@ class RestfulServer {
 		val user_from = envio.from
 		val user_to = envio.to
 		var result = ok("Recomendacion enviada exitosamente")
+		val comprobante = result
 		
 		if (type != "movie" && type != "serie") {
 			result = badRequest(errorJson("No existe el tipo de contenido elegido"))
 		}
 		
-		try {
-			intermodelo.recomendar(user_from,user_to,id,type)
-		} catch (Exception excepcion) {
-			result = manejarExcepcion(excepcion)
+		if (comprobante == result) {
+			try {
+				intermodelo.recomendar(user_from,user_to,id,type)
+			} catch (Exception excepcion) {
+				result = manejarExcepcion(excepcion)
+			}
 		}
 		
 		return result 
@@ -169,15 +176,18 @@ class RestfulServer {
 		val cuerpo = body.fromJson(Toggle)
 		val valor = cuerpo.isValue
 		var result = ok("Lista de favoritos actualizada")
+		val comprobante = result		//Se guarda el estado del resultado para luego ser comparado
 		
 		if (type != "movie" && type != "serie") {
 			result = badRequest(errorJson("No existe el tipo de contenido elegido"))
 		}
 		
-		try {
-			intermodelo.toggleFavorito(username,id,valor,type)
-		} catch (Exception excepcion) {
-			result = manejarExcepcion(excepcion)
+		if (comprobante == result) {		//Si se cumplen los requerimientos de este metodo (o sea que ninguna verificacion causo que cambie el resultado por un badRequest)
+			try {
+				intermodelo.toggleFavorito(username,id,valor,type)
+			} catch (Exception excepcion) {
+				result = manejarExcepcion(excepcion)
+			}
 		}
 		
 		return result
@@ -190,13 +200,16 @@ class RestfulServer {
 		val cuerpo = body.fromJson(Toggle)
 		val valor = cuerpo.isValue
 		var result = ok("Lista de vistos actualizada")
+		val comprobante = result
 		
 		if (type != "movie" && type != "serie")	{result = badRequest(errorJson("No existe el tipo de contenido elegido"))}
 		
-		try {
-			intermodelo.toggleVisto(username,id,valor,type)
-		} catch (Exception excepcion) {
-			result = manejarExcepcion(excepcion)
+		if (comprobante == result) {
+			try {
+				intermodelo.toggleVisto(username,id,valor,type)
+			} catch (Exception excepcion) {
+				result = manejarExcepcion(excepcion)
+			}
 		}
 		
 		return result
@@ -209,16 +222,19 @@ class RestfulServer {
 		val cuerpo = body.fromJson(Rating)
 		val stars = cuerpo.stars
 		var result = ok("Valoracion enviada")
+		val comprobante = result
 		
 		//Chequeos
 		if (type != "movie" && type != "chapter")	{result = badRequest(errorJson("No existe el tipo de contenido elegido"))}
 		if (!enRango(stars))						{result = badRequest(errorJson("Valoracion fuera de rango"))}
 		if (!existeUsuario(username)) 				{result = badRequest(errorJson("Nombre de usuario inexistente"))}
 
-		try {
-			intermodelo.rateContenido(id,stars,type)
-		} catch (Exception excepcion) {
-			result = manejarExcepcionRating(excepcion)
+		if (comprobante == result) {
+			try {
+				intermodelo.rateContenido(id,stars,type)
+			} catch (Exception excepcion) {
+				result = manejarExcepcionRating(excepcion)
+			}
 		}
 		
 		return result
