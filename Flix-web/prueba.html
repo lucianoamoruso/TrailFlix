@@ -2,20 +2,41 @@
 <html lang="es">
 <head>
     <title>Prueba de ventana</title>
+    <style>
+	table{
+	  font-family:arial,sans-serif;
+	  border-collapse:collapse;
+	  width:100%;
+	}
+	tr,th{
+	  border:1px,solid #dddddd;
+	  text-align:left;
+	  padding:8px;
+	}
+
+	</style>
     </head>
 <body>
     <div>
     <div>
         <div> 
-            <ul>
-              <li><a href="#">Peli1</a></li>
-              <li><a href="#">Peli2</a></li>
-              <li><a href="#">Peli3</a></li>
-            </ul>
+            <table>
+		<tr class="titulo">
+		  <th>Titulo </th>
+		  <th>Duracion </th>
+		  <th>Directores </th>
+		  </tr>
+
+		<tr>
+		  <td>Terminator</td>
+		  <td>3</td>
+		  <td>Schezenegger</td>
+		  </tr>
+             </table>
             </div>
         <div>
             <form action="#">
-            <input type="submit" value="Nuevo">
+            <input type="button" onclick="agregarNuevo()" value="Nuevo">
             <input type="submit" value="Ver">
             <input type="submit" value="Modificar">
             <input type="submit" value="Borrar">    
@@ -32,5 +53,13 @@
         </ul>
         </div>
     </div>
+
+<p id="demo"></p>
+<script>
+function agregarNuevo() {
+    document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+
     </body>
 </html>
