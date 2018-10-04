@@ -191,6 +191,14 @@ class Intermodelo {
 		}
 	}
 	
+	/**
+	 * Prop: valora un contenido con la cantidad de estrellas indicada.
+	 */
+	def rateContenido(String id, int stars) {
+		val codigo = Integer.parseInt(id)
+		manager.rateContenido(codigo,stars)
+	}
+	
 //	---------------- SIMPLIFICADO ----------------
 	
 	/**

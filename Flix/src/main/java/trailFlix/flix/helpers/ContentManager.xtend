@@ -4,6 +4,7 @@ import java.util.ArrayList
 import trailFlix.flix.model.RelacionRecomendacion
 import trailFlix.flix.model.TrailFlix
 import trailFlix.flix.model.UsuarioInexistente
+import trailFlix.flix.model.Contenido
 
 /**
  * Esta clase se encarga de administrar el contenido guardado en trailFlix, o sea que provee metodos para modificar sus atributos.
@@ -94,6 +95,19 @@ class ContentManager {
 		val usuario = conseguirUsuario(username)
 		val contenido = trailFlix.buscarContenido(cont_cod)
 		usuario.getContVisto.remove(contenido)
+	}
+	
+	/**
+	 * Prop: valora un contenido (pelicula o capitulo) con la cantidad de estrellas indicada.
+	 */
+	def rateContenido(int cont_cod, int stars) {
+		if (cont_cod<1000) {
+			val pelicula = trailFlix.buscarPelicula(cont_cod)
+			pelicula.valorar(stars)
+		} else {
+			val capitulo = trailFlix.buscarCapitulo(cont_cod)
+			capitulo.valorar(stars)
+		}
 	}
 	
 }

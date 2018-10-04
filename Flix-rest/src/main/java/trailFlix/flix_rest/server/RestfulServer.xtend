@@ -4,16 +4,18 @@ import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
+import org.uqbar.xtrest.api.annotation.Put
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 import trailFlix.flix.model.ContenidoInexistente
 import trailFlix.flix.model.UsuarioInexistente
 import trailFlix.flix_rest.helpers.Intermodelo
-import trailFlix.flix_rest.json_holders.SesionUsuario
 import trailFlix.flix_rest.json_holders.EntreUsuarios
 import trailFlix.flix_rest.json_holders.PedidoBusqueda
-import org.uqbar.xtrest.api.annotation.Put
+import trailFlix.flix_rest.json_holders.Rating
+import trailFlix.flix_rest.json_holders.SesionUsuario
 import trailFlix.flix_rest.json_holders.Toggle
+import trailFlix.flix.model.CapituloInexistente
 
 @Controller
 class RestfulServer {
@@ -85,19 +87,22 @@ class RestfulServer {
 	@Post("/auth")
 	// Body: { "username" : "jose100", "password" : "contrasenia" }
 	def autorizarLogin(@Body String body) {
+		var result = ok("El usuario es valido")
 		response.contentType = ContentType.APPLICATION_JSON
 		try {
 			val usuario = body.fromJson(SesionUsuario)
-			if (existeUsuario(usuario.username) && contraseniaCorrecta(usuario.password)) {
-				return ok("El usuario es valido")
-			} else {
-				return badRequest(errorJson("Nombre de usuario o contrasenia incorrecta"))
-			}
+			if (!usuarioEsValido(usuario)) {result = badRequest(errorJson("Nombre de usuario o contrasenia incorrecta"))}
 		} catch (Exception excepcion) {
-			return badRequest(errorJson("Error desconocido"))
+			result = manejarExcepcion(excepcion)
 		}
+		
+		result
 	}
 	
+	def usuarioEsValido(SesionUsuario usuario) {
+		existeUsuario(usuario.username) && contraseniaCorrecta(usuario.password)
+	}
+
 	def private existeUsuario(String username) {
 		intermodelo.existeUsuario(username)
 	}
@@ -133,21 +138,10 @@ class RestfulServer {
 		try {
 			intermodelo.recomendar(user_from,user_to,id)
 		} catch (Exception excepcion) {
-			result = manejarExcepcionRecomendacion(excepcion)
+			result = manejarExcepcion(excepcion)
 		}
 		
 		return result 
-	}
-	
-	def private manejarExcepcionRecomendacion(Exception excepcion) {
-		var result = badRequest(errorJson("Error desconocido"))
-		if (excepcion.class == ContenidoInexistente) {
-			result = badRequest(errorJson("Codigo de contenido inexistente"))
-		}
-		if (excepcion.class == UsuarioInexistente) {
-			result = badRequest(errorJson("Nombre de usuario inexistente"))
-		}
-		result
 	}
 	
 	@Post("/search")
@@ -181,7 +175,7 @@ class RestfulServer {
 		try {
 			intermodelo.toggleFavorito(username,id,valor)
 		} catch (Exception excepcion) {
-			result = manejarExcepcionToggle(excepcion)
+			result = manejarExcepcion(excepcion)
 		}
 		
 		return result
@@ -202,19 +196,53 @@ class RestfulServer {
 		try {
 			intermodelo.toggleVisto(username,id,valor)
 		} catch (Exception excepcion) {
-			result = manejarExcepcionToggle(excepcion)
+			result = manejarExcepcion(excepcion)
 		}
 		
 		return result
 	}
 	
-	def private manejarExcepcionToggle(Exception excepcion) {
+	@Put("/:username/rating/:type/:id")
+	// Body { "stars": 3 }
+	def rateContenido(@Body String body) {
+		response.contentType = ContentType.APPLICATION_JSON
+		val cuerpo = body.fromJson(Rating)
+		val stars = cuerpo.stars
+		var result = ok("Valoracion enviada")
+		
+		//Chequeos
+		if (type != "movie" && type != "chapter")	{result = badRequest(errorJson("No existe el tipo de contenido elegido"))}
+		if (!enRango(stars))						{result = badRequest(errorJson("Valoracion fuera de rango"))}
+		if (!existeUsuario(username)) 				{result = badRequest(errorJson("Nombre de usuario inexistente"))}
+
+		try {
+			intermodelo.rateContenido(id,stars)
+		} catch (Exception excepcion) {
+			result = manejarExcepcionRating(excepcion)
+		}
+		
+		return result
+	}
+	
+	def enRango(int stars) {
+		1 <= stars && stars <= 5
+	}
+	
+	def private manejarExcepcion(Exception excepcion) {
 		var result = badRequest(errorJson("Error desconocido"))
 		if (excepcion.class == ContenidoInexistente) {
 			result = badRequest(errorJson("Codigo de contenido inexistente"))
 		}
 		if (excepcion.class == UsuarioInexistente) {
 			result = badRequest(errorJson("Nombre de usuario inexistente"))
+		}
+		result
+	}
+	
+	def private manejarExcepcionRating(Exception excepcion) {
+		var result = badRequest(errorJson("Error desconocido"))
+		if (excepcion.class == ContenidoInexistente || excepcion.class == CapituloInexistente) {
+			result = badRequest(errorJson("Codigo inexistente"))
 		}
 		result
 	}

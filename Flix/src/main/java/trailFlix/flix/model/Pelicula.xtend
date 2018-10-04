@@ -25,6 +25,13 @@ class Pelicula extends Contenido {
 		this.codigo = codigo
 	}
 
+	/**
+	 * Prop: agrega una nueva valoracion en estrellas.
+	 */
+	def valorar(int estrellas) {
+		valoraciones.add(estrellas)
+	}
+
 //-------------------OVERRIDE--------------------------
 
 	override esPelicula (){
@@ -56,5 +63,5 @@ class Pelicula extends Contenido {
 	def getFechaEstreno() {
 		return fechaEstreno
 	}
-
+	
 }

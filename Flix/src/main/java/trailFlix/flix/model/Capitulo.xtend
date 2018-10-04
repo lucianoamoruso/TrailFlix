@@ -43,6 +43,13 @@ class Capitulo {
 		}
 	}
 	
+	/**
+	 * Prop: agrega una nueva valoracion en estrellas.
+	 */
+	def valorar(int estrellas) {
+		valoraciones.add(estrellas)
+	}
+	
 //-------------------OVERRIDE--------------------------
 	
 	override toString() {
@@ -69,6 +76,5 @@ class Capitulo {
 	def getTitulo(){
 		titulo
 	}
-
 	
 }

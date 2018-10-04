@@ -121,6 +121,14 @@ class TrailFlix {
 		this.contenido.filter[esSerie].map[it as Serie].toList
 	}
 	
+	def private getCapitulos() {
+		val caps = newArrayList
+		for (Serie serie : series) {
+			caps.addAll(serie.capitulos)
+		}
+		caps
+	}
+	
 	def getUsuarios() {
 		this.usuarios
 	}
@@ -135,6 +143,12 @@ class TrailFlix {
 	
 	def void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios
+	}
+	
+	def buscarCapitulo(int id) {
+		val resultado = capitulos.findFirst[it.codigo == id]
+		if (resultado===null) {throw new CapituloInexistente}
+		resultado
 	}
 	
 }
