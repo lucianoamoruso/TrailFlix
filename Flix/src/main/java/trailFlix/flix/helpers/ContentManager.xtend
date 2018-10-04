@@ -61,6 +61,15 @@ class ContentManager {
 	}
 	
 	/**
+	 * Prop: agrega el contenido de codigo <code>cont_cod</code> a la lista de favoritos del usuario.
+	 */
+	def agregarFavorito(String username, int cont_cod) {
+		val usuario = conseguirUsuario(username)
+		val contenido = trailFlix.buscarContenido(cont_cod)
+		usuario.getContFavorito.add(contenido)
+	}
+	
+	/**
 	 * Prop: quita el contenido de codigo <code>cont_cod</code> de la lista de favoritos del usuario.
 	 */
 	def quitarFavorito(String username, int cont_cod) {
@@ -70,12 +79,21 @@ class ContentManager {
 	}
 	
 	/**
-	 * Prop: agrega el contenido de codigo <code>cont_cod</code> a la lista de favoritos del usuario.
+	 * Prop: agrega el contenido de codigo <code>cont_cod</code> a la lista de vistos del usuario.
 	 */
-	def agregarFavorito(String username, int cont_cod) {
+	def agregarVisto(String username, int cont_cod) {
 		val usuario = conseguirUsuario(username)
 		val contenido = trailFlix.buscarContenido(cont_cod)
-		usuario.getContFavorito.add(contenido)
+		usuario.getContVisto.add(contenido)
+	}
+	
+	/**
+	 * Prop: quita el contenido de codigo <code>cont_cod</code> de la lista de vistos del usuario.
+	 */
+	def quitarVisto(String username, int cont_cod) {
+		val usuario = conseguirUsuario(username)
+		val contenido = trailFlix.buscarContenido(cont_cod)
+		usuario.getContVisto.remove(contenido)
 	}
 	
 }

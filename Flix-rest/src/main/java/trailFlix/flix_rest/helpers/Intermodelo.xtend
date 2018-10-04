@@ -179,6 +179,18 @@ class Intermodelo {
 		}
 	}
 	
+	/**
+	 * Prop: agrega o quita de los vistos del usuario segun sea indicado en <code>valor</code>.
+	 */
+	def void toggleVisto(String username,String id, boolean valor) {
+		val codigo = Integer.parseInt(id)
+		if (valor) {
+			manager.agregarVisto(username,codigo)
+		} else {
+			manager.quitarVisto(username,codigo)
+		}
+	}
+	
 //	---------------- SIMPLIFICADO ----------------
 	
 	/**
