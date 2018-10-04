@@ -26,32 +26,14 @@
     </head>
 <body>
     <div class="container">
-    <div class="row">
-        <div> 
-            <table>
-		<tr class="titulo">
-		  <th>Titulo </th>
-		  <th>Duracion </th>
-		  <th>Directores </th>
-		  </tr>
-
-		<tr>
-		  <td>Terminator</td>
-		  <td>3</td>
-		  <td>Schezenegger</td>
-		  </tr>
-             </table>
-            </div>
-        <div class="col-sm-1" onload="loadDoc()">
-            <form action="#">
-            <input type="button" onclick="agregarNuevo()" value="Nuevo">
-            <input type="submit" value="Ver">
-            <input type="submit" onclick="loadDoc()" value="Modificar">
-            <input type="submit" value="Borrar">    
+        <div class="col-sm-1">
+            <form action="prueba.html">
+            <input type="text" value="Nombre">
+            <input type="text" value="Contraseña">
+            <input type="submit" value="Ingresar">    
             </form>
-            </div>
         </div>
-<p id="demo"></p>
+    </div>
 <script>
 var cosas;
 function agregarNuevo() {
