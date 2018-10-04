@@ -26,41 +26,25 @@
     </head>
 <body>
     <div class="container">
-    <div class="row">
+      <div class="row">
         <div> 
-            <table>
-		<tr class="titulo">
-		  <th>Titulo </th>
-		  <th>Duracion </th>
-		  <th>Directores </th>
-		  </tr>
-
-		<tr>
-		  <td>Terminator</td>
-		  <td>3</td>
-		  <td>Schezenegger</td>
-		  </tr>
-             </table>
+            
             </div>
-        <div class="col-sm-1">
-            <form action="#">
+    <div class="col-sm-4">
+            <form>
             <input type="button" onclick="agregarNuevo()" value="Nuevo">
-            <input type="submit" value="Ver">
-            <input type="submit" value="Modificar">
+             <select name="tipo" size="1">
+		  <option value="Accion">Accion</option>
+		  <option value="Terror">Terror</option>
+		  <option value="Drama">Drama</option>
+		  <option value="Comedia">Comedia</option>
+		  </select> 
+            <input type="submit" value="Modificar" onclick="nuevaPelicula.html">
             <input type="submit" value="Borrar">    
             </form>
             </div>
         </div>
         
-        
-    <div>
-        <ul>
-          <li><a href="#">Serie1</a></li>
-          <li><a href="#">Serie2</a></li>
-          <li><a href="#">Serie3</a></li>
-        </ul>
-        </div>
-    </div>
 
 <p id="demo"></p>
 <script>
