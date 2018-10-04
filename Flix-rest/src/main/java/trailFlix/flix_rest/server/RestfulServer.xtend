@@ -56,31 +56,34 @@ class RestfulServer {
 	
 	@Get("/:username/favs")
 	def favoritosDe() {
+		response.contentType = ContentType.APPLICATION_JSON
+		
 		try {
-			response.contentType = ContentType.APPLICATION_JSON
 			return ok(intermodelo.favoritosDe(username).toJson)
 		} catch (Exception excepcion) {
-			return badRequest(errorJson("No existe el usuario de nombre " + username))
+			return manejarExcepcion(excepcion)
 		}
 	}
 	
 	@Get("/:username/movie/:id")
 	def peliculaSegunUsuario() {
+		response.contentType = ContentType.APPLICATION_JSON
+
 		try {
-			response.contentType = ContentType.APPLICATION_JSON
 			return ok(intermodelo.peliculaSegunUsuario(id,username))	//Ya devuelve un JSON
 		} catch (Exception excepcion) {
-			return badRequest(errorJson("No existe el usuario de nombre " + username + " o no existe la pelicula de codigo " + id))
+			return manejarExcepcion(excepcion)
 		}
 	}
 	
 	@Get("/:username/serie/:id")
 	def serieSegunUsuario() {
+		response.contentType = ContentType.APPLICATION_JSON
+		
 		try {
-			response.contentType = ContentType.APPLICATION_JSON
 			return ok(intermodelo.serieSegunUsuario(id,username))
 		} catch (Exception excepcion) {
-			return badRequest(errorJson("No existe el usuario de nombre " + username + " o no existe la serie de codigo " + id))
+			return manejarExcepcion(excepcion)
 		}
 	}
 	
@@ -102,7 +105,7 @@ class RestfulServer {
 		result
 	}
 	
-	def usuarioEsValido(SesionUsuario usuario) {
+	def private usuarioEsValido(SesionUsuario usuario) {
 		existeUsuario(usuario.username) && contraseniaCorrecta(usuario.password)
 	}
 
@@ -240,7 +243,7 @@ class RestfulServer {
 		return result
 	}
 	
-	def enRango(int stars) {
+	def private enRango(int stars) {
 		1 <= stars && stars <= 5
 	}
 	
