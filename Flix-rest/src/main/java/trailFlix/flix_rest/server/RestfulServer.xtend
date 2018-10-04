@@ -16,6 +16,8 @@ import trailFlix.flix_rest.json_holders.Rating
 import trailFlix.flix_rest.json_holders.SesionUsuario
 import trailFlix.flix_rest.json_holders.Toggle
 import trailFlix.flix.model.CapituloInexistente
+import trailFlix.flix.model.PeliculaInexistente
+import trailFlix.flix.model.SerieInexistente
 
 @Controller
 class RestfulServer {
@@ -136,7 +138,7 @@ class RestfulServer {
 		}
 		
 		try {
-			intermodelo.recomendar(user_from,user_to,id)
+			intermodelo.recomendar(user_from,user_to,id,type)
 		} catch (Exception excepcion) {
 			result = manejarExcepcion(excepcion)
 		}
@@ -173,7 +175,7 @@ class RestfulServer {
 		}
 		
 		try {
-			intermodelo.toggleFavorito(username,id,valor)
+			intermodelo.toggleFavorito(username,id,valor,type)
 		} catch (Exception excepcion) {
 			result = manejarExcepcion(excepcion)
 		}
@@ -189,12 +191,10 @@ class RestfulServer {
 		val valor = cuerpo.isValue
 		var result = ok("Lista de vistos actualizada")
 		
-		if (type != "movie" && type != "serie") {
-			result = badRequest(errorJson("No existe el tipo de contenido elegido"))
-		}
+		if (type != "movie" && type != "serie")	{result = badRequest(errorJson("No existe el tipo de contenido elegido"))}
 		
 		try {
-			intermodelo.toggleVisto(username,id,valor)
+			intermodelo.toggleVisto(username,id,valor,type)
 		} catch (Exception excepcion) {
 			result = manejarExcepcion(excepcion)
 		}
@@ -216,7 +216,7 @@ class RestfulServer {
 		if (!existeUsuario(username)) 				{result = badRequest(errorJson("Nombre de usuario inexistente"))}
 
 		try {
-			intermodelo.rateContenido(id,stars)
+			intermodelo.rateContenido(id,stars,type)
 		} catch (Exception excepcion) {
 			result = manejarExcepcionRating(excepcion)
 		}
@@ -233,6 +233,12 @@ class RestfulServer {
 		if (excepcion.class == ContenidoInexistente) {
 			result = badRequest(errorJson("Codigo de contenido inexistente"))
 		}
+		if (excepcion.class == PeliculaInexistente) {
+			result = badRequest(errorJson("Codigo de pelicula inexistente"))
+		}
+		if (excepcion.class == SerieInexistente) {
+			result = badRequest(errorJson("Codigo de serie inexistente"))
+		}
 		if (excepcion.class == UsuarioInexistente) {
 			result = badRequest(errorJson("Nombre de usuario inexistente"))
 		}
@@ -241,8 +247,11 @@ class RestfulServer {
 	
 	def private manejarExcepcionRating(Exception excepcion) {
 		var result = badRequest(errorJson("Error desconocido"))
-		if (excepcion.class == ContenidoInexistente || excepcion.class == CapituloInexistente) {
-			result = badRequest(errorJson("Codigo inexistente"))
+		if (excepcion.class == PeliculaInexistente) {
+			result = badRequest(errorJson("Codigo de pelicula inexistente"))
+		}
+		if (excepcion.class == CapituloInexistente) {
+			result = badRequest(errorJson("Codigo de capitulo inexistente"))
 		}
 		result
 	}

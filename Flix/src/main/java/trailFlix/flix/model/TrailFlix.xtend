@@ -25,13 +25,13 @@ class TrailFlix {
 
 	def buscarPelicula (int id){
 		val resultado = this.contenido.findFirst[(it.esPelicula && it.codigo == id)] as Pelicula
-		if (resultado===null) {throw new ContenidoInexistente}
+		if (resultado===null) {throw new PeliculaInexistente}
 		resultado
 	}
 	
 	def buscarSerie (int id){
 		val resultado = this.contenido.findFirst[(it.esSerie && it.codigo == id)] as Serie
-		if (resultado===null) {throw new ContenidoInexistente}
+		if (resultado===null) {throw new SerieInexistente}
 		resultado
 	}
 	

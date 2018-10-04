@@ -62,52 +62,91 @@ class ContentManager {
 	}
 	
 	/**
-	 * Prop: agrega el contenido de codigo <code>cont_cod</code> a la lista de favoritos del usuario.
+	 * Prop: agrega la pelicula de codigo <code>cont_cod</code> a la lista de favoritos del usuario.
 	 */
-	def agregarFavorito(String username, int cont_cod) {
+	def agregarFavoritoPeli(String username, int peli_cod) {
 		val usuario = conseguirUsuario(username)
-		val contenido = trailFlix.buscarContenido(cont_cod)
-		usuario.getContFavorito.add(contenido)
+		val pelicula = trailFlix.buscarPelicula(peli_cod)
+		usuario.getContFavorito.add(pelicula)
 	}
 	
 	/**
-	 * Prop: quita el contenido de codigo <code>cont_cod</code> de la lista de favoritos del usuario.
+	 * Prop: agrega la serie de codigo <code>cont_cod</code> a la lista de favoritos del usuario.
 	 */
-	def quitarFavorito(String username, int cont_cod) {
+	def agregarFavoritoSerie(String username, int serie_cod) {
 		val usuario = conseguirUsuario(username)
-		val contenido = trailFlix.buscarContenido(cont_cod)
-		usuario.getContFavorito.remove(contenido)
+		val serie = trailFlix.buscarSerie(serie_cod)
+		usuario.getContFavorito.add(serie)
 	}
 	
 	/**
-	 * Prop: agrega el contenido de codigo <code>cont_cod</code> a la lista de vistos del usuario.
+	 * Prop: quita la pelicula de codigo <code>cont_cod</code> de la lista de favoritos del usuario.
 	 */
-	def agregarVisto(String username, int cont_cod) {
+	def quitarFavoritoPeli(String username, int peli_cod) {
 		val usuario = conseguirUsuario(username)
-		val contenido = trailFlix.buscarContenido(cont_cod)
-		usuario.getContVisto.add(contenido)
+		val pelicula = trailFlix.buscarPelicula(peli_cod)
+		usuario.getContFavorito.remove(pelicula)
 	}
 	
 	/**
-	 * Prop: quita el contenido de codigo <code>cont_cod</code> de la lista de vistos del usuario.
+	 * Prop: quita la serie de codigo <code>cont_cod</code> de la lista de favoritos del usuario.
 	 */
-	def quitarVisto(String username, int cont_cod) {
+	def quitarFavoritoSerie(String username, int serie_cod) {
 		val usuario = conseguirUsuario(username)
-		val contenido = trailFlix.buscarContenido(cont_cod)
-		usuario.getContVisto.remove(contenido)
+		val serie = trailFlix.buscarSerie(serie_cod)
+		usuario.getContFavorito.remove(serie)
 	}
 	
 	/**
-	 * Prop: valora un contenido (pelicula o capitulo) con la cantidad de estrellas indicada.
+	 * Prop: agrega la pelicula de codigo <code>cont_cod</code> a la lista de vistos del usuario.
 	 */
-	def rateContenido(int cont_cod, int stars) {
-		if (cont_cod<1000) {
-			val pelicula = trailFlix.buscarPelicula(cont_cod)
-			pelicula.valorar(stars)
-		} else {
-			val capitulo = trailFlix.buscarCapitulo(cont_cod)
-			capitulo.valorar(stars)
-		}
+	def agregarVistoPeli(String username, int peli_cod) {
+		val usuario = conseguirUsuario(username)
+		val pelicula = trailFlix.buscarPelicula(peli_cod)
+		usuario.getContVisto.add(pelicula)
+	}
+	
+	/**
+	 * Prop: agrega la serie de codigo <code>cont_cod</code> a la lista de vistos del usuario.
+	 */
+	def agregarVistoSerie(String username, int serie_cod) {
+		val usuario = conseguirUsuario(username)
+		val serie = trailFlix.buscarSerie(serie_cod)
+		usuario.getContVisto.add(serie)
+	}
+	
+	/**
+	 * Prop: quita la pelicula de codigo <code>cont_cod</code> de la lista de vistos del usuario.
+	 */
+	def quitarVistoPeli(String username, int peli_cod) {
+		val usuario = conseguirUsuario(username)
+		val pelicula = trailFlix.buscarPelicula(peli_cod)
+		usuario.getContVisto.remove(pelicula)
+	}
+	
+	/**
+	 * Prop: quita la serie de codigo <code>cont_cod</code> de la lista de vistos del usuario.
+	 */
+	def quitarVistoSerie(String username, int serie_cod) {
+		val usuario = conseguirUsuario(username)
+		val serie = trailFlix.buscarSerie(serie_cod)
+		usuario.getContVisto.remove(serie)
+	}
+	
+	/**
+	 * Prop: valora una pelicula con la cantidad de estrellas indicada.
+	 */
+	def ratePelicula(int cont_cod, int stars) {
+		val pelicula = trailFlix.buscarPelicula(cont_cod)
+		pelicula.valorar(stars)
+	}
+	
+	/**
+	 * Prop: valora un capitulo con la cantidad de estrellas indicada.
+	 */
+	def rateCapitulo(int cont_cod, int stars) {
+		val capitulo = trailFlix.buscarCapitulo(cont_cod)
+		capitulo.valorar(stars)
 	}
 	
 }

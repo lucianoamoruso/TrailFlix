@@ -1,6 +1,6 @@
 package trailFlix.flix.model;
 
-public class CapituloInexistente extends Exception {
+public class CapituloInexistente extends ContenidoInexistente {
 
 	/**
 	 * 

@@ -136,10 +136,17 @@ class Intermodelo {
 	 * @param	to	usuario al que la recomendacion va dirigida.
 	 * @param	id_cont	codigo del Contenido a ser recomendado.
 	 */
-	def recomendar(String from, String to, String id_cont) {
+	def recomendar(String from, String to, String id_cont, String tipo) {
 		val emisor = manager.conseguirUsuario(from)
 		val receptor = manager.conseguirUsuario(to)
-		val contenido = trailFlix.buscarPelicula(Integer.parseInt(id_cont))
+		val codigo = Integer.parseInt(id_cont)
+		var contenido = null as Contenido
+		
+		if (tipo == "movie") {
+			contenido = trailFlix.buscarPelicula(codigo)
+		} else {
+			contenido = trailFlix.buscarSerie(codigo)
+		}
 		emisor.recomendar(contenido,receptor)
 	}
 	
@@ -170,33 +177,69 @@ class Intermodelo {
 	/**
 	 * Prop: agrega o quita de los favoritos del usuario segun sea indicado en <code>valor</code>.
 	 */
-	def void toggleFavorito(String username,String id, boolean valor) {
+	def void toggleFavorito(String username,String id, boolean valor, String tipo) {
 		val codigo = Integer.parseInt(id)
-		if (valor) {
-			manager.agregarFavorito(username,codigo)
+		if (tipo == "movie") {
+			agregarOQuitarFavPeli(username,codigo,valor)
 		} else {
-			manager.quitarFavorito(username,codigo)
+			agregarOQuitarFavSerie(username,codigo,valor)
+		}
+	}
+	
+	def private agregarOQuitarFavPeli(String username,int cod, boolean valor) {
+		if (valor) {
+			manager.agregarFavoritoPeli(username,cod)
+		} else {
+			manager.quitarFavoritoPeli(username,cod)
+		}
+	}
+	
+	def private agregarOQuitarFavSerie(String username,int cod, boolean valor) {
+		if (valor) {
+			manager.agregarFavoritoSerie(username,cod)
+		} else {
+			manager.quitarFavoritoSerie(username,cod)
 		}
 	}
 	
 	/**
 	 * Prop: agrega o quita de los vistos del usuario segun sea indicado en <code>valor</code>.
 	 */
-	def void toggleVisto(String username,String id, boolean valor) {
+	def void toggleVisto(String username,String id, boolean valor, String tipo) {
 		val codigo = Integer.parseInt(id)
-		if (valor) {
-			manager.agregarVisto(username,codigo)
+		if (tipo == "movie") {
+			agregarOQuitarVistoPeli(username,codigo,valor)
 		} else {
-			manager.quitarVisto(username,codigo)
+			agregarOQuitarVistoSerie(username,codigo,valor)
+		}
+	}
+	
+	def private agregarOQuitarVistoPeli(String username,int cod, boolean valor) {
+		if (valor) {
+			manager.agregarVistoPeli(username,cod)
+		} else {
+			manager.quitarVistoPeli(username,cod)
+		}
+	}
+	
+	def private agregarOQuitarVistoSerie(String username,int cod, boolean valor) {
+		if (valor) {
+			manager.agregarVistoSerie(username,cod)
+		} else {
+			manager.quitarVistoSerie(username,cod)
 		}
 	}
 	
 	/**
 	 * Prop: valora un contenido con la cantidad de estrellas indicada.
 	 */
-	def rateContenido(String id, int stars) {
+	def rateContenido(String id, int stars, String tipo) {
 		val codigo = Integer.parseInt(id)
-		manager.rateContenido(codigo,stars)
+		if (tipo == "movie") {
+			manager.ratePelicula(codigo,stars)
+		} else {
+			manager.rateCapitulo(codigo,stars)
+		}
 	}
 	
 //	---------------- SIMPLIFICADO ----------------
