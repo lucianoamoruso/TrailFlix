@@ -45,7 +45,7 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      document.getElementById("demo").innerHTML = JSON.parse(this.responseText)[0].codigo;
     }
   };
   xhttp.open("GET", "http://127.0.0.1:9000/peliculas", true);
