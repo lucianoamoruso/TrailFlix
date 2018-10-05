@@ -37,6 +37,7 @@ class RestfulServer {
 	 */
 	@Get("/peliculas")
 	def getPeliculas() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON		//Declaramos el tipo de respuesta que da nuestro servidor.
 		return ok(intermodelo.peliculas.toJson)					//Devolvemos el codigo de OK (200) y en el body el listado de las peliculas serializado a json.
 	}
@@ -44,18 +45,21 @@ class RestfulServer {
 	
 	@Get("/categories")
 	def getCategorias() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		return ok(intermodelo.categorias.toJson)
 	}
 	
 	@Get("/content/:category")
 	def contenidoDeCategoria() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		return ok(intermodelo.contenidosDeCategoria(category).toJson)
 	}
 	
 	@Get("/:username/favs")
 	def favoritosDe() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		
 		try {
@@ -67,6 +71,7 @@ class RestfulServer {
 	
 	@Get("/:username/movie/:id")
 	def peliculaSegunUsuario() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 
 		try {
@@ -78,6 +83,7 @@ class RestfulServer {
 	
 	@Get("/:username/serie/:id")
 	def serieSegunUsuario() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		
 		try {
@@ -92,6 +98,7 @@ class RestfulServer {
 	@Post("/auth")
 	// Body: { "username" : "jose100", "password" : "contrasenia" }
 	def autorizarLogin(@Body String body) {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		var result = ok("El usuario es valido")
 		
@@ -119,6 +126,7 @@ class RestfulServer {
 	
 	@Post("/peliculas/:codigoPelicula/:codigoContenido")
 	def agregarContenidoRelacionado() {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		var result = ok("Contenido relacionado agregado correctamente")
 		
@@ -134,6 +142,7 @@ class RestfulServer {
 	@Post("/recommend/:type/:id")
 	// Body: { "from": "jose1000", "to": "pedro54" }
 	def recomendar(@Body String body) {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		val envio = body.fromJson(EntreUsuarios)
 		val user_from = envio.from
@@ -159,9 +168,10 @@ class RestfulServer {
 	@Post("/search")
 	// Body: { "text": "terminator" }
 	def buscarContenidos(@Body String body) {
+		response.addHeader("Access-Control-Allow-Origin", "*")
+		response.contentType = ContentType.APPLICATION_JSON
 		val pedido = body.fromJson(PedidoBusqueda)
 		val texto = pedido.text
-		response.contentType = ContentType.APPLICATION_JSON
 		
 		try {
 			return ok(intermodelo.buscarContenidos(texto.toLowerCase))
@@ -175,6 +185,7 @@ class RestfulServer {
 	@Put("/:username/fav/:type/:id")
 	// Body { "value": true }
 	def toggleFavorito(@Body String body) {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		val cuerpo = body.fromJson(Toggle)
 		val valor = cuerpo.isValue
@@ -199,6 +210,7 @@ class RestfulServer {
 	@Put("/:username/watched/:type/:id")
 	// Body { "value": true }
 	def toggleVisto(@Body String body) {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		val cuerpo = body.fromJson(Toggle)
 		val valor = cuerpo.isValue
@@ -221,6 +233,7 @@ class RestfulServer {
 	@Put("/:username/rating/:type/:id")
 	// Body { "stars": 3 }
 	def rateContenido(@Body String body) {
+		response.addHeader("Access-Control-Allow-Origin", "*")
 		response.contentType = ContentType.APPLICATION_JSON
 		val cuerpo = body.fromJson(Rating)
 		val stars = cuerpo.stars
