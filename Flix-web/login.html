@@ -28,30 +28,14 @@
     <div class="container">
         <div class="col-sm-1">
             <form action="prueba.html">
-            <input type="text" value="Nombre">
-            <input type="text" value="Contraseña">
+            <input id="texto" placeholder="Nombre Usuario" type="text">
             <input type="submit" value="Ingresar">    
             </form>
         </div>
     </div>
-<script>
-var cosas;
-function agregarNuevo() {
-    document.getElementById("demo").innerHTML = "Hello World";
-}
-</script>
-<script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = JSON.parse(this.responseText)[0].codigo;
-    }
-  };
-  xhttp.open("GET", "http://127.0.0.1:9000/peliculas", true);
-  xhttp.send();
-}
-</script>
+
+    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
