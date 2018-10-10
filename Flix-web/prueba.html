@@ -21,47 +21,47 @@
 	  text-align:left;
 	  padding:8px;
 	}
-
+    .botones{
+      margin:2px;
+    }
 	</style>
     </head>
 <body>
     <div class="container">
     <div class="row">
         <div> 
-            <table>
-		<tr class="titulo">
-		  <th>Titulo </th>
-		  <th>Duracion </th>
-		  <th>Directores </th>
-		  </tr>
+            <table id="peliculas">
+            <tr class="titulo">
+              <th>Titulo </th>
+              <th>Duracion </th>
+              <th>Directores </th>
+              </tr>
 
-		<tr>
-		  <td>Terminator</td>
-		  <td>3</td>
-		  <td>Schezenegger</td>
-		  </tr>
-             </table>
+            <tr>
+              <td>Terminator</td>
+              <td>3</td>
+              <td>Schezenegger</td>
+              </tr>
+            </table>
             </div>
-        <div class="col-sm-1" onload="loadDoc()">
+        <div class="col-sm-1"  onload="loadDoc()">
             <form action="#">
-            <input type="button" onclick="agregarNuevo()" value="Nuevo">
-            <input type="submit" value="Ver">
-            <input type="submit" onclick="loadDoc()" value="Modificar">
-            <input type="submit" value="Borrar">    
+            <input type="button" class="botones" onclick="agregarNuevo()" value="Nuevo">
+            <input type="submit" class="botones" value="Ver">
+            <input type="submit" class="botones" onclick="loadDoc()" value="Modificar">
+            <input type="submit" class="botones" value="Borrar">    
             </form>
             </div>
         </div>
-<p id="demo"></p>
+    <p id="demo"></p>
+    </div>
 <script>
-var cosas;
 function agregarNuevo() {
-    document.getElementById("demo").innerHTML = "Hello World";
 //TODO:Hacer que esta linea agregue un elemento a la tabla.
-    document.getElementById("titulo").write("<tr>                  \
-					     <td>Terminator2</td>  \
-					     <td>10 </td>          \
-					     <td>adfa</td>         \
-					     </tr>"                )
+    var row = document.getElementById("peliculas").insertRow(1)
+    row.insertCell(0).innerHTML = "Terminator2"
+    row.insertCell(1).innerHTML = 3
+    row.insertCell(2).innerHTML = "adv"
 }
 </script>
 <script>
