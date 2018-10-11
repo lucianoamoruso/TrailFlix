@@ -32,14 +32,23 @@
             </div>
     <div class="col-sm-4">
             <form>
+	    <input type="text" class="form-control" placeholder="titulo">
             <input type="button" onclick="agregarNuevo()" value="Nuevo">
-             <select name="tipo" size="1">
-		  <option value="Accion">Accion</option>
-		  <option value="Terror">Terror</option>
-		  <option value="Drama">Drama</option>
-		  <option value="Comedia">Comedia</option>
-		  </select> 
-            <input type="submit" value="Modificar" onclick="nuevaPelicula.html">
+	    <div class="row">
+	    <div class="checkbox col-2">
+		<label><input type="checkbox" value="">Accion</label>
+		</div>
+	    <div class="checkbox col-2">
+		<label><input type="checkbox" value="">Drama</label>
+		</div>
+	    <div class="checkbox col-2">
+	        <label><input type="checkbox" value="">Comico</label>
+	        </div>
+	    <div class="checkbox col-2">
+		<label><input type="checkbox" value="">Horror</label>
+		</div>
+	    </div>
+	    <input type="submit" value="Modificar" onclick="nuevaPelicula.html">
             <input type="submit" value="Borrar">    
             </form>
             </div>
@@ -51,6 +60,7 @@
 function agregarNuevo() {
     document.getElementById("demo").innerHTML = "Hello World";
 }
+
 </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
