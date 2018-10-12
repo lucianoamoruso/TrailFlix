@@ -1,9 +1,6 @@
 jQuery.getJSON('http://localhost:9000/allSeries')
     .then(function(r) {console.log(r)})
 
-
-
-
     .then(response => {
         response.foreach(element => {
             $('#table-body').append(`<tr>'
