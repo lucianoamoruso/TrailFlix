@@ -8,7 +8,17 @@ import React from 'react';
 export default class App extends React.Component {
   constructor() {
     super();
-    this.state = { name: 'mundo!' };
+    this.state = { name: 'mundo' };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 500);
+  }
+
+  tick() {
+    this.setState(state => ({
+      name: `${state.name}o`,
+    }));
   }
 
   render() {
