@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'open-iconic/font/css/open-iconic-bootstrap.min.css';
-import '../dist/css/App.css'; /* Por ahora no definimos nuestro propio CSS. */
+import '../../dist/css/App.css'; /* Por ahora no definimos nuestro propio CSS. */
 
 import React from 'react';
 
-export default class Main extends React.Component {
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = { categorias: [], buscar: '' };
