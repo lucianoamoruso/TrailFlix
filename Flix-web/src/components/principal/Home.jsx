@@ -5,6 +5,8 @@ import '../../dist/css/App.css'; /* Por ahora no definimos nuestro propio CSS. *
 
 import React from 'react';
 
+import Categorias from './Categorias';
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -20,21 +22,15 @@ export default class Home extends React.Component {
 
   handleRellenar() {
     this.setState({ categorias: ['Drama', 'Terror'] });
+    console.log(this.state);
   }
 
   render() {
     return (
       <div>
         <h1>TrailFlix</h1>
-        <nav>
-          <ul>
-            {this.props.categorias.map(cat => (
-              <li>{cat}</li> /* Despues podriamos cambiar la forma en la que el rest devuelve las
-                                categorias y acceder por propiedades. */
-            ))}
-          </ul>
-        </nav>
         <button type="button" onClick={this.handleRellenar}>Rellenar categorias</button>
+        <Categorias categorias={this.state.categorias} />
       </div>
     );
   }
