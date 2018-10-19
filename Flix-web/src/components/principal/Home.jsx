@@ -21,7 +21,7 @@ export default class Home extends React.Component {
   */
 
   handleRellenar() {
-    this.setState({ categorias: ['Drama', 'Terror'] });
+    this.setState({ categorias: ['Drama', 'Terror', 'Accion', 'Comedia', 'a', 'as', 'papa'] });
     console.log(this.state);
   }
 

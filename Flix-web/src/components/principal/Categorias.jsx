@@ -5,17 +5,11 @@ import '../../dist/css/NavCategorias.css';
 export default class Categorias extends React.Component {
   render() {
     return (
-      <div>
-        <ul>
+      <div className="d-flex justify-content-end align-items-end">
+        <nav className="nav justify-content-end nav-fill">
           {this.props.categorias.map(cat => (
-            <li key={cat}>{cat}</li>
+            <button className="btn btn-outline-secondary nav-item" type="button"> {cat} </button>
           ))}
-        </ul>
-        <nav className="nav justify-content-end">
-          <button className="btn btn-outline-secondary" type="button">Drama</button>
-          <button className="btn btn-outline-secondary" type="button">Accion</button>
-          <button className="btn btn-outline-secondary" type="button">Comedia</button>
-          <button className="btn btn-outline-secondary" type="button">Terror</button>
         </nav>
       </div>
     );
@@ -23,6 +17,14 @@ export default class Categorias extends React.Component {
 }
 
 /*
+
+    <ul>
+      {this.props.categorias.map(cat => (
+        <li key={cat}>{cat}</li>
+      ))}
+    </ul>
+
+
 ----- ALTERNATIVA -----
 <ul className="nav nav-pills nav-fill" role="tablist">
 <li className="nav-item">
