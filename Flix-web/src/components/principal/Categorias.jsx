@@ -5,8 +5,8 @@ import '../../dist/css/NavCategorias.css';
 export default class Categorias extends React.Component {
   render() {
     return (
-      <div className="d-flex justify-content-end align-items-end">
-        <nav className="nav justify-content-end nav-fill">
+      <div>
+        <nav>
           {this.props.categorias.map(cat => (
             <button className="btn btn-outline-secondary nav-item" type="button"> {cat} </button>
           ))}
@@ -17,6 +17,8 @@ export default class Categorias extends React.Component {
 }
 
 /*
+
+     className="d-flex justify-content-end align-items-end"
 
     <ul>
       {this.props.categorias.map(cat => (

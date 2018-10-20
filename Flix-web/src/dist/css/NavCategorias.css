@@ -1,6 +1,7 @@
-.d-flex {
-  display: flex;
+nav {
+  display: inline-flex;
   flex-wrap: nowrap;
+  padding-left: 250px;
 }
 
 .btn-outline-secondary {

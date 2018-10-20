@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'open-iconic/font/css/open-iconic-bootstrap.min.css';
-import '../../dist/css/App.css'; /* Por ahora no definimos nuestro propio CSS. */
+import '../../dist/css/App.css';
+import '../../dist/css/Home.css';
 
 import React from 'react';
 
@@ -21,16 +22,27 @@ export default class Home extends React.Component {
   */
 
   handleRellenar() {
-    this.setState({ categorias: ['Drama', 'Terror', 'Accion', 'Comedia', 'a', 'as', 'papa'] });
+    this.setState({ categorias: ['Drama', 'Terror', 'Accion', 'Comedia'] });
     console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        <h1>TrailFlix</h1>
+        <div className="row row-show">
+          <div className="col-2 offset-4 col-show">
+            <h1>TrailFlix</h1>
+          </div>
+        </div>
         <button type="button" onClick={this.handleRellenar}>Rellenar categorias</button>
-        <Categorias categorias={this.state.categorias} />
+        <div className="row row-show">
+          <div className="col-4 col-show">
+            <Filtro />
+          </div>
+          <div className="col-8 offset-4 col-show">
+            <Categorias categorias={this.state.categorias} />
+          </div>
+        </div>
       </div>
     );
   }
