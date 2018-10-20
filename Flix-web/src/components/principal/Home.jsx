@@ -7,6 +7,7 @@ import '../../dist/css/Home.css';
 import React from 'react';
 
 import Categorias from './Categorias';
+import Filtro from './Filtro';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -36,10 +37,10 @@ export default class Home extends React.Component {
         </div>
         <button type="button" onClick={this.handleRellenar}>Rellenar categorias</button>
         <div className="row row-show">
-          <div className="col-4 col-show">
+          <div className="col col-show">
             <Filtro />
           </div>
-          <div className="col-8 offset-4 col-show">
+          <div className="col col-show">
             <Categorias categorias={this.state.categorias} />
           </div>
         </div>

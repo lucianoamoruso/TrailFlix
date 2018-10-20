@@ -6,7 +6,7 @@ export default class Categorias extends React.Component {
   render() {
     return (
       <div>
-        <nav>
+        <nav className="cat-nav">
           {this.props.categorias.map(cat => (
             <button className="btn btn-outline-secondary nav-item" type="button"> {cat} </button>
           ))}
@@ -26,20 +26,4 @@ export default class Categorias extends React.Component {
       ))}
     </ul>
 
-
------ ALTERNATIVA -----
-<ul className="nav nav-pills nav-fill" role="tablist">
-<li className="nav-item">
-  <a className="nav-link" data-toggle="tab" href="#" role="tab" aria-selected="false">Active</a>
-</li>
-<li className="nav-item">
-<a className="nav-link" data-toggle="tab" href="#" role="tab" aria-selected="false">Longer nav link</a>
-</li>
-<li className="nav-item">
-<a className="nav-link" data-toggle="tab" href="#" role="tab" aria-selected="false">Link</a>
-</li>
-<li className="nav-item">
-<a className="nav-link" data-toggle="tab" href="#" role="tab" aria-selected="false">Disabled</a>
-</li>
-</ul>
 */

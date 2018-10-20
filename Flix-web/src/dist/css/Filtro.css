@@ -1,0 +1,16 @@
+.filter-nav {
+  width: 150px;
+  border: 2px solid salmon;
+  border-radius: 10px;
+}
+
+#filter-header {
+  color: white;
+  background-color: orange;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#filter-header:hover {
+  background-color: rgb(241, 187, 86);
+}

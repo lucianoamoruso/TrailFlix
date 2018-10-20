@@ -4,26 +4,24 @@ import 'open-iconic/font/css/open-iconic-bootstrap.min.css';
 import '../dist/css/App.css';
 
 import React from 'react';
+import { Switch, Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+
+import Root from './Root.jsx';
+import Home from './principal/Home';
+import Login from './login/Login';
 
 export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = { name: 'mundo' };
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 500);
-  }
-
-  tick() {
-    this.setState(state => ({
-      name: `${state.name}o`,
-    }));
-  }
-
   render() {
     return (
-      <h1>Hola {this.state.name}</h1>
+      <BrowserRouter>
+        <Root>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Root>
+      </BrowserRouter>
     );
   }
 }

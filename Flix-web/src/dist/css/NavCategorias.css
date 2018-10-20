@@ -1,17 +1,17 @@
-nav {
+.cat-nav {
   display: inline-flex;
   flex-wrap: nowrap;
-  padding-left: 250px;
 }
 
-.btn-outline-secondary {
+.cat-nav .btn-outline-secondary {
   width: 280px;
   border-radius: 0px;
   color: orange;
   border-color: orange;
 }
 
-.btn-outline-secondary:hover {
+.cat-nav .btn-outline-secondary:hover {
+  color: white;
   background-color: rgb(224, 171, 72);
   border-color: rgb(224, 171, 72);
 }
