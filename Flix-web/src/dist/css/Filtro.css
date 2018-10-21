@@ -4,6 +4,16 @@
   border-radius: 10px;
 }
 
+.filter-nav a {
+  color: rgb(165, 107, 0);
+  background-color: rgb(241, 213, 123);
+}
+
+.filter-nav :last-of-type {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 #filter-header {
   color: white;
   background-color: orange;

@@ -1,0 +1,44 @@
+#login-h1 {
+  text-align: center;
+}
+
+#login-h1 h1 {
+  color: #17aad8;
+}
+
+img {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+span {
+  width: 50px;
+  height: 38px;
+  justify-content: center;
+}
+
+input.form-control {
+  background-color: #7fffd41f;
+}
+
+.prepend {  /*Esto es lo que aparece a la izquierda de los text inputs*/
+  background-color: #7fffd480;
+}
+
+strong {
+  font-size: 150%;
+}
+
+.btn-primary {
+  background-color: #15b799;
+  border: 5px outset #17947d;
+}
+
+.btn-primary:hover {
+  background-color: #15b799;
+  border: 5px solid #17947d00;
+}
+
+.btn-primary:active {
+  border: 5px groove #17947d00;
+}
