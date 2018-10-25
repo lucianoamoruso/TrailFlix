@@ -5,3 +5,9 @@
 #home-h1 h1 {
   color: #d87217;
 }
+
+#busqueda {
+  height: 30px;
+  border-radius: 100px;
+  background-color: #fff5771f;
+}
