@@ -31,7 +31,7 @@ export default class Home extends React.Component {
     return (
       <div>
         <div className="row row-show">
-          <div className="col-2 offset-4 col-show">
+          <div id="home-h1" className="col-2 offset-5 col-show">
             <h1>TrailFlix</h1>
           </div>
         </div>

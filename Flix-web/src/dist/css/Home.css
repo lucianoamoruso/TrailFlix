@@ -1,3 +1,7 @@
-h1 {
+#home-h1 {
+  text-align: center;
+}
+
+#home-h1 h1 {
   color: #d87217;
 }
