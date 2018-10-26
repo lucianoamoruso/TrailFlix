@@ -22,8 +22,8 @@ export default class Login extends React.Component {
     const body = { username: this.state.username, password: this.state.password };
     console.log({ ...body });
     API.post('/auth', { ...body })
-      .then() //Volver al Main
-      .catch();
+      .then(() => this.props.history.push('/'))
+      .catch(response => this.setState({ error: response.data }));
   }
 
   render() {
@@ -38,7 +38,7 @@ export default class Login extends React.Component {
           <div className="col-4 col-show offset-4 input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text prepend">
-                <img id="user" src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg" alt="icono de usuario" />
+                <img id="user" src="img/user.jpg" alt="icono de usuario" />
               </span>
             </div>
             <input
@@ -66,6 +66,7 @@ export default class Login extends React.Component {
             />
           </div>
         </div>
+        <p>{this.state.error}</p>
         <div className="row">
           <div id="login-h1" className="col-2 col-show offset-5">
             <button onClick={() => this.autorizar()} type="button" className="btn btn-primary">Entrar</button>
