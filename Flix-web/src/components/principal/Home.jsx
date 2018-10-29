@@ -14,6 +14,7 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = { categorias: [], buscar: '' };
+    this.tabla = React.createRef();
     this.handleRellenar = this.handleRellenar.bind(this);
   }
 
@@ -23,6 +24,11 @@ export default class Home extends React.Component {
 
   cambiarBusqueda(evento) {
     this.setState({ buscar: evento.target.value });
+  }
+
+  cambiarCategoria(evento) {
+    this.setState({ sel_cat: evento.target.innerHTML.toLowerCase() });
+    this.tabla.current.solicitarContenido();
   }
 
   filtrar() {
@@ -47,11 +53,11 @@ export default class Home extends React.Component {
           <div className="col col-show">
             <Filtro />
           </div>
-          <div className="col col-show">
+          <div onClick={e => this.cambiarCategoria(e)} className="col col-show">
             <Categorias categorias={this.state.categorias} />
           </div>
         </div>
-        <Tabla />
+        <Tabla ref={this.tabla} categoria={this.state.sel_cat} />
       </div>
     );
   }

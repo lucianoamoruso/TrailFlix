@@ -3,15 +3,18 @@ import React from 'react';
 import '../../dist/css/NavCategorias.css';
 
 export default class Categorias extends React.Component {
+  toggleBoton(evento) {
+    const clases = evento.target.className;
+    evento.target.className = clases.includes('active') ? clases.replace(' active', '') : `${clases} active`;
+  }
+
   render() {
     return (
-      <div>
-        <nav className="cat-nav">
-          {this.props.categorias.map(cat => (
-            <button className="btn btn-outline-secondary nav-item" type="button"> {cat} </button>
-          ))}
-        </nav>
-      </div>
+      <nav className="cat-nav">
+        {this.props.categorias.map(cat => (
+          <button onClick={e => this.toggleBoton(e)} className="btn btn-outline-secondary nav-item" type="button">{cat}</button>
+        ))}
+      </nav>
     );
   }
 }

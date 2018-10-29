@@ -18,6 +18,7 @@ import trailFlix.flix_rest.json_holders.Toggle
 import trailFlix.flix.model.CapituloInexistente
 import trailFlix.flix.model.PeliculaInexistente
 import trailFlix.flix.model.SerieInexistente
+import org.eclipse.xtend.lib.annotations.Accessors
 
 @Controller
 class RestfulServer {
@@ -276,14 +277,18 @@ class RestfulServer {
 	}
 	
 	def private errorJson(String mensaje) {
-		"{ error: " + mensaje + " }"
+		new ErrorJson(mensaje).toJson
 	}
 	
+}
+
+@Accessors
+class ErrorJson {
 	
+	String	error
 	
-	
-	
-	
-	
+	new(String mensaje) {
+		this.error = mensaje
+	}
 	
 }
