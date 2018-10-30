@@ -1,20 +1,18 @@
 import React from 'react';
+import PeliculaPreview from './PeliculaPreview';
+import SeriePreview from './SeriePreview';
 
-import '../../dist/css/Tabla.css';
-
+import '../../dist/css/principal/ContenidoCard.css';
 
 export default class ContenidoPreview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { imagen: '/img/placeholder.png', titulo: this.props.contenido.titulo };
+    this.state = {
+      tipo: this.props.contenido.codigo < 1000 ? 'Pelicula' : 'Serie',
+    };
   }
 
   render() {
-    console.log('holis');
-    return (
-      <div className="media">
-        <img src={this.state.imagen} alt={`imagen de ${this.state.titulo}`} />
-      </div>
-    );
+    return (this.state.tipo === 'Pelicula' ? <PeliculaPreview datos={this.props.contenido} /> : <SeriePreview datos={this.props.contenido} />);
   }
 }

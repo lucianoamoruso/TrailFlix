@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../dist/css/Filtro.css';
+import '../../dist/css/principal/Filtro.css';
 // import headerAbierto from './Filtro.ts';
 
 export default class Filtro extends React.Component {

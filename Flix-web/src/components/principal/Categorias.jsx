@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../dist/css/NavCategorias.css';
+import '../../dist/css/principal/NavCategorias.css';
 
 export default class Categorias extends React.Component {
   toggleBoton(evento) {

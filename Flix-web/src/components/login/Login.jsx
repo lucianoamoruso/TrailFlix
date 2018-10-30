@@ -2,7 +2,7 @@ import React from 'react';
 
 import API from '../../service/api';
 
-import '../../dist/css/Login.css';
+import '../../dist/css/login/Login.css';
 
 export default class Login extends React.Component {
   constructor(props) {

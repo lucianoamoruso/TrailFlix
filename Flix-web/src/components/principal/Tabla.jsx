@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../dist/css/Tabla.css';
+import '../../dist/css/principal/Tabla.css';
 
 import API from '../../service/api';
 import ContenidoPreview from './ContenidoPreview';
