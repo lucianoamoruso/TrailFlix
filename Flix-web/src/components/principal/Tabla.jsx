@@ -8,23 +8,27 @@ import ContenidoPreview from './ContenidoPreview';
 export default class Tabla extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { contenidos: [] };
+    this.state = { contenidos: [], filtrados: [] };
   }
 
-  solicitarContenido() {
-    API.get(`/content/${this.props.categoria}`)
+  filtrar(texto) {
+    const nuevos = this.state.contenidos.filter(cont => cont.titulo.toUpperCase().includes(texto.toUpperCase()));
+    this.setState({ filtrados: nuevos });
+  }
+
+  solicitarContenido(cat) {
+    API.get(`/content/${cat}`)
       .then(response => this.cargarContenidos(response))
       .catch();
   }
 
   cargarContenidos(data) {
-    this.setState({ contenidos: data });
-    console.log(this.state.contenidos);
+    this.setState({ contenidos: data, filtrados: data });
   }
 
   render() {
     return (
-      this.state.contenidos.map(cont => (
+      this.state.filtrados.map(cont => (
         <div className="preview">
           <ContenidoPreview contenido={cont} />
         </div>

@@ -3,30 +3,33 @@ import React from 'react';
 import '../../dist/css/principal/NavCategorias.css';
 
 export default class Categorias extends React.Component {
+  constructor(props) {
+    super(props);
+    this.barra = React.createRef();
+  }
+
+  agregarListeners() {
+    const botones = this.barra.current.children;
+    for (let i = 0; i < botones.length; i++) {
+      botones[i].addEventListener('click', evento => this.toggleBoton(evento));
+    }
+  }
+
   toggleBoton(evento) {
-    const clases = evento.target.className;
-    evento.target.className = clases.includes('active') ? clases.replace(' active', '') : `${clases} active`;
+    const botones = this.barra.current.children;
+    for (let i = 0; i < botones.length; i++) {
+      botones[i].classList.remove('active');
+    }
+    evento.target.classList.toggle('active');
   }
 
   render() {
     return (
-      <nav className="cat-nav">
-        {this.props.categorias.map(cat => (
-          <button onClick={e => this.toggleBoton(e)} className="btn btn-outline-secondary nav-item" type="button">{cat}</button>
+      <nav ref={this.barra} className="cat-nav">
+        {this.props.categorias.map((cat, index) => (
+          <button className="btn btn-outline-secondary nav-item" type="button" key={index}>{cat}</button>
         ))}
       </nav>
     );
   }
 }
-
-/*
-
-     className="d-flex justify-content-end align-items-end"
-
-    <ul>
-      {this.props.categorias.map(cat => (
-        <li key={cat}>{cat}</li>
-      ))}
-    </ul>
-
-*/
