@@ -2,8 +2,9 @@ import React from 'react';
 
 import '../../dist/css/principal/Tabla.css';
 
+import FilaDeCartas from './FilaDeCartas';
+
 import API from '../../service/api';
-import ContenidoPreview from './ContenidoPreview';
 
 export default class Tabla extends React.Component {
   constructor(props) {
@@ -26,12 +27,32 @@ export default class Tabla extends React.Component {
     this.setState({ contenidos: data, filtrados: data });
   }
 
+  /**
+   * Prop: devuelve un array que contiene arrays de max 3 Contenidos cada uno a partir de los filtrados.
+   */
+  distribuirCartas() {
+    const filtrados = this.state.filtrados;
+    const resultado = [];
+
+    while (filtrados > 2) {
+      const fila = [];
+      fila.push(filtrados.pop());
+      fila.push(filtrados.pop());
+      fila.push(filtrados.pop());
+      resultado.push(fila);
+    }
+
+    resultado.push(filtrados);
+
+    return resultado;
+  }
+
   render() {
+    const cartas_a_renderizar = this.distribuirCartas(this.state.filtrados);
     return (
-      this.state.filtrados.map(cont => (
-        <div className="preview">
-          <ContenidoPreview contenido={cont} />
-        </div>
-      )));
+      <div>
+        {cartas_a_renderizar.map(fila => <FilaDeCartas cartas={fila} />)}
+      </div>
+    );
   }
 }

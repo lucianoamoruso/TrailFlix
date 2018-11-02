@@ -83,9 +83,9 @@ export default class Home extends React.Component {
           </div>
           <div onClick={e => this.cambiarCategoria(e)} className="col col-show">
             <Categorias ref={this.navegacion} categorias={this.state.categorias} />
+            <Tabla ref={this.tabla} />
           </div>
         </div>
-        <Tabla ref={this.tabla} />
       </div>
     );
   }
