@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'open-iconic/font/css/open-iconic-bootstrap.min.css';
@@ -19,6 +20,7 @@ export default class Home extends React.Component {
     this.buscador = React.createRef();
     this.logger = React.createRef();
     this.tabla = React.createRef();
+    this.filtro = React.createRef();
     this.navegacion = React.createRef();
   }
 
@@ -32,6 +34,7 @@ export default class Home extends React.Component {
     const cates = data.map(cat => this.capitalizar(cat));
     this.setState({ categorias: cates });
     this.navegacion.current.agregarListeners();
+    this.filtro.current.agregarListeners(evento => this.aplicarFiltro(evento));
   }
 
   /**
@@ -58,6 +61,14 @@ export default class Home extends React.Component {
     return palabra.charAt(0).toUpperCase() + palabra.slice(1);
   }
 
+  aplicarFiltro(tipo) {
+    if (tipo === 'rec') {
+      this.tabla.current.filtrarRecomendados();
+    } else {
+      this.tabla.current.filtrarFavoritos();
+    }
+  }
+
   probarAlgo() {
     alert('Nada!');
   }
@@ -78,7 +89,7 @@ export default class Home extends React.Component {
         <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button>
         <div className="row row-show">
           <div className="col col-show">
-            <Filtro />
+            <Filtro ref={this.filtro} />
             <p ref={this.logger}>nada</p>
           </div>
           <div onClick={e => this.cambiarCategoria(e)} className="col col-show">
