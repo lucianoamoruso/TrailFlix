@@ -33,7 +33,7 @@ export default class Home extends React.Component {
   cargarCategorias(data) {
     const cates = data.map(cat => this.capitalizar(cat));
     this.setState({ categorias: cates });
-    this.navegacion.current.agregarListeners();
+    this.navegacion.current.agregarListeners(evento => this.cambiarCategoria(evento));
     this.filtro.current.agregarListeners(evento => this.aplicarFiltro(evento));
   }
 
@@ -92,7 +92,7 @@ export default class Home extends React.Component {
             <Filtro ref={this.filtro} />
             <p ref={this.logger}>nada</p>
           </div>
-          <div onClick={e => this.cambiarCategoria(e)} className="col col-show">
+          <div className="col col-show">
             <Categorias ref={this.navegacion} categorias={this.state.categorias} />
             <Tabla ref={this.tabla} />
           </div>

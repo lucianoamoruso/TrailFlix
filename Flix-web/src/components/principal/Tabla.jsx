@@ -64,7 +64,7 @@ export default class Tabla extends React.Component {
     const cartas_a_renderizar = this.distribuirCartas();
     return (
       <div id="tabla-contenido">
-        {cartas_a_renderizar.map(fila => <FilaDeCartas cartas={fila} />)}
+        {cartas_a_renderizar.map((fila, index) => <FilaDeCartas key={index} cartas={fila} />)}
       </div>
     );
   }

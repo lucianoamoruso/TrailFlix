@@ -8,10 +8,13 @@ export default class Categorias extends React.Component {
     this.barra = React.createRef();
   }
 
-  agregarListeners() {
+  agregarListeners(handler) {
     const botones = this.barra.current.children;
     for (let i = 0; i < botones.length; i++) {
-      botones[i].addEventListener('click', evento => this.toggleBoton(evento));
+      botones[i].addEventListener('click', (evento) => {
+        this.toggleBoton(evento);
+        handler(evento);
+      });
     }
   }
 

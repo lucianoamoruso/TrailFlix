@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import API from '../../service/omdbapi';
 
@@ -15,6 +16,16 @@ export default class PeliculaPreview extends React.Component {
     };
   }
 
+  conseguirImagen() {
+    API.get(``)
+      .then(response => this.cargarImagen(response))
+      .catch(console.log('imagen no encontrada'));
+  }
+
+  cargarImagen() {
+
+  }
+
   render() {
     return (
       <div className="card peli-card">
@@ -28,7 +39,7 @@ export default class PeliculaPreview extends React.Component {
             {`Clasificacion: ${this.state.clasificacion}`} <br />
             {`Categorias: ${this.state.categorias}`} <br />
           </p>
-          <a href="#" className="btn btn-primary">Ver detalle</a>
+          <Link className="btn btn-primary" to={`/pelicula/${this.props.datos.codigo}`}>Ver detalle</Link>
         </div>
       </div>);
   }

@@ -10,6 +10,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Root from './Root.jsx';
 import Home from './principal/Home';
 import Login from './login/Login';
+import DetallePelicula from './principal/detalle/DetallePelicula';
+import DetalleSerie from './principal/detalle/DetalleSerie';
 
 export default class App extends React.Component {
   render() {
@@ -17,6 +19,8 @@ export default class App extends React.Component {
       <BrowserRouter>
         <Root>
           <Switch>
+            <Route path="/serie/:id" component={DetalleSerie} />
+            <Route path="/pelicula/:id" component={DetallePelicula} />
             <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
           </Switch>
