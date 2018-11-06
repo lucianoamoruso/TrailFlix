@@ -13,6 +13,6 @@ export default class ContenidoPreview extends React.Component {
   }
 
   render() {
-    return (this.state.tipo === 'Pelicula' ? <PeliculaPreview datos={this.props.contenido} /> : <SeriePreview datos={this.props.contenido} />);
+    return (this.state.tipo === 'Pelicula' ? <PeliculaPreview datos={this.props.contenido} username={this.props.username} /> : <SeriePreview datos={this.props.contenido} username={this.props.username} />);
   }
 }

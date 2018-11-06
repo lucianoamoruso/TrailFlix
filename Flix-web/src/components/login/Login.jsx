@@ -8,6 +8,7 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username: '', password: '' };
+    this.alert = React.createRef();
   }
 
   cambiarUsername(evento) {
@@ -22,8 +23,19 @@ export default class Login extends React.Component {
     const body = { username: this.state.username, password: this.state.password };
     console.log({ ...body });
     API.post('/auth', { ...body })
-      .then(() => this.props.history.push('/'))
-      .catch(response => this.setState({ error: response.data }));
+      .then(() => this.irAPrincipal())
+      .catch(() => this.revelarAlerta());
+  }
+
+  irAPrincipal() {
+    this.props.history.push({
+      pathname: '/',
+      state: { username: this.state.username },
+    });
+  }
+
+  revelarAlerta() {
+    this.alert.current.style.display = 'block';
   }
 
   render() {
@@ -31,7 +43,7 @@ export default class Login extends React.Component {
       <div>
         <div className="row">
           <div id="login-h1" className="col-2 col-show offset-5">
-            <h1>Trailflix</h1>
+            <h1>TrailFlix</h1>
           </div>
         </div>
         <div className="row row-show">
@@ -66,9 +78,13 @@ export default class Login extends React.Component {
             />
           </div>
         </div>
-        <p>{this.state.error}</p>
+        <div id="error" ref={this.alert} className="row row-show">
+          <div className="col-4 col-show offset-4 input-group mb-3">
+            <div className="alert alert-danger" role="alert">USUARIO INCORRECTO</div>
+          </div>
+        </div>
         <div className="row">
-          <div id="login-h1" className="col-2 col-show offset-5">
+          <div id="entrar" className="col-2 col-show offset-5">
             <button onClick={() => this.autorizar()} type="button" className="btn btn-primary">Entrar</button>
           </div>
         </div>

@@ -39,9 +39,12 @@ export default class PeliculaPreview extends React.Component {
             {`Clasificacion: ${this.state.clasificacion}`} <br />
             {`Categorias: ${this.state.categorias}`} <br />
           </p>
-          <Link className="btn btn-primary" to={`/pelicula/${this.props.datos.codigo}`}>Ver detalle</Link>
+          <Link
+            className="btn btn-primary"
+            to={{ pathname: `/pelicula/${this.props.datos.codigo}`, state: { username: this.props.username } }}
+          > Ver detalle
+          </Link>
         </div>
       </div>);
   }
-
 }

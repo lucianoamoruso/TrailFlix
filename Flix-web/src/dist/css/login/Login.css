@@ -1,4 +1,4 @@
-#login-h1 {
+#login-h1, #entrar {
   text-align: center;
 }
 
@@ -41,4 +41,12 @@ strong {
 
 .btn-primary:active {
   border: 5px groove #17947d00;
+}
+
+#error {
+  display: none;
+}
+
+#error .col-show {
+  justify-content: center;
 }

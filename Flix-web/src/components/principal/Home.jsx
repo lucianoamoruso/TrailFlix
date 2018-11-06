@@ -21,6 +21,7 @@ export default class Home extends React.Component {
     this.logger = React.createRef();
     this.tabla = React.createRef();
     this.filtro = React.createRef();
+    this.username = this.props.location.state !== undefined ? this.props.location.state.username : undefined;
     this.navegacion = React.createRef();
   }
 
@@ -80,6 +81,9 @@ export default class Home extends React.Component {
           <div id="home-h1" className="col-2 offset-5 col-show">
             <h1>TrailFlix</h1>
           </div>
+          <div className="col-2 offset-3 col-show">
+            <h3>{this.username !== undefined ? `Bienvenido ${this.username}` : 'Inicia sesion'}</h3>
+          </div>
         </div>
         <div className="row row-show">
           <div className="col-2 offset-5 col-show">
@@ -94,7 +98,7 @@ export default class Home extends React.Component {
           </div>
           <div className="col col-show">
             <Categorias ref={this.navegacion} categorias={this.state.categorias} />
-            <Tabla ref={this.tabla} />
+            <Tabla username={this.username} ref={this.tabla} />
           </div>
         </div>
       </div>
