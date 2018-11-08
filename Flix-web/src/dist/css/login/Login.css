@@ -29,17 +29,17 @@ strong {
   font-size: 150%;
 }
 
-.btn-primary {
+#entrar .btn-primary {
   background-color: #15b799;
   border: 5px outset #17947d;
 }
 
-.btn-primary:hover {
+#entrar .btn-primary:hover {
   background-color: #15b799;
   border: 5px solid #17947d00;
 }
 
-.btn-primary:active {
+#entrar .btn-primary:active {
   border: 5px groove #17947d00;
 }
 

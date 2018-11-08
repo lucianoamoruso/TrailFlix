@@ -43,6 +43,12 @@ class Intermodelo {
 		simples
 	}
 	
+	def tituloSegun(String id) {
+		val codigo = Integer.parseInt(id)
+		val titulo = this.trailFlix.buscarContenido(codigo).titulo
+		new TituloWrapper(titulo).toJson
+	}
+	
 	/**
 	 * Prop: agrega el contenido identificado por <code>codigoNuevo</code> a los relacionados del contenido identificado
 	 * por <code>codigoTarget</code>.
@@ -311,7 +317,7 @@ class Intermodelo {
 		}
 		plano
 	}
-	
+
 }
 
 @Accessors
@@ -336,6 +342,17 @@ class ExtraInfoWrapper {
 	new (boolean watched, List<String> recommendations) {
 		this.watched			= watched
 		this.recommendations	= recommendations
+	}
+	
+}
+
+@Accessors
+class TituloWrapper {
+	
+	String	titulo
+	
+	new (String titulo) {
+		this.titulo = titulo
 	}
 	
 }

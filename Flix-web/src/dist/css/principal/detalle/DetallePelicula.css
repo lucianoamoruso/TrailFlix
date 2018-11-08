@@ -3,3 +3,38 @@
   padding-left: 10px;
   cursor: pointer;
 }
+
+.estrella {
+  color: gold;
+}
+
+.corazon {
+  font-size: 24px;
+  padding-left: 2px;
+  color: #af3535;
+}
+
+#separador-val {
+  padding-bottom: 2px;
+}
+
+#visto {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+}
+
+.misma-linea h4{
+  display: inline-block;
+  font-size: 30px;
+  padding-left: 5px;
+}
+
+.recomendados {
+  padding: 0px;
+}
+
+#rec-header {
+  background-color: #80808069;
+  color: #417575;
+}

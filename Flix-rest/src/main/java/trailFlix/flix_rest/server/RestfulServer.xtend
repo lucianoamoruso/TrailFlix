@@ -42,6 +42,15 @@ class RestfulServer {
 		return ok(intermodelo.peliculas.toJson)					//Devolvemos el codigo de OK (200) y en el body el listado de las peliculas serializado a json.
 	}
 	
+	/**
+	 * Prop: devuelve el titulo correspondiente a un Contenido con el ID indicado.
+	 */
+	@Get("/titulo/:id")
+	def getTitulo() {
+		response.contentType = ContentType.APPLICATION_JSON
+		return ok(intermodelo.tituloSegun(id))
+	}
+	
 	@Get("/categories")
 	def getCategorias() {
 		response.contentType = ContentType.APPLICATION_JSON

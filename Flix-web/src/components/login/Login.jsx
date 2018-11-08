@@ -9,6 +9,18 @@ export default class Login extends React.Component {
     super(props);
     this.state = { username: '', password: '' };
     this.alert = React.createRef();
+    this.boton = React.createRef();
+  }
+
+  componentDidMount() {
+    this.agregarListeners();
+  }
+
+  agregarListeners() {
+    this.boton.current.addEventListener('click', () => this.autorizar());
+    document.addEventListener('keypress', (evento) => {
+      if (evento.charCode === 13) { this.autorizar(); }
+    });
   }
 
   cambiarUsername(evento) {
@@ -85,7 +97,7 @@ export default class Login extends React.Component {
         </div>
         <div className="row">
           <div id="entrar" className="col-2 col-show offset-5">
-            <button onClick={() => this.autorizar()} type="button" className="btn btn-primary">Entrar</button>
+            <button ref={this.boton} type="button" className="btn btn-primary">Entrar</button>
           </div>
         </div>
       </div>
