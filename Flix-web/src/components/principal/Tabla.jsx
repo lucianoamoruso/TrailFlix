@@ -33,8 +33,30 @@ export default class Tabla extends React.Component {
     this.setState({ contenidos: data, filtrados: data });
   }
 
+  inferirTipo(cont) {
+    return cont.codigo < 1000 ? 'movie' : 'serie';
+  }
+
   filtrarRecomendados() {
-    alert('recomendados');
+    const contents = this.state.filtrados;
+    const recomendados = [];
+
+    for (let i = 0; i < contents.length; i++) {
+      const cont = contents[i];
+      API.get(`/${this.props.username}/${this.inferirTipo(cont)}/${cont.codigo}`)
+        .then((response) => {
+          if (response.info.recommendations.length > 0) {
+            recomendados.push(cont);
+          }
+        })
+        .catch();
+    }
+    this.setState({ filtrados: this.interseccion(this.state.filtrados, recomendados) });
+  }
+
+  interseccion(array1, array2) {
+    console.log(array1);
+    return array1.filter(value => array2.indexOf(value) !== -1);
   }
 
   filtrarFavoritos() {

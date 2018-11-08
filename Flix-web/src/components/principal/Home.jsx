@@ -6,6 +6,7 @@ import '../../dist/css/principal/App.css';
 import '../../dist/css/principal/Home.css';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import API from '../../service/api';
 
@@ -82,7 +83,9 @@ export default class Home extends React.Component {
             <h1>TrailFlix</h1>
           </div>
           <div className="col-2 offset-3 col-show">
-            <h3>{this.username !== undefined ? `Bienvenido ${this.username}` : 'Inicia sesion'}</h3>
+            {this.username !== undefined
+              ? <h3>Bienvenido {this.username}</h3>
+              : <Link className="btn btn-primary" to="/login">Inicie sesión</Link>}
           </div>
         </div>
         <div className="row row-show">
@@ -90,11 +93,11 @@ export default class Home extends React.Component {
             <input ref={this.buscador} id="busqueda" type="text" className="form-control" placeholder="Buscar..." onChange={e => this.cambiarBusqueda(e)} />
           </div>
         </div>
-        <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button>
+        {/* <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button> */}
         <div className="row row-show">
           <div className="col col-show">
             <Filtro ref={this.filtro} />
-            <p ref={this.logger}>nada</p>
+            {/* <p ref={this.logger}>nada</p> */}
           </div>
           <div className="col col-show">
             <Categorias ref={this.navegacion} categorias={this.state.categorias} />

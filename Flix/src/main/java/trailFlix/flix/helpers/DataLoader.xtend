@@ -153,7 +153,7 @@ class DataLoader implements Loader {
 		
 		user1.amigos.add(user2)
 		user2.amigos.add(user1); user2.amigos.add(user3)
-		user3.amigos.add(user2); user2.amigos.add(user1)
+		user3.amigos.add(user2); user3.amigos.add(user1)
 		//user 4 no tiene amigos :(
 		
 		user1.recomendar(peli1,user2)

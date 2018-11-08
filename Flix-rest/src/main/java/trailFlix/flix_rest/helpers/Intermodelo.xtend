@@ -16,6 +16,7 @@ import trailFlix.flix_rest.simple_model.Contenido_Simple
 import trailFlix.flix_rest.simple_model.Pelicula_Simple
 import trailFlix.flix_rest.simple_model.Serie_Simple
 import trailFlix.flix.model.UsuarioInexistente
+import trailFlix.flix.model.Usuario
 
 /**
  * Esta clase hace de punto de encuentro entre las clases del modelo y el servidor REST: {@link RestfulServer}, simplificando
@@ -134,6 +135,15 @@ class Intermodelo {
 		val recomendadores = manager.recomendadoresDe(cod_serie,username)
 		val json_final = new ResultWrapper(serie,vio,recomendadores).toJson
 		json_final
+	}
+	
+	def amigosDe(String username) {
+		val amigos = manager.conseguirUsuario(username).amigos
+		val nombres = newArrayList()
+		for (Usuario amigo : amigos) {
+			nombres.add(amigo.nombreDeUsuario)
+		}
+		nombres.toJson
 	}
 	
 	/**
@@ -317,7 +327,7 @@ class Intermodelo {
 		}
 		plano
 	}
-
+	
 }
 
 @Accessors

@@ -96,6 +96,12 @@ class RestfulServer {
 		}
 	}
 	
+	@Get("/:username/amigos")
+	def amigosDeUsuario() {
+		response.contentType = ContentType.APPLICATION_JSON
+		return ok(intermodelo.amigosDe(username))
+	}
+	
 //		----------------- POST -----------------
 
 	@Post("/auth")

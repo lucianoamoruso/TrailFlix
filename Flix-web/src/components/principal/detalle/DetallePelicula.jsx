@@ -33,6 +33,7 @@ export default class DetallePelicula extends React.Component {
         recommendations: [],
       },
       favoritos: [],
+      amigos: [],
     };
     this.username = this.props.location.state !== undefined ? this.props.location.state.username : undefined;
     this.codigo = parseInt(this.props.match.params.id, 10);
@@ -40,11 +41,14 @@ export default class DetallePelicula extends React.Component {
     this.tooltip = React.createRef();
     this.visto = React.createRef();
     this.modal = React.createRef();
+    this.recomendador = React.createRef();
+    this.enviarRecomendacion = this.enviarRecomendacion.bind(this);
   }
 
   componentWillMount() {
     this.traerDatos();
     this.traerFavs();
+    this.traerAmigos();
   }
 
   componentDidMount() {
@@ -87,6 +91,16 @@ export default class DetallePelicula extends React.Component {
     this.fav.current.innerHTML = nuevos.includes(this.codigo) ? 'star' : 'star_border'; //Aca se actualiza el icono de fav
   }
 
+  traerAmigos() {
+    API.get(`/${this.username}/amigos`)
+      .then(response => this.cargarAmigos(response))
+      .catch();
+  }
+
+  cargarAmigos(datos) {
+    this.setState({ amigos: datos });
+  }
+
   agregarListeners() {
     this.fav.current.addEventListener('click', () => this.toggleFavorito());
     this.visto.current.addEventListener('click', () => this.toggleVisto());
@@ -120,12 +134,20 @@ export default class DetallePelicula extends React.Component {
     return this.state.info.watched;
   }
 
+  enviarRecomendacion(evento) {
+    const body = { from: this.username, to: evento.target.innerHTML };
+    console.log(body);
+    API.post(`/recommend/movie/${this.codigo}`, { ...body })
+      .then(() => alert('recomendacion enviada!'))
+      .catch();
+  }
+
   codigoVideo() {
     return this.state.pelicula.link.match(/(?<==).*/g);
   }
 
   probarAlgo() {
-    console.log(this.state.pelicula.valoraciones);
+    console.log(this.state.amigos);
   }
 
   capitalizar(palabra) {
@@ -171,10 +193,10 @@ export default class DetallePelicula extends React.Component {
                 <div className="misma-linea"> <input ref={this.visto} id="visto" type="checkbox" /> <h4>Vista</h4> </div>
               </div>
               <div className="col col-show">
-                <Recomendador /> <br />
+                <Recomendador ref={this.recomendador} amigos={this.state.amigos} enviar={this.enviarRecomendacion} /> <br />
               </div>
             </div>
-            <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button>
+            {/* <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button> */}
           </div>
           <div className="col col-show">
             <h3>Clasificacion: {this.state.pelicula.clasificacion}</h3>
