@@ -17,19 +17,21 @@ import Tabla from './Tabla';
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { categorias: [] };
+    this.state = { categorias: [], contenidos: [], busqueda: '' };
     this.buscador = React.createRef();
     this.logger = React.createRef();
     this.tabla = React.createRef();
     this.filtro = React.createRef();
     this.username = this.props.location.state !== undefined ? this.props.location.state.username : undefined;
     this.navegacion = React.createRef();
+    this.lupa = React.createRef();
   }
 
   componentDidMount() {
     API.get('/categories')
       .then(response => this.cargarCategorias(response))
       .catch(this.falsificarCategorias());
+    this.lupa.current.addEventListener('click', () => this.buscar());
   }
 
   cargarCategorias(data) {
@@ -48,12 +50,22 @@ export default class Home extends React.Component {
   }
 
   cambiarBusqueda(evento) {
-    this.tabla.current.filtrar(evento.target.value);
+    this.setState({ busqueda: evento.target.value });
   }
 
   cambiarCategoria(evento) {
-    this.tabla.current.solicitarContenido(evento.target.innerHTML.toLowerCase());
     this.buscador.current.value = '';
+    this.solicitarContenido(evento.target.innerHTML.toLowerCase());
+  }
+
+  solicitarContenido(cat) {
+    API.get(`/content/${cat}`)
+      .then(response => this.cargarContenidos(response))
+      .catch();
+  }
+
+  cargarContenidos(data) {
+    this.setState({ contenidos: data });
   }
 
   /**
@@ -71,8 +83,21 @@ export default class Home extends React.Component {
     }
   }
 
+  buscar() {
+    this.navegacion.current.apagarBotones();
+    const body = { text: this.state.busqueda };
+    API.post('/search', { ...body })
+      .then(response => this.cargarDeBusqueda(response))
+      .catch();
+  }
+
+  cargarDeBusqueda(data) {
+    this.setState({ contenidos: data });
+  }
+
   probarAlgo() {
-    alert('Nada!');
+    console.log(this.state.contenidos);
+    // alert('Nada!');
   }
 
   render() {
@@ -89,19 +114,20 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="row row-show">
-          <div className="col-2 offset-5 col-show">
+          <div className="col-2 offset-5 col-show inline">
             <input ref={this.buscador} id="busqueda" type="text" className="form-control" placeholder="Buscar..." onChange={e => this.cambiarBusqueda(e)} />
+            <i ref={this.lupa} id="icon-buscar" className="material-icons boton-svg">search</i>
           </div>
         </div>
-        {/* <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button> */}
+        <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button>
         <div className="row row-show">
           <div className="col col-show">
             <Filtro ref={this.filtro} />
-            {/* <p ref={this.logger}>nada</p> */}
+            <p ref={this.logger}>nada</p>
           </div>
           <div className="col col-show">
             <Categorias ref={this.navegacion} categorias={this.state.categorias} />
-            <Tabla username={this.username} ref={this.tabla} />
+            <Tabla username={this.username} contenidos={this.state.contenidos} ref={this.tabla} />
           </div>
         </div>
       </div>

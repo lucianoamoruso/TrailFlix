@@ -180,7 +180,7 @@ export default class DetallePelicula extends React.Component {
       <div>
         <div className="row row-show">
           <h1>{this.state.pelicula.titulo}</h1>
-          <i ref={this.fav} className="material-icons estrella">star_border</i>
+          <i ref={this.fav} className="material-icons boton-svg estrella">star_border</i>
         </div>
         <div className="row row-show">
           <Valoraciones puntajes={this.state.pelicula.valoraciones || []} />

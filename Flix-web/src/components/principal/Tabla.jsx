@@ -1,62 +1,40 @@
+/* eslint-disable camelcase */
 import React from 'react';
 
 import '../../dist/css/principal/Tabla.css';
 
 import FilaDeCartas from './FilaDeCartas';
 
-import API from '../../service/api';
-
 export default class Tabla extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { contenidos: [], filtrados: [] };
-  }
-
-  filtrar(texto) {
-    let listaActualizada = this.state.contenidos;
-    listaActualizada = listaActualizada.filter(cont => cont.titulo.toLowerCase().search(texto.toLowerCase()) !== -1);
-    this.setState({ filtrados: listaActualizada });
-  }
-
-  // filtrar(texto) {
-  //   const nuevos = this.state.contenidos.filter(cont => cont.titulo.toUpperCase().includes(texto.toUpperCase()));
-  //   this.setState({ filtrados: nuevos });
+  // inferirTipo(cont) {
+  //   return cont.codigo < 1000 ? 'movie' : 'serie';
   // }
 
-  solicitarContenido(cat) {
-    API.get(`/content/${cat}`)
-      .then(response => this.cargarContenidos(response))
-      .catch();
-  }
+  // filtrarRecomendados() {
+  //   const contents = this.state.contenidos;
+  //   const recomendados = [];
 
-  cargarContenidos(data) {
-    this.setState({ contenidos: data, filtrados: data });
-  }
+  //   for (let i = 0; i < contents.length; i++) {
+  //     const cont = contents[i];
+  //     API.get(`/${this.props.username}/${this.inferirTipo(cont)}/${cont.codigo}`)
+  //       .then((response) => {
+  //         if (response.info.recommendations.length > 0) {
+  //           recomendados.push(cont);
+  //         }
+  //       })
+  //       .catch();
+  //   }
+  //   this.setState({ contenidos: this.interseccion(this.state.contenidos, recomendados) });
+  // }
 
-  inferirTipo(cont) {
-    return cont.codigo < 1000 ? 'movie' : 'serie';
-  }
+  // interseccion(array1, array2) {
+  //   console.log(array1);
+  //   return array1.filter(value => array2.indexOf(value) !== -1);
+  // }
 
-  filtrarRecomendados() {
-    const contents = this.state.filtrados;
-    const recomendados = [];
-
-    for (let i = 0; i < contents.length; i++) {
-      const cont = contents[i];
-      API.get(`/${this.props.username}/${this.inferirTipo(cont)}/${cont.codigo}`)
-        .then((response) => {
-          if (response.info.recommendations.length > 0) {
-            recomendados.push(cont);
-          }
-        })
-        .catch();
-    }
-    this.setState({ filtrados: this.interseccion(this.state.filtrados, recomendados) });
-  }
-
-  interseccion(array1, array2) {
-    console.log(array1);
-    return array1.filter(value => array2.indexOf(value) !== -1);
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    console.log(this.props);
   }
 
   filtrarFavoritos() {
@@ -67,18 +45,18 @@ export default class Tabla extends React.Component {
    * Prop: devuelve un array que contiene arrays de max 3 Contenidos cada uno a partir de los filtrados.
    */
   distribuirCartas() {
-    const filtrados = this.state.filtrados;
+    const conts = this.props.contenidos;
     const resultado = [];
 
-    while (filtrados.length > 2) {
+    while (conts.length > 2) {
       const fila = [];
-      fila.push(filtrados.pop());
-      fila.push(filtrados.pop());
-      fila.push(filtrados.pop());
+      fila.push(conts.pop());
+      fila.push(conts.pop());
+      fila.push(conts.pop());
       resultado.push(fila);
     }
 
-    resultado.push(filtrados);
+    resultado.push(conts);
     return resultado;
   }
 

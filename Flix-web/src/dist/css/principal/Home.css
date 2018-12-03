@@ -12,3 +12,12 @@
   background-color: #fff5771f;
   margin-bottom: 8px;
 }
+
+.inline {
+  display: inline-flex;
+}
+
+#icon-buscar {
+  padding-top: 4px;
+  padding-left: 2px;
+}

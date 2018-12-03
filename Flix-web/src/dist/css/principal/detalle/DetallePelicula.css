@@ -1,10 +1,10 @@
-.material-icons {
-  font-size: 48px;
-  padding-left: 10px;
+.boton-svg {
   cursor: pointer;
 }
 
 .estrella {
+  font-size: 48px;
+  padding-left: 10px;
   color: gold;
 }
 

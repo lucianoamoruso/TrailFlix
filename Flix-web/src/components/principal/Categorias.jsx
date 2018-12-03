@@ -26,6 +26,16 @@ export default class Categorias extends React.Component {
     evento.target.classList.toggle('active');
   }
 
+  /**
+   * Prop: deselecciona todos los botones.
+   */
+  apagarBotones() {
+    const botones = this.barra.current.children;
+    for (let i = 0; i < botones.length; i++) {
+      botones[i].classList.remove('active');
+    }
+  }
+
   render() {
     return (
       <nav ref={this.barra} className="cat-nav">
