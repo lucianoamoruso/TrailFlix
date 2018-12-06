@@ -13,15 +13,18 @@ import API from '../../service/api';
 import Categorias from './Categorias';
 import Filtro from './Filtro';
 import Tabla from './Tabla';
+import Favoritos from './Favoritos';
+import Recomendados from './Recomendados';
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { categorias: [], contenidos: [], busqueda: '' };
+    this.state = {
+      categorias: [], contenidos: [], favoritos: [], recomendados: [], busqueda: '',
+    };
     this.buscador = React.createRef();
     this.logger = React.createRef();
     this.tabla = React.createRef();
-    this.filtro = React.createRef();
     this.username = this.props.location.state !== undefined ? this.props.location.state.username : undefined;
     this.navegacion = React.createRef();
     this.lupa = React.createRef();
@@ -31,14 +34,45 @@ export default class Home extends React.Component {
     API.get('/categories')
       .then(response => this.cargarCategorias(response))
       .catch(this.falsificarCategorias());
+    this.traerFavs();
+    this.traerRecs();
     this.lupa.current.addEventListener('click', () => this.buscar());
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps !== this.props || nextState.contenidos !== this.state.contenidos
+     || nextState.categorias !== this.state.categorias || nextState.favoritos !== this.state.favoritos
+     || nextState.recomendados !== this.state.recomendados;
+  }
+
+  traerFavs() {
+    API.get(`/${this.username}/favs`)
+      .then((response) => {
+        this.cargarFavs(response);
+      })
+      .catch();
+  }
+
+  cargarFavs(datos) {
+    this.setState({ favoritos: datos });
+  }
+
+  traerRecs() {
+    API.get(`/${this.username}/recs`)
+      .then((response) => {
+        this.cargarRecs(response);
+      })
+      .catch();
+  }
+
+  cargarRecs(datos) {
+    this.setState({ recomendados: datos });
   }
 
   cargarCategorias(data) {
     const cates = data.map(cat => this.capitalizar(cat));
     this.setState({ categorias: cates });
     this.navegacion.current.agregarListeners(evento => this.cambiarCategoria(evento));
-    this.filtro.current.agregarListeners(evento => this.aplicarFiltro(evento));
   }
 
   /**
@@ -65,6 +99,7 @@ export default class Home extends React.Component {
   }
 
   cargarContenidos(data) {
+    console.log(data);
     this.setState({ contenidos: data });
   }
 
@@ -73,14 +108,6 @@ export default class Home extends React.Component {
    */
   capitalizar(palabra) {
     return palabra.charAt(0).toUpperCase() + palabra.slice(1);
-  }
-
-  aplicarFiltro(tipo) {
-    if (tipo === 'rec') {
-      this.tabla.current.filtrarRecomendados();
-    } else {
-      this.tabla.current.filtrarFavoritos();
-    }
   }
 
   buscar() {
@@ -92,6 +119,7 @@ export default class Home extends React.Component {
   }
 
   cargarDeBusqueda(data) {
+    console.log(data);
     this.setState({ contenidos: data });
   }
 
@@ -107,7 +135,7 @@ export default class Home extends React.Component {
           <div id="home-h1" className="col-2 offset-5 col-show">
             <h1>TrailFlix</h1>
           </div>
-          <div className="col-2 offset-3 col-show">
+          <div id="sesion" className="col-2 offset-3 col-show">
             {this.username !== undefined
               ? <h3>Bienvenido {this.username}</h3>
               : <Link className="btn btn-primary" to="/login">Inicie sesión</Link>}
@@ -119,15 +147,29 @@ export default class Home extends React.Component {
             <i ref={this.lupa} id="icon-buscar" className="material-icons boton-svg">search</i>
           </div>
         </div>
-        <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button>
+        {/* <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button> */}
         <div className="row row-show">
           <div className="col col-show">
-            <Filtro ref={this.filtro} />
-            <p ref={this.logger}>nada</p>
+            <Filtro />
+            {/* <p ref={this.logger}>nada</p> */}
           </div>
           <div className="col col-show">
             <Categorias ref={this.navegacion} categorias={this.state.categorias} />
             <Tabla username={this.username} contenidos={this.state.contenidos} ref={this.tabla} />
+          </div>
+        </div>
+        <div className="row row-show">
+          <div className="col col-show">
+            {this.username !== undefined
+              ? <span> <a name="favoritos" /> <Favoritos username={this.username} contenidos={this.state.favoritos} /> </span>
+              : <span /> }
+          </div>
+        </div>
+        <div className="row row-show">
+          <div className="col col-show">
+            {this.username !== undefined
+              ? <span> <a name="recomendados" /> <Recomendados username={this.username} contenidos={this.state.recomendados} /> </span>
+              : <span /> }
           </div>
         </div>
       </div>

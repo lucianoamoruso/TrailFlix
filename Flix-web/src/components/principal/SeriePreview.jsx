@@ -39,9 +39,12 @@ export default class SeriePreview extends React.Component {
             {`Clasificacion: ${this.state.clasificacion}`} <br />
             {`Categorias: ${this.state.categorias}`} <br />
           </p>
-          <Link className="btn btn-primary" to={`/serie/${this.props.datos.codigo}`}>Ver detalle</Link>
+          <Link
+            className="btn btn-primary"
+            to={{ pathname: `/serie/${this.props.datos.codigo}`, state: { username: this.props.username } }}
+          > Ver detalle
+          </Link>
         </div>
       </div>);
   }
-
 }

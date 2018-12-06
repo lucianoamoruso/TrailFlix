@@ -93,7 +93,7 @@ class DataLoader implements Loader {
 			directores = new ArrayList() => [add("Hiroyuki Tanaka")]
 			actores = new ArrayList() => [add("Eren"); add("Mikasa")]
 			valoraciones = new ArrayList() => [add(9); add(9); add(9); add(9)]
-			link = "https://youtu.be/XMXgHfHxKVM"
+			link = "https://www.youtube.com/watch?v=XMXgHfHxKVM"
 		]
 		
 		val serie2 = new Serie("Attack on Titan") => [

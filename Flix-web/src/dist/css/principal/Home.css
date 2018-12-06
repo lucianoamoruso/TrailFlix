@@ -1,5 +1,9 @@
-#home-h1 {
+#home-h1, #sesion {
   text-align: center;
+}
+
+#sesion :first-child {
+  margin-top: 9px;
 }
 
 #home-h1 h1 {

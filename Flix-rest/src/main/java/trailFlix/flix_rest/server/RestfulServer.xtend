@@ -74,6 +74,17 @@ class RestfulServer {
 		}
 	}
 	
+	@Get("/:username/recs")
+	def recomendadosDe() {
+		response.contentType = ContentType.APPLICATION_JSON
+		
+		try {
+			return ok(intermodelo.recomendadosDe(username).toJson)
+		} catch (Exception excepcion) {
+			return manejarExcepcion(excepcion)
+		}
+	}
+	
 	@Get("/:username/movie/:id")
 	def peliculaSegunUsuario() {
 		response.contentType = ContentType.APPLICATION_JSON

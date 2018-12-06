@@ -94,6 +94,18 @@ class Intermodelo {
 	}
 	
 	/**
+	 * Prop: devuelve la lista de contenidos que fueron recomendados al usuario.
+	 */
+	 def List<Contenido_Simple> recomendadosDe(String username) {
+	 	val usuario = manager.conseguirUsuario(username)
+		val simples = newArrayList
+		for (Contenido c : usuario.getContRecomendado) {
+			simples.add(simplificar(c))
+		}
+		simples
+	 }
+	
+	/**
 	 * Prop: devuelve un objeto JSON con los datos de la pelicula y datos resultado de su relacion con el usuario.
 	 */
 	def peliculaSegunUsuario(String id_peli, String username) {

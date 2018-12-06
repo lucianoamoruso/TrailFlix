@@ -33,12 +33,16 @@ export default class Tabla extends React.Component {
   // }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    console.log(this.props);
+    // console.log(prevProps);
+    // console.log(this.props);
   }
 
   filtrarFavoritos() {
     alert('favoritos');
+  }
+
+  probarAlgo() {
+    console.log(this.props.contenidos);
   }
 
   /**
@@ -64,6 +68,7 @@ export default class Tabla extends React.Component {
     const cartas_a_renderizar = this.distribuirCartas();
     return (
       <div id="tabla-contenido">
+        {/* <button type="button" onClick={() => this.probarAlgo()}>Probar algo</button> */}
         {cartas_a_renderizar.map((fila, index) => <FilaDeCartas key={index} cartas={fila} username={this.props.username} />)}
       </div>
     );
