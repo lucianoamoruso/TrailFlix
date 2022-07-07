@@ -3,3 +3,4 @@ generated/
 src-gen/
 xtend-gen/
 generated-sources/
+*.xtendbin

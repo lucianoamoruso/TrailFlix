@@ -13,7 +13,7 @@ import Login from './login/Login';
 import DetallePelicula from './principal/detalle/DetallePelicula';
 import DetalleSerie from './principal/detalle/DetalleSerie';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
@@ -29,3 +29,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;
